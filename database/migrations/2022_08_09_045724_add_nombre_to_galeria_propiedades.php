@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEstatusPropiedadsTable extends Migration
+class AddNombreToGaleriaPropiedades extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class CreateEstatusPropiedadsTable extends Migration
      */
     public function up()
     {
-        Schema::create('estatus_propiedads', function (Blueprint $table) {
-            $table->bigIncrements("id");
-            $table->string("nombre");
-            $table->timestamps();
+        Schema::table('galeria_propiedades', function (Blueprint $table) {
+            $table->string("nombre")->nullable();
         });
     }
 
@@ -27,6 +25,8 @@ class CreateEstatusPropiedadsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('estatus_propiedads');
+        Schema::table('galeria_propiedades', function (Blueprint $table) {
+            $table->string("nombre")->nullable();
+        });
     }
 }
