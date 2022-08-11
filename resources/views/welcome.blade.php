@@ -9,7 +9,7 @@
 
         <title>BAN PRO</title>
 
-        <!-- FAVICON -->
+    <!-- FAVICON -->
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="{{asset('seller/css/jquery-ui.css')}}">
     <!-- GOOGLE FONTS -->
@@ -33,6 +33,8 @@
     <link rel="stylesheet" href="{{asset('seller/css/styles.css')}}">
     <link rel="stylesheet" href="{{asset('seller/css/maps.css')}}">
     <link rel="stylesheet" id="color" href="{{asset('seller/css/colors/pink.css')}}">
+
+
 
         <!-- Styles -->
         <style>
@@ -114,7 +116,7 @@
 
             <!-- ARCHIVES JS -->
             <script src="{{asset('seller/js/jquery-3.5.1.min.js')}}"></script>
-            <script src="{{asset('seller/js/rangeSlider.js')}}"></script>
+            <script src="{{asset('seller/js/range-slider.js')}}"></script>
             <script src="{{asset('seller/js/tether.min.js')}}"></script>
             <script src="{{asset('seller/js/moment.js')}}"></script>
             <script src="{{asset('seller/js/bootstrap.min.js')}}"></script>
@@ -142,8 +144,11 @@
             <script src="{{asset('seller/js/searched.js')}}"></script>
             <script src="{{asset('seller/js/forms-2.js')}}"></script>
             <script src="{{asset('seller/js/map-style2.js')}}"></script>
-            <script src="{{asset('seller/js/range/js')}}"></script>
+            <script src="{{asset('seller/js/range.js')}}"></script>
             <script src="{{asset('seller/js/color-switcher.js')}}"></script>
+            <!-- JavaScript Bundle with Popper -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+
             <script>
                 $(window).on('scroll load', function() {
                     $("#header.cloned #logo img").attr("src", $('#header #logo img').attr('data-sticky-logo'));
