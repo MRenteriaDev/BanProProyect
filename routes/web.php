@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\TipoPropiedadController;
+use App\Http\Controllers\Admin\ZonasController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SellerController;
@@ -38,18 +39,21 @@ Route::prefix('admin')->group(function () {
 
 /* ------------- End Admin Route -------------- */
 
-/* ------------- Admin Route -------------- */
 
 
+/* ------------- Tipos Propiedades -------------- */
 Route::prefix('tipopropiedades')->group(function () {
 
     Route::get('/index', [TipoPropiedadController::class, 'index'])->name('tipopropiedad.index');
 });
+/* ------------- End Tipo Propiedades -------------- */
 
+/* ------------- Tipos Propiedades -------------- */
+Route::prefix('zonas')->group(function () {
 
-
-
-/* ------------- End Admin Route -------------- */
+    Route::get('/index', [ZonasController::class, 'index'])->name('zonas.index');
+});
+/* ------------- End Tipo Propiedades -------------- */
 
 
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ZonasController extends Controller
 {
@@ -14,7 +15,8 @@ class ZonasController extends Controller
      */
     public function index()
     {
-        //
+        $zonas = DB::table('zonas')->get();
+        return view('admin.zonas.index', compact('zonas'));
     }
 
     /**
