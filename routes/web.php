@@ -49,6 +49,7 @@ Route::prefix('tipopropiedades')->group(function () {
     Route::post('/store', [TipoPropiedadController::class, 'store'])->name('tipopropiedad.store');
     Route::get('/edit/{id}', [TipoPropiedadController::class, 'edit'])->name('tipopropiedad.edit');
     Route::post('/update/{id}', [TipoPropiedadController::class, 'update'])->name('tipopropiedad.update');
+    Route::get('/destroy/{id}', [TipoPropiedadController::class, 'destroy'])->name('tipopropiedad.destroy');
 });
 
 /* ------------- End Tipo Propiedades -------------- */

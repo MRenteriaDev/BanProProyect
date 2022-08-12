@@ -57,7 +57,7 @@
                                                     aria-hidden="true"></i>
                                             </a>
 
-                                            <a class="btn btn-md btn-danger" id="delete" href=""><i
+                                            <a class="btn btn-md btn-danger" href="{{route('tipopropiedad.destroy', $tipo_propiedad->id)}}" id="delete"><i
                                                     class="fa fa-trash" aria-hidden="true"></i>
                                             </a>
 

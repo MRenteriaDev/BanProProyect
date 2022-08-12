@@ -103,6 +103,13 @@ class TipoPropiedadController extends Controller
      */
     public function destroy($id)
     {
-        //
+        TipoPropiedad::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => "Tipo de propiedad Eliminado Correctamente",
+            'alert-type' => "error",
+        );
+
+        return redirect()->route('tipopropiedad.index')->with($notification);
     }
 }
