@@ -21,5 +21,7 @@ class DatabaseSeeder extends Seeder
           \App\Models\TipoPropiedad::factory(10)->create();
           \App\Models\Zonas::factory(20)->create();
           \App\Models\Locacion::factory(20)->create();
+          \App\Models\EstatusPropiedad::factory(20)->create();
+        //   \App\Models\Propiedades::factory(20)->create();
     }
 }

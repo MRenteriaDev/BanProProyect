@@ -9,7 +9,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-md-right">
-                        <button class="btn btn-primary btn-md" href="{{ route('tipopropiedad.create') }}"><i class="fas fa-plus-circle"></i>
+                        <button class="btn btn-primary btn-md"><i class="fas fa-plus-circle"></i>
   
                             &nbsp; Crear Propiedad
                         </button>
