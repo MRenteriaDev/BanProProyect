@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\TipoPropiedadController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SellerController;
@@ -30,6 +31,19 @@ Route::prefix('admin')->group(function () {
     Route::get('/register', [AdminController::class, 'AdminRegister'])->name('admin.register');
 
     Route::post('/register/create', [AdminController::class, 'AdminRegisterCreate'])->name('admin.register.create');
+});
+
+
+
+
+/* ------------- End Admin Route -------------- */
+
+/* ------------- Admin Route -------------- */
+
+
+Route::prefix('tipopropiedades')->group(function () {
+
+    Route::get('/index', [TipoPropiedadController::class, 'index'])->name('tipopropiedad.index');
 });
 
 
