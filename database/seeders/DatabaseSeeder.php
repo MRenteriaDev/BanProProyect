@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Seller;
+use Database\Factories\TipoPropiedadFactory;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,5 +16,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
           \App\Models\Seller::factory(2)->create();
+          \App\Models\Seller::factory(2)->create();
+          \App\Models\TipoPropiedad::factory(10)->create();
     }
 }
