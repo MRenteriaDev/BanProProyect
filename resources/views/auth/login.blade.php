@@ -1,3 +1,4 @@
+<title>Seller | Log in</title>
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">

@@ -63,7 +63,7 @@ Route::prefix('seller')->group(function () {
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('cliente.index');
 });
 
 Route::get('/dashboard', function () {
