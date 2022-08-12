@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TipoPropiedadController extends Controller
 {
@@ -14,7 +15,8 @@ class TipoPropiedadController extends Controller
      */
     public function index()
     {
-        //
+        $tipo_propiedades= DB::table('tipo_propiedads')->get();
+        return view('admin.tipopropiedad.index', compact("tipo_propiedades"));
     }
 
     /**
