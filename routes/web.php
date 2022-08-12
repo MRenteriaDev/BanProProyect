@@ -45,6 +45,8 @@ Route::prefix('admin')->group(function () {
 Route::prefix('tipopropiedades')->group(function () {
 
     Route::get('/index', [TipoPropiedadController::class, 'index'])->name('tipopropiedad.index');
+    Route::get('/create', [TipoPropiedadController::class, 'create'])->name('tipopropiedad.create');
+    Route::post
 });
 /* ------------- End Tipo Propiedades -------------- */
 

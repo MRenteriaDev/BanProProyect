@@ -26,7 +26,7 @@ class TipoPropiedadController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.tipopropiedad.create');
     }
 
     /**
