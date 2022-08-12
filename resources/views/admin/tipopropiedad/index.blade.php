@@ -9,10 +9,10 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-md-right">
-                        <button class="btn btn-primary btn-md"><i class="fas fa-plus-circle"></i>
+                        <a class="btn btn-primary btn-md" href="{{ route('tipopropiedad.create') }}"><i class="fas fa-plus-circle"></i>
   
-                            &nbsp; Crear Propiedad
-                        </button>
+                            &nbsp; Crear Tipo de Propiedad
+                        </a>
                     </ol>
                 </div>
             </div>
@@ -53,7 +53,7 @@
                                     <th class="row">
                                         <div class="btn-group" role="group" aria-label="Basic example">
 
-                                            <a class="btn btn-md btn-success" href=""><i class="fa fa-pencil"
+                                            <a class="btn btn-md btn-success" href="{{route('tipopropiedad.edit', $tipo_propiedad->id)}}"><i class="fa fa-pencil"
                                                     aria-hidden="true"></i>
                                             </a>
 

@@ -1,18 +1,18 @@
 @extends('admin.admin_master')
 @section('admin')
 
+
 <div class="card">
     <div class="card-body">
         <div class="col-sm-6">
-            <h3>Crear tipo de propiedad</h3>
-        </div>
-
-        <form class="row g-3" method="POST" action="{{ route('tipopropiedad.store') }}">
+            <h3>Actualizar tipo de propiedad <span class="text-danger">{{ $tipo_propiedad->nombre}}</span></h3> 
+        {{-- action="{{ route('tipopropiedad.update', $tipo_propiedad->id) }}" --}}
+        <form class="row g-3" method="POST" >
             @csrf
             <div class="col-md-12">
                 <div class="form-floating">
                     <label for="nombre">Nombre</label>
-                    <input type="text" name="nombre" class="form-control" id="floatingName"
+                    <input type="text" value="{{$tipo_propiedad->nombre}}"name="nombre" class="form-control" id="floatingName"
                         placeholder="Ingresar nombre">
                     @error('nombre')
                         <span class="text-danger"> {{ $message }} </span>
