@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\TipoPropiedad;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class TipoPropiedadController extends Controller
 {
@@ -26,7 +28,7 @@ class TipoPropiedadController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.tipopropiedad.create');
     }
 
     /**
@@ -37,7 +39,25 @@ class TipoPropiedadController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre' => 'required',
+
+        ], [
+            'nombre.required' => 'El nombre del tipo de propiedad es requerido',
+
+        ]);
+
+        TipoPropiedad::insert([
+            'nombre' => $request->nombre,
+            'created_at' => Carbon::now()
+        ]);
+
+        $notification  = array(
+            'message' => "Tipo de Propiedad Agregada Correctamente",
+            'alert-type' => "success",
+        );
+
+        return redirect()->route('tipopropiedad.index')->with($notification);
     }
 
     /**
@@ -48,7 +68,7 @@ class TipoPropiedadController extends Controller
      */
     public function show($id)
     {
-        //
+       
     }
 
     /**
@@ -59,7 +79,8 @@ class TipoPropiedadController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tipo_propiedad= TipoPropiedad::findOrFail($id);
+        return view('admin.tipopropiedad.update', compact('tipo_propiedad'));
     }
 
     /**
@@ -82,6 +103,13 @@ class TipoPropiedadController extends Controller
      */
     public function destroy($id)
     {
-        //
+        TipoPropiedad::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => "Tipo de propiedad Eliminado Correctamente",
+            'alert-type' => "error",
+        );
+
+        return redirect()->route('tipopropiedad.index')->with($notification);
     }
 }
