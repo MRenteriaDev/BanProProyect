@@ -39,7 +39,6 @@ class PropiedadesFactory extends Factory
             'video_propiedad' => Str::random(100),
             'review_id' => rand(1, 20),
             'solicitud_vendedor_id' => rand(1, 20)
-
         ];
     }
 }

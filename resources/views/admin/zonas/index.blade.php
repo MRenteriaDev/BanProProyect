@@ -2,6 +2,22 @@
 
 
 @section('admin')
+    <section class="content-header" style="margin-top: 10px">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Zonas</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-md-right">
+                        <a class="btn btn-primary btn-md" href="{{ route('zonas.create') }}"><i class="fas fa-plus-circle"></i>
+                            &nbsp; Crear Zonas
+                        </a>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">Todas las Zonas</h3>

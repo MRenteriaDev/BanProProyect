@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Zonas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -26,7 +27,7 @@ class ZonasController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.zonas.create');
     }
 
     /**
@@ -37,7 +38,20 @@ class ZonasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'nombre' => 'required'
+        ], [
+            'nombre.required' => "El nombre es requerido"
+        ]);
+
+        Zonas::create($data);
+
+        $notification = array(
+            'message' => 'Alta de Zona Correcta',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('zonas.index')->with($notification);
     }
 
     /**

@@ -48,12 +48,13 @@ Route::prefix('tipopropiedades')->group(function () {
 });
 /* ------------- End Tipo Propiedades -------------- */
 
-/* ------------- Tipos Propiedades -------------- */
+/* ------------- Zonas -------------- */
 Route::prefix('zonas')->group(function () {
-
     Route::get('/index', [ZonasController::class, 'index'])->name('zonas.index');
+    Route::get('/create', [ZonasController::class, 'create'])->name('zonas.create');
+    Route::post('/store', [ZonasController::class, 'store'])->name('zonas.store');
 });
-/* ------------- End Tipo Propiedades -------------- */
+/* ------------- End Zonas -------------- */
 
 
 
