@@ -61,13 +61,13 @@ Route::get('/register',[SellerController::class, 'SellerRegister'])->name('selle
 Route::post('/register/create',[SellerController::class, 'SellerRegisterCreate'])->name('seller.register.create');
 
 
-}); 
+});
 /* ------------- End Seller Route -------------- */
 
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('cliente.index');
 });
 
 Route::get('/dashboard', function () {
