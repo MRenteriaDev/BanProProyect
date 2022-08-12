@@ -31,7 +31,8 @@
                                         aria-label="Rendering engine: activate to sort column descending">Nombre
                                     </th>
                                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
-                                        colspan="1" aria-label="Browser: activate to sort column ascending">Fecha creacion</th>
+                                        colspan="1" aria-label="Browser: activate to sort column ascending">Fecha
+                                        creacion</th>
                                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
                                         colspan="1" aria-label="Platform(s): activate to sort column ascending">
                                         Acciones
@@ -43,8 +44,8 @@
 
                                 @foreach ($tipo_propiedades as $tipo_propiedad)
                                     <tr class="odd">
-                                        <td class="dtr-control sorting_1" tabindex="0">{{$tipo_propiedad->nombre}}</td>
-                                        <td>{{$tipo_propiedad->created_at}}</td>
+                                        <td class="dtr-control sorting_1" tabindex="0">{{ $tipo_propiedad->nombre }}</td>
+                                        <td>{{ $tipo_propiedad->created_at }}</td>
                                         <td>Acciones</td>
                                     </tr>
                                 @endforeach
@@ -54,6 +55,5 @@
                 </div>
             </div>
         </div>
-
     </div>
 @endsection
