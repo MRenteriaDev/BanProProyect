@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\EstatusPropiedadController;
 use App\Http\Controllers\Admin\LocacionController;
+use App\Http\Controllers\Admin\NearbysController;
 use App\Http\Controllers\Admin\TipoPropiedadController;
 use App\Http\Controllers\Admin\ZonasController;
 use Illuminate\Support\Facades\Route;
@@ -89,6 +90,18 @@ Route::prefix('statuspropiedad')->group(function () {
     Route::get('/destroy/{id}', [EstatusPropiedadController::class, 'destroy'])->name('statuspropiedad.destroy');
 });
 /* ------------- End StatusPropiedad -------------- */
+
+
+/* ------------- Nearbys -------------- */
+Route::prefix('nearby')->group(function () {
+    Route::get('/index', [NearbysController::class, 'index'])->name('nearby.index');
+    Route::get('/create', [NearbysController::class, 'create'])->name('nearby.create');
+    Route::post('/store', [NearbysController::class, 'store'])->name('nearby.store');
+    Route::get('/edit/{id}', [NearbysController::class, 'edit'])->name('nearby.edit');
+    Route::post('/update/{id}', [NearbysController::class, 'update'])->name('nearby.update');
+    Route::get('/destroy/{id}', [NearbysController::class, 'destroy'])->name('nearby.destroy');
+});
+/* ------------- End Nearbys -------------- */
 
 
 
