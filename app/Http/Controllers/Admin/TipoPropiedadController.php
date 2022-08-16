@@ -17,7 +17,7 @@ class TipoPropiedadController extends Controller
      */
     public function index()
     {
-        $tipo_propiedades= DB::table('tipo_propiedads')->get();
+        $tipo_propiedades = DB::table('tipo_propiedads')->get();
         return view('admin.tipopropiedad.index', compact("tipo_propiedades"));
     }
 
@@ -68,7 +68,6 @@ class TipoPropiedadController extends Controller
      */
     public function show($id)
     {
-       
     }
 
     /**
@@ -79,7 +78,7 @@ class TipoPropiedadController extends Controller
      */
     public function edit($id)
     {
-        $tipo_propiedad= TipoPropiedad::findOrFail($id);
+        $tipo_propiedad = TipoPropiedad::findOrFail($id);
         return view('admin.tipopropiedad.update', compact('tipo_propiedad'));
     }
 
@@ -92,7 +91,25 @@ class TipoPropiedadController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nombre' => 'required',
+
+        ], [
+            'nombre.required' => 'El nombre de la zona es requerido',
+
+        ]);
+
+        TipoPropiedad::findOrFail($id)->update([
+            'nombre' => $request->nombre,
+            'updated_at' => Carbon::now()
+        ]);
+
+        $notification  = array(
+            'message' => "El tipo de propiedad se actualizó Correctamente",
+            'alert-type' => "success",
+        );
+
+        return redirect()->route('tipopropiedad.index')->with($notification);
     }
 
     /**

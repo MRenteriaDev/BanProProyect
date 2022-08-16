@@ -29,7 +29,10 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
-                        <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Enter email">
+                        <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Enter name">
+                        @error('nombre')
+                            <span class="text-danger"> {{ $message }} </span>
+                        @enderror
                     </div>
                 </div>
                 <!-- /.card-body -->
