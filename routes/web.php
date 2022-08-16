@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\LocacionController;
 use App\Http\Controllers\Admin\TipoPropiedadController;
 use App\Http\Controllers\Admin\ZonasController;
 use Illuminate\Support\Facades\Route;
@@ -62,6 +63,17 @@ Route::prefix('zonas')->group(function () {
     Route::get('/edit/{id}', [ZonasController::class, 'edit'])->name('zonas.edit');
     Route::post('/update/{id}', [ZonasController::class, 'update'])->name('zonas.update');
     Route::get('/destroy/{id}', [ZonasController::class, 'destroy'])->name('zonas.destroy');
+});
+/* ------------- End Zonas -------------- */
+
+/* ------------- Zonas -------------- */
+Route::prefix('locaciones')->group(function () {
+    Route::get('/index', [LocacionController::class, 'index'])->name('locacion.index');
+    Route::get('/create', [LocacionController::class, 'create'])->name('locacion.create');
+    Route::post('/store', [LocacionController::class, 'store'])->name('locacion.store');
+    Route::get('/edit/{id}', [LocacionController::class, 'edit'])->name('locacion.edit');
+    Route::post('/update/{id}', [LocacionController::class, 'update'])->name('locacion.update');
+    Route::get('/destroy/{id}', [LocacionController::class, 'destroy'])->name('locacion.destroy');
 });
 /* ------------- End Zonas -------------- */
 

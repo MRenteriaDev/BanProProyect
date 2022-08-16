@@ -15,7 +15,7 @@ class ZonasFactory extends Factory
     public function definition()
     {
         return [
-            'nombre' => Str::random(10),
+            'zona_nombre' => Str::random(10),
             'created_at' => now(),
             'updated_at' => now(),
         ];

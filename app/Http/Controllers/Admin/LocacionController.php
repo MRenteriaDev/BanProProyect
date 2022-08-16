@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Locacion;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class LocacionController extends Controller
 {
@@ -14,7 +17,9 @@ class LocacionController extends Controller
      */
     public function index()
     {
-        //
+        $locaciones = DB::table('locacions')->get();
+
+        return view('admin.locacion.index', compact('locaciones'));
     }
 
     /**
@@ -24,7 +29,8 @@ class LocacionController extends Controller
      */
     public function create()
     {
-        //
+        $zonas = DB::table('zonas')->get();
+        return view('admin.locacion.create', compact('zonas'));
     }
 
     /**
@@ -35,7 +41,24 @@ class LocacionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = $request->validate([
+            'nombre' => 'required|unique:locacions,nombre',
+            'zona_id' => 'required'
+        ]);
+
+
+        Locacion::insert([
+            'nombre' => $request->nombre,
+            'zona_id' => $request->zona_id,
+            'created_at' => Carbon::now()
+        ]);
+
+        $notificacion = array(
+            'message' => "La alta de locacion fue exitosa",
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('locacion.index')->with($notificacion);
     }
 
     /**
@@ -57,7 +80,10 @@ class LocacionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $locacion = Locacion::findorFail($id);
+        $zonas = DB::table('zonas')->get();
+
+        return view('admin.locacion.update', compact('locacion', 'zonas'));
     }
 
     /**
@@ -69,7 +95,24 @@ class LocacionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validate = $request->validate([
+            'nombre' => 'required|unique:locacions,nombre',
+            'zona_id' => 'required'
+        ]);
+
+
+        Locacion::findOrFail($id)->insert([
+            'nombre' => $request->nombre,
+            'zona_id' => $request->zona_id,
+            'created_at' => Carbon::now()
+        ]);
+
+        $notificacion = array(
+            'message' => "La alta de locacion fue exitosa",
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('locacion.index')->with($notificacion);
     }
 
     /**
@@ -80,6 +123,22 @@ class LocacionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if ($id > 0) {
+            Locacion::findOrFail($id)->delete();
+
+            $notification = array(
+                'message' => "La locacion se eliminó correctamente",
+                "alter-type" => "error"
+            );
+
+            return  redirect()->route('locacion.index')->with($notification);
+        }
+
+        $notification = array(
+            'message' => "La locacion no existe",
+            "alter-type" => "error"
+        );
+
+        return redirect()->route('locacion.index')->with($notification);
     }
 }
