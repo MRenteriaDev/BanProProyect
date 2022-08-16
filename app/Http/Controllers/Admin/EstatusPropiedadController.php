@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\EstatusPropiedad;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EstatusPropiedadController extends Controller
 {
@@ -14,7 +17,9 @@ class EstatusPropiedadController extends Controller
      */
     public function index()
     {
-        //
+        $estatus_propiedades = DB::table('estatus_propiedads')->get();
+
+        return view('admin.statuspropiedad.index', compact('estatus_propiedades'));
     }
 
     /**
@@ -24,7 +29,7 @@ class EstatusPropiedadController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.statuspropiedad.create');
     }
 
     /**
@@ -35,7 +40,25 @@ class EstatusPropiedadController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre' => 'required',
+
+        ], [
+            'nombre.required' => 'El nombre del estatus es requerido',
+
+        ]);
+
+        EstatusPropiedad::insert([
+            'nombre' => $request->nombre,
+            'created_at' => Carbon::now()
+        ]);
+
+        $notification  = array(
+            'message' => "El estatus se agregó Correctamente",
+            'alert-type' => "success",
+        );
+
+        return redirect()->route('statuspropiedad.index')->with($notification);
     }
 
     /**
@@ -57,7 +80,17 @@ class EstatusPropiedadController extends Controller
      */
     public function edit($id)
     {
-        //
+        if ($id > 0) {
+            $estatus_propied = EstatusPropiedad::findOrFail($id);
+            return view('admin.statuspropiedad.update', compact("estatus_propied"));
+        }
+
+        $notification = array(
+            'message' => "La zona no existe",
+            "alter-type" => "error"
+        );
+
+        return redirect()->route('statuspropiedad.index')->with($notification);
     }
 
     /**
@@ -69,7 +102,25 @@ class EstatusPropiedadController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nombre' => 'required',
+
+        ], [
+            'nombre.required' => 'El nombre del estatus es requerido',
+
+        ]);
+
+        EstatusPropiedad::findOrFail($id)->update([
+            'nombre' => $request->nombre,
+            'updated_at' => Carbon::now()
+        ]);
+
+        $notification  = array(
+            'message' => "El estatus de propiead se actualizó Correctamente",
+            'alert-type' => "success",
+        );
+
+        return redirect()->route('statuspropiedad.index')->with($notification);
     }
 
     /**
@@ -80,6 +131,22 @@ class EstatusPropiedadController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if ($id > 0) {
+            EstatusPropiedad::findOrFail($id)->delete();
+
+            $notification = array(
+                'message' => "La zona se eliminó correctamente",
+                "alter-type" => "error"
+            );
+
+            return  redirect()->route('statuspropiedad.index')->with($notification);
+        }
+
+        $notification = array(
+            'message' => "La zona no existe",
+            "alter-type" => "error"
+        );
+
+        return redirect()->route('statuspropiedad.index')->with($notification);
     }
 }

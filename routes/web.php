@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\EstatusPropiedadController;
 use App\Http\Controllers\Admin\LocacionController;
 use App\Http\Controllers\Admin\TipoPropiedadController;
 use App\Http\Controllers\Admin\ZonasController;
@@ -66,7 +67,7 @@ Route::prefix('zonas')->group(function () {
 });
 /* ------------- End Zonas -------------- */
 
-/* ------------- Zonas -------------- */
+/* ------------- locaciones -------------- */
 Route::prefix('locaciones')->group(function () {
     Route::get('/index', [LocacionController::class, 'index'])->name('locacion.index');
     Route::get('/create', [LocacionController::class, 'create'])->name('locacion.create');
@@ -75,7 +76,20 @@ Route::prefix('locaciones')->group(function () {
     Route::post('/update/{id}', [LocacionController::class, 'update'])->name('locacion.update');
     Route::get('/destroy/{id}', [LocacionController::class, 'destroy'])->name('locacion.destroy');
 });
-/* ------------- End Zonas -------------- */
+/* ------------- End locaciones -------------- */
+
+
+/* ------------- StatusPropiedad -------------- */
+Route::prefix('statuspropiedad')->group(function () {
+    Route::get('/index', [EstatusPropiedadController::class, 'index'])->name('statuspropiedad.index');
+    Route::get('/create', [EstatusPropiedadController::class, 'create'])->name('statuspropiedad.create');
+    Route::post('/store', [EstatusPropiedadController::class, 'store'])->name('statuspropiedad.store');
+    Route::get('/edit/{id}', [EstatusPropiedadController::class, 'edit'])->name('statuspropiedad.edit');
+    Route::post('/update/{id}', [EstatusPropiedadController::class, 'update'])->name('statuspropiedad.update');
+    Route::get('/destroy/{id}', [EstatusPropiedadController::class, 'destroy'])->name('statuspropiedad.destroy');
+});
+/* ------------- End StatusPropiedad -------------- */
+
 
 
 
