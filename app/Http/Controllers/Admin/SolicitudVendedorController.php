@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\SolicitudVendedor;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SolicitudVendedorController extends Controller
 {
@@ -14,7 +17,9 @@ class SolicitudVendedorController extends Controller
      */
     public function index()
     {
-        //
+        $solicitudes_vendedores = DB::table('solicitud_vendedors')->get();
+
+        return view('admin.solicitudvendedor.index', compact('solicitudes_vendedores'));
     }
 
     /**
@@ -24,7 +29,8 @@ class SolicitudVendedorController extends Controller
      */
     public function create()
     {
-        //
+        $sellers = DB::table('sellers')->get();
+        return view("admin.solicitudvendedor.create", compact('sellers'));
     }
 
     /**
@@ -35,7 +41,25 @@ class SolicitudVendedorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = $request->validate([
+            'nombre' => 'required'
+        ]);
+
+        SolicitudVendedor::insert([
+            'nombre' => $request->nombre,
+            'telefono' => $request->telefono,
+            'mensaje' => $request->mensaje,
+            'correo' => $request->correo,
+            'seller_id' => $request->seller_id,
+            'created_at' => Carbon::now()
+        ]);
+
+        $notification = array(
+            'message' => 'Solicitud enviada a vendedor correctamente',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('solicitudvendedor.index')->with($notification);
     }
 
     /**
@@ -57,7 +81,9 @@ class SolicitudVendedorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $solicitud_vendedor = SolicitudVendedor::findOrFail($id);
+        $sellers = DB::table('sellers')->get();
+        return view('admin.solicitudvendedor.update', compact("solicitud_vendedor", "sellers"));
     }
 
     /**
@@ -69,7 +95,25 @@ class SolicitudVendedorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validate = $request->validate([
+            'nombre' => 'required'
+        ]);
+
+        SolicitudVendedor::findOrFail($id)->update([
+            'nombre' => $request->nombre,
+            'telefono' => $request->telefono,
+            'mensaje' => $request->mensaje,
+            'correo' => $request->correo,
+            'seller_id' => $request->seller_id,
+            'created_at' => Carbon::now()
+        ]);
+
+        $notification = array(
+            'message' => 'Solicitud se actualizó correctamente',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('solicitudvendedor.index')->with($notification);
     }
 
     /**
@@ -80,6 +124,22 @@ class SolicitudVendedorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if ($id > 0) {
+            SolicitudVendedor::findOrFail($id)->delete();
+
+            $notification = array(
+                'message' => "La solicitud de vendedor se eliminó correctamente",
+                "alter-type" => "error"
+            );
+
+            return  redirect()->route('solicitudvendedor.index')->with($notification);
+        }
+
+        $notification = array(
+            'message' => "La solicitud de vendedor no existe",
+            "alter-type" => "error"
+        );
+
+        return redirect()->route('solicitudvendedor.index')->with($notification);
     }
 }

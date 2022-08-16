@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\EstatusPropiedadController;
 use App\Http\Controllers\Admin\LocacionController;
 use App\Http\Controllers\Admin\NearbysController;
 use App\Http\Controllers\Admin\ReviewsController;
+use App\Http\Controllers\Admin\SolicitudVendedorController;
 use App\Http\Controllers\Admin\TipoPropiedadController;
 use App\Http\Controllers\Admin\ZonasController;
 use Illuminate\Support\Facades\Route;
@@ -105,7 +106,7 @@ Route::prefix('nearby')->group(function () {
 /* ------------- End Nearbys -------------- */
 
 
-/* ------------- Nearbys -------------- */
+/* ------------- Reviews -------------- */
 Route::prefix('review')->group(function () {
     Route::get('/index', [ReviewsController::class, 'index'])->name('review.index');
     Route::get('/create', [ReviewsController::class, 'create'])->name('review.create');
@@ -114,7 +115,18 @@ Route::prefix('review')->group(function () {
     Route::post('/update/{id}', [ReviewsController::class, 'update'])->name('review.update');
     Route::get('/destroy/{id}', [ReviewsController::class, 'destroy'])->name('review.destroy');
 });
-/* ------------- End Nearbys -------------- */
+/* ------------- End Reviews -------------- */
+
+/* ------------- Solicitud Vendedor -------------- */
+Route::prefix('solicitudvendedor')->group(function () {
+    Route::get('/index', [SolicitudVendedorController::class, 'index'])->name('solicitudvendedor.index');
+    Route::get('/create', [SolicitudVendedorController::class, 'create'])->name('solicitudvendedor.create');
+    Route::post('/store', [SolicitudVendedorController::class, 'store'])->name('solicitudvendedor.store');
+    Route::get('/edit/{id}', [SolicitudVendedorController::class, 'edit'])->name('solicitudvendedor.edit');
+    Route::post('/update/{id}', [SolicitudVendedorController::class, 'update'])->name('solicitudvendedor.update');
+    Route::get('/destroy/{id}', [SolicitudVendedorController::class, 'destroy'])->name('solicitudvendedor.destroy');
+});
+/* ------------- End Solicitud Vendedor -------------- */
 
 
 
