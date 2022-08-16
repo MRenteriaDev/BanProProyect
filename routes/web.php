@@ -59,6 +59,9 @@ Route::prefix('zonas')->group(function () {
     Route::get('/index', [ZonasController::class, 'index'])->name('zonas.index');
     Route::get('/create', [ZonasController::class, 'create'])->name('zonas.create');
     Route::post('/store', [ZonasController::class, 'store'])->name('zonas.store');
+    Route::get('/edit/{id}', [ZonasController::class, 'edit'])->name('zonas.edit');
+    Route::post('/update/{id}', [ZonasController::class, 'update'])->name('zonas.update');
+    Route::get('/destroy/{id}', [ZonasController::class, 'destroy'])->name('zonas.destroy');
 });
 /* ------------- End Zonas -------------- */
 

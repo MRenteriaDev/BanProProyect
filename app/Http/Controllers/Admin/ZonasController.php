@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Zonas;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -38,17 +39,22 @@ class ZonasController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'nombre' => 'required'
+        $request->validate([
+            'nombre' => 'required',
+
         ], [
-            'nombre.required' => "El nombre es requerido"
+            'nombre.required' => 'El nombre de la zona es requerido',
+
         ]);
 
-        Zonas::create($data);
+        Zonas::insert([
+            'nombre' => $request->nombre,
+            'created_at' => Carbon::now()
+        ]);
 
-        $notification = array(
-            'message' => 'Alta de Zona Correcta',
-            'alert-type' => 'success'
+        $notification  = array(
+            'message' => "La zona se agregó Correctamente",
+            'alert-type' => "success",
         );
 
         return redirect()->route('zonas.index')->with($notification);
@@ -73,7 +79,17 @@ class ZonasController extends Controller
      */
     public function edit($id)
     {
-        //
+        if ($id > 0) {
+            $zona = Zonas::findOrFail($id);
+            return view('admin.zonas.update', compact("zona"));
+        }
+
+        $notification = array(
+            'message' => "La zona no existe",
+            "alter-type" => "error"
+        );
+
+        return redirect()->route('zonas.index')->with($notification);
     }
 
     /**
@@ -85,7 +101,25 @@ class ZonasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nombre' => 'required',
+
+        ], [
+            'nombre.required' => 'El nombre de la zona es requerido',
+
+        ]);
+
+        Zonas::findOrFail($id)->update([
+            'nombre' => $request->nombre,
+            'updated_at' => Carbon::now()
+        ]);
+
+        $notification  = array(
+            'message' => "La zona se actualizó Correctamente",
+            'alert-type' => "success",
+        );
+
+        return redirect()->route('zonas.index')->with($notification);
     }
 
     /**
@@ -96,6 +130,22 @@ class ZonasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if ($id > 0) {
+            Zonas::findOrFail($id)->delete();
+
+            $notification = array(
+                'message' => "La zona se eliminó correctamente",
+                "alter-type" => "error"
+            );
+
+            return  redirect()->route('zonas.index')->with($notification);
+        }
+
+        $notification = array(
+            'message' => "La zona no existe",
+            "alter-type" => "error"
+        );
+
+        return redirect()->route('zonas.index')->with($notification);
     }
 }

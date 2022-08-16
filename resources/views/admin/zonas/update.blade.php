@@ -18,18 +18,19 @@
         </div>
     </section>
     <div class="col-md-12">
-        <div class="card card-primary">
+        <div class="card card-success">
             <div class="card-header">
-                <h3 class="card-title">Creación de Zona</h3>
+                <h3 class="card-title">Actualización de Zona</h3>
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form method="POST" action="{{ route('zonas.store') }}">
+            <form method="POST" action="{{ route('zonas.update', $zona->id) }}">
                 @csrf
                 <div class="card-body">
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
-                        <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Enter email">
+                        <input type="text" name="nombre" value="{{ $zona->nombre }}" class="form-control" id="nombre"
+                            placeholder="Enter nombre">
                     </div>
                 </div>
                 <!-- /.card-body -->
