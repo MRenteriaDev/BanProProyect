@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\EstatusPropiedadController;
 use App\Http\Controllers\Admin\LocacionController;
 use App\Http\Controllers\Admin\NearbysController;
+use App\Http\Controllers\Admin\ReviewsController;
 use App\Http\Controllers\Admin\TipoPropiedadController;
 use App\Http\Controllers\Admin\ZonasController;
 use Illuminate\Support\Facades\Route;
@@ -100,6 +101,18 @@ Route::prefix('nearby')->group(function () {
     Route::get('/edit/{id}', [NearbysController::class, 'edit'])->name('nearby.edit');
     Route::post('/update/{id}', [NearbysController::class, 'update'])->name('nearby.update');
     Route::get('/destroy/{id}', [NearbysController::class, 'destroy'])->name('nearby.destroy');
+});
+/* ------------- End Nearbys -------------- */
+
+
+/* ------------- Nearbys -------------- */
+Route::prefix('review')->group(function () {
+    Route::get('/index', [ReviewsController::class, 'index'])->name('review.index');
+    Route::get('/create', [ReviewsController::class, 'create'])->name('review.create');
+    Route::post('/store', [ReviewsController::class, 'store'])->name('review.store');
+    Route::get('/edit/{id}', [ReviewsController::class, 'edit'])->name('review.edit');
+    Route::post('/update/{id}', [ReviewsController::class, 'update'])->name('review.update');
+    Route::get('/destroy/{id}', [ReviewsController::class, 'destroy'])->name('review.destroy');
 });
 /* ------------- End Nearbys -------------- */
 
