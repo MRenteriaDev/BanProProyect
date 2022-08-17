@@ -93,7 +93,7 @@
                     </a>
                 </li>
                 <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('reviewsellers.index') }}" class="nav-link">
                         <i class="nav-icon far fa-envelope"></i>
                         <p>
                             Review Seller

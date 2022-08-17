@@ -4,6 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\ReviewSeller;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+use App\Models\Seller;
+
 
 class ReviewSellerController extends Controller
 {
@@ -14,7 +19,9 @@ class ReviewSellerController extends Controller
      */
     public function index()
     {
-        //
+        $review_seller = DB::table('review_sellers')->get();
+
+        return view('admin.review_sellers.index', compact('review_seller'));
     }
 
     /**
@@ -24,7 +31,8 @@ class ReviewSellerController extends Controller
      */
     public function create()
     {
-        //
+        $sellers = DB::table('sellers')->get();
+        return view('admin.review_sellers.create', compact('sellers'));
     }
 
     /**
@@ -35,7 +43,26 @@ class ReviewSellerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $request->validate([
+            'nombre' => 'required',
+            'descripcion' => 'required',
+            'seller_id' => 'required'
+        ]);
+
+
+        ReviewSeller::insert([
+            'nombre' => $request->nombre,
+            'descripcion' => $request->descripcion,
+            'seller_id' => $request->seller_id,
+            'created_at' => Carbon::now()
+        ]);
+
+        $notificacion = array(
+            'message' => "La alta de la review del vendedor fue exitosa",
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('reviewsellers.index')->with($notificacion);
     }
 
     /**
@@ -57,7 +84,10 @@ class ReviewSellerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $review_seller = ReviewSeller::findorFail($id);
+        $sellers = DB::table('sellers')->get();
+
+        return view('admin.review_sellers.update', compact('review_seller', 'sellers'));
     }
 
     /**
@@ -69,7 +99,26 @@ class ReviewSellerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validate = $request->validate([
+            'nombre' => 'required',
+            'descripcion' => 'required',
+            'seller_id' => 'required'
+        ]);
+
+
+        ReviewSeller::findOrFail($id)->insert([
+            'nombre' => $request->nombre,
+            'descripcion' => $request->descripcion,
+            'seller_id' => $request->seller_id,
+            'created_at' => Carbon::now()
+        ]);
+
+        $notificacion = array(
+            'message' => "La actualizacion de la review del vendedor fue exitosa",
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('reviewsellers.index')->with($notificacion);
     }
 
     /**
@@ -80,6 +129,22 @@ class ReviewSellerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if ($id > 0) {
+            ReviewSeller::findOrFail($id)->delete();
+
+            $notification = array(
+                'message' => "La review del seller se eliminó correctamente",
+                "alter-type" => "error"
+            );
+
+            return  redirect()->route('reviewsellers.index')->with($notification);
+        }
+
+        $notification = array(
+            'message' => "La locacion no existe",
+            "alter-type" => "error"
+        );
+
+        return redirect()->route('reviewsellers.index')->with($notification);
     }
 }

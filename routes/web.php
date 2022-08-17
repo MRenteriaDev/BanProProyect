@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\GaleriaPropiedadesController;
 use App\Http\Controllers\Admin\LocacionController;
 use App\Http\Controllers\Admin\NearbysController;
 use App\Http\Controllers\Admin\ReviewsController;
+use App\Http\Controllers\Admin\ReviewSellerController;
 use App\Http\Controllers\Admin\SolicitudVendedorController;
 use App\Http\Controllers\Admin\TipoPropiedadController;
 use App\Http\Controllers\Admin\ZonasController;
@@ -139,6 +140,17 @@ Route::prefix('galeriapropiedad')->group(function () {
     Route::get('/destroy/{id}', [GaleriaPropiedadesController::class, 'destroy'])->name('galeriapropiedad.destroy');
 });
 /* ------------- End Galeria propiedades -------------- */
+
+/* ------------- Review Sellers -------------- */
+Route::prefix('reviewsellers')->group(function () {
+    Route::get('/index', [ReviewSellerController::class, 'index'])->name('reviewsellers.index');
+    Route::get('/create', [ReviewSellerController::class, 'create'])->name('reviewsellers.create');
+    Route::post('/store', [ReviewSellerController::class, 'store'])->name('reviewsellers.store');
+    Route::get('/edit/{id}', [ReviewSellerController::class, 'edit'])->name('reviewsellers.edit');
+    Route::post('/update/{id}', [ReviewSellerController::class, 'update'])->name('reviewsellers.update');
+    Route::get('/destroy/{id}', [ReviewSellerController::class, 'destroy'])->name('reviewsellers.destroy');
+});
+/* ------------- End Review Sellers -------------- */
 
 
 
