@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\EstatusPropiedadController;
+use App\Http\Controllers\Admin\GaleriaPropiedadesController;
 use App\Http\Controllers\Admin\LocacionController;
 use App\Http\Controllers\Admin\NearbysController;
 use App\Http\Controllers\Admin\ReviewsController;
@@ -127,6 +128,17 @@ Route::prefix('solicitudvendedor')->group(function () {
     Route::get('/destroy/{id}', [SolicitudVendedorController::class, 'destroy'])->name('solicitudvendedor.destroy');
 });
 /* ------------- End Solicitud Vendedor -------------- */
+
+/* ------------- Galeria propiedades -------------- */
+Route::prefix('galeriapropiedad')->group(function () {
+    Route::get('/index', [GaleriaPropiedadesController::class, 'index'])->name('galeriapropiedad.index');
+    Route::get('/create', [GaleriaPropiedadesController::class, 'create'])->name('galeriapropiedad.create');
+    Route::post('/store', [GaleriaPropiedadesController::class, 'store'])->name('galeriapropiedad.store');
+    Route::get('/edit/{id}', [GaleriaPropiedadesController::class, 'edit'])->name('galeriapropiedad.edit');
+    Route::post('/update/{id}', [GaleriaPropiedadesController::class, 'update'])->name('galeriapropiedad.update');
+    Route::get('/destroy/{id}', [GaleriaPropiedadesController::class, 'destroy'])->name('galeriapropiedad.destroy');
+});
+/* ------------- End Galeria propiedades -------------- */
 
 
 
