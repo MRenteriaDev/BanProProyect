@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\EstatusPropiedadController;
 use App\Http\Controllers\Admin\GaleriaPropiedadesController;
 use App\Http\Controllers\Admin\LocacionController;
 use App\Http\Controllers\Admin\NearbysController;
+use App\Http\Controllers\Admin\PropiedadesController;
 use App\Http\Controllers\Admin\ReviewsController;
 use App\Http\Controllers\Admin\ReviewSellerController;
 use App\Http\Controllers\Admin\SolicitudVendedorController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\Admin\ZonasController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SellerController;
+use App\Models\Propiedades;
 
 /*
 |--------------------------------------------------------------------------
@@ -151,6 +153,17 @@ Route::prefix('reviewsellers')->group(function () {
     Route::get('/destroy/{id}', [ReviewSellerController::class, 'destroy'])->name('reviewsellers.destroy');
 });
 /* ------------- End Review Sellers -------------- */
+
+/* ------------- Propiedades -------------- */
+Route::prefix('propiedades')->group(function () {
+    Route::get('/index', [PropiedadesController::class, 'index'])->name('propiedades.index');
+    Route::get('/create', [PropiedadesController::class, 'create'])->name('propiedades.create');
+    Route::post('/store', [PropiedadesController::class, 'store'])->name('propiedades.store');
+    Route::get('/edit/{id}', [PropiedadesController::class, 'edit'])->name('propiedades.edit');
+    Route::post('/update/{id}', [PropiedadesController::class, 'update'])->name('propiedades.update');
+    Route::get('/destroy/{id}', [PropiedadesController::class, 'destroy'])->name('propiedades.destroy');
+});
+/* ------------- End Propiedades -------------- */
 
 
 
