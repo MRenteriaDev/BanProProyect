@@ -85,15 +85,12 @@ class PropiedadesController extends Controller
             'refrigerador' => true,
             'planos' => $request->planos,
             'video_propiedad' => $request->video_propiedad,
-<<<<<<< HEAD
             'nearby_id' => $request->nearby_id,
             'solicitud_vendedor_id' => $request->solicitud_vendedor_id,
             'review_id' => $request->review_id,
             'estatus_propiedad_id' => $request->estatus_propiedad_id,
             'locacion_id' => $request->locacion_id,
             'tipo_propiedad_id' => $request->tipo_propiedad_id,
-=======
->>>>>>> faac6379f716feac1b2e02729bcd46a2dd3e6a24
             'created_at' => Carbon::now()
         ]);
 
