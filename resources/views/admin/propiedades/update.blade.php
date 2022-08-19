@@ -30,7 +30,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="nombre">Nombre</label>
-                            <input type="text" value="{{ $propiedades-> nombre}}" name="nombre" class="form-control" id="nombre"
+                            <input type="text" value="{{ $propiedades->nombre}}" name="nombre" class="form-control" id="nombre"
                                 placeholder="Enter name">
                             @error('nombre')
                                 <span class="text-danger"> {{ $message }} </span>
@@ -40,7 +40,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="precio">Precio</label>
-                            <input type="number" value="{{ $propiedades-> precio}}" name="precio" class="form-control" id="precio"
+                            <input type="number" value="{{ $propiedades->precio}}" name="precio" class="form-control" id="precio"
                                 placeholder="Enter name">
                             @error('precio')
                                 <span class="text-danger"> {{ $message }} </span>
@@ -50,7 +50,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="tamano_propiedad">Tamaño de la propiedad</label>
-                            <input type="text" value="{{ $propiedades-> tamano_propiedad}}" name="tamano_propiedad" class="form-control" id="tamano_propiedad"
+                            <input type="text" value="{{ $propiedades->tamano_propiedad}}" name="tamano_propiedad" class="form-control" id="tamano_propiedad"
                                 placeholder="Enter name">
                             @error('tamano_propiedad')
                                 <span class="text-danger"> {{ $message }} </span>
@@ -60,7 +60,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="tamano_propiedad_construido">Tamaño de la propiedad construida</label>
-                            <input type="text" value="{{ $propiedades-> tamano_propiedad_construido}}" name="tamano_propiedad_construido" class="form-control" id="tamano_propiedad_construido"
+                            <input type="text" value="{{ $propiedades->tamano_propiedad_construido}}" name="tamano_propiedad_construido" class="form-control" id="tamano_propiedad_construido"
                                 placeholder="Enter name">
                             @error('tamano_propiedad_construido')
                                 <span class="text-danger"> {{ $message }} </span>
@@ -80,7 +80,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="recamaras">Recamaras</label>
-                            <input type="number" value="{{ $propiedades-> recamaras}}" name="recamaras" class="form-control" id="recamaras"
+                            <input type="number" value="{{ $propiedades->recamaras}}" name="recamaras" class="form-control" id="recamaras"
                                 placeholder="Enter name">
                             @error('recamaras')
                                 <span class="text-danger"> {{ $message }} </span>
@@ -90,7 +90,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="bano">Baño</label>
-                            <input type="number" value="{{ $propiedades-> bano}}" name="bano" class="form-control" id="bano"
+                            <input type="number" value="{{ $propiedades->bano}}" name="bano" class="form-control" id="bano"
                                 placeholder="Enter name">
                             @error('bano')
                                 <span class="text-danger"> {{ $message }} </span>
