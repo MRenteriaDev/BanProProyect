@@ -1,57 +1,49 @@
-<title>Seller | Log in</title>
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+@extends('cliente.cliente_master')
 
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
-
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
-        <form method="POST" action="{{ route('login') }}">
+@section('cliente')
+<section class="headings">
+    <div class="text-heading text-center">
+        <div class="container">
+            <h1>Login</h1>
+            <h2><a href="{{url('/')}}">Home </a> &nbsp;/&nbsp; login</h2>
+        </div>
+    </div>
+</section>
+<!-- START SECTION LOGIN -->
+<div id="login">
+    <div class="login">
+        <form method="POST" action="{{route('login')}}">
             @csrf
-
-            <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+            <div class="access_social">
+                <a href="#0" class="social_bt facebook">Login with Facebook</a>
+                <a href="#0" class="social_bt google">Login with Google</a>
+                <a href="#0" class="social_bt linkedin">Login with Linkedin</a>
             </div>
-
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="current-password" />
+            <div class="divider"><span>Or</span></div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" class="form-control" name="email" id="email" value="usuario@gmail.com">
+                <i class="icon_mail_alt"></i>
             </div>
-
-            <!-- Remember Me -->
-            <div class="block mt-4">
-                <label for="remember_me" class="inline-flex items-center">
-                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" name="password" id="password" value="password">
+                <i class="icon_lock_alt"></i>
             </div>
-
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
-
-                <x-button class="ml-3">
-                    {{ __('Log in') }}
-                </x-button>
+            <div class="fl-wrap filter-tags clearfix add_bottom_30">
+                <div class="checkboxes float-left">
+                    <div class="filter-tags-wrap">
+                        <input id="check-b" type="checkbox" name="check">
+                        <label for="check-b">Remember me</label>
+                    </div>
+                </div>
+                <div class="float-right mt-1"><a id="forgot" href="javascript:void(0);">Forgot Password?</a></div>
             </div>
+            <button type="submit" href="#0" class="btn_1 rounded full-width">Login to Find Houses</button>
+            <div class="text-center add_top_10">New to Find Houses? <strong><a href="register.html">Sign up!</a></strong></div>
         </form>
-    </x-auth-card>
-</x-guest-layout>
+    </div>
+</div>
+<!-- END SECTION LOGIN -->
+@include('cliente.body.footer')
+@endsection

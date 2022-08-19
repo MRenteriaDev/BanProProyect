@@ -17,7 +17,7 @@ class PropiedadesController extends Controller
      */
     public function index()
     {
-        $propiedades = DB::table('locacions')->get();
+        $propiedades = DB::table('propiedades')->get();
 
         return view('admin.propiedades.index', compact('propiedades'));
     }
@@ -64,12 +64,6 @@ class PropiedadesController extends Controller
             'refrigerador' => 'required',
             'planos' => 'required',
             'video_propiedad' => 'required',
-            'nearby_id' => 'required',
-            'solicitud_vendedor_id' => 'required',
-            'review_id' => 'required',
-            'estatus_propiedad_id' => 'required',
-            'locacion_id' => 'required',
-            'tipo_propiedad_id' => 'required',
         ]);
 
 
@@ -81,24 +75,16 @@ class PropiedadesController extends Controller
             'fecha_construccion' => $request->fecha_construccion,
             'recamaras' => $request->recamaras,
             'bano' => $request->bano,
-            'aire_condicionado' => $request->aire_condicionado,
-            'balcon' => $request->balcon,
-            'internet' => $request->internet,
-            'cable' => $request->cable,
-            'alberca' => $request->alberca,
-            'lavaplatos' => $request->lavaplatos,
-            'estacionamiento' => $request->estacionamiento,
-            'refrigerador' => $request->refrigerador,
+            'aire_condicionado' => true,
+            'balcon' => true,
+            'internet' => false,
+            'cable' => false,
+            'alberca' => true,
+            'lavaplatos' => true,
+            'estacionamiento' => true,
+            'refrigerador' => true,
             'planos' => $request->planos,
             'video_propiedad' => $request->video_propiedad,
-            'nearby_id' => $request->nearby_id,
-            'solicitud_vendedor_id' => $request->solicitud_vendedor_id,
-            'review_id' => $request->review_id,
-            'estatus_propiedad_id' => $request->estatus_propiedad_id,
-            'locacion_id' => $request->locacion_id,
-            'tipo_propiedad_id' => $request->tipo_propiedad_id,
-
-
             'created_at' => Carbon::now()
         ]);
 

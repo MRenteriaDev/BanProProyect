@@ -16,6 +16,7 @@ class LocacionFactory extends Factory
     {
         return [
             'nombre' => Str::random(10),
+            'locacion_image' => "https://media.istockphoto.com/id/1203937499/es/foto/carretera-de-la-ciudad-a-trav%C3%A9s-de-edificios-modernos-en-beijing.webp?s=612x612&w=is&k=20&c=ZnkBwPIOoMPvGdYex_rByYbSAYcGX6XfWhqT5edKe18=",
             'zona_id' => rand(1, 15),
             'created_at' => now(),
             'updated_at' => now(),
