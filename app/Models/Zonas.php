@@ -10,4 +10,10 @@ class Zonas extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function Locacion()
+    {
+
+        return $this->hasMany(Locacion::class, "zona_id");
+    }
 }
