@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\TipoPropiedadController;
 use App\Http\Controllers\Admin\ZonasController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Cliente\IndexController;
 use App\Http\Controllers\SellerController;
 use App\Models\Propiedades;
 
@@ -190,7 +191,13 @@ Route::prefix('seller')->group(function () {
 /* ------------- End Seller Route -------------- */
 
 
+/// Rutas del index
+Route::prefix('properties')->group(function () {
+    Route::get('/grid', [IndexController::class, 'propertiesGrid'])->name('properties.grid');
+    Route::get('/grid/{id}', [IndexController::class, 'propertyGrid'])->name('properties.grid-single');
+});
 
+/// fin de las  Rutas del index
 Route::get('/', function () {
     return view('cliente.index');
 });
