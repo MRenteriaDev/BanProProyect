@@ -203,7 +203,7 @@
                             <select class="form-control select2" name="nearby_id" style="width: 100%;height: 100%;">
                                 <option selected="selected">Seleccionar</option>
                                 @foreach ($nearbys as $nearby)
-                                    <option value={{ $nearby->id }}>{{ $nearby->nombre }}</option>
+                                 <option value={{ $nearby->id }}>{{ $nearby->nombre }}</option>
                                 @endforeach
                             </select>
                         </div>

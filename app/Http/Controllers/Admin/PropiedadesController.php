@@ -3,10 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\EstatusPropiedad;
+use App\Models\Locacion;
+use App\Models\Nearbys;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Propiedades;
+use App\Models\Reviews;
+use App\Models\SolicitudVendedor;
+use App\Models\TipoPropiedad;
 
 class PropiedadesController extends Controller
 {
@@ -122,8 +128,14 @@ class PropiedadesController extends Controller
     public function edit($id)
     {
         if ($id > 0) {
-        $propiedades = Propiedades::findOrFail($id);
-        return view('admin.propiedades.update', compact('propiedades'));
+            $estatuspropiedad = EstatusPropiedad::findOrFail($id);
+            $locacion = Locacion::findOrFail($id);
+            $tipopropiedades = TipoPropiedad::findOrFail($id);
+            $nearbys = Nearbys::findOrFail($id);
+            $reviews = Reviews::findOrFail($id);
+            $solicitudvendedor = SolicitudVendedor::findOrFail($id);
+            $propiedades = Propiedades::findOrFail($id);
+        return view('admin.propiedades.update', compact('estatuspropiedad', 'locacion', 'tipopropiedades', 'nearbys', 'reviews', 'solicitudvendedor', 'propiedades'));
     }
 
     $notification = array(
