@@ -108,11 +108,11 @@ class ReviewsController extends Controller
         Reviews::findOrFail($id)->update([
             'nombre' => $request->nombre,
             'descripcion' => $request->descripcion,
-            'created_at' => Carbon::now(),
+            'update_at' => Carbon::now(),
         ]);
 
         $notification = array(
-            'message' => 'Review Creada correctamente',
+            'message' => 'Review Actualizada correctamente',
             'alert-type'
         );
 

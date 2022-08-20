@@ -58,7 +58,7 @@ class ReviewSellerController extends Controller
         ]);
 
         $notificacion = array(
-            'message' => "La alta de la review del vendedor fue exitosa",
+            'message' => "La creacion de la review del vendedor fue exitosa",
             'alert-type' => 'success'
         );
 
@@ -110,7 +110,7 @@ class ReviewSellerController extends Controller
             'nombre' => $request->nombre,
             'descripcion' => $request->descripcion,
             'seller_id' => $request->seller_id,
-            'created_at' => Carbon::now()
+            'updated_at' => Carbon::now()
         ]);
 
         $notificacion = array(
@@ -133,7 +133,7 @@ class ReviewSellerController extends Controller
             ReviewSeller::findOrFail($id)->delete();
 
             $notification = array(
-                'message' => "La review del seller se eliminó correctamente",
+                'message' => "La actualizacion de la review se eliminó correctamente",
                 "alter-type" => "error"
             );
 
@@ -141,7 +141,7 @@ class ReviewSellerController extends Controller
         }
 
         $notification = array(
-            'message' => "La locacion no existe",
+            'message' => "La review del seller no existe",
             "alter-type" => "error"
         );
 

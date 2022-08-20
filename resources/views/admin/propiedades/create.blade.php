@@ -201,7 +201,7 @@
                         <div class="form-group">
                             <label>Seleccionar Nearbys</label>
                             <select class="form-control select2" name="nearby_id" style="width: 100%;height: 100%;">
-                                <option selected="selected">Seleccionar</option>
+                                <option selected="selected">Seleccionar Nearbys</option>
                                 @foreach ($nearbys as $nearby)
                                     <option value={{ $nearby->id }}>{{ $nearby->nombre }}</option>
                                 @endforeach
@@ -212,7 +212,7 @@
                         <div class="form-group">
                             <label>Seleccionar Solicitud del vendedor</label>
                             <select class="form-control select2" name="solicitud_vendedor_id" style="width: 100%;height: 100%;">
-                                <option selected="selected">Seleccionar</option>
+                                <option selected="selected">Seleccionar Vendedor</option>
                                 @foreach ($solicitudvendedor as $solicitudvendedo)
                                     <option value={{ $solicitudvendedo->id }}>{{ $solicitudvendedo->nombre }}</option>
                                 @endforeach
@@ -223,7 +223,7 @@
                         <div class="form-group">
                             <label>Seleccionar Review</label>
                             <select class="form-control select2" name="review_id" style="width: 100%;height: 100%;">
-                                <option selected="selected">Seleccionar</option>
+                                <option selected="selected">Seleccionar Review</option>
                                 @foreach ($reviews as $review)
                                     <option value={{ $review->id }}>{{ $review->nombre }}</option>
                                 @endforeach
@@ -234,7 +234,7 @@
                         <div class="form-group">
                             <label>Seleccionar Estatus de la Propiedad</label>
                             <select class="form-control select2" name="estatus_propiedad_id" style="width: 100%;height: 100%;">
-                                <option selected="selected">Seleccionar</option>
+                                <option selected="selected">Seleccionar Estatus</option>
                                 @foreach ($estatuspropiedad as $estatupropiedad)
                                     <option value={{ $estatupropiedad->id }}>{{ $estatupropiedad->nombre }}</option>
                                 @endforeach
@@ -243,9 +243,9 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>Seleccionar Tipo de propiedad</label>
+                            <label>Seleccionar Tipo de propiedad </label>
                             <select class="form-control select2" name="tipo_propiedad_id" style="width: 100%;height: 100%;">
-                                <option selected="selected">Seleccionar</option>
+                                <option selected="selected">Seleccionar Tipo</option>
                                 @foreach ($tipopropiedades as $tipopropiedad)
                                     <option value={{ $tipopropiedad->id }}>{{ $tipopropiedad->nombre }}</option>
                                 @endforeach
@@ -256,7 +256,7 @@
                         <div class="form-group">
                             <label>Seleccionar Locacion</label>
                             <select class="form-control select2" name="locacion_id" style="width: 100%;height: 100%;">
-                                <option selected="selected">Seleccionar</option>
+                                <option selected="selected">Seleccionar Locacion</option>
                                 @foreach ($locacion as $locacion)
                                     <option value={{ $locacion->id }}>{{ $locacion->nombre }}</option>
                                 @endforeach

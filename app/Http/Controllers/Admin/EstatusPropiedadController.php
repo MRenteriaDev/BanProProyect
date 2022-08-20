@@ -86,7 +86,7 @@ class EstatusPropiedadController extends Controller
         }
 
         $notification = array(
-            'message' => "La zona no existe",
+            'message' => "El estatus no existe",
             "alter-type" => "error"
         );
 
