@@ -1,9 +1,8 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-        <img src="{{ asset('admin/img/BanProBlanco.png') }}" alt="" class="brand-image img-circle elevation-3"
-            style="opacity: .8">
-        <span class="brand-text font-weight-light">BANPRO</span>
+    <a href="{{ route ('admin.dashboard')}}">
+        <img src="{{ asset('admin/img/BanProBlanco.png') }}" alt="BanPro" class="w-50" style="margin-left:1.75rem" style="opacity: .8">
+        <span class="brand-text font-weight-black"></span>
     </a>
 
     <!-- Sidebar -->
