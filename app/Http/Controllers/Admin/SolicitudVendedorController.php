@@ -105,7 +105,7 @@ class SolicitudVendedorController extends Controller
             'mensaje' => $request->mensaje,
             'correo' => $request->correo,
             'seller_id' => $request->seller_id,
-            'created_at' => Carbon::now()
+            'updated_at' => Carbon::now()
         ]);
 
         $notification = array(

@@ -56,7 +56,7 @@
                                         <div class="btn-group" role="group" aria-label="Basic example">
 
                                             <a class="btn btn-md btn-success"
-                                                href="{{ route('propiedades.edit', $propiedad->id) }}"><i class="fa fa-pencil"
+                                                href="{{ url('/propiedades/edit' . '/' . $propiedad->id) }}"><i class="fa fa-pencil"
                                                     aria-hidden="true"></i>
                                             </a>
 

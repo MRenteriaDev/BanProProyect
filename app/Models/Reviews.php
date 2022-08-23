@@ -9,4 +9,13 @@ class Reviews extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function Propiedad()
+    {
+
+        return $this->belongsTo(Propiedades::class);
+
+    }
+
+
 }

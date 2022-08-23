@@ -1,20 +1,17 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-        <img src="{{ asset('admin/img/BanProBlanco.png') }}" alt="" class="brand-image img-circle elevation-3"
-            style="opacity: .8">
-        <span class="brand-text font-weight-light">BANPRO</span>
+    <a href="{{ route ('admin.dashboard')}}">
+        <img src="{{ asset('admin/img/BanProBlanco.png') }}" alt="BanPro" class="w-50" style="margin-left:4rem" style="opacity: .8">
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-                <img src="" class="img-circle elevation-2" alt="User Image">
-            </div>
+
             <div class="info">
-                <a href="#" class="d-block">User</a>
+
+                <a href="#" class="d-block"><i class="fa-solid fa-chalkboard-user" style="margin-left:4.5rem"> </i> Users</a>
             </div>
         </div>
 
@@ -26,7 +23,7 @@
        with font-awesome or any other icon font library -->
                 <li class="nav-item has-treeview menu-open">
                     <a href="{{ route('tipopropiedad.index') }}" class="nav-link active">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="fa-solid fa-building-wheat"></i>
                         <p>
                             Tipo de propiedad
                         </p>
@@ -35,7 +32,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('zonas.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
+                        <i class="fa-solid fa-magnifying-glass-location"></i>
                         <p>
                             Zonas
                         </p>
@@ -43,7 +40,7 @@
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="{{ route('locacion.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-copy"></i>
+                        <i class="fa-solid fa-location-dot"></i>
                         <p>
                             Locacion
                         </p>
@@ -51,7 +48,7 @@
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="{{ route('statuspropiedad.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-chart-pie"></i>
+                        <i class="fa-solid fa-building-circle-check"></i>
                         <p>
                             Estatus Propiedad
                         </p>
@@ -59,7 +56,7 @@
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="{{ route('propiedades.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-tree"></i>
+                        <i class="fa-solid fa-building"></i>
                         <p>
                             Propiedades
                         </p>
@@ -67,7 +64,7 @@
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="{{ route('galeriapropiedad.index')}}" class="nav-link">
-                        <i class="nav-icon fas fa-edit"></i>
+                        <i class="fa-solid fa-building-flag"></i>
                         <p>
                             Galeria Propiedades
                         </p>
@@ -76,17 +73,16 @@
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="{{ route('nearby.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-table"></i>
+                        <i class="fa-solid fa-arrow-right-to-city"></i>
                         <p>
                             Nearbys
                         </p>
                     </a>
 
                 </li>
-                <li class="nav-header">EXAMPLES</li>
                 <li class="nav-item">
                     <a href="{{ route('review.index') }}" class="nav-link">
-                        <i class="nav-icon far fa-calendar-alt"></i>
+                        <i class="fa-solid fa-pen-nib"></i>
                         <p>
                             Reviews
                         </p>
@@ -94,7 +90,7 @@
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="{{ route('reviewsellers.index') }}" class="nav-link">
-                        <i class="nav-icon far fa-envelope"></i>
+                        <i class="fa-solid fa-keyboard"></i>
                         <p>
                             Review Seller
                         </p>
@@ -102,7 +98,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('solicitudvendedor.index') }}" class="nav-link">
-                        <i class="nav-icon far fa-image"></i>
+                        <i class="fa-solid fa-file-pen"></i>
                         <p>
                             Solicitud Vendedor
                         </p>

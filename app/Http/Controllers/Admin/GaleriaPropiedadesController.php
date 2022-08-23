@@ -50,7 +50,7 @@ class GaleriaPropiedadesController extends Controller
         ]);
 
         $notificacion = array(
-            'message' => "La alta de la propiedad de galeria fue exitosa",
+            'message' => "La creacion de la propiedad de galeria fue exitosa",
             'alert-type' => 'success'
         );
 
@@ -98,7 +98,7 @@ class GaleriaPropiedadesController extends Controller
 
         GaleriaPropiedades::findOrFail($id)->insert([
             'nombre_archivo' => $request->nombre_archivo,
-            'created_at' => Carbon::now()
+            'updated_at' => Carbon::now()
         ]);
 
         $notificacion = array(

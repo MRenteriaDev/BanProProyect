@@ -3,10 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\EstatusPropiedad;
+use App\Models\Locacion;
+use App\Models\Nearbys;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Propiedades;
+use App\Models\Reviews;
+use App\Models\SolicitudVendedor;
+use App\Models\TipoPropiedad;
 
 class PropiedadesController extends Controller
 {
@@ -49,21 +55,7 @@ class PropiedadesController extends Controller
         $request->validate([
             'nombre' => 'required',
             'precio' => 'required',
-            'tamano_propiedad' => 'required',
-            'tamano_propiedad_construido' => 'required',
-            'fecha_construccion' => 'required',
-            'recamaras' => 'required',
-            'bano' => 'required',
-            'aire_condicionado' => 'required',
-            'balcon' => 'required',
-            'internet' => 'required',
-            'cable' => 'required',
-            'alberca' => 'required',
-            'lavaplatos' => 'required',
-            'estacionamiento' => 'required',
-            'refrigerador' => 'required',
-            'planos' => 'required',
-            'video_propiedad' => 'required',
+
         ]);
 
 
@@ -85,6 +77,12 @@ class PropiedadesController extends Controller
             'refrigerador' => true,
             'planos' => $request->planos,
             'video_propiedad' => $request->video_propiedad,
+            'nearby_id' => $request->nearby_id,
+            'solicitud_vendedor_id' => $request->solicitud_vendedor_id,
+            'review_id' => $request->review_id,
+            'estatus_propiedad_id' => $request->estatus_propiedad_id,
+            'locacion_id' => $request->locacion_id,
+            'tipo_propiedad_id' => $request->tipo_propiedad_id,
             'created_at' => Carbon::now()
         ]);
 
@@ -115,7 +113,23 @@ class PropiedadesController extends Controller
      */
     public function edit($id)
     {
-        //
+        if ($id > 0) {
+            $propiedades = Propiedades::findOrFail($id);
+            $estatuspropiedad = EstatusPropiedad::latest()->get();
+            $locacion = Locacion::latest()->get();
+            $tipopropiedades = TipoPropiedad::latest()->get();
+            $nearbys = Nearbys::latest()->get();
+            $reviews = Reviews::latest()->get();
+            $solicitudvendedor = SolicitudVendedor::latest()->get();
+            return view('admin.propiedades.update', compact("propiedades", "estatuspropiedad", "locacion", "tipopropiedades", "nearbys", "reviews", "solicitudvendedor"));
+        }
+
+        $notification = array(
+            'message' => "La propiedad no existe",
+            "alter-type" => "error"
+        );
+
+        return redirect()->route('propiedades.index')->with($notification);
     }
 
     /**
@@ -127,7 +141,27 @@ class PropiedadesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nombre' => 'required',
+            'precio' => 'required',
+
+        ], [
+            'nombre.required' => 'El nombre de la zona es requerido',
+
+        ]);
+
+        Propiedades::findOrFail($id)->update([
+            'nombre' => $request->nombre,
+            'precio' => $request->precio,
+            'updated_at' => Carbon::now()
+        ]);
+
+        $notification  = array(
+            'message' => "La propiedad se actualizó Correctamente",
+            'alert-type' => "success",
+        );
+
+        return redirect()->route('propiedades.index')->with($notification);
     }
 
     /**

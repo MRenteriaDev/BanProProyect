@@ -54,7 +54,7 @@ class LocacionController extends Controller
         ]);
 
         $notificacion = array(
-            'message' => "La alta de locacion fue exitosa",
+            'message' => "La creacion de locacion fue exitosa",
             'alert-type' => 'success'
         );
 
@@ -104,11 +104,11 @@ class LocacionController extends Controller
         Locacion::findOrFail($id)->insert([
             'nombre' => $request->nombre,
             'zona_id' => $request->zona_id,
-            'created_at' => Carbon::now()
+            'updated_at' => Carbon::now()
         ]);
 
         $notificacion = array(
-            'message' => "La alta de locacion fue exitosa",
+            'message' => "La actualizacion de locacion fue exitosa",
             'alert-type' => 'success'
         );
 

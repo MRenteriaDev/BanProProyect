@@ -9,4 +9,10 @@ class EstatusPropiedad extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function Propiedad()
+    {
+
+        return $this->hasMany(Propiedades::class, "estatus_propiedad_id");
+    }
 }

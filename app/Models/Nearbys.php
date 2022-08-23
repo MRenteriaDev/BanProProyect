@@ -9,4 +9,10 @@ class Nearbys extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function Propiedad()
+    {
+
+        return $this->hasMany(Propiedades::class, "nearby_id");
+    }
 }

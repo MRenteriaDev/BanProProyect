@@ -100,7 +100,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="aire_condicionado">Aire acondicionado</label>
-                            <input type="checkbox" name="aire_condicionado" class="form-control" id="aire_condicionado"
+                            <input type="checkbox" value="1" name="aire_condicionado" class="form-control" id="aire_condicionado"
                                 placeholder="Enter name">
                             @error('aire_condicionado')
                                 <span class="text-danger"> {{ $message }} </span>
@@ -110,7 +110,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="balcon">Balcon</label>
-                            <input type="checkbox" name="balcon" class="form-control" id="balcon"
+                            <input type="checkbox" value="2" name="balcon" class="form-control" id="balcon"
                                 placeholder="Enter name">
                             @error('balcon')
                                 <span class="text-danger"> {{ $message }} </span>
@@ -120,7 +120,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="internet">Internet</label>
-                            <input type="checkbox" name="internet" class="form-control" id="internet"
+                            <input type="checkbox" value="3" name="internet" class="form-control" id="internet"
                                 placeholder="Enter name">
                             @error('internet')
                                 <span class="text-danger"> {{ $message }} </span>
@@ -130,7 +130,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="Cable">Cable</label>
-                            <input type="checkbox" name="cable" class="form-control" id="cable"
+                            <input type="checkbox" value="4" name="cable" class="form-control" id="cable"
                                 placeholder="Enter name">
                             @error('cable')
                                 <span class="text-danger"> {{ $message }} </span>
@@ -140,7 +140,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="alberca">Alberca</label>
-                            <input type="checkbox" name="alberca" class="form-control" id="alberca"
+                            <input type="checkbox"  value="5" name="alberca" class="form-control" id="alberca"
                                 placeholder="Enter name">
                             @error('alberca')
                                 <span class="text-danger"> {{ $message }} </span>
@@ -150,7 +150,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="lavaplatos">Lavaplatos</label>
-                            <input type="checkbox" name="lavaplatos" class="form-control" id="lavaplatos"
+                            <input type="checkbox"  value="6" name="lavaplatos" class="form-control" id="lavaplatos"
                                 placeholder="Enter name">
                             @error('lavaplatos')
                                 <span class="text-danger"> {{ $message }} </span>
@@ -160,7 +160,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="estacionamiento">Estacionamiento</label>
-                            <input type="checkbox" name="estacionamiento" class="form-control" id="estacionamiento"
+                            <input type="checkbox" value="7" name="estacionamiento" class="form-control" id="estacionamiento"
                                 placeholder="Enter name">
                             @error('estacionamiento')
                                 <span class="text-danger"> {{ $message }} </span>
@@ -170,19 +170,9 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="refrigerador">Refrigerador</label>
-                            <input type="checkbox" name="refrigerador" class="form-control" id="refrigerador"
+                            <input type="checkbox" value="8" name="refrigerador" class="form-control" id="refrigerador"
                                 placeholder="Enter name">
                             @error('refrigerador')
-                                <span class="text-danger"> {{ $message }} </span>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="planos">Planos</label>
-                            <input type="text" name="planos" class="form-control" id="planos"
-                                placeholder="Enter name">
-                            @error('planos')
                                 <span class="text-danger"> {{ $message }} </span>
                             @enderror
                         </div>
@@ -211,7 +201,7 @@
                         <div class="form-group">
                             <label>Seleccionar Nearbys</label>
                             <select class="form-control select2" name="nearby_id" style="width: 100%;height: 100%;">
-                                <option selected="selected">Seleccionar</option>
+                                <option selected="selected">Seleccionar Nearbys</option>
                                 @foreach ($nearbys as $nearby)
                                     <option value={{ $nearby->id }}>{{ $nearby->nombre }}</option>
                                 @endforeach
@@ -222,7 +212,7 @@
                         <div class="form-group">
                             <label>Seleccionar Solicitud del vendedor</label>
                             <select class="form-control select2" name="solicitud_vendedor_id" style="width: 100%;height: 100%;">
-                                <option selected="selected">Seleccionar</option>
+                                <option selected="selected">Seleccionar Vendedor</option>
                                 @foreach ($solicitudvendedor as $solicitudvendedo)
                                     <option value={{ $solicitudvendedo->id }}>{{ $solicitudvendedo->nombre }}</option>
                                 @endforeach
@@ -233,7 +223,7 @@
                         <div class="form-group">
                             <label>Seleccionar Review</label>
                             <select class="form-control select2" name="review_id" style="width: 100%;height: 100%;">
-                                <option selected="selected">Seleccionar</option>
+                                <option selected="selected">Seleccionar Review</option>
                                 @foreach ($reviews as $review)
                                     <option value={{ $review->id }}>{{ $review->nombre }}</option>
                                 @endforeach
@@ -244,7 +234,7 @@
                         <div class="form-group">
                             <label>Seleccionar Estatus de la Propiedad</label>
                             <select class="form-control select2" name="estatus_propiedad_id" style="width: 100%;height: 100%;">
-                                <option selected="selected">Seleccionar</option>
+                                <option selected="selected">Seleccionar Estatus</option>
                                 @foreach ($estatuspropiedad as $estatupropiedad)
                                     <option value={{ $estatupropiedad->id }}>{{ $estatupropiedad->nombre }}</option>
                                 @endforeach
@@ -253,9 +243,9 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>Seleccionar Tipo de propiedad</label>
+                            <label>Seleccionar Tipo de propiedad </label>
                             <select class="form-control select2" name="tipo_propiedad_id" style="width: 100%;height: 100%;">
-                                <option selected="selected">Seleccionar</option>
+                                <option selected="selected">Seleccionar Tipo</option>
                                 @foreach ($tipopropiedades as $tipopropiedad)
                                     <option value={{ $tipopropiedad->id }}>{{ $tipopropiedad->nombre }}</option>
                                 @endforeach
@@ -266,7 +256,7 @@
                         <div class="form-group">
                             <label>Seleccionar Locacion</label>
                             <select class="form-control select2" name="locacion_id" style="width: 100%;height: 100%;">
-                                <option selected="selected">Seleccionar</option>
+                                <option selected="selected">Seleccionar Locacion</option>
                                 @foreach ($locacion as $locacion)
                                     <option value={{ $locacion->id }}>{{ $locacion->nombre }}</option>
                                 @endforeach

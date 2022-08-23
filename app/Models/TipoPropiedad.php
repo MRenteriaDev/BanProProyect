@@ -9,4 +9,10 @@ class TipoPropiedad extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function Propiedad()
+    {
+
+        return $this->hasMany(Propiedades::class, "tipo_propiedad_id");
+    }
 }
