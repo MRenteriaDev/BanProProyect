@@ -78,25 +78,18 @@ class SellerController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'email_verified_at' => 'required',
-            'password' => 'required',
-            'status' => 'required',
 
         ], [
             'name.required' => 'El nombre del Seller es requerido',
-            'email' => 'El correo del Seller es requerido',
-            'email_verified_at' => 'Se necesita verificar el correo',
-            'password' => 'Se necesita la contraseña del Seller',
-            'status' => 'Se necesita el status del Seller',
+            'email.required' => 'El correo del Seller es requerido',
+
 
         ]);
 
         Seller::insert([
             'name' => $request->name,
             'email' => $request->email,
-            'email_verified_at' => $request->email_verified_at,
-            'password' => $request->password,
-            'status' => $request->status,
+            'stauts' => 0,
             'created_at' => Carbon::now()
         ]);
 
@@ -128,25 +121,17 @@ class SellerController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'email_verified_at' => 'required',
-            'password' => 'required',
-            'status' => 'required',
 
         ], [
             'name.required' => 'El nombre del Seller es requerido',
-            'email' => 'El correo del Seller es requerido',
-            'email_verified_at' => 'Se necesita verificar el correo',
-            'password' => 'Se necesita la contraseña del Seller',
-            'status' => 'Se necesita el status del Seller',
+            'email.required' => 'El correo del Seller es requerido',
 
         ]);
 
         Seller::findOrFail($id)->update([
             'name' => $request->name,
             'email' => $request->email,
-            'email_verified_at' => $request->email_verified_at,
-            'password' => $request->password,
-            'status' => $request->status,
+            'stauts' => 0,
             'updated_at' => Carbon::now()
         ]);
 
