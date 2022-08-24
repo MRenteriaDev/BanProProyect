@@ -29,9 +29,9 @@
                 @csrf
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="nombre">Nombre</label>
-                        <input type="text" name="nombre" value="{{ $zona->nombre }}" class="form-control" id="nombre"
-                            placeholder="Enter nombre">
+                        <label for="zona_nombre">Nombre</label>
+                        <input type="text" name="zona_nombre" value="{{ $zona->zona_nombre }}" class="form-control" id="zona_nombre"
+                            placeholder="Introducir nombre">
                     </div>
                 </div>
                 <!-- /.card-body -->

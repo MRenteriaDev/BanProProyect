@@ -28,7 +28,8 @@ class GaleriaPropiedadesController extends Controller
      */
     public function create()
     {
-        return view('admin.galeriapropiedades.create');
+        $propiedades = DB::table('propiedades')->get();
+        return view('admin.galeriapropiedades.create', compact('propiedades'));
     }
 
     /**
@@ -41,11 +42,13 @@ class GaleriaPropiedadesController extends Controller
     {
         $validate = $request->validate([
             'nombre_archivo' => 'required',
+            'propiedad_id' => 'required'
         ]);
 
 
         GaleriaPropiedades::insert([
             'nombre_archivo' => $request->nombre_archivo,
+            'propiedad_id' => $request->propiedad_id,
             'created_at' => Carbon::now()
         ]);
 
@@ -78,8 +81,8 @@ class GaleriaPropiedadesController extends Controller
     {
         $galeriapropiedades = GaleriaPropiedades::findorFail($id);
 
-
-        return view('admin.galeriapropiedades.update', compact('galeriapropiedades'));
+        $propiedades = DB::table('propiedades')->get();
+        return view('admin.galeriapropiedades.update', compact('galeriapropiedades', 'propiedades'));
     }
 
     /**
@@ -93,11 +96,13 @@ class GaleriaPropiedadesController extends Controller
     {
          $request->validate([
             'nombre_archivo' => 'required',
+            'propiedad_id' => 'required'
         ]);
 
 
         GaleriaPropiedades::findOrFail($id)->insert([
             'nombre_archivo' => $request->nombre_archivo,
+            'propiedad_id' => $request->propiedad_id,
             'updated_at' => Carbon::now()
         ]);
 

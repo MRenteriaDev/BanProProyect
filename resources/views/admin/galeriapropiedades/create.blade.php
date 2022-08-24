@@ -39,6 +39,18 @@
                         </div>
                     </div>
 
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Seleccionar Propiedad</label>
+                            <select class="form-control select2" name="propiedad_id" style="width: 100%;height: 100%;">
+                                <option selected="selected">Seleccionar</option>
+                                @foreach ($propiedades as $propiedad)
+                                    <option value={{ $propiedad->id }}>{{ $propiedad->nombre }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
                 </div>
                 <!-- /.card-body -->
 

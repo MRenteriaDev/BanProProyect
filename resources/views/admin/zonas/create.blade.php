@@ -29,9 +29,9 @@
                 @csrf
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="nombre">Nombre</label>
-                        <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Enter name">
-                        @error('nombre')
+                        <label for="zona_nombre">Nombre</label>
+                        <input type="text" name="zona_nombre" class="form-control" id="zona_nombre" placeholder="Enter name">
+                        @error('zona_nombre')
                             <span class="text-danger"> {{ $message }} </span>
                         @enderror
                     </div>

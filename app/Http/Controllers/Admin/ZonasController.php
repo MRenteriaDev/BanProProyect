@@ -40,15 +40,15 @@ class ZonasController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nombre' => 'required',
+            'zona_nombre' => 'required',
 
         ], [
-            'nombre.required' => 'El nombre de la zona es requerido',
+            'zona_nombre.required' => 'El nombre de la zona es requerido',
 
         ]);
 
         Zonas::insert([
-            'nombre' => $request->nombre,
+            'zona_nombre' => $request->zona_nombre,
             'created_at' => Carbon::now()
         ]);
 
@@ -102,15 +102,15 @@ class ZonasController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nombre' => 'required',
+            'zona_nombre' => 'required',
 
         ], [
-            'nombre.required' => 'El nombre de la zona es requerido',
+            'zona_nombre.required' => 'El nombre de la zona es requerido',
 
         ]);
 
         Zonas::findOrFail($id)->update([
-            'nombre' => $request->nombre,
+            'zona_nombre' => $request->zona_nombre,
             'updated_at' => Carbon::now()
         ]);
 
