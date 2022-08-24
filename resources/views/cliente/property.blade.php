@@ -51,19 +51,19 @@
                                     <h5 class="mb-4">Gallery</h5>
                                     <div class="carousel-inner">
                                         <div class="active item carousel-item" data-slide-number="0">
-                                            <img src="images/single-property/s-1.jpg" class="img-fluid" alt="slider-listing">
+                                            <img src="{{asset('cliente/images/single-property/s-1.jpg')}}" class="img-fluid" alt="slider-listing">
                                         </div>
                                         <div class="item carousel-item" data-slide-number="1">
-                                            <img src="images/single-property/s-2.jpg" class="img-fluid" alt="slider-listing">
+                                            <img src="{{asset('cliente/images/single-property/s-2.jpg')}}" class="img-fluid" alt="slider-listing">
                                         </div>
                                         <div class="item carousel-item" data-slide-number="2">
-                                            <img src="images/single-property/s-3.jpg" class="img-fluid" alt="slider-listing">
+                                            <img src="{{asset('cliente/images/single-property/s-3.jpg')}}" class="img-fluid" alt="slider-listing">
                                         </div>
                                         <div class="item carousel-item" data-slide-number="4">
-                                            <img src="images/single-property/s-4.jpg" class="img-fluid" alt="slider-listing">
+                                            <img src="{{asset('cliente/images/single-property/s-4.jpg')}}" class="img-fluid" alt="slider-listing">
                                         </div>
                                         <div class="item carousel-item" data-slide-number="5">
-                                            <img src="images/single-property/s-5.jpg" class="img-fluid" alt="slider-listing">
+                                            <img src="{{asset('cliente/images/single-property/s-5.jpg')}}" class="img-fluid" alt="slider-listing">
                                         </div>
 
                                         <a class="carousel-control left" href="#listingDetailsSlider" data-slide="prev"><i class="fa fa-angle-left"></i></a>
@@ -74,27 +74,27 @@
                                     <ul class="carousel-indicators smail-listing list-inline">
                                         <li class="list-inline-item active">
                                             <a id="carousel-selector-0" class="selected" data-slide-to="0" data-target="#listingDetailsSlider">
-                                                <img src="images/single-property/s-1.jpg" class="img-fluid" alt="listing-small">
+                                                <img src="{{asset('cliente/images/single-property/s-1.jpg')}}" class="img-fluid" alt="listing-small">
                                             </a>
                                         </li>
                                         <li class="list-inline-item">
                                             <a id="carousel-selector-1" data-slide-to="1" data-target="#listingDetailsSlider">
-                                                <img src="images/single-property/s-2.jpg" class="img-fluid" alt="listing-small">
+                                                <img src="{{asset('cliente/images/single-property/s-2.jpg')}}" class="img-fluid" alt="listing-small">
                                             </a>
                                         </li>
                                         <li class="list-inline-item">
                                             <a id="carousel-selector-2" data-slide-to="2" data-target="#listingDetailsSlider">
-                                                <img src="images/single-property/s-3.jpg" class="img-fluid" alt="listing-small">
+                                                <img src="{{asset('cliente/images/single-property/s-3.jpg')}}" class="img-fluid" alt="listing-small">
                                             </a>
                                         </li>
                                         <li class="list-inline-item">
                                             <a id="carousel-selector-3" data-slide-to="3" data-target="#listingDetailsSlider">
-                                                <img src="images/single-property/s-4.jpg" class="img-fluid" alt="listing-small">
+                                                <img src="{{asset('cliente/images/single-property/s-4.jpg')}}" class="img-fluid" alt="listing-small">
                                             </a>
                                         </li>
                                         <li class="list-inline-item">
                                             <a id="carousel-selector-4" data-slide-to="4" data-target="#listingDetailsSlider">
-                                                <img src="images/single-property/s-5.jpg" class="img-fluid" alt="listing-small">
+                                                <img src="{{asset('cliente/images/single-property/s-5.jpg')}}" class="img-fluid" alt="listing-small">
                                             </a>
                                         </li>
                                     </ul>
@@ -193,7 +193,7 @@
                         </div>
                         <div class="floor-plan property wprt-image-video w50 pro">
                             <h5>Floor Plans</h5>
-                            <img alt="image" src="images/bg/floor-plan-1.png">
+                            <img alt="image" src="{{asset('cliente/images/bg/floor-plan-1.png')}}">
                         </div>
                         <div class="floor-plan property wprt-image-video w50 pro">
                             <h5>What's Nearby</h5>
@@ -332,7 +332,7 @@
                         </div>
                         <div class="property wprt-image-video w50 pro">
                             <h5>Property Video</h5>
-                            <img alt="image" src="images/slider/home-slider-4.jpg">
+                            <img alt="image" src="{{asset('cliente/images/slider/home-slider-4.jpg')}}">
                             <a class="icon-wrap popup-video popup-youtube" href="https://www.youtube.com/watch?v=14semTlwyUY">
                                 <i class="fa fa-play"></i>
                             </a>
@@ -354,7 +354,7 @@
                                 <ul class="col-12 commented pl-0">
                                     <li class="comm-inf">
                                         <div class="col-md-2">
-                                            <img src="images/testimonials/ts-5.jpg" class="img-fluid" alt="">
+                                            <img src="{{asset('cliente/images/testimonials/ts-5.jpg')}}" class="img-fluid" alt="">
                                         </div>
                                         <div class="col-md-10 comments-info">
                                             <div class="conra">
@@ -371,7 +371,7 @@
                                             </div>
                                             <p class="mb-4">May 30 2020</p>
                                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquam, quam congue dictum luctus, lacus magna congue ante, in finibus dui sapien eu dolor. Integer tincidunt suscipit erat, nec laoreet ipsum vestibulum sed.</p>
-                                            <div class="rest"><img src="images/single-property/s-1.jpg" class="img-fluid" alt=""></div>
+                                            <div class="rest"><img src="{{asset('cliente/images/single-property/s-1.jpg')}}" class="img-fluid" alt=""></div>
                                         </div>
                                     </li>
 
@@ -381,7 +381,7 @@
                                 <ul class="col-12 commented pl-0">
                                     <li class="comm-inf">
                                         <div class="col-md-2">
-                                            <img src="images/testimonials/ts-4.jpg" class="img-fluid" alt="">
+                                            <img src="{{asset('cliente/images/testimonials/ts-4.jpg')}}" class="img-fluid" alt="">
                                         </div>
                                         <div class="col-md-10 comments-info">
                                             <div class="conra">
@@ -407,7 +407,7 @@
                                 <ul class="col-12 commented mb-0 pl-0">
                                     <li class="comm-inf">
                                         <div class="col-md-2">
-                                            <img src="images/testimonials/ts-3.jpg" class="img-fluid" alt="">
+                                            <img src="{{asset('cliente/images/testimonials/ts-3.jpg')}}" class="img-fluid" alt="">
                                         </div>
                                         <div class="col-md-10 comments-info">
                                             <div class="conra">
@@ -425,8 +425,8 @@
                                             <p class="mb-4">jul 12 2020</p>
                                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras aliquam, quam congue dictum luctus, lacus magna congue ante, in finibus dui sapien eu dolor. Integer tincidunt suscipit erat, nec laoreet ipsum vestibulum sed.</p>
                                             <div class="resti">
-                                                <div class="rest"><img src="images/single-property/s-2.jpg" class="img-fluid" alt=""></div>
-                                                <div class="rest"><img src="images/single-property/s-3.jpg" class="img-fluid" alt=""></div>
+                                                <div class="rest"><img src="{{asset('cliente/images/single-property/s-2.jpg')}}" class="img-fluid" alt=""></div>
+                                                <div class="rest"><img src="{{asset('cliente/images/single-property/s-3.jpg')}}" class="img-fluid" alt=""></div>
                                             </div>
                                         </div>
                                     </li>
@@ -561,7 +561,7 @@
                                     <div class="widget-boxed-body">
                                         <div class="sidebar-widget author-widget2">
                                             <div class="author-box clearfix">
-                                                <img src="images/testimonials/ts-1.jpg" alt="author-image" class="author__img">
+                                                <img src="{{asset('cliente/images/testimonials/ts-1.jpg')}}" alt="author-image" class="author__img">
                                                 <h4 class="author__title">Lisa Clark</h4>
                                                 <p class="author__meta">Agent of Property</p>
                                             </div>
@@ -592,7 +592,7 @@
                                             <div class="recent-post">
                                                 <div class="recent-main">
                                                     <div class="recent-img">
-                                                        <a href="blog-details.html"><img src="images/feature-properties/fp-1.jpg" alt=""></a>
+                                                        <a href="blog-details.html"><img src="{{asset('cliente/images/feature-properties/fp-1.jpg')}}" alt=""></a>
                                                     </div>
                                                     <div class="info-img">
                                                         <a href="blog-details.html"><h6>Family Home</h6></a>
@@ -601,7 +601,7 @@
                                                 </div>
                                                 <div class="recent-main my-4">
                                                     <div class="recent-img">
-                                                        <a href="blog-details.html"><img src="images/feature-properties/fp-2.jpg" alt=""></a>
+                                                        <a href="blog-details.html"><img src="{{asset('cliente/images/feature-properties/fp-2.jpg')}}" alt=""></a>
                                                     </div>
                                                     <div class="info-img">
                                                         <a href="blog-details.html"><h6>Family Home</h6></a>
@@ -610,7 +610,7 @@
                                                 </div>
                                                 <div class="recent-main">
                                                     <div class="recent-img">
-                                                        <a href="blog-details.html"><img src="images/feature-properties/fp-3.jpg" alt=""></a>
+                                                        <a href="blog-details.html"><img src="{{asset('cliente/images/feature-properties/fp-3.jpg')}}" alt=""></a>
                                                     </div>
                                                     <div class="info-img">
                                                         <a href="blog-details.html"><h6>Family Home</h6></a>
@@ -642,7 +642,7 @@
                                                                     <li>Baths <span>3</span></li>
                                                                 </ul>
                                                             </div>
-                                                            <img src="images/feature-properties/fp-1.jpg" alt="">
+                                                            <img src="images/feature-propertie{{asset('cliente/s/fp')}}-1.jpg" alt="">
                                                         </a>
                                                     </div>
                                                 </div>
@@ -662,7 +662,7 @@
                                                                     <li>Baths <span>3</span></li>
                                                                 </ul>
                                                             </div>
-                                                            <img src="images/feature-properties/fp-2.jpg" alt="">
+                                                            <img src="{{asset('cliente/images/feature-properties/fp-2.jpg')}}" alt="">
                                                         </a>
                                                     </div>
                                                 </div>
@@ -682,7 +682,7 @@
                                                                     <li>Baths <span>3</span></li>
                                                                 </ul>
                                                             </div>
-                                                            <img src="images/feature-properties/fp-3.jpg" alt="">
+                                                            <img src="{{asset('cliente/images/feature-properties/fp-3.jpg')}}" alt="">
                                                         </a>
                                                     </div>
                                                 </div>
@@ -702,7 +702,7 @@
                                                                     <li>Baths <span>3</span></li>
                                                                 </ul>
                                                             </div>
-                                                            <img src="images/feature-properties/fp-4.jpg" alt="">
+                                                            <img src="{{asset('cliente/images/feature-properties/fp-4.jpg')}}" alt="">
                                                         </a>
                                                     </div>
                                                 </div>
@@ -722,7 +722,7 @@
                                                                     <li>Baths <span>3</span></li>
                                                                 </ul>
                                                             </div>
-                                                            <img src="images/feature-properties/fp-5.jpg" alt="">
+                                                            <img src="{{asset('cliente/images/feature-properties/fp-5.jpg')}}" alt="">
                                                         </a>
                                                     </div>
                                                 </div>
@@ -742,7 +742,7 @@
                                                                     <li>Baths <span>3</span></li>
                                                                 </ul>
                                                             </div>
-                                                            <img src="images/feature-properties/fp-6.jpg" alt="">
+                                                            <img src="{{asset('cliente/images/feature-properties/fp-6.jpg')}}" alt="">
                                                         </a>
                                                     </div>
                                                 </div>
@@ -755,7 +755,7 @@
                                             <h4>Specials of the day</h4>
                                         </div>
                                         <div class="widget-boxed-body">
-                                            <div class="banner"><img src="images/single-property/banner.jpg" alt=""></div>
+                                            <div class="banner"><img src="{{asset('cliente/images/single-property/banner.jpg')}}" alt=""></div>
                                         </div>
                                     </div>
                                     <!-- End: Specials offer -->
@@ -807,7 +807,7 @@
                                                 <div class="homes-tag button alt featured">Featured</div>
                                                 <div class="homes-tag button alt sale">For Sale</div>
                                                 <div class="homes-price">$9,000/mo</div>
-                                                <img src="images/blog/b-11.jpg" alt="home-1" class="img-responsive">
+                                                <img src="{{asset('cliente/images/blog/b-11.jpg')}}" alt="home-1" class="img-responsive">
                                             </a>
                                         </div>
                                         <div class="button-effect">
@@ -846,7 +846,7 @@
                                         </ul>
                                         <div class="footer">
                                             <a href="agent-details.html">
-                                                <img src="images/testimonials/ts-1.jpg" alt="" class="mr-2"> Lisa Jhonson
+                                                <img src="{{asset('cliente/images/testimonials/ts-1.jpg')}}" alt="" class="mr-2"> Lisa Jhonson
                                             </a>
                                             <span>2 months ago</span>
                                         </div>
@@ -861,7 +861,7 @@
                                             <a href="single-property-1.html" class="homes-img">
                                                 <div class="homes-tag button sale rent">For Rent</div>
                                                 <div class="homes-price">$3,000/mo</div>
-                                                <img src="images/blog/b-12.jpg" alt="home-1" class="img-responsive">
+                                                <img src="{{asset('cliente/images/blog/b-12.jpg')}}" alt="home-1" class="img-responsive">
                                             </a>
                                         </div>
                                         <div class="button-effect">
@@ -900,7 +900,7 @@
                                         </ul>
                                         <div class="footer">
                                             <a href="agent-details.html">
-                                                <img src="images/testimonials/ts-2.jpg" alt="" class="mr-2"> Karl Smith
+                                                <img src="{{asset('cliente/images/testimonials/ts-2.jpg')}}" alt="" class="mr-2"> Karl Smith
                                             </a>
                                             <span>2 months ago</span>
                                         </div>
@@ -954,7 +954,7 @@
                                         </ul>
                                         <div class="footer">
                                             <a href="agent-details.html">
-                                                <img src="images/testimonials/ts-3.jpg" alt="" class="mr-2"> katy Teddy
+                                                <img src="{{asset('cliente/images/testimonials/ts-3.jpg')}}" alt="" class="mr-2"> katy Teddy
                                             </a>
                                             <span>2 months ago</span>
                                         </div>
@@ -977,7 +977,7 @@
                         <div class="col-lg-3 col-md-6">
                             <div class="netabout">
                                 <a href="index.html" class="logo">
-                                    <img src="images/logo-footer.svg" alt="netcom">
+                                    <img src="{{asset('cliente/images/logo-footer.svg')}}" alt="netcom">
                                 </a>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum incidunt architecto soluta laboriosam, perspiciatis, aspernatur officiis esse.</p>
                             </div>
