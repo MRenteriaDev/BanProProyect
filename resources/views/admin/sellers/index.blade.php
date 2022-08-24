@@ -1,20 +1,19 @@
 @extends('admin.admin_master')
-
 @section('admin')
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <title>Solicitud Vendedor | BanPro</title>
+        <title>Sellers | BanPro</title>
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Solicitudes a Vendedores</h1>
+                    <h1>Sellers</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-md-right">
-                        <a class="btn btn-primary btn-md" href="{{ route('solicitudvendedor.create') }}"><i
+                        <a class="btn btn-primary btn-md" href="{{ route('sellers.create') }}"><i
                                 class="fas fa-plus-circle"></i>
 
-                            &nbsp; Crear Solicitud a Vendedor
+                            &nbsp; Crear Seller
                         </a>
                     </ol>
                 </div>
@@ -39,7 +38,7 @@
                                     aria-label="Rendering engine: activate to sort column descending">Nombre
                                 </th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                    aria-label="Browser: activate to sort column ascending">Fecha creacion</th>
+                                    aria-label="Browser: activate to sort column ascending">Creado El</th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                     aria-label="Platform(s): activate to sort column ascending">
                                     Acciones
@@ -49,23 +48,22 @@
                         </thead>
                         <tbody>
 
-                            @foreach ($solicitudes_vendedores as $solicitudvendedor)
+                            @foreach ($sellers as $seller)
                                 <tr class="odd">
-                                    <td class="dtr-control sorting_1" tabindex="0">{{ $solicitudvendedor->nombre }}</td>
-                                    <td>{{ $solicitudvendedor->created_at }}</td>
+                                    <td class="dtr-control sorting_1" tabindex="0">{{ $seller->name }}</td>
+                                    <td>{{ $seller->created_at }}</td>
                                     <th class="row">
                                         <div class="btn-group" role="group" aria-label="Basic example">
 
                                             <a class="btn btn-md btn-success"
-                                                href="{{ route('solicitudvendedor.edit', $solicitudvendedor->id) }}"><i
-                                                    class="fa fa-pencil" aria-hidden="true"></i>
+                                                href="{{ route('sellers.edit', $seller->id) }}"><i class="fa fa-pencil"
+                                                    aria-hidden="true"></i>
                                             </a>
 
                                             <a class="btn btn-md btn-danger"
-                                                href="{{ route('solicitudvendedor.destroy', $solicitudvendedor->id) }}"
-                                                id="delete"><i class="fa fa-trash" aria-hidden="true"></i>
+                                                href="{{ route('sellers.destroy', $seller->id) }}" id="delete"><i
+                                                    class="fa fa-trash" aria-hidden="true"></i>
                                             </a>
-
                                         </div>
                                     </th>
                                 </tr>

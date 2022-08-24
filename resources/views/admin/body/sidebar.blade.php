@@ -105,6 +105,16 @@
                     </a>
                 </li>
 
+                <li class="nav-item">
+                    <a href="{{ route('sellers.index') }}" class="nav-link">
+                        <i class="fa-solid fa-person-shelter"></i>
+                        <p>
+                            Seller
+                        </p>
+                    </a>
+                </li>
+
+
         </nav>
         <!-- /.sidebar-menu -->
     </div>

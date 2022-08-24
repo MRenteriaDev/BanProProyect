@@ -187,6 +187,15 @@ Route::prefix('seller')->group(function () {
     Route::get('/register', [SellerController::class, 'SellerRegister'])->name('seller.register');
 
     Route::post('/register/create', [SellerController::class, 'SellerRegisterCreate'])->name('seller.register.create');
+
+    /* ------------- Admin Seller CRUD Route -------------- */
+
+    Route::get('/index', [SellerController::class, 'index'])->name('sellers.index');
+    Route::get('/create', [SellerController::class, 'create'])->name('sellers.create');
+    Route::post('/store', [SellerController::class, 'store'])->name('sellers.store');
+    Route::get('/edit/{id}', [SellerController::class, 'edit'])->name('sellers.edit');
+    Route::post('/update/{id}', [SellerController::class, 'update'])->name('sellers.update');
+    Route::get('/destroy/{id}', [SellerController::class, 'destroy'])->name('sellers.destroy');
 });
 /* ------------- End Seller Route -------------- */
 
