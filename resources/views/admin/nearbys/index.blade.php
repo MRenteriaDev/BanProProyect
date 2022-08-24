@@ -2,6 +2,7 @@
 @section('admin')
     <!-- Content Header (Page header) -->
     <section class="content-header">
+        <title>Nearbys | BanPro</title>
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">

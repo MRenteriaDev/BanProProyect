@@ -2,6 +2,7 @@
 
 @section('admin')
     <section class="content-header" style="margin-top: 10px">
+        <title>Estatus Propiedad | BanPro</title>
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">

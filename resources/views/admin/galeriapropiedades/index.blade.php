@@ -2,6 +2,7 @@
 @section('admin')
     <!-- Content Header (Page header) -->
     <section class="content-header">
+        <title>Galerias Propiedades | BanPro</title>
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
@@ -12,7 +13,7 @@
                         <a class="btn btn-primary btn-md" href="{{ route('galeriapropiedad.create') }}"><i
                                 class="fas fa-plus-circle"></i>
 
-                            &nbsp; Agregar imagen
+                            &nbsp; Agregar imagenes
                         </a>
                     </ol>
                 </div>
