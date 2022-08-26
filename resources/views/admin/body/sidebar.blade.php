@@ -21,8 +21,8 @@
                 data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
        with font-awesome or any other icon font library -->
-                <li class="nav-item has-treeview menu-open">
-                    <a href="{{ route('tipopropiedad.index') }}" class="nav-link active">
+                <li class="nav-item has-treeview">
+                    <a href="{{ route('tipopropiedad.index') }}" class="nav-link">
                         <i class="fa-solid fa-building-wheat"></i>
                         <p>
                             Tipo de propiedad
@@ -110,6 +110,15 @@
                         <i class="fa-solid fa-person-shelter"></i>
                         <p>
                             Seller
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('metodospagos.index') }}"  class="nav-link">
+                        <i class="fa-solid fa-credit-card"></i>
+                        <p>
+                            Metodos de pago
                         </p>
                     </a>
                 </li>

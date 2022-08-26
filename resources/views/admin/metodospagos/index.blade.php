@@ -2,19 +2,19 @@
 @section('admin')
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <title>Galerias Propiedades | BanPro</title>
+        <title>Pagos | BanPro</title>
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Galeria propiedades </h1>
+                    <h1>Metodos de pago </h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-md-right">
-                        {{-- <a class="btn btn-primary btn-md" href="{{ route('galeriapropiedad.create') }}"><i
+                        <a class="btn btn-primary btn-md" href="{{ route('metodospagos.create') }}"><i
                                 class="fas fa-plus-circle"></i>
 
-                            &nbsp; Agregar imagenes
-                        </a> --}}
+                            &nbsp; Crear Metodo De Pago
+                        </a>
                     </ol>
                 </div>
             </div>
@@ -35,8 +35,10 @@
                             <tr>
                                 <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
                                     colspan="1" aria-sort="ascending"
-                                    aria-label="Rendering engine: activate to sort column descending">Nombre del archivo
+                                    aria-label="Rendering engine: activate to sort column descending">Nombre
                                 </th>
+                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                    aria-label="Browser: activate to sort column ascending">Seller</th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                     aria-label="Browser: activate to sort column ascending">Fecha creacion</th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
@@ -48,20 +50,21 @@
                         </thead>
                         <tbody>
 
-                            @foreach ($galeriapropiedades as $galeriapropiedad)
+                            @foreach ($metodospagos as $metodopago)
                                 <tr class="odd">
-                                    <td class="dtr-control sorting_1" tabindex="0">{{ $galeriapropiedad->nombre_archivo }}</td>
-                                    <td>{{ $galeriapropiedad->created_at }}</td>
+                                    <td class="dtr-control sorting_1" tabindex="0">{{ $metodopago->nombre }}</td>
+                                    <td class="dtr-control sorting_1" tabindex="0">{{ $metodopago->seller_id }}</td>
+                                    <td>{{ $metodopago->created_at }}</td>
                                     <th class="row">
                                         <div class="btn-group" role="group" aria-label="Basic example">
 
                                             <a class="btn btn-md btn-success"
-                                                href="{{ route('galeriapropiedad.edit', $galeriapropiedad->id) }}"><i class="fa fa-pencil"
+                                                href="{{ route('metodospagos.edit', $metodopago->id) }}"><i class="fa fa-pencil"
                                                     aria-hidden="true"></i>
                                             </a>
 
                                             <a class="btn btn-md btn-danger"
-                                                href="{{ route('galeriapropiedad.destroy', $galeriapropiedad->id) }}" id="delete"><i
+                                                href="{{ route('metodospagos.destroy', $metodopago->id) }}" id="delete"><i
                                                     class="fa fa-trash" aria-hidden="true"></i>
                                             </a>
 

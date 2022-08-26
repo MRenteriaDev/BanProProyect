@@ -40,7 +40,7 @@ class GaleriaPropiedadesController extends Controller
      */
     public function store(Request $request)
     {
-        $validate = $request->validate([
+        $data = $request->validate([
             'nombre_archivo' => 'required',
             'propiedad_id' => 'required'
         ]);
@@ -51,6 +51,8 @@ class GaleriaPropiedadesController extends Controller
             'propiedad_id' => $request->propiedad_id,
             'created_at' => Carbon::now()
         ]);
+
+
 
         $notificacion = array(
             'message' => "La creacion de la propiedad de galeria fue exitosa",
@@ -94,17 +96,19 @@ class GaleriaPropiedadesController extends Controller
      */
     public function update(Request $request, $id)
     {
-         $request->validate([
+         $data = $request->validate([
             'nombre_archivo' => 'required',
-            'propiedad_id' => 'required'
+
         ]);
 
 
-        GaleriaPropiedades::findOrFail($id)->insert([
+        GaleriaPropiedades::findOrFail($id)->update([
             'nombre_archivo' => $request->nombre_archivo,
-            'propiedad_id' => $request->propiedad_id,
+
             'updated_at' => Carbon::now()
         ]);
+
+
 
         $notificacion = array(
             'message' => "La actualizacion de la galeria fue exitosa",

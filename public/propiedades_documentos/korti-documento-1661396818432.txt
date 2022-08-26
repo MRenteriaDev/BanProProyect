@@ -1,0 +1,3 @@
+Steren COM-825 
+security mode WPA - PSK
+canelo34

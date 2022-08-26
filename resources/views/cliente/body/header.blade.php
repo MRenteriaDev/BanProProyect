@@ -24,7 +24,7 @@
                         </li>
                         <li><a class="text-dark" href="#">Listing</a>
                         </li>
-                        <li><a class="text-dark" href="#">Property</a>
+                        <li><a href="#" class="text-dark">Property</a>
                         </li>
                         <li><a class="text-dark" href="#">Pages</a>
                         </li>

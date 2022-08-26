@@ -25,14 +25,14 @@
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form method="POST" action="{{ route('propiedades.store') }}">
+            <form method="POST" action="{{ route('propiedades.store') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body col-md-12">
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="nombre">Nombre</label>
                             <input type="text" name="nombre" class="form-control" id="nombre"
-                                placeholder="Enter name">
+                                placeholder="Enter nombre">
                             @error('nombre')
                                 <span class="text-danger"> {{ $message }} </span>
                             @enderror
@@ -42,7 +42,7 @@
                         <div class="form-group">
                             <label for="precio">Precio</label>
                             <input type="number" name="precio" class="form-control" id="precio"
-                                placeholder="Enter name">
+                                placeholder="Enter precio">
                             @error('precio')
                                 <span class="text-danger"> {{ $message }} </span>
                             @enderror
@@ -52,7 +52,7 @@
                         <div class="form-group">
                             <label for="tamano_propiedad">Tamaño de la propiedad</label>
                             <input type="text" name="tamano_propiedad" class="form-control" id="tamano_propiedad"
-                                placeholder="Enter name">
+                                placeholder="Enter tamaño de la propiedad">
                             @error('tamano_propiedad')
                                 <span class="text-danger"> {{ $message }} </span>
                             @enderror
@@ -62,7 +62,7 @@
                         <div class="form-group">
                             <label for="tamano_propiedad_construido">Tamaño de la propiedad construida</label>
                             <input type="text" name="tamano_propiedad_construido" class="form-control" id="tamano_propiedad_construido"
-                                placeholder="Enter name">
+                                placeholder="Enter tamaño de la propiedad construido">
                             @error('tamano_propiedad_construido')
                                 <span class="text-danger"> {{ $message }} </span>
                             @enderror
@@ -72,7 +72,7 @@
                         <div class="form-group">
                             <label for="fecha_construccion">Fecha de construccion</label>
                             <input type="date" name="fecha_construccion" class="form-control" id="fecha_construccion"
-                                placeholder="Enter name">
+                                placeholder="Enter fecha de construccion">
                             @error('fecha_construccion')
                                 <span class="text-danger"> {{ $message }} </span>
                             @enderror
@@ -82,7 +82,7 @@
                         <div class="form-group">
                             <label for="recamaras">Recamaras</label>
                             <input type="number" name="recamaras" class="form-control" id="recamaras"
-                                placeholder="Enter name">
+                                placeholder="Enter recamaras">
                             @error('recamaras')
                                 <span class="text-danger"> {{ $message }} </span>
                             @enderror
@@ -92,7 +92,7 @@
                         <div class="form-group">
                             <label for="bano">Baño</label>
                             <input type="number" name="bano" class="form-control" id="bano"
-                                placeholder="Enter name">
+                                placeholder="Enter baño">
                             @error('bano')
                                 <span class="text-danger"> {{ $message }} </span>
                             @enderror
@@ -102,7 +102,7 @@
                         <div class="form-group">
                             <label for="aire_condicionado">Aire acondicionado</label>
                             <input type="checkbox" value="1" name="aire_condicionado" class="form-control" id="aire_condicionado"
-                                placeholder="Enter name">
+                                placeholder="Enter aire acondicionado">
                             @error('aire_condicionado')
                                 <span class="text-danger"> {{ $message }} </span>
                             @enderror
@@ -112,7 +112,7 @@
                         <div class="form-group">
                             <label for="balcon">Balcon</label>
                             <input type="checkbox" value="2" name="balcon" class="form-control" id="balcon"
-                                placeholder="Enter name">
+                                placeholder="Enter balcon">
                             @error('balcon')
                                 <span class="text-danger"> {{ $message }} </span>
                             @enderror
@@ -122,7 +122,7 @@
                         <div class="form-group">
                             <label for="internet">Internet</label>
                             <input type="checkbox" value="3" name="internet" class="form-control" id="internet"
-                                placeholder="Enter name">
+                                placeholder="Enter internet">
                             @error('internet')
                                 <span class="text-danger"> {{ $message }} </span>
                             @enderror
@@ -132,7 +132,7 @@
                         <div class="form-group">
                             <label for="Cable">Cable</label>
                             <input type="checkbox" value="4" name="cable" class="form-control" id="cable"
-                                placeholder="Enter name">
+                                placeholder="Enter cable">
                             @error('cable')
                                 <span class="text-danger"> {{ $message }} </span>
                             @enderror
@@ -142,7 +142,7 @@
                         <div class="form-group">
                             <label for="alberca">Alberca</label>
                             <input type="checkbox"  value="5" name="alberca" class="form-control" id="alberca"
-                                placeholder="Enter name">
+                                placeholder="Enter alberca">
                             @error('alberca')
                                 <span class="text-danger"> {{ $message }} </span>
                             @enderror
@@ -152,7 +152,7 @@
                         <div class="form-group">
                             <label for="lavaplatos">Lavaplatos</label>
                             <input type="checkbox"  value="6" name="lavaplatos" class="form-control" id="lavaplatos"
-                                placeholder="Enter name">
+                                placeholder="Enter lavaplatos">
                             @error('lavaplatos')
                                 <span class="text-danger"> {{ $message }} </span>
                             @enderror
@@ -162,7 +162,7 @@
                         <div class="form-group">
                             <label for="estacionamiento">Estacionamiento</label>
                             <input type="checkbox" value="7" name="estacionamiento" class="form-control" id="estacionamiento"
-                                placeholder="Enter name">
+                                placeholder="Enter estacionamiento">
                             @error('estacionamiento')
                                 <span class="text-danger"> {{ $message }} </span>
                             @enderror
@@ -172,7 +172,7 @@
                         <div class="form-group">
                             <label for="refrigerador">Refrigerador</label>
                             <input type="checkbox" value="8" name="refrigerador" class="form-control" id="refrigerador"
-                                placeholder="Enter name">
+                                placeholder="Enter refrigerador">
                             @error('refrigerador')
                                 <span class="text-danger"> {{ $message }} </span>
                             @enderror
@@ -182,7 +182,7 @@
                         <div class="form-group">
                             <label for="video_propiedad">Videos de la propiedad</label>
                             <input type="text" name="video_propiedad" class="form-control" id="video_propiedad"
-                                placeholder="Enter name">
+                                placeholder="Enter video de la propiedad">
                             @error('video_propiedad')
                                 <span class="text-danger"> {{ $message }} </span>
                             @enderror
@@ -192,7 +192,7 @@
                         <div class="form-group">
                             <label for="planos">Planos</label>
                             <input type="text" name="planos" class="form-control" id="planos"
-                                placeholder="Enter name">
+                                placeholder="Enter planos">
                             @error('planos')
                                 <span class="text-danger"> {{ $message }} </span>
                             @enderror
@@ -263,6 +263,13 @@
                                 @endforeach
                             </select>
                         </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-floathing">
+                        <label for="nombre_archivo">Documentación de Propiedades</label>
+                        <input type="file" name="nombre_archivo[]" class="form-control" multiple>
                     </div>
                 </div>
                 <!-- /.card-body -->

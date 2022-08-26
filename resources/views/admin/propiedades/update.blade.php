@@ -10,7 +10,8 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-md-right">
-                        <a class="btn btn-success btn-md" href="{{ route('propiedades.index') }}"><i class="fas fa-arrow-left"></i>
+                        <a class="btn btn-success btn-md" href="{{ route('propiedades.index') }}"><i
+                                class="fas fa-arrow-left"></i>
                             &nbsp; Volver a Inicio
                         </a>
                     </ol>
@@ -24,15 +25,18 @@
                 <h3 class="card-title">Actualizar Propiedad</h3>
             </div>
             <!-- /.card-header -->
+
+
             <!-- form start -->
-            <form method="POST" action="{{ route('propiedades.update', $propiedades->id) }}">
+
+            <form method="POST" action="{{ route('propiedades.update', $propiedades->id) }}" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body col-md-12">
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="nombre">Nombre</label>
-                            <input type="text" value="{{ $propiedades->nombre}}" name="nombre" class="form-control" id="nombre"
-                                placeholder="Enter name">
+                            <input type="text" value="{{ $propiedades->nombre }}" name="nombre" class="form-control"
+                                id="nombre" placeholder="Introduzca Nombre">
                             @error('nombre')
                                 <span class="text-danger"> {{ $message }} </span>
                             @enderror
@@ -41,8 +45,8 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="precio">Precio</label>
-                            <input type="number" value="{{ $propiedades->precio}}" name="precio" class="form-control" id="precio"
-                                placeholder="Enter name">
+                            <input type="number" value="{{ $propiedades->precio }}" name="precio" class="form-control"
+                                id="precio" placeholder="Introduzca Precio">
                             @error('precio')
                                 <span class="text-danger"> {{ $message }} </span>
                             @enderror
@@ -51,8 +55,8 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="tamano_propiedad">Tamaño de la propiedad</label>
-                            <input type="text" value="{{ $propiedades->tamano_propiedad}}" name="tamano_propiedad" class="form-control" id="tamano_propiedad"
-                                placeholder="Enter name">
+                            <input type="text" value="{{ $propiedades->tamano_propiedad }}" name="tamano_propiedad"
+                                class="form-control" id="tamano_propiedad" placeholder="Tamaño de la propiedad">
                             @error('tamano_propiedad')
                                 <span class="text-danger"> {{ $message }} </span>
                             @enderror
@@ -61,8 +65,9 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="tamano_propiedad_construido">Tamaño de la propiedad construida</label>
-                            <input type="text" value="{{ $propiedades->tamano_propiedad_construido}}" name="tamano_propiedad_construido" class="form-control" id="tamano_propiedad_construido"
-                                placeholder="Enter name">
+                            <input type="text" value="{{ $propiedades->tamano_propiedad_construido }}"
+                                name="tamano_propiedad_construido" class="form-control" id="tamano_propiedad_construido"
+                                placeholder="Tamaño de la propiedad construida">
                             @error('tamano_propiedad_construido')
                                 <span class="text-danger"> {{ $message }} </span>
                             @enderror
@@ -71,8 +76,8 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="fecha_construccion">Fecha de construccion</label>
-                            <input type="date" value="{{ $propiedades->fecha_construccion}}" name="fecha_construccion" class="form-control" id="fecha_construccion"
-                                placeholder="Enter name">
+                            <input type="date" value="{{ $propiedades->fecha_construccion }}" name="fecha_construccion"
+                                class="form-control" id="fecha_construccion" placeholder="Introduzca fecha de construccion">
                             @error('fecha_construccion')
                                 <span class="text-danger"> {{ $message }} </span>
                             @enderror
@@ -81,8 +86,8 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="recamaras">Recamaras</label>
-                            <input type="number" value="{{ $propiedades->recamaras}}" name="recamaras" class="form-control" id="recamaras"
-                                placeholder="Enter name">
+                            <input type="number" value="{{ $propiedades->recamaras }}" name="recamaras"
+                                class="form-control" id="recamaras" placeholder="Cantidad de recamaras">
                             @error('recamaras')
                                 <span class="text-danger"> {{ $message }} </span>
                             @enderror
@@ -91,8 +96,8 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="bano">Baño</label>
-                            <input type="number" value="{{ $propiedades->bano}}" name="bano" class="form-control" id="bano"
-                                placeholder="Enter name">
+                            <input type="number" value="{{ $propiedades->bano }}" name="bano" class="form-control"
+                                id="bano" placeholder="Cantidad de baños">
                             @error('bano')
                                 <span class="text-danger"> {{ $message }} </span>
                             @enderror
@@ -101,8 +106,8 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="aire_condicionado">Aire acondicionado</label>
-                            <input type="checkbox" value="1" name="aire_condicionado" class="form-control" id="aire_condicionado"
-                                placeholder="Enter name">
+                            <input type="checkbox" value="1" name="aire_condicionado" class="form-control"
+                                id="aire_condicionado" placeholder="">
                             @error('aire_condicionado')
                                 <span class="text-danger"> {{ $message }} </span>
                             @enderror
@@ -141,7 +146,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="alberca">Alberca</label>
-                            <input type="checkbox"  value="5" name="alberca" class="form-control" id="alberca"
+                            <input type="checkbox" value="5" name="alberca" class="form-control" id="alberca"
                                 placeholder="Enter name">
                             @error('alberca')
                                 <span class="text-danger"> {{ $message }} </span>
@@ -151,8 +156,8 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="lavaplatos">Lavaplatos</label>
-                            <input type="checkbox"  value="6" name="lavaplatos" class="form-control" id="lavaplatos"
-                                placeholder="Enter name">
+                            <input type="checkbox" value="6" name="lavaplatos" class="form-control"
+                                id="lavaplatos" placeholder="Enter name">
                             @error('lavaplatos')
                                 <span class="text-danger"> {{ $message }} </span>
                             @enderror
@@ -161,8 +166,8 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="estacionamiento">Estacionamiento</label>
-                            <input type="checkbox" value="7" name="estacionamiento" class="form-control" id="estacionamiento"
-                                placeholder="Enter name">
+                            <input type="checkbox" value="7" name="estacionamiento" class="form-control"
+                                id="estacionamiento" placeholder="Enter name">
                             @error('estacionamiento')
                                 <span class="text-danger"> {{ $message }} </span>
                             @enderror
@@ -171,8 +176,8 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="refrigerador">Refrigerador</label>
-                            <input type="checkbox" value="8" name="refrigerador" class="form-control" id="refrigerador"
-                                placeholder="Enter name">
+                            <input type="checkbox" value="8" name="refrigerador" class="form-control"
+                                id="refrigerador" placeholder="Enter name">
                             @error('refrigerador')
                                 <span class="text-danger"> {{ $message }} </span>
                             @enderror
@@ -182,7 +187,7 @@
                         <div class="form-group">
                             <label for="video_propiedad">Videos de la propiedad</label>
                             <input type="text" name="video_propiedad" class="form-control" id="video_propiedad"
-                                placeholder="Enter name">
+                                placeholder="Cargar video">
                             @error('video_propiedad')
                                 <span class="text-danger"> {{ $message }} </span>
                             @enderror
@@ -192,7 +197,7 @@
                         <div class="form-group">
                             <label for="planos">Planos</label>
                             <input type="text" name="planos" class="form-control" id="planos"
-                                placeholder="Enter name">
+                                placeholder="Cargar plano">
                             @error('planos')
                                 <span class="text-danger"> {{ $message }} </span>
                             @enderror
@@ -204,7 +209,7 @@
                             <select class="form-control select2" name="nearby_id" style="width: 100%;height: 100%;">
                                 <option selected="selected">Seleccionar</option>
                                 @foreach ($nearbys as $nearby)
-                                 <option value={{ $nearby->id }}>{{ $nearby->nombre }}</option>
+                                    <option value={{ $nearby->id }}>{{ $nearby->nombre }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -212,10 +217,12 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Seleccionar Solicitud del vendedor</label>
-                            <select class="form-control select2" name="solicitud_vendedor_id" style="width: 100%;height: 100%;">
+                            <select class="form-control select2" name="solicitud_vendedor_id"
+                                style="width: 100%;height: 100%;">
                                 <option selected="selected">Seleccionar</option>
                                 @foreach ($solicitudvendedor as $solicitudvendedo)
-                                    <option value={{ $solicitudvendedo->id }}>{{ $solicitudvendedo->nombre }}</option>
+                                    <option value={{ $solicitudvendedo->id }}>{{ $solicitudvendedo->nombre }}
+                                    </option>
                                 @endforeach
                             </select>
                         </div>
@@ -234,10 +241,12 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Seleccionar Estatus de la Propiedad</label>
-                            <select class="form-control select2" name="estatus_propiedad_id" style="width: 100%;height: 100%;">
+                            <select class="form-control select2" name="estatus_propiedad_id"
+                                style="width: 100%;height: 100%;">
                                 <option selected="selected">Seleccionar</option>
                                 @foreach ($estatuspropiedad as $estatupropiedad)
-                                    <option value={{ $estatupropiedad->id }}>{{ $estatupropiedad->nombre }}</option>
+                                    <option value={{ $estatupropiedad->id }}>{{ $estatupropiedad->nombre }}
+                                    </option>
                                 @endforeach
                             </select>
                         </div>
@@ -245,7 +254,8 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Seleccionar Tipo de propiedad</label>
-                            <select class="form-control select2" name="tipo_propiedad_id" style="width: 100%;height: 100%;">
+                            <select class="form-control select2" name="tipo_propiedad_id"
+                                style="width: 100%;height: 100%;">
                                 <option selected="selected">Seleccionar</option>
                                 @foreach ($tipopropiedades as $tipopropiedad)
                                     <option value={{ $tipopropiedad->id }}>{{ $tipopropiedad->nombre }}</option>
@@ -265,13 +275,22 @@
                         </div>
                     </div>
                 </div>
-                <!-- /.card-body -->
+                <div class="col-md-12">
+                    <div class="form-floathing">
+                        <label for="nombre_archivo">Documentación de Propiedades</label>
+                        <input type="file" name="nombre_archivo[]" class="form-control" multiple>
+                    </div>
+                </div>
 
+
+                <!-- /.card-body -->
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary">Crear</button>
                     <a href="{{ route('propiedades.index') }}" class="btn btn-danger">Cancelar</a>
                 </div>
             </form>
+
+
         </div>
     </div>
 @endsection

@@ -1,27 +1,25 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\ReviewSeller;
+use App\Models\MetodosPagos;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\Seller;
 
-
-class ReviewSellerController extends Controller
+class MetodosPagosController extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $review_seller = DB::table('review_sellers')->get();
+        $metodospagos = DB::table('metodos_pagos')->get();
 
-        return view('admin.review_sellers.index', compact('review_seller'));
+        return view('admin.metodospagos.index', compact('metodospagos'));
     }
 
     /**
@@ -31,11 +29,11 @@ class ReviewSellerController extends Controller
      */
     public function create()
     {
-        $sellers = DB::table('sellers')->get();
-        return view('admin.review_sellers.create', compact('sellers'));
+        $seller = DB::table('sellers')->get();
+        return view('admin.metodospagos.create', compact('seller'));
     }
 
-    /**
+     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -43,29 +41,33 @@ class ReviewSellerController extends Controller
      */
     public function store(Request $request)
     {
-         $request->validate([
+            $request->validate([
             'nombre' => 'required',
-            'descripcion' => 'required',
+            'numero_tarjeta' => 'required',
+            'fecha_vencimiento' => 'required',
+            'nip' => 'required',
             'seller_id' => 'required'
         ]);
 
 
-        ReviewSeller::insert([
+        MetodosPagos::insert([
             'nombre' => $request->nombre,
-            'descripcion' => $request->descripcion,
+            'numero_tarjeta' => $request->numero_tarjeta,
+            'fecha_vencimiento' => $request->fecha_vencimiento,
+            'nip' => $request->nip,
             'seller_id' => $request->seller_id,
             'created_at' => Carbon::now()
         ]);
 
         $notificacion = array(
-            'message' => "La creacion de la review del vendedor fue exitosa",
+            'message' => "El metodo de pago fue creado exitosamente",
             'alert-type' => 'success'
         );
 
-        return redirect()->route('reviewsellers.index')->with($notificacion);
+        return redirect()->route('metodospagos.index')->with($notificacion);
     }
 
-    /**
+      /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -84,10 +86,10 @@ class ReviewSellerController extends Controller
      */
     public function edit($id)
     {
-        $review_seller = ReviewSeller::findorFail($id);
+        $metodospagos = MetodosPagos::findorFail($id);
         $sellers = DB::table('sellers')->get();
 
-        return view('admin.review_sellers.update', compact('review_seller', 'sellers'));
+        return view('admin.metodospagos.update', compact('metodospagos', 'sellers'));
     }
 
     /**
@@ -99,26 +101,30 @@ class ReviewSellerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validate = $request->validate([
+        $request->validate([
             'nombre' => 'required',
-            'descripcion' => 'required',
+            'numero_tarjeta' => 'required',
+            'fecha_vencimiento' => 'required',
+            'nip' => 'required',
             'seller_id' => 'required'
         ]);
 
 
-        ReviewSeller::findOrFail($id)->update([
+        MetodosPagos::findOrFail($id)->insert([
             'nombre' => $request->nombre,
-            'descripcion' => $request->descripcion,
+            'numero_tarjeta' => $request->numero_tarjeta,
+            'fecha_vencimiento' => $request->fecha_vencimiento,
+            'nip' => $request->nip,
             'seller_id' => $request->seller_id,
             'updated_at' => Carbon::now()
         ]);
 
         $notificacion = array(
-            'message' => "La actualizacion de la review del vendedor fue exitosa",
+            'message' => "La actualizacion del metodo de pago fue exitoso",
             'alert-type' => 'success'
         );
 
-        return redirect()->route('reviewsellers.index')->with($notificacion);
+        return redirect()->route('metodospagos.index')->with($notificacion);
     }
 
     /**
@@ -130,21 +136,22 @@ class ReviewSellerController extends Controller
     public function destroy($id)
     {
         if ($id > 0) {
-            ReviewSeller::findOrFail($id)->delete();
+            MetodosPagos::findOrFail($id)->delete();
 
             $notification = array(
-                'message' => "La actualizacion de la review se eliminó correctamente",
+                'message' => "El metodo de pago se eliminó correctamente",
                 "alter-type" => "error"
             );
 
-            return  redirect()->route('reviewsellers.index')->with($notification);
+            return  redirect()->route('metodospagos.index')->with($notification);
         }
 
         $notification = array(
-            'message' => "La review del seller no existe",
+            'message' => "El metodo de pago no existe",
             "alter-type" => "error"
         );
 
-        return redirect()->route('reviewsellers.index')->with($notification);
+        return redirect()->route('metodospagos.index')->with($notification);
     }
+
 }

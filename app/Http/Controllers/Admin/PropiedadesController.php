@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\EstatusPropiedad;
+use App\Models\GaleriaPropiedades;
 use App\Models\Locacion;
 use App\Models\Nearbys;
 use Carbon\Carbon;
@@ -52,7 +53,7 @@ class PropiedadesController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+       $data = $request->validate([
             'nombre' => 'required',
             'precio' => 'required',
 
@@ -85,6 +86,22 @@ class PropiedadesController extends Controller
             'tipo_propiedad_id' => $request->tipo_propiedad_id,
             'created_at' => Carbon::now()
         ]);
+
+
+
+        $new_propiedad = Propiedades::create($data);
+
+        if ($request->has('nombre_archivo')) {
+            foreach ($request->file('nombre_archivo') as $documento) {
+                $documento_nname = $data['nombre'] . '-documento-' . time() . rand(1, 1000) . '.' . $documento->extension();
+                $documento->move(public_path('propiedades_documentos'), $documento_nname);
+                GaleriaPropiedades::create([
+                    'propiedad_id' => $new_propiedad->id,
+                    'nombre_archivo' => $documento_nname,
+                    'created_at' => Carbon::now()
+                ]);
+            }
+        }
 
         $notificacion = array(
             'message' => "La alta de propiedades fue exitosa",
@@ -121,7 +138,8 @@ class PropiedadesController extends Controller
             $nearbys = Nearbys::latest()->get();
             $reviews = Reviews::latest()->get();
             $solicitudvendedor = SolicitudVendedor::latest()->get();
-            return view('admin.propiedades.update', compact("propiedades", "estatuspropiedad", "locacion", "tipopropiedades", "nearbys", "reviews", "solicitudvendedor"));
+            $galeria_priopiedad = GaleriaPropiedades::where('propiedad_id', $propiedades->id)->get();
+            return view('admin.propiedades.update', compact("propiedades", "estatuspropiedad", "locacion", "tipopropiedades", "nearbys", "reviews", "solicitudvendedor","galeria_priopiedad"));
         }
 
         $notification = array(

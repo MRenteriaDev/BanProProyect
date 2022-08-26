@@ -101,7 +101,7 @@ class LocacionController extends Controller
         ]);
 
 
-        Locacion::findOrFail($id)->insert([
+        Locacion::findOrFail($id)->update([
             'nombre' => $request->nombre,
             'zona_id' => $request->zona_id,
             'updated_at' => Carbon::now()

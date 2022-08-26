@@ -25,7 +25,7 @@
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form method="POST" action="{{ route('galeriapropiedad.update', $galeriapropiedades->id) }}">
+            <form method="POST" action="{{ route('galeriapropiedad.update', $galeriapropiedades->id) }}" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body col-md-12">
                     <div class="col-md-6">
@@ -42,12 +42,19 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Seleccionar Propiedad</label>
-                            <select class="form-control select2" name="propiedad_id" style="width: 100%;height: 100%;">
-                                <option selected="selected">Seleccionar</option>
+                            <select class="form-control select2" name="propiedad_id" style="width: 100%;height: 100%;" disabled>
+                                <option disabled>Seleccionar</option>
                                 @foreach ($propiedades as $propiedad)
                                     <option value={{ $propiedad->id }}>{{ $propiedad->nombre }}</option>
                                 @endforeach
                             </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-floathing">
+                            <label for="nombre_archivo">Documentación de Propiedades</label>
+                            <input type="file" name="nombre_archivo[]" class="form-control" multiple>
                         </div>
                     </div>
 

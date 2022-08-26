@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\ZonasController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Cliente\IndexController;
+use App\Http\Controllers\MetodosPagosController;
 use App\Http\Controllers\SellerController;
 use App\Models\Propiedades;
 
@@ -165,6 +166,17 @@ Route::prefix('propiedades')->group(function () {
     Route::get('/destroy/{id}', [PropiedadesController::class, 'destroy'])->name('propiedades.destroy');
 });
 /* ------------- End Propiedades -------------- */
+
+/* ------------- Metodos de Pago -------------- */
+Route::prefix('metodospagos')->group(function () {
+    Route::get('/index', [MetodosPagosController::class, 'index'])->name('metodospagos.index');
+    Route::get('/create', [MetodosPagosController::class, 'create'])->name('metodospagos.create');
+    Route::post('/store', [MetodosPagosController::class, 'store'])->name('metodospagos.store');
+    Route::get('/edit/{id}', [MetodosPagosController::class, 'edit'])->name('metodospagos.edit');
+    Route::post('/update/{id}', [MetodosPagosController::class, 'update'])->name('metodospagos.update');
+    Route::get('/destroy/{id}', [MetodosPagosController::class, 'destroy'])->name('metodospagos.destroy');
+});
+/* ------------- End Metodos de Pago -------------- */
 
 
 
