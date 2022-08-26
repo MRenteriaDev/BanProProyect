@@ -38,6 +38,8 @@
                                     aria-label="Rendering engine: activate to sort column descending">Nombre del archivo
                                 </th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-label="Browser: activate to sort column ascending"> Visualizacion</th>
+                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                     aria-label="Browser: activate to sort column ascending">Fecha creacion</th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                     aria-label="Platform(s): activate to sort column ascending">
@@ -51,6 +53,7 @@
                             @foreach ($galeriapropiedades as $galeriapropiedad)
                                 <tr class="odd">
                                     <td class="dtr-control sorting_1" tabindex="0">{{ $galeriapropiedad->nombre_archivo }}</td>
+                                    <td><img src="{{ asset('propiedades_documentos/'. $galeriapropiedad->id)}}" width="70px" height="70px" alt="image"></td>
                                     <td>{{ $galeriapropiedad->created_at }}</td>
                                     <th class="row">
                                         <div class="btn-group" role="group" aria-label="Basic example">
