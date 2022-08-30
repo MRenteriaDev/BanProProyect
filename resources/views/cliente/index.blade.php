@@ -533,6 +533,9 @@
                 </article>
             </div>
         </div>
+        <div class="bg-all">
+            <a href="#" class="btn btn-outline-light">View More</a>
+        </div>
     </section>
     <!-- END SECTION WHY CHOOSE US -->
 
@@ -1113,7 +1116,7 @@
                 <div class="team-block col-sm-6 col-md-4 col-lg-4 col-xl-2" data-aos="fade-up" data-aos-delay="150">
                     <div class="inner-box team-details">
                         <div class="image team-head">
-                            <a href="agents-listing-grid.html"><img src="images/team/t-5.jpg" alt="" /></a>
+                            <a href="{{route('seller.grid-single', $principal_place->id)}}"><img src="images/team/t-5.jpg" alt="" /></a>
                             <div class="team-hover">
                                 <ul class="team-social">
                                     <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
@@ -1124,7 +1127,7 @@
                             </div>
                         </div>
                         <div class="lower-box">
-                            <h3><a href="agents-listing-grid.html">Carls Jhons</a></h3>
+                            <h3><a href="{{route('seller.grid-single', $principal_place->id)}}">Carls Jhons</a></h3>
                             <div class="designation">Real Estate Agent</div>
                         </div>
                     </div>
@@ -1232,6 +1235,10 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <br>
+            <div class="bg-all">
+                <a href="{{route('sellers.grid')}}" class="btn btn-outline-light">View More</a>
             </div>
         </div>
     </section>

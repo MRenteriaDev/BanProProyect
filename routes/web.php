@@ -218,6 +218,11 @@ Route::prefix('properties')->group(function () {
     Route::get('/grid/{id}', [IndexController::class, 'propertyGrid'])->name('properties.grid-single');
 });
 
+Route::prefix('sellers')->group(function () {
+    Route::get('/grid', [IndexController::class, 'sellersGrid'])->name('sellers.grid');
+    Route::get('/grid/{id}', [IndexController::class, 'sellerGrid'])->name('seller.grid-single');
+});
+
 /// fin de las  Rutas del index
 Route::get('/', function () {
     return view('cliente.index');

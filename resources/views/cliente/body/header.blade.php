@@ -26,11 +26,10 @@
                         </li>
                         <li><a href="#" class="text-dark">Property</a>
                         </li>
-                        <li><a class="text-dark" href="#">Pages</a>
+                        <li><a class="text-dark" href="#">Sellers</a>
                         </li>
-                        <li><a class="text-dark" href="#">Blog</a>
+                        <li><a class="text-dark" href="#">Contact</a>
                         </li>
-                        <li><a href="contact-us.html">Contact</a></li>
                         <li class="d-none d-xl-none d-block d-lg-block"><a href="login.html">Login</a></li>
                         <li class="d-none d-xl-none d-block d-lg-block"><a href="register.html">Register</a>
                         </li>

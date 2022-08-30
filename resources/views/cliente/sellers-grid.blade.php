@@ -22,7 +22,7 @@
                         <div class="detail-wrapper-body">
                             <div class="listing-title-bar">
                                 <div class="text-heading text-left">
-                                    <p class="pb-2"><a href="index.html">Home </a> &nbsp;/&nbsp; <span>Properties</span></p>
+                                    <p class="pb-2"><a href="index.html">Home </a> &nbsp;/&nbsp; <span>Sellers</span></p>
                                 </div>
                                 <h3>Grid View</h3>
                             </div>

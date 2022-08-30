@@ -20,4 +20,16 @@ class IndexController extends Controller
         $property = DB::table('propiedades')->where('id', $id)->get();
         return view('cliente.property', compact("property"));
     }
+
+    public function sellersGrid()
+    {
+        $sellers = DB::table('sellers')->get();
+        return view('cliente.sellers-grid', compact("sellers"));
+    }
+
+    public function sellerGrid($id)
+    {
+        $seller = DB::table('sellers')->where('id', $id)->get();
+        return view('cliente.sellers', compact("seller"));
+    }
 }
