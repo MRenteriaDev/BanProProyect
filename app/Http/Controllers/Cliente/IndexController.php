@@ -32,4 +32,9 @@ class IndexController extends Controller
         $seller = DB::table('sellers')->where('id', $id)->get();
         return view('cliente.sellers', compact("seller"));
     }
+
+    public function contact()
+    {
+        return view('cliente.contact');
+    }
 }

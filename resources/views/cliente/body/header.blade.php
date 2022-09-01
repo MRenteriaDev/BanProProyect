@@ -22,13 +22,11 @@
                     <ul id="responsive">
                         <li><a href="{{url('/')}}" class="btn btn-sm">Home</a>
                         </li>
-                        <li><a class="text-dark" href="#">Listing</a>
+                        <li><a class="text-dark"  href="{{route('properties.grid')}}">Propiedades</a>
                         </li>
-                        <li><a href="#" class="text-dark">Property</a>
+                        <li><a class="text-dark" href="{{route('sellers.grid')}}">Vendedores</a>
                         </li>
-                        <li><a class="text-dark" href="#">Sellers</a>
-                        </li>
-                        <li><a class="text-dark" href="#">Contact</a>
+                        <li><a class="text-dark" href="{{ route('contact')}}">Contacto</a>
                         </li>
                         <li class="d-none d-xl-none d-block d-lg-block"><a href="login.html">Login</a></li>
                         <li class="d-none d-xl-none d-block d-lg-block"><a href="register.html">Register</a>

@@ -223,6 +223,10 @@ Route::prefix('sellers')->group(function () {
     Route::get('/grid/{id}', [IndexController::class, 'sellerGrid'])->name('seller.grid-single');
 });
 
+Route::prefix('contacts')->group(function () {
+    Route::get('/contact', [IndexController::class, 'contact'])->name('contact');
+});
+
 /// fin de las  Rutas del index
 Route::get('/', function () {
     return view('cliente.index');
