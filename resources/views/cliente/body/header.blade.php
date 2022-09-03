@@ -20,7 +20,7 @@
                 <!-- Main Navigation -->
                 <nav id="navigation" class="style-1 head-tr">
                     <ul id="responsive">
-                        <li><a href="{{url('/')}}" class="btn btn-sm">Home</a>
+                        <li><a href="{{url('/')}}" class="btn btn-sm">Panel</a>
                         </li>
                         <li><a class="text-dark"  href="{{route('properties.grid')}}">Propiedades</a>
                         </li>
@@ -40,12 +40,12 @@
                 <!-- Main Navigation / End -->
             </div>
             <!-- Left Side Content / End -->
-->
+
 
             <!-- Right Side Content / End -->
             <div class="header-user-menu user-menu add">
                 <div class="header-user-name">
-                    <span><img src="{{asset('cliente/images/testimonials/ts-1.jpg')}}" alt=""></span>Hi, Mary!
+                    <span><img src="{{asset('cliente/images/testimonials/ts-1.jpg')}}" alt=""></span>Hola!
                 </div>
                 <ul>
                     <li><a href="user-profile.html"> Edit profile</a></li>
@@ -60,27 +60,11 @@
             <div class="right-side d-none d-none d-lg-none d-xl-flex sign ml-0">
                 <!-- Header Widget -->
                 <div class="header-widget sign-in">
-                    <div class="show-reg-form modal-open"><a href="{{route('login')}}">Sign In</a></div>
+                    <div class="show-reg-form modal-open"><a href="{{route('login')}}">Unete!</a></div>
                 </div>
                 <!-- Header Widget / End -->
             </div>
             <!-- Right Side Content / End -->
-
-            <!-- lang-wrap-->
-            <div class="header-user-menu user-menu add d-none d-lg-none d-xl-flex">
-                <div class="lang-wrap">
-                    <div class="show-lang"><span><i
-                                class="fas fa-globe-americas"></i><strong>ENG</strong></span><i
-                            class="fa fa-caret-down arrlan"></i></div>
-                    <ul class="lang-tooltip lang-action no-list-style">
-                        <li><a href="#" class="current-lan" data-lantext="En">English</a></li>
-                        <li><a href="#" data-lantext="Fr">Francais</a></li>
-                        <li><a href="#" data-lantext="Es">Espanol</a></li>
-                        <li><a href="#" data-lantext="De">Deutsch</a></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- lang-wrap end-->
 
         </div>
     </div>
