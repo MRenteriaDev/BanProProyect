@@ -22,7 +22,7 @@
                         <div class="detail-wrapper-body">
                             <div class="listing-title-bar">
                                 <div class="text-heading text-left">
-                                    <p class="pb-2"><a href="index.html">Home </a> &nbsp;/&nbsp; <span>Listings</span></p>
+                                    <p class="pb-2"><a href="index.html">Panel </a> &nbsp;/&nbsp; <span>Vendedores</span></p>
                                 </div>
                                 <h3>Vista Cuadriculada</h3>
                             </div>
@@ -44,7 +44,7 @@
                                     <div class="input-group border rounded input-group-lg w-auto mr-4">
                                         <label class="input-group-text bg-transparent border-0 text-uppercase letter-spacing-093 pr-1 pl-3" for="inputGroupSelect01"><i class="fas fa-align-left fs-16 pr-2"></i>Filtrar Por:</label>
                                         <select class="form-control border-0 bg-transparent shadow-none p-0 selectpicker sortby" data-style="bg-transparent border-0 font-weight-600 btn-lg pl-0 pr-3" id="inputGroupSelect01" name="sortby">
-                                            <option selected>Mas vista</option>
+                                            <option selected>Mas Ventas</option>
                                             <option value="1">Most Viewed</option>
                                             <option value="2">Price(low to high)</option>
                                             <option value="3">Price(high to low)</option>
@@ -63,9 +63,9 @@
                                     <div class="recent-img16 img-center" style="background-image: url('{{ asset('cliente/images/interior/p-1.png')}}')"></div>
                                     <div class="recent-content"></div>
                                     <div class="recent-details">
-                                        <div class="recent-title"> Casa Lujosa</div>
-                                        <div class="recent-price">$230,000</div>
-                                        <div class="house-details">6 camas <span>|</span> 3 baños <span>|</span> 720 sq ft</div>
+                                        <div class="recent-title"> Ivan Mirazo</div>
+                                        <div class="recent-price">6624879464</div>
+                                        <div class="house-details"> 7 Reseñas <span>|</span> 4 Ventas <span>|</span> 14 Propiedades</div>
                                     </div>
                                     <div class="view-proper">View Details</div>
                                 </a>
@@ -75,9 +75,9 @@
                                     <div class="recent-img16 img-center" style="background-image: url('{{ asset('cliente/images/interior/p-2.png')}}')"></div>
                                     <div class="recent-content"></div>
                                     <div class="recent-details">
-                                        <div class="recent-title"> Apartamento familiar</div>
-                                        <div class="recent-price">$180,000</div>
-                                        <div class="house-details">4 Camas <span>|</span> 2 Bath <span>|</span> 720 sq ft</div>
+                                        <div class="recent-title"> Miguel Pineda</div>
+                                        <div class="recent-price">6625151524</div>
+                                        <div class="house-details">2 Reseñas <span>|</span> 6 Ventas <span>|</span> 8 Propiedades</div>
                                     </div>
                                     <div class="view-proper">View Details</div>
                                 </a>
@@ -87,9 +87,9 @@
                                     <div class="recent-img16 img-center" style="background-image: url('{{ asset('cliente/images/interior/p-3.png')}}')"></div>
                                     <div class="recent-content"></div>
                                     <div class="recent-details">
-                                        <div class="recent-title"> Casa en la villa</div>
-                                        <div class="recent-price">$160,000</div>
-                                        <div class="house-details">4 camas <span>|</span> 3 baños <span>|</span> 720 sq ft</div>
+                                        <div class="recent-title"> Angelica Rivas</div>
+                                        <div class="recent-price">6621232332</div>
+                                        <div class="house-details">15 Opiniones <span>|</span> 20 Ventas <span>|</span> 25 Propiedades</div>
                                     </div>
                                     <div class="view-proper">View Details</div>
                                 </a>
@@ -99,9 +99,9 @@
                                     <div class="recent-img16 img-center" style="background-image: url('{{ asset('cliente/images/interior/p-4.png')}}')"></div>
                                     <div class="recent-content"></div>
                                     <div class="recent-details">
-                                        <div class="recent-title">Condominio lujoso</div>
-                                        <div class="recent-price">$250,000</div>
-                                        <div class="house-details">8 Bed <span>|</span> 4 Bath <span>|</span> 720 sq ft</div>
+                                        <div class="recent-title">Sofia Balderrama</div>
+                                        <div class="recent-price">6627546458</div>
+                                        <div class="house-details">10 Opiniones <span>|</span> 12 Ventas<span>|</span> 20 Propiedades</div>
                                     </div>
                                     <div class="view-proper">View Details</div>
                                 </a>
@@ -185,7 +185,7 @@
                             <!-- Search Fields -->
                             <div class="widget-boxed main-search-field">
                                 <div class="widget-boxed-header">
-                                    <h4>Encuentra tu casa</h4>
+                                    <h4>Encuentra tu agente</h4>
                                 </div>
                                 <!-- Search Form -->
                                 <div class="trip-search">
@@ -215,7 +215,7 @@
                                         </div>
                                         <!--/ End Form Location -->
                                         <!-- Form Categories -->
-                                        <div class="form-group categories">
+                                       {{--  <div class="form-group categories">
                                             <div class="nice-select form-control wide" tabindex="0"><span class="current"><i class="fa fa-home" aria-hidden="true"></i>Tipo De Propiedad</span>
                                                 <ul class="list">
                                                     <li data-value="1" class="option selected ">House</li>
@@ -276,20 +276,20 @@
                                         <!--/ End Form Bathrooms -->
                                     </form>
                                 </div>
-                                <!--/ End Search Form -->
+                                <!--/ End Search Form --> --}}
                                 <!-- Price Fields -->
                                 <div class="main-search-field-2">
                                     <!-- Area Range -->
                                     <div class="range-slider">
-                                        <label>Tamaño Del Area</label>
-                                        <div id="area-range" data-min="0" data-max="1300" data-unit="sq ft"></div>
+                                        <label>Rango De Ventas</label>
+                                        <div id="area-range" data-min="0" data-max="100" data-unit=""></div>
                                         <div class="clearfix"></div>
                                     </div>
                                     <br>
                                     <!-- Price Range -->
                                     <div class="range-slider">
-                                        <label>Rango De Precio</label>
-                                        <div id="price-range" data-min="0" data-max="600000" data-unit="$"></div>
+                                        <label>Rango De Opiniones</label>
+                                        <div id="price-range" data-min="0" data-max="100" data-unit=""></div>
                                         <div class="clearfix"></div>
                                     </div>
                                 </div>
