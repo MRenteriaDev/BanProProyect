@@ -24,7 +24,7 @@
             <!-- START SECTION 404 -->
             <div id="login">
                 <div class="login">
-                    <form autocomplete="off" method="POST" action="{{ route('seller.register') }}">
+                    <form autocomplete="off" method="POST" action="{{ route('register') }}">
                         @csrf
                         <div class="form-group">
                             <label>Your Name</label>
@@ -47,7 +47,7 @@
                             <i class="icon_lock_alt"></i>
                         </div>
                         <div id="pass-info" class="clearfix"></div>
-                        <a href="#0" class="btn_1 rounded full-width add_top_30">Register Now!</a>
+                        <button type="submit" class="btn_1 rounded full-width add_top_30">Register Now!</button>
                         <div class="text-center add_top_10">Already have an acccount? <strong><a href="login.html">Sign
                                     In</a></strong></div>
                     </form>
