@@ -22,9 +22,9 @@
                         <div class="detail-wrapper-body">
                             <div class="listing-title-bar">
                                 <div class="text-heading text-left">
-                                    <p class="pb-2"><a href="index.html">Home </a> &nbsp;/&nbsp; <span>Properties</span></p>
+                                    <p class="pb-2"><a href="index.html">Home </a> &nbsp;/&nbsp; <span>Listings</span></p>
                                 </div>
-                                <h3>Grid View</h3>
+                                <h3>Vista Cuadriculada</h3>
                             </div>
                         </div>
                     </div>
@@ -36,15 +36,15 @@
                                 <div class="detail-wrapper-body">
                                     <div class="listing-title-bar">
                                         <div class="text-heading text-left">
-                                            <p class="font-weight-bold mb-0 mt-3">10 Search results</p>
+                                            <p class="font-weight-bold mb-0 mt-3">10 Resultados</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="cod-pad single detail-wrapper mr-2 mt-0 d-flex justify-content-md-end align-items-center grid">
                                     <div class="input-group border rounded input-group-lg w-auto mr-4">
-                                        <label class="input-group-text bg-transparent border-0 text-uppercase letter-spacing-093 pr-1 pl-3" for="inputGroupSelect01"><i class="fas fa-align-left fs-16 pr-2"></i>Sortby:</label>
+                                        <label class="input-group-text bg-transparent border-0 text-uppercase letter-spacing-093 pr-1 pl-3" for="inputGroupSelect01"><i class="fas fa-align-left fs-16 pr-2"></i>Filtrar Por:</label>
                                         <select class="form-control border-0 bg-transparent shadow-none p-0 selectpicker sortby" data-style="bg-transparent border-0 font-weight-600 btn-lg pl-0 pr-3" id="inputGroupSelect01" name="sortby">
-                                            <option selected>Top Selling</option>
+                                            <option selected>Mas vista</option>
                                             <option value="1">Most Viewed</option>
                                             <option value="2">Price(low to high)</option>
                                             <option value="3">Price(high to low)</option>
@@ -60,31 +60,55 @@
                         <div class="row portfolio-items">
                             <div class="item col-lg-6 col-md-6 col-xs-12 landscapes sale">
                                 <a href="single-property-1.html" class="recent-16" data-aos="fade-up">
-                                    <div class="recent-img16 img-center" style="background-image: url(images/interior/p-1.png);"></div>
+                                    <div class="recent-img16 img-center" style="background-image: url('{{ asset('cliente/images/interior/p-1.png')}}')"></div>
                                     <div class="recent-content"></div>
                                     <div class="recent-details">
-                                        <div class="recent-title">Luxury House</div>
+                                        <div class="recent-title"> Casa Lujosa</div>
                                         <div class="recent-price">$230,000</div>
-                                        <div class="house-details">6 Bed <span>|</span> 3 Bath <span>|</span> 720 sq ft</div>
+                                        <div class="house-details">6 camas <span>|</span> 3 baños <span>|</span> 720 sq ft</div>
                                     </div>
                                     <div class="view-proper">View Details</div>
                                 </a>
                             </div>
                             <div class="item col-lg-6 col-md-6 col-xs-12 people rent">
                                 <a href="single-property-1.html" class="recent-16" data-aos="fade-up">
-                                    <div class="recent-img16 img-center" style="background-image: url(images/interior/p-2.png);"></div>
+                                    <div class="recent-img16 img-center" style="background-image: url('{{ asset('cliente/images/interior/p-2.png')}}')"></div>
                                     <div class="recent-content"></div>
                                     <div class="recent-details">
-                                        <div class="recent-title">Family Apartment</div>
-                                        <div class="recent-price">$230,000</div>
-                                        <div class="house-details">6 Bed <span>|</span> 3 Bath <span>|</span> 720 sq ft</div>
+                                        <div class="recent-title"> Apartamento familiar</div>
+                                        <div class="recent-price">$180,000</div>
+                                        <div class="house-details">4 Camas <span>|</span> 2 Bath <span>|</span> 720 sq ft</div>
                                     </div>
                                     <div class="view-proper">View Details</div>
                                 </a>
                             </div>
                             <div class="item col-lg-6 col-md-6 col-xs-12 people landscapes sale">
                                 <a href="single-property-1.html" class="recent-16" data-aos="fade-up">
-                                    <div class="recent-img16 img-center" style="background-image: url(images/interior/p-3.png);"></div>
+                                    <div class="recent-img16 img-center" style="background-image: url('{{ asset('cliente/images/interior/p-3.png')}}')"></div>
+                                    <div class="recent-content"></div>
+                                    <div class="recent-details">
+                                        <div class="recent-title"> Casa en la villa</div>
+                                        <div class="recent-price">$160,000</div>
+                                        <div class="house-details">4 camas <span>|</span> 3 baños <span>|</span> 720 sq ft</div>
+                                    </div>
+                                    <div class="view-proper">View Details</div>
+                                </a>
+                            </div>
+                            <div class="item col-lg-6 col-md-6 col-xs-12 people landscapes rent h-17 no-pb">
+                                <a href="single-property-1.html" class="recent-16" data-aos="fade-up">
+                                    <div class="recent-img16 img-center" style="background-image: url('{{ asset('cliente/images/interior/p-4.png')}}')"></div>
+                                    <div class="recent-content"></div>
+                                    <div class="recent-details">
+                                        <div class="recent-title">Condominio lujoso</div>
+                                        <div class="recent-price">$250,000</div>
+                                        <div class="house-details">8 Bed <span>|</span> 4 Bath <span>|</span> 720 sq ft</div>
+                                    </div>
+                                    <div class="view-proper">View Details</div>
+                                </a>
+                            </div>
+                            <div class="item col-lg-6 col-md-6 col-xs-12 people landscapes sale">
+                                <a href="single-property-1.html" class="recent-16" data-aos="fade-up">
+                                    <div class="recent-img16 img-center" style="background-image: url('{{ asset('cliente/images/interior/p-5.png')}}')"></div>
                                     <div class="recent-content"></div>
                                     <div class="recent-details">
                                         <div class="recent-title">Villa House</div>
@@ -96,7 +120,7 @@
                             </div>
                             <div class="item col-lg-6 col-md-6 col-xs-12 people landscapes rent h-17 no-pb">
                                 <a href="single-property-1.html" class="recent-16" data-aos="fade-up">
-                                    <div class="recent-img16 img-center" style="background-image: url(images/interior/p-4.png);"></div>
+                                    <div class="recent-img16 img-center" style="background-image: url('{{ asset('cliente/images/interior/p-1.png')}}')"></div>
                                     <div class="recent-content"></div>
                                     <div class="recent-details">
                                         <div class="recent-title">Luxury Condo</div>
@@ -108,7 +132,7 @@
                             </div>
                             <div class="item col-lg-6 col-md-6 col-xs-12 people landscapes sale">
                                 <a href="single-property-1.html" class="recent-16" data-aos="fade-up">
-                                    <div class="recent-img16 img-center" style="background-image: url(images/interior/p-5.png);"></div>
+                                    <div class="recent-img16 img-center" style="background-image: url('{{ asset('cliente/images/interior/p-2.png')}}')"></div>
                                     <div class="recent-content"></div>
                                     <div class="recent-details">
                                         <div class="recent-title">Villa House</div>
@@ -120,31 +144,7 @@
                             </div>
                             <div class="item col-lg-6 col-md-6 col-xs-12 people landscapes rent h-17 no-pb">
                                 <a href="single-property-1.html" class="recent-16" data-aos="fade-up">
-                                    <div class="recent-img16 img-center" style="background-image: url(images/interior/p-1.png);"></div>
-                                    <div class="recent-content"></div>
-                                    <div class="recent-details">
-                                        <div class="recent-title">Luxury Condo</div>
-                                        <div class="recent-price">$230,000</div>
-                                        <div class="house-details">6 Bed <span>|</span> 3 Bath <span>|</span> 720 sq ft</div>
-                                    </div>
-                                    <div class="view-proper">View Details</div>
-                                </a>
-                            </div>
-                            <div class="item col-lg-6 col-md-6 col-xs-12 people landscapes sale">
-                                <a href="single-property-1.html" class="recent-16" data-aos="fade-up">
-                                    <div class="recent-img16 img-center" style="background-image: url(images/interior/p-2.png);"></div>
-                                    <div class="recent-content"></div>
-                                    <div class="recent-details">
-                                        <div class="recent-title">Villa House</div>
-                                        <div class="recent-price">$230,000</div>
-                                        <div class="house-details">6 Bed <span>|</span> 3 Bath <span>|</span> 720 sq ft</div>
-                                    </div>
-                                    <div class="view-proper">View Details</div>
-                                </a>
-                            </div>
-                            <div class="item col-lg-6 col-md-6 col-xs-12 people landscapes rent h-17 no-pb">
-                                <a href="single-property-1.html" class="recent-16" data-aos="fade-up">
-                                    <div class="recent-img16 img-center" style="background-image: url(images/interior/p-3.png);"></div>
+                                    <div class="recent-img16 img-center" style="background-image: url('{{ asset('cliente/images/interior/p-3.png')}}')"></div>
                                     <div class="recent-content"></div>
                                     <div class="recent-details">
                                         <div class="recent-title">Luxury Condo</div>
@@ -156,7 +156,7 @@
                             </div>
                             <div class="item col-lg-6 col-md-6 col-xs-12 people sale h-177 no-pb">
                                 <a href="single-property-1.html" class="recent-16" data-aos="fade-up">
-                                    <div class="recent-img16 img-center" style="background-image: url(images/interior/p-4.png);"></div>
+                                    <div class="recent-img16 img-center" style="background-image: url('{{ asset('cliente/images/interior/p-4.png')}}')"></div>
                                     <div class="recent-content"></div>
                                     <div class="recent-details">
                                         <div class="recent-title">Luxury House</div>
@@ -168,7 +168,7 @@
                             </div>
                             <div class="item col-lg-6 col-md-6 it2 col-xs-12 web rent ho17-thelast no-pb">
                                 <a href="single-property-1.html" class="recent-16" data-aos="fade-up">
-                                    <div class="recent-img16 img-center" style="background-image: url(images/interior/p-5.png);"></div>
+                                    <div class="recent-img16 img-center" style="background-image: url('{{ asset('cliente/images/interior/p-5.png')}}')"></div>
                                     <div class="recent-content"></div>
                                     <div class="recent-details">
                                         <div class="recent-title">Luxury House</div>
@@ -185,7 +185,7 @@
                             <!-- Search Fields -->
                             <div class="widget-boxed main-search-field">
                                 <div class="widget-boxed-header">
-                                    <h4>Find Your House</h4>
+                                    <h4>Encuentra tu casa</h4>
                                 </div>
                                 <!-- Search Form -->
                                 <div class="trip-search">
@@ -194,14 +194,14 @@
                                         <div class="form-group looking">
                                             <div class="first-select wide">
                                                 <div class="main-search-input-item">
-                                                    <input type="text" placeholder="Enter Keyword..." value="" />
+                                                    <input type="text" placeholder="Escribe" value="" />
                                                 </div>
                                             </div>
                                         </div>
                                         <!--/ End Form Lookin for -->
                                         <!-- Form Location -->
                                         <div class="form-group location">
-                                            <div class="nice-select form-control wide" tabindex="0"><span class="current"><i class="fa fa-map-marker"></i>Location</span>
+                                            <div class="nice-select form-control wide" tabindex="0"><span class="current"><i class="fa fa-map-marker"></i>Locacion</span>
                                                 <ul class="list">
                                                     <li data-value="1" class="option selected ">New York</li>
                                                     <li data-value="2" class="option">Los Angeles</li>
@@ -216,7 +216,7 @@
                                         <!--/ End Form Location -->
                                         <!-- Form Categories -->
                                         <div class="form-group categories">
-                                            <div class="nice-select form-control wide" tabindex="0"><span class="current"><i class="fa fa-home" aria-hidden="true"></i>Property Type</span>
+                                            <div class="nice-select form-control wide" tabindex="0"><span class="current"><i class="fa fa-home" aria-hidden="true"></i>Tipo De Propiedad</span>
                                                 <ul class="list">
                                                     <li data-value="1" class="option selected ">House</li>
                                                     <li data-value="2" class="option">Apartment</li>
@@ -230,7 +230,7 @@
                                         <!--/ End Form Categories -->
                                         <!-- Form Property Status -->
                                         <div class="form-group categories">
-                                            <div class="nice-select form-control wide" tabindex="0"><span class="current"><i class="fa fa-home"></i>Property Status</span>
+                                            <div class="nice-select form-control wide" tabindex="0"><span class="current"><i class="fa fa-home"></i>Estatus De La Propiedad</span>
                                                 <ul class="list">
                                                     <li data-value="1" class="option selected ">For Sale</li>
                                                     <li data-value="2" class="option">For Rent</li>
@@ -240,7 +240,7 @@
                                         <!--/ End Form Property Status -->
                                         <!-- Form Bedrooms -->
                                         <div class="form-group beds">
-                                            <div class="nice-select form-control wide" tabindex="0"><span class="current"><i class="fa fa-bed" aria-hidden="true"></i> Bedrooms</span>
+                                            <div class="nice-select form-control wide" tabindex="0"><span class="current"><i class="fa fa-bed" aria-hidden="true"></i> Cuartos</span>
                                                 <ul class="list">
                                                     <li data-value="1" class="option selected">1</li>
                                                     <li data-value="2" class="option">2</li>
@@ -258,7 +258,7 @@
                                         <!--/ End Form Bedrooms -->
                                         <!-- Form Bathrooms -->
                                         <div class="form-group bath">
-                                            <div class="nice-select form-control wide" tabindex="0"><span class="current"><i class="fa fa-bath" aria-hidden="true"></i> Bathrooms</span>
+                                            <div class="nice-select form-control wide" tabindex="0"><span class="current"><i class="fa fa-bath" aria-hidden="true"></i> Baños</span>
                                                 <ul class="list">
                                                     <li data-value="1" class="option selected">1</li>
                                                     <li data-value="2" class="option">2</li>
@@ -281,20 +281,20 @@
                                 <div class="main-search-field-2">
                                     <!-- Area Range -->
                                     <div class="range-slider">
-                                        <label>Area Size</label>
+                                        <label>Tamaño Del Area</label>
                                         <div id="area-range" data-min="0" data-max="1300" data-unit="sq ft"></div>
                                         <div class="clearfix"></div>
                                     </div>
                                     <br>
                                     <!-- Price Range -->
                                     <div class="range-slider">
-                                        <label>Price Range</label>
+                                        <label>Rango De Precio</label>
                                         <div id="price-range" data-min="0" data-max="600000" data-unit="$"></div>
                                         <div class="clearfix"></div>
                                     </div>
                                 </div>
                                 <!-- More Search Options -->
-                                <a href="#" class="more-search-options-trigger margin-bottom-10 margin-top-30" data-open-title="Advanced Features" data-close-title="Advanced Features"></a>
+                                <a href="#" class="more-search-options-trigger margin-bottom-10 margin-top-30" data-open-title="Características Avanzadas" data-close-title="Características Avanzadas"></a>
 
                                 <div class="more-search-options relative">
                                     <!-- Checkboxes -->
@@ -333,7 +333,7 @@
                                 <!-- More Search Options / End -->
                                 <div class="col-lg-12 no-pds">
                                     <div class="at-col-default-mar">
-                                        <button class="btn btn-default hvr-bounce-to-right" type="submit">Search</button>
+                                        <button class="btn btn-default hvr-bounce-to-right" type="submit">Buscar</button>
                                     </div>
                                 </div>
                             </div>

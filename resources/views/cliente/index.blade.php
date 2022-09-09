@@ -14,11 +14,11 @@
                         <div class="hero-inner">
                             <!-- Welcome Text -->
                             <div class="welcome-text">
-                                <h1 class="h1">Find Your Dream
+                                <h1 class="h1">Encuentra Tu Hogar
                                     <br class="d-md-none">
-                                    <span class="typed border-bottom"></span>
+                              {{--     <--  <span class="typed border-bottom"></span> --> --}}
                                 </h1>
-                                <p class="mt-4">We Have Over Million Properties For You.</p>
+                                <p class="mt-4">Tenemos diferentes opciones para ti </p>
                             </div>
                             <!--/ End Welcome Text -->
                             <!-- Search Form -->
@@ -26,10 +26,10 @@
                                 <div class="banner-search-wrap">
                                     <ul class="nav nav-tabs rld-banner-tab">
                                         <li class="nav-item">
-                                            <a class="nav-link active" data-toggle="tab" href="#tabs_1">For Sale</a>
+                                            <a class="nav-link active" data-toggle="tab" href="#tabs_1">Venta</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#tabs_2">For Rent</a>
+                                            <a class="nav-link" data-toggle="tab" href="#tabs_2">Renta</a>
                                         </li>
                                     </ul>
                                     <div class="tab-content">
@@ -37,11 +37,11 @@
                                             <div class="rld-main-search">
                                                 <div class="row">
                                                     <div class="rld-single-input">
-                                                        <input type="text" placeholder="Enter Keyword...">
+                                                        <input type="text" placeholder="Escribe...">
                                                     </div>
                                                     <div class="rld-single-select ml-22">
                                                         <select class="select single-select">
-                                                            <option value="1">Property Type</option>
+                                                            <option value="1">Tipo De Propiedad</option>
                                                             <option value="2">Family House</option>
                                                             <option value="3">Apartment</option>
                                                             <option value="3">Condo</option>
@@ -49,7 +49,7 @@
                                                     </div>
                                                     <div class="rld-single-select">
                                                         <select class="select single-select mr-0">
-                                                            <option value="1">Location</option>
+                                                            <option value="1">Locacion</option>
                                                             <option value="2">Los Angeles</option>
                                                             <option value="3">Chicago</option>
                                                             <option value="3">Philadelphia</option>
@@ -58,9 +58,9 @@
                                                             <option value="3">Houston</option>
                                                         </select>
                                                     </div>
-                                                    <div class="dropdown-filter"><span>Advanced Search</span></div>
+                                                    <div class="dropdown-filter"><span>Busqueda Avanzada</span></div>
                                                     <div class="col-xl-2 col-lg-2 col-md-4 pl-0">
-                                                        <a class="btn btn-yellow" href="#">Search Now</a>
+                                                        <a class="btn btn-yellow" href="#">Buscar</a>
                                                     </div>
                                                     <div class="explore__form-checkbox-list full-filter">
                                                         <div class="row">
@@ -370,8 +370,8 @@
     <section class="feature-categories bg-white rec-pro">
         <div class="container-fluid">
             <div class="sec-title">
-                <h2><span>Popular </span>Places</h2>
-                <p>Properties In Most Popular Places.</p>
+                <h2><span>Lugares  </span>Populares</h2>
+                <p>Propiedades en lugares populares</p>
             </div>
             <div class="row">
                 <!-- Single category -->
@@ -399,8 +399,8 @@
     <section class="featured portfolio bg-white-2 rec-pro full-l">
         <div class="container-fluid">
             <div class="sec-title">
-                <h2><span>Featured </span>Properties</h2>
-                <p>These are our featured properties</p>
+                <h2><span>Propiedades </span>Destacadas</h2>
+                <p>Estas son nuestras propiedades destacadas</p>
             </div>
             <div class="row portfolio-items">
                 @foreach ($featured_properties as $feature_property)
@@ -479,8 +479,8 @@
     <section class="how-it-works bg-white rec-pro">
         <div class="container-fluid">
             <div class="sec-title">
-                <h2><span>Why </span>Choose Us</h2>
-                <p>We provide full service at every step.</p>
+                <h2><span>Por qué  </span>eligirnos</h2>
+                <p>Te proveemos el mejor servicio</p>
             </div>
             <div class="row service-1">
                 <article class="col-lg-3 col-md-6 col-xs-12 serv" data-aos="fade-up" data-aos-delay="150">
@@ -543,8 +543,8 @@
     <section class="featured portfolio rec-pro disc">
         <div class="container-fluid">
             <div class="sec-title discover">
-                <h2><span>Discover </span>Popular Properties</h2>
-                <p>We provide full service at every step.</p>
+                <h2><span>Propiedades </span>Recientes</h2>
+                <p>Te mostramos las opciones recientes</p>
             </div>
             <div class="portfolio col-xl-12">
                 <div class="slick-lancers">
@@ -1108,8 +1108,8 @@
     <section class="team bg-white rec-pro">
         <div class="container-fluid">
             <div class="sec-title">
-                <h2><span>Meet Our </span>Agents</h2>
-                <p>Our Agents are here to help you</p>
+                <h2><span>Conoce </span>Nuestros Agentes</h2>
+                <p>Nuestros agentes estan aqui para ayudar</p>
             </div>
             <div class="row team-all">
                 <!--Team Block-->
@@ -1248,8 +1248,8 @@
     <section class="testimonials bg-white-2 rec-pro">
         <div class="container-fluid">
             <div class="sec-title">
-                <h2><span>Clients </span>Testimonials</h2>
-                <p>We collect reviews from our customers.</p>
+                <h2><span>Testimonios </span>Del Cliente</h2>
+                <p>Tenemos encuenta tu opinión</p>
             </div>
             <div class="owl-carousel job_clientSlide">
                 <div class="singleJobClinet" data-aos="zoom-in" data-aos-delay="150">
@@ -1327,8 +1327,8 @@
     <div class="partners bg-white rec-pro">
         <div class="container-fluid">
             <div class="sec-title">
-                <h2><span>Our </span>Partners</h2>
-                <p>The Companies That Represent Us.</p>
+                <h2><span>Nuestros </span>Aliados</h2>
+                <p></p>
             </div>
             <div class="owl-carousel style2">
                 <div class="owl-item" data-aos="fade-up"><img src="images/partners/11.jpg" alt=""></div>

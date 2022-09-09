@@ -1156,33 +1156,7 @@
         </div>
         <!--register form end -->
 
-        <!-- ARCHIVES JS -->
-        <script src="js/jquery-3.5.1.min.js"></script>
-        <script src="js/jquery-ui.js"></script>
-        <script src="js/range-slider.js"></script>
-        <script src="js/tether.min.js"></script>
-        <script src="js/popper.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/mmenu.min.js"></script>
-        <script src="js/mmenu.js"></script>
-        <script src="js/slick.min.js"></script>
-        <script src="js/slick4.js"></script>
-        <script src="js/fitvids.js"></script>
-        <script src="js/smooth-scroll.min.js"></script>
-        <script src="js/jquery.magnific-popup.min.js"></script>
-        <script src="js/popup.js"></script>
-        <script src="js/ajaxchimp.min.js"></script>
-        <script src="js/newsletter.js"></script>
-        <script src="js/timedropper.js"></script>
-        <script src="js/datedropper.js"></script>
-        <script src="js/jqueryadd-count.js"></script>
-        <script src="js/leaflet.js"></script>
-        <script src="js/leaflet-gesture-handling.min.js"></script>
-        <script src="js/leaflet-providers.js"></script>
-        <script src="js/leaflet.markercluster.js"></script>
-        <script src="js/map-single.js"></script>
-        <script src="js/color-switcher.js"></script>
-        <script src="js/inner.js"></script>
+
 
         <!-- Date Dropper Script-->
         <script>
