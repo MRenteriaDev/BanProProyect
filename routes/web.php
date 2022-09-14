@@ -16,6 +16,8 @@ use App\Http\Controllers\Cliente\IndexController;
 use App\Http\Controllers\MetodosPagosController;
 use App\Http\Controllers\SellerController;
 use App\Models\Propiedades;
+use App\Http\Controllers\SocialController;
+use App\Http\Controllers\FacebookSocialiteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +29,18 @@ use App\Models\Propiedades;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+//socialite route
+
+
+
+Route::get('auth/facebook', [FacebookSocialiteController::class, 'redirectToFB']);
+Route::get('callback/facebook', [FacebookSocialiteController::class, 'handleCallback']);
+
+Route::get('auth/google', [SocialController::class, 'redirect']);
+Route::get('callback/google', [SocialController::class, 'callback']);
+// Route::get('/auth/redirect/{provider}', 'SocialController@redirect');
+// Route::get('/callback/{provider}', 'SocialController@callback');
 
 /* ------------- Admin Route -------------- */
 

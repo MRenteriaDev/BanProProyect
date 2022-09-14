@@ -6,8 +6,8 @@
             <div class="left-side">
                 <!-- Logo -->
                 <div id="logo">
-                    <a href="{{url('/')}}"><img src="{{asset('cliente/images/logo-white-1.svg')}}"
-                            data-sticky-logo="{{asset('cliente/images/logo-red.svg')}}" alt=""></a>
+                    <a href="{{url('/')}}"><img src="{{asset('cliente/images/logo-white-1.png')}}"
+                            data-sticky-logo="{{asset('cliente/images/logo-white-1.png')}}" alt="" width="1000"></a>
                 </div>
                 <!-- Mobile Navigation -->
                 <div class="mmenu-trigger">
@@ -40,12 +40,15 @@
                 <!-- Main Navigation / End -->
             </div>
             <!-- Left Side Content / End -->
+            @php
+            use Illuminate\Support\Facades\Auth;
+            $userauth = Auth::user();
 
-
+            @endphp
             <!-- Right Side Content / End -->
             <div class="header-user-menu user-menu add">
                 <div class="header-user-name">
-                    <span><img src="{{asset('cliente/images/testimonials/ts-1.jpg')}}" alt=""></span>Hola!
+                    <span><img src="{{asset('cliente/images/testimonials/ts-1.jpg')}}" alt=""></span>Hola! {{$user->name ?? ''}}
                 </div>
                 <ul>
                     <li><a href="user-profile.html"> Edit profile</a></li>
