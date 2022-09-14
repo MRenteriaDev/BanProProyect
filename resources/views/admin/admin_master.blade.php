@@ -50,7 +50,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 
 
-    <script nonce="6b5d2dec-2f97-478a-b1d7-7977e81d8931">
+    {{-- <script nonce="6b5d2dec-2f97-478a-b1d7-7977e81d8931">
         (function(w, d) {
             ! function(a, e, t, r) {
                 a.zarazData = a.zarazData || {};
@@ -106,7 +106,7 @@
                     "DOMContentLoaded", zaraz.init)
             }(w, d, 0, "script");
         })(window, document);
-    </script>
+    </script> --}}
 
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -194,15 +194,6 @@
     <script src="{{ asset('admin/plugins/jquery-mapael/maps/usa_states.min.js') }}"></script>
     <script src="{{ asset('admin/plugins/chart.js/Chart.min.js') }}"></script>
     <script src="{{ asset('admin/js/pages/dashboard2.js') }}"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
-
-
-
-
-
-
     <script src="{{ asset('admin/plugins/select2/js/select2.full.min.js') }}"></script>
 
     <script>

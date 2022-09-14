@@ -246,6 +246,12 @@ Route::get('/', function () {
     return view('cliente.index');
 });
 
+
+/// Configuración de cliente
+Route::get('/payments', function(){
+    return view('sellers.payments');
+})->middleware(['auth'])->name('payments');
+
 Route::get('/dashboard', function () {
     return view('sellers.profile');
 })->middleware(['auth'])->name('dashboard');
