@@ -274,19 +274,42 @@
                     <div class="col-md-12">
                         <div class="form-floathing">
                             <label for="nombre_archivo"> Imágenes</label>
-                            <input type="file" onchange="preview()" name="nombre_archivo[]" class="form-control" multiple>
+
+                            <input type="file" onchange="readFile(this);" id="nombre_archivo" name="nombre_archivo[]"
+                                class="form-control" multiple>
+
                         </div>
                         <br>
-                        <ul>
-                            <img id="frame" width="200px" height="200px" src="" class="img-fluid" />
-                        </ul>
+                        <fieldset class="form-group">
+                            <div id="status"></div>
+                            <div id="photos" class="row"></div>
+                        </fieldset>
                     </div>
 
                     <script>
-                        function preview() {
-                            frame.src = URL.createObjectURL(event.target.files[0]);
+                        function readFile(input) {
+                            $("#status").html('Processing...');
+                            counter = input.files.length;
+                            for (x = 0; x < counter; x++) {
+                                if (input.files && input.files[x]) {
+
+                                    var reader = new FileReader();
+
+                                    reader.onload = function(e) {
+                                        $("#photos").append('<div class="col-md-3 col-sm-3 col-xs-3"><img src="' + e.target.result +
+                                            '" class="img-thumbnail"></div>');
+                                    };
+
+                                    reader.readAsDataURL(input.files[x]);
+                                }
+                            }
+                            if (counter == x) {
+                                $("#status").html('');
+                            }
                         }
+
                     </script>
+
 
                 </div>
                 <!-- /.card-body -->

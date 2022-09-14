@@ -248,7 +248,7 @@ Route::get('/', function () {
 
 
 /// Configuración de cliente
-Route::get('payments', function () {
+Route::get('payments', function(){
     return view('sellers.payments');
 })->middleware(['auth'])->name('payments');
 
