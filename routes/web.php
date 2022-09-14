@@ -248,9 +248,14 @@ Route::get('/', function () {
 
 
 /// Configuración de cliente
-Route::get('payments', function(){
+Route::get('payments', function () {
     return view('sellers.payments');
 })->middleware(['auth'])->name('payments');
+
+// Payments Routes
+Route::controller(StripePaymentController::class)->group(function () {
+    Route::post('stripe', 'stripePost')->name('stripe.post');
+});
 
 Route::get('/dashboard', function () {
     return view('sellers.profile');
