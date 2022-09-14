@@ -280,10 +280,8 @@
 
                         </div>
                         <br>
-                        <fieldset class="form-group">
-                            <div id="status"></div>
-                            <div id="photos" class="row"></div>
-                        </fieldset>
+                        <div id="status"></div>
+                        <div id="photos" class="row"></div>
                     </div>
 
                     <script>
@@ -297,7 +295,7 @@
 
                                     reader.onload = function(e) {
                                         $("#photos").append('<div class="col-md-3 col-sm-3 col-xs-3"><img src="' + e.target.result +
-                                            '" class="img-thumbnail"></div>');
+                                            '" class="img-thumbnail" onclick="remove_image()" id="img"></div>');
                                     };
 
                                     reader.readAsDataURL(input.files[x]);
@@ -306,9 +304,26 @@
                             if (counter == x) {
                                 $("#status").html('');
                             }
+
                         }
 
+                        function remove_image() {
+                            var images = document.getElementsByTagName('img');
+                            var l = images.length;
+                            for (var i = 0; i < l; i++) {
+                                images[0].parentNode.removeChild(images[0]);
+                            }
+                        }
+
+                        function change() {
+                            var ab = document.getElementById('nombre_archivo').value;
+                            document.getElementById('nombre_archivo').value = "";
+                            $('#nombre_archivo').val('dsds');
+                        }
                     </script>
+
+                    <button type="button" onclick="remove_image();change();" class="btn btn-primary">Borrar
+                        Fotos</button>
 
 
                 </div>
