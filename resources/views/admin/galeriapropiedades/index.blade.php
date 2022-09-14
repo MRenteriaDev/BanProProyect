@@ -53,7 +53,7 @@
                             @foreach ($galeriapropiedades as $galeriapropiedad)
                                 <tr class="odd">
                                     <td class="dtr-control sorting_1" tabindex="0">{{ $galeriapropiedad->nombre_archivo }}</td>
-                                    <td><img src="{{ asset('propiedades_documentos/'. $galeriapropiedad->id)}}" width="70px" height="70px" alt="image"></td>
+                                    <td><img src="{{ asset('propiedades_documentos/'. $galeriapropiedad->nombre_archivo)}}" width="100px" height="100px" alt="image"></td>
                                     <td>{{ $galeriapropiedad->created_at }}</td>
                                     <th class="row">
                                         <div class="btn-group" role="group" aria-label="Basic example">
