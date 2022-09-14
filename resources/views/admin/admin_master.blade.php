@@ -194,15 +194,6 @@
     <script src="{{ asset('admin/plugins/jquery-mapael/maps/usa_states.min.js') }}"></script>
     <script src="{{ asset('admin/plugins/chart.js/Chart.min.js') }}"></script>
     <script src="{{ asset('admin/js/pages/dashboard2.js') }}"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
-
-
-
-
-
-
     <script src="{{ asset('admin/plugins/select2/js/select2.full.min.js') }}"></script>
 
     <script>
