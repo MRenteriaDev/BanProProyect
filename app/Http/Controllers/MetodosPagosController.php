@@ -154,4 +154,8 @@ class MetodosPagosController extends Controller
         return redirect()->route('metodospagos.index')->with($notification);
     }
 
+    public function PaymentsIndex(Request $request)
+    {
+        return view('sellers.payments');
+    }
 }

@@ -163,7 +163,4 @@ class SellerController extends Controller
 
         return redirect()->route('sellers.index')->with($notification);
     }
-
-
-
 }

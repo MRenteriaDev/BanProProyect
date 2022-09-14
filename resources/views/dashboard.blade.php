@@ -87,7 +87,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="payment-method.html">
+                                        <a href="{{ route('payments') }}">
                                             <i class="fas fa-credit-card"></i>Payments
                                         </a>
                                     </li>
@@ -144,7 +144,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="payment-method.html">
+                                            <a href="{{ route('payments') }}">
                                                 <i class="fas fa-credit-card mr-3"></i>Payments
                                             </a>
                                         </li>
@@ -173,7 +173,6 @@
             </div>
         </section>
         <!-- END SECTION USER PROFILE -->
-
         <div class="second-footer ad mt-3">
             <div class="container">
                 <p>2021 © Copyright - All Rights Reserved.</p>
