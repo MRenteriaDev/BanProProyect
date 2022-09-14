@@ -6,8 +6,8 @@
             <div class="left-side">
                 <!-- Logo -->
                 <div id="logo">
-                    <a href="{{ url('/') }}"><img src="{{ asset('cliente/images/logo-white-1.svg') }}"
-                            data-sticky-logo="{{ asset('cliente/images/logo-red.svg') }}" alt=""></a>
+                    <a href="{{url('/')}}"><img src="{{asset('cliente/images/logo-white-1.png')}}"
+                            data-sticky-logo="{{asset('cliente/images/logo-white-1.png')}}" alt="" width="1000"></a>
                 </div>
                 <!-- Mobile Navigation -->
                 <div class="mmenu-trigger">
@@ -39,17 +39,24 @@
                 <!-- Main Navigation / End -->
             </div>
             <!-- Left Side Content / End -->
+            @php
+            use Illuminate\Support\Facades\Auth;
+            $userauth = Auth::user();
 
-
+            @endphp
             <!-- Right Side Content / End -->
             <div class="header-user-menu user-menu add">
                 <div class="header-user-name">
+<<<<<<< HEAD
                     @if (!isset(Auth::user()->name))
                         {{-- <span><img src="{{ asset('cliente/images/testimonials/ts-1.jpg') }}" alt=""></span>Hola! --}}
                     @else
                         <span><img src="{{ asset('cliente/images/testimonials/ts-1.jpg') }}"
                                 alt=""></span>{{ Auth::user()->name }}
                     @endif
+=======
+                    <span><img src="{{asset('cliente/images/testimonials/ts-1.jpg')}}" alt=""></span>Hola! {{$user->name ?? ''}}
+>>>>>>> e1f169d3079ad1c802b06351910d729ccd23368b
                 </div>
                 @if (!isset(Auth::user()->name))
                 @else
