@@ -10,11 +10,11 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-md-right">
-                        {{-- <a class="btn btn-primary btn-md" href="{{ route('galeriapropiedad.create') }}"><i
+                         <a class="btn btn-primary btn-md" href="{{ route('galeriapropiedad.create') }}"><i
                                 class="fas fa-plus-circle"></i>
 
                             &nbsp; Agregar imagenes
-                        </a> --}}
+                        </a>
                     </ol>
                 </div>
             </div>

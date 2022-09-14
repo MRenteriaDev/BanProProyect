@@ -30,8 +30,8 @@
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <div class="access_social">
-                            <a href="#0" class="social_bt facebook">Login with Facebook</a>
-                            <a href="#0" class="social_bt google">Login with Google</a>
+                            {{-- <a href="{{ url('auth/facebook') }}" class="social_bt facebook">Login with Facebook</a> --}}
+                            <a href="{{ url('auth/google') }}" class="social_bt google">Login with Google</a>
                         </div>
                         <div class="divider"><span>Or</span></div>
                         <div class="form-group">

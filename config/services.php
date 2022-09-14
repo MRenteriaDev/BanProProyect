@@ -31,9 +31,15 @@ return [
     ],
 
     'google' => [
-        'cliente_id' => '567445226740-d6nql470b5spm818hi1opk5l26ndgk0i.apps.googleusercontent.com',
-        'cliente_secret' => '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',
-        'redirect' => 'http://127.0.0.1:8000/google/callback',
+        'client_id' => '608028889420-fl04a28j8qdrsp40j0hgroldf42nof74.apps.googleusercontent.com',
+        'client_secret' => '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',
+        'redirect' => 'http://127.0.0.1:8000/callback/google',
     ],
+
+    'facebook' => [
+        'client_id' => '1212104939332732',
+        'client_secret' => '9430edc7bacf86d00bd9316ab2fba304',
+        'redirect' => 'http://127.0.0.1:8000/callback/facebook',
+      ],
 
 ];
