@@ -10,9 +10,8 @@ class GaleriaPropiedades extends Model
     use HasFactory;
     protected $guarded = [];
 
-    public function Propiedad()
+    public function propiedad()
     {
-
         return $this->belongsTo(Propiedades::class);
     }
 }
