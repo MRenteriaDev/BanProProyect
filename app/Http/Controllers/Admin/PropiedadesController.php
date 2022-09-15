@@ -89,14 +89,15 @@ class PropiedadesController extends Controller
 
 
 
-        $new_propiedad = Propiedades::create($data);
+        // $new_propiedad = Propiedades::create($data);
+        $last = Propiedades::latest()->take(1)->get();
 
         if ($request->has('nombre_archivo')) {
             foreach ($request->file('nombre_archivo') as $documento) {
                 $documento_nname = $data['nombre'] . '-documento-' . time() . rand(1, 1000) . '.' . $documento->extension();
                 $documento->move(public_path('propiedades_documentos'), $documento_nname);
                 GaleriaPropiedades::create([
-                    'propiedad_id' => $new_propiedad->id,
+                    'propiedad_id' => $last[0]->id,
                     'nombre_archivo' => $documento_nname,
                     'created_at' => Carbon::now()
                 ]);
