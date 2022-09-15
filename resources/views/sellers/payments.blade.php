@@ -1,7 +1,7 @@
 @extends('dashboard')
 
 @section('seller-dashboard')
-    <section class="payment-method notfound">
+    <section class="payment-method notfound col-xs-12">
         <div class="row">
             <div class="col-md-12 col-lg-6">
                 <div class="tr-single-box">
