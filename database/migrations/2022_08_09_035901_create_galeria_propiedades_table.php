@@ -14,7 +14,7 @@ class CreateGaleriaPropiedadesTable extends Migration
     public function up()
     {
         Schema::create('galeria_propiedades', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements("id");
             $table->timestamps();
         });
     }

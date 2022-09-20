@@ -33,7 +33,6 @@ class AddCamposToPropiedades extends Migration
             $table->boolean("lavaplatos")->nullable();
             $table->boolean("estacionamiento")->nullable();
             $table->boolean("refrigerador")->nullable();
-            $table->string("planos")->nullable();
             $table->unsignedBigInteger("nearby_id")->nullable();
             $table->foreign("nearby_id")->references("id")->on("nearbys")->onDelete("cascade");
             $table->string("video_propiedad")->nullable();
@@ -41,6 +40,7 @@ class AddCamposToPropiedades extends Migration
             $table->foreign("review_id")->references("id")->on("reviews")->onDelete("cascade");
             $table->unsignedBigInteger("solicitud_vendedor_id")->nullable();
             $table->foreign("solicitud_vendedor_id")->references("id")->on("solicitud_vendedors")->onDelete("cascade");
+
         });
     }
 
@@ -71,7 +71,6 @@ class AddCamposToPropiedades extends Migration
             $table->boolean("lavaplatos")->nullable()->default(false);
             $table->boolean("estacionamiento")->nullable()->default(false);
             $table->boolean("refrigerador")->nullable()->default(false);
-            $table->string("planos")->nullable();
             $table->unsignedBigInteger("nearby_id")->nullable();
             $table->foreign("nearby_id")->references("id")->on("nearbys")->onDelete("cascade");
             $table->string("video_propiedad")->nullable();
@@ -79,6 +78,7 @@ class AddCamposToPropiedades extends Migration
             $table->foreign("review_id")->references("id")->on("reviews")->onDelete("cascade");
             $table->unsignedBigInteger("solicitud_vendedor_id")->nullable();
             $table->foreign("solicitud_vendedor_id")->references("id")->on("solicitud_vendedors")->onDelete("cascade");
+
         });
     }
 }
