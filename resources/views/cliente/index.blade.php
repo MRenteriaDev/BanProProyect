@@ -1,6 +1,11 @@
 @php
+    use App\Models\Propiedades;
+
     $principal_places = DB::table('locacions')->take(5)->get();
     $featured_properties = DB::table('propiedades')->take(6)->get();
+    $recent_properties = Propiedades::latest()->take(5)->get();
+
+
 @endphp
 
 @extends('cliente.cliente_master')
@@ -548,7 +553,7 @@
             </div>
             <div class="portfolio col-xl-12">
                 <div class="slick-lancers">
-                    <div class="agents-grid" data-aos="fade-up" data-aos-delay="150">
+                    {{-- <div class="agents-grid" data-aos="fade-up" data-aos-delay="150">
                         <div class="landscapes">
                             <div class="project-single">
                                 <div class="project-inner project-head">
@@ -1029,17 +1034,24 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
+
+                    @foreach ($recent_properties as $recent_propertie)
+                    @php
+                    @endphp
                     <div class="agents-grid" data-aos="fade-up">
                         <div class="people">
                             <div class="project-single">
                                 <div class="project-inner project-head">
                                     <div class="homes">
                                         <!-- homes img -->
+                                        @forelse($recent_propertie->foto as $foto)
                                         <a href="single-property-1.html" class="homes-img">
                                             <div class="homes-tag button sale rent">For Rent</div>
-                                            <img src="images/blog/b-12.jpg" alt="home-1" class="img-responsive">
+                                            <img src="{{asset('/propiedades_documentos/'.$foto['nombre_archivo'] )}}" class="img-responsive">
                                         </a>
+                                        @empty
+                                        @endforelse
                                     </div>
                                     <div class="button-effect">
                                         <a href="single-property-1.html" class="btn"><i class="fa fa-link"></i></a>
@@ -1052,35 +1064,34 @@
                                 <!-- homes content -->
                                 <div class="homes-content">
                                     <!-- homes address -->
-                                    <h3><a href="single-property-1.html">Real House Luxury Villa</a></h3>
+                                    <h3><a href="single-property-1.html">{{$recent_propertie->nombre}}</a></h3>
                                     <p class="homes-address mb-3">
                                         <a href="single-property-1.html">
-                                            <i class="fa fa-map-marker"></i><span>Est St, 77 - Central Park South,
-                                                NYC</span>
+                                            <i class="fa fa-map-marker"></i><span>Direccion pendiente</span>
                                         </a>
                                     </p>
                                     <!-- homes List -->
                                     <ul class="homes-list clearfix pb-3">
                                         <li class="the-icons">
                                             <i class="flaticon-bed mr-2" aria-hidden="true"></i>
-                                            <span>6 Bedrooms</span>
+                                            <span>{{$recent_propertie->recamaras . " Recamaras"}}</span>
                                         </li>
                                         <li class="the-icons">
                                             <i class="flaticon-bathtub mr-2" aria-hidden="true"></i>
-                                            <span>3 Bathrooms</span>
+                                            <span>{{$recent_propertie->bano . " Baños"}}</span>
                                         </li>
                                         <li class="the-icons">
                                             <i class="flaticon-square mr-2" aria-hidden="true"></i>
-                                            <span>720 sq ft</span>
+                                            <span>{{$recent_propertie->tamano_propiedad . " m2"}}</span>
                                         </li>
-                                        <li class="the-icons">
+                                        {{-- <li class="the-icons">
                                             <i class="flaticon-car mr-2" aria-hidden="true"></i>
                                             <span>2 Garages</span>
-                                        </li>
+                                        </li> --}}
                                     </ul>
                                     <div class="price-properties footer pt-3 pb-0">
                                         <h3 class="title mt-3">
-                                            <a href="single-property-1.html">$ 150,000</a>
+                                            <a href="single-property-1.html">{{"$ ". number_format($recent_propertie->precio)}}</a>
                                         </h3>
                                         <div class="compare">
                                             <a href="#" title="Compare">
@@ -1098,6 +1109,7 @@
                             </div>
                         </div>
                     </div>
+                    @endforeach
                 </div>
             </div>
         </div>

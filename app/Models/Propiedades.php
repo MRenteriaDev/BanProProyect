@@ -46,4 +46,10 @@ class Propiedades extends Model
         return $this->belongsTo(SolicitudVendedor::class);
     }
 
+    public function foto()
+    {
+
+        return $this->hasMany(GaleriaPropiedades::class, "propiedad_id");
+    }
+
 }
