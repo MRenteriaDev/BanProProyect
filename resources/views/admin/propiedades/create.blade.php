@@ -279,22 +279,22 @@
                     </div>
                 </div> --}}
                 <div class="col-md-12">
-                    <div class="form-group">
-                        <label for="planos">Planos</label>
-                        <input type="file" onchange="readBlueprint(this);" name="planos[]" class="form-control" id="planos"
-                            placeholder="Cargar plano">
-                        @error('planos')
-                            <span class="text-danger"> {{ $message }} </span>
-                        @enderror
+                    <div class="form-floathing">
+                        <label for="planos"> Imágenes</label>
+
+                        <input type="file" onchange="readBlueprint(this);" id="planos" name="planos[]"
+                            class="form-control" multiple>
+
+                    </div>
+                    <br>
+                    <div id="area"></div>
+                    <div id="blueprint" class="row"></div>
+                    <div class="col-12">
+                        <button type="button" onclick="remove_blueprint();clear();" class="btn btn-primary btn-sm">Borrar
+                            Fotos</button>
                     </div>
                 </div>
-                <br>
-                <div id="area"></div>
-                <div id="blueprint" class="row"></div>
-                <div class="col-12">
-                    <button type="button" onclick="remove_blueprint();clear();" class="btn btn-primary btn-sm">Borrar
-                        Fotos</button>
-                </div>
+
 
                 <script>
                     function readBlueprint(input) {

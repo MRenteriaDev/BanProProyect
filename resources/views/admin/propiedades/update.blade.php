@@ -384,14 +384,15 @@
                                 <span class="text-danger"> {{ $message }} </span>
                             @enderror
                         </div>
+                        <br>
+                        <div id="area"></div>
+                        <div id="blueprint" class="row"></div>
+                        <div class="col-12">
+                            <button type="button" onclick="remove_blueprint();clear();" class="btn btn-primary btn-sm">Borrar
+                                Fotos</button>
+                        </div>
                     </div>
-                    <br>
-                    <div id="area"></div>
-                    <div id="blueprint" class="row"></div>
-                    <div class="col-12">
-                        <button type="button" onclick="remove_blueprint();clear();" class="btn btn-primary btn-sm">Borrar
-                            Fotos</button>
-                    </div>
+
 
                     <script>
                         function readBlueprint(input) {

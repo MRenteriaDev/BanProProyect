@@ -117,7 +117,7 @@ class PropiedadesController extends Controller
                 $documento_nname = $data['nombre'] . '-documento-' . time() . rand(1, 1000) . '.' . $documento->extension();
                 $documento->move(public_path('planos_documentos'), $documento_nname);
                 GaleriaPlanos::create([
-                    'propiedad_id' => $new_propiedad->id,
+                    'propiedad_id' => $last[0]->id,
                     'nombre_archivo' => $documento_nname,
                     'created_at' => Carbon::now()
                 ]);
