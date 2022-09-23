@@ -280,62 +280,6 @@
                 </div> --}}
                 <div class="col-md-12">
                     <div class="form-floathing">
-                        <label for="planos"> Imágenes</label>
-
-                        <input type="file" onchange="readBlueprint(this);" id="planos" name="planos[]"
-                            class="form-control" multiple>
-
-                    </div>
-                    <br>
-                    <div id="area"></div>
-                    <div id="blueprint" class="row"></div>
-                    <div class="col-12">
-                        <button type="button" onclick="remove_blueprint();clear();" class="btn btn-primary btn-sm">Borrar
-                            Fotos</button>
-                    </div>
-                </div>
-
-
-                <script>
-                    function readBlueprint(input) {
-                        $("#area").html('Processing...');
-                        counter = input.files.length;
-                        for (x = 0; x < counter; x++) {
-                            if (input.files && input.files[x]) {
-
-                                var reader = new FileReader();
-
-                                reader.onload = function(e) {
-                                    $("#blueprint").append('<div class="col-md-3 col-sm-3 col-xs-3"><img src="' + e.target.result +
-                                        '" class="img-thumbnail" onclick="remove_blueprint()" id="image"></div>');
-                                };
-
-                                reader.readAsDataURL(input.files[x]);
-                            }
-                        }
-                        if (counter == x) {
-                            $("#area").html('');
-                        }
-
-                    }
-
-                    function remove_blueprint() {
-                        var images = document.getElementsByTagName('image');
-                        var l = images.length;
-                        for (var i = 0; i < l; i++) {
-                            images[0].parentNode.removeChild(images[0]);
-                        }
-                    }
-
-                    function clear() {
-                        var ab = document.getElementById('planos').value;
-                        document.getElementById('planos').value = "";
-                        $('#planos').val('dsds');
-                    }
-                </script>
-                <br>
-                <div class="col-md-12">
-                    <div class="form-floathing">
                         <label for="imagenes"> Imágenes</label>
 
                         <input type="file" onchange="readFile(this);" id="nombre_archivo" name="nombre_archivo[]"
@@ -391,7 +335,65 @@
                     }
                 </script>
 
+                <br>
+                <div class="col-md-12">
+                    <div class="form-floathing">
+                        <label for="planos"> Planos</label>
 
+                        <input type="file" onchange="readblueprint(this);" id="planos" name="planos[]"
+                            class="form-control" multiple>
+
+                    </div>
+                    <br>
+                    <div id="area"></div>
+                    <div id="blueprint" class="row"></div>
+                    <div class="col-12">
+                        <button type="button" onclick="remove_blueprint();clear();" class="btn btn-primary btn-sm">Borrar
+                            Fotos</button>
+                    </div>
+                </div>
+
+
+
+                <script>
+                    function readblueprint(input) {
+                        $("#area").html('Processing...');
+                        counter = input.files.length;
+                        for (x = 0; x < counter; x++) {
+                            if (input.files && input.files[x]) {
+
+                                var reader = new FileReader();
+
+                                reader.onload = function(e) {
+                                    $("#blueprint").append('<div class="col-md-3 col-sm-3 col-xs-3"><img src="' + e.target.result +
+                                        '" class="img-thumbnail" onclick="remove_blueprint()" id="imagen"></div>');
+                                };
+
+                                reader.readAsDataURL(input.files[x]);
+                            }
+                        }
+                        if (counter == x) {
+                            $("#area").html('');
+                        }
+
+                    }
+
+                    function remove_blueprint() {
+                        var images = document.getElementsByTagName('imagen');
+                        var l = images.length;
+                        for (var i = 0; i < l; i++) {
+                            images[0].parentNode.removeChild(images[0]);
+                        }
+                    }
+
+                    function clear() {
+                        var ab = document.getElementById('planos').value;
+                        document.getElementById('planos').value = "";
+                        $('#planos').val('dsds');
+                    }
+                </script>
+
+                <br>
                 <!-- /.card-body -->
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary">Crear</button>
