@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="{{ asset('cliente/css/fontawesome-5-all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('cliente/css/font-awesome.min.css') }}">
     <script src="https://kit.fontawesome.com/72ed50f906.js" crossorigin="anonymous"></script>
+     <!-- Page Icon -->
+     <link rel="icon" href="{{ asset('cliente/images/123.png') }}"/>
     <!-- ARCHIVES CSS -->
     <link rel="stylesheet" href="{{ asset('cliente/css/search.css') }}">
     <link rel="stylesheet" href="{{ asset('cliente/css/animate.css') }}">

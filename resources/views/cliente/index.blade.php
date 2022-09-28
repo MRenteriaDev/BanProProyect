@@ -64,7 +64,7 @@
                                                         </select>
                                                     </div>
                                                     <div class="dropdown-filter"><span>Busqueda Avanzada</span></div>
-                                                    <div class="col-xl-2 col-lg-2 col-md-4 pl-0">
+                                                    <div class="col-xl-2 col-lg-2 col-md-4">
                                                         <a class="btn btn-yellow" href="#">Buscar</a>
                                                     </div>
                                                     <div class="explore__form-checkbox-list full-filter">
@@ -74,8 +74,7 @@
                                                                 <div class="form-group categories">
                                                                     <div class="nice-select form-control wide"
                                                                         tabindex="0"><span class="current"><i
-                                                                                class="fa fa-home"></i>Property
-                                                                            Status</span>
+                                                                                class="fa fa-home"></i>Estatus de la propiedad</span>
                                                                         <ul class="list">
                                                                             <li data-value="1" class="option selected ">For
                                                                                 Sale</li>
@@ -202,14 +201,14 @@
                                             <div class="rld-main-search">
                                                 <div class="row">
                                                     <div class="rld-single-input">
-                                                        <input type="text" placeholder="Enter Keyword...">
+                                                        <input type="text" placeholder="Escribe...">
                                                     </div>
                                                     <div class="rld-single-select ml-22">
                                                         <select class="select single-select">
-                                                            <option value="1">Property Type</option>
-                                                            <option value="2">Family House</option>
-                                                            <option value="3">Apartment</option>
-                                                            <option value="3">Condo</option>
+                                                            <option value="1">Tipo de Propiedad</option>
+                                                            <option value="2">Casa</option>
+                                                            <option value="3">Departamento</option>
+                                                            <option value="3">Condominio</option>
                                                         </select>
                                                     </div>
                                                     <div class="rld-single-select">
@@ -223,9 +222,9 @@
                                                             <option value="3">Houston</option>
                                                         </select>
                                                     </div>
-                                                    <div class="dropdown-filter"><span>Advanced Search</span></div>
+                                                    <div class="dropdown-filter"><span>Busqueda Avanzada</span></div>
                                                     <div class="col-xl-2 col-lg-2 col-md-4 pl-0">
-                                                        <a class="btn btn-yellow" href="#">Search Now</a>
+                                                        <a class="btn btn-yellow" href="#">Buscar Ahora</a>
                                                     </div>
                                                     <div class="explore__form-checkbox-list full-filter">
                                                         <div class="row">

@@ -1,5 +1,6 @@
 @extends('admin.admin_master')
 @section('admin')
+
 <title>Dashboard | Admin</title>
 <hr>
 <div class="row" style="padding-left: 10px;">
