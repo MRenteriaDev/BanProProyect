@@ -12,8 +12,6 @@
             <p class="author__meta">Agent of Property</p>
         </div>
         <ul class="author__contact">
-            <li><span class="la la-map-marker"><i class="fa fa-map-marker"></i></span>302 Av Park,
-                New York</li>
             <li><span class="la la-phone"><i class="fa fa-phone" aria-hidden="true"></i></span><a href="#">(234) 0200
                     17813</a></li>
             <li><span class="la la-envelope-o"><i class="fa fa-envelope" aria-hidden="true"></i></span><a

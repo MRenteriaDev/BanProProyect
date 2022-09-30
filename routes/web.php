@@ -18,6 +18,7 @@ use App\Http\Controllers\SellerController;
 use App\Models\Propiedades;
 use App\Http\Controllers\SocialController;
 use App\Http\Controllers\FacebookSocialiteController;
+use App\Http\Controllers\StripePaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -248,7 +249,7 @@ Route::get('/', function () {
 
 
 /// Configuración de cliente
-Route::get('payments', function(){
+Route::get('payments', function () {
     return view('sellers.payments');
 })->middleware(['auth'])->name('payments');
 
