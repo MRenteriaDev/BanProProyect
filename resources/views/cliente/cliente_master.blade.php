@@ -7,7 +7,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="html 5 template">
     <meta name="author" content="">
-    <title>Find Houses - HTML5 Template</title>
+    <title>BAN PRO</title>
     <!-- FAVICON -->
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="{{ asset('cliente/css/jquery-ui.css') }}">
@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="{{ asset('cliente/css/fontawesome-5-all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('cliente/css/font-awesome.min.css') }}">
     <script src="https://kit.fontawesome.com/72ed50f906.js" crossorigin="anonymous"></script>
+     <!-- Page Icon -->
+     <link rel="icon" href="{{ asset('cliente/images/123.png') }}"/>
     <!-- ARCHIVES CSS -->
     <link rel="stylesheet" href="{{ asset('cliente/css/search.css') }}">
     <link rel="stylesheet" href="{{ asset('cliente/css/animate.css') }}">

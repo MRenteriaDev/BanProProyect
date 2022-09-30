@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\EstatusPropiedad;
+use App\Models\GaleriaPlanos;
 use App\Models\GaleriaPropiedades;
 use App\Models\Locacion;
 use App\Models\Nearbys;
@@ -57,6 +58,14 @@ class PropiedadesController extends Controller
             'nombre' => 'required',
             'precio' => 'required',
 
+        ], [
+            'nearby_id.required' => 'Se debe seleccionar algo',
+            'solicitud_vendedor_id.required' => 'Se debe seleccionar algo',
+            'review_id.required' => 'Se debe seleccionar algo',
+            'estatus_propiedad_id.required' => 'Se debe seleccionar algo',
+            'locacion_id.required' => 'Se debe seleccionar algo',
+            'tipo_propiedad_id.required' => 'Se debe seleccionar algo',
+
         ]);
 
 
@@ -76,27 +85,39 @@ class PropiedadesController extends Controller
             'lavaplatos' => true,
             'estacionamiento' => true,
             'refrigerador' => true,
-            'planos' => $request->planos,
-            'video_propiedad' => $request->video_propiedad,
             'nearby_id' => $request->nearby_id,
             'solicitud_vendedor_id' => $request->solicitud_vendedor_id,
             'review_id' => $request->review_id,
             'estatus_propiedad_id' => $request->estatus_propiedad_id,
             'locacion_id' => $request->locacion_id,
             'tipo_propiedad_id' => $request->tipo_propiedad_id,
+            // 'galeria_planos_id' => $request->galeria_planos_id,
             'created_at' => Carbon::now()
         ]);
 
 
 
-        $new_propiedad = Propiedades::create($data);
+        // $new_propiedad = Propiedades::create($data);
+        $last = Propiedades::latest()->take(1)->get();
 
         if ($request->has('nombre_archivo')) {
             foreach ($request->file('nombre_archivo') as $documento) {
                 $documento_nname = $data['nombre'] . '-documento-' . time() . rand(1, 1000) . '.' . $documento->extension();
                 $documento->move(public_path('propiedades_documentos'), $documento_nname);
                 GaleriaPropiedades::create([
-                    'propiedad_id' => $new_propiedad->id,
+                    'propiedad_id' => $last[0]->id,
+                    'nombre_archivo' => $documento_nname,
+                    'created_at' => Carbon::now()
+                ]);
+            }
+        }
+
+        if ($request->has('planos')) {
+            foreach ($request->file('planos') as $documento) {
+                $documento_nname = $data['nombre'] . '-documento-' . time() . rand(1, 1000) . '.' . $documento->extension();
+                $documento->move(public_path('planos_documentos'), $documento_nname);
+                GaleriaPlanos::create([
+                    'propiedad_id' => $last[0]->id,
                     'nombre_archivo' => $documento_nname,
                     'created_at' => Carbon::now()
                 ]);
@@ -139,7 +160,8 @@ class PropiedadesController extends Controller
             $reviews = Reviews::latest()->get();
             $solicitudvendedor = SolicitudVendedor::latest()->get();
             $galeria_priopiedad = GaleriaPropiedades::where('propiedad_id', $propiedades->id)->get();
-            return view('admin.propiedades.update', compact("propiedades", "estatuspropiedad", "locacion", "tipopropiedades", "nearbys", "reviews", "solicitudvendedor","galeria_priopiedad"));
+            $galeria_plano = GaleriaPlanos::where('propiedad_id', $propiedades->id)->get();
+            return view('admin.propiedades.update', compact("propiedades", "estatuspropiedad", "locacion", "tipopropiedades", "nearbys", "reviews", "solicitudvendedor","galeria_priopiedad", "galeria_plano"));
         }
 
         $notification = array(
