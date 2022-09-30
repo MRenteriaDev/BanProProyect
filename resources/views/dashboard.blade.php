@@ -69,7 +69,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="active" href="user-profile.html">
+                                        <a class="active" href="{{route('dashboard')}}">
                                             <i class="fa fa-user"></i>Profile
                                         </a>
                                     </li>
@@ -125,7 +125,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="active" href="user-profile.html">
+                                            <a class="active" href="{{route('dashboard')}}">
                                                 <i class="fa fa-user mr-3"></i>Profile
                                             </a>
                                         </li>
