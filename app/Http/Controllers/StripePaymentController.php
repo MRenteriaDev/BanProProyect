@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Stripe\Charge;
+use Stripe\Stripe;
 
 class StripePaymentController extends Controller
 {
@@ -10,11 +13,11 @@ class StripePaymentController extends Controller
     {
         Stripe::setApiKey(env('STRIPE_SECRET'));
 
-        Stripe\Charge::create([
-            "amount" => 400 * 400,
+        Charge::create([
+            "amount" => 400.00,
             "currency" => "mxn",
-            "source" => $request->stripeToken,
-            "description" => "Test payment from banpro.mxn"
+            "source" => "tok_visa_debit",
+            "description" => "Paymen of membresy of banpro"
         ]);
 
         $notification = array(
