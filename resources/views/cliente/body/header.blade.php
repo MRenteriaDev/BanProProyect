@@ -21,12 +21,12 @@
                 <!-- Main Navigation -->
                 <nav id="navigation" class="style-1 head-tr">
                     <ul id="responsive">
-                        <li><a href="{{ url('/') }}" class="btn btn-sm">Panel</a>
+                        <li><a href="{{ url('/') }}" class="text-dark">Panel</a>
                         </li>
                         <li><a class="text-dark" href="{{ route('properties.grid') }}">Propiedades</a>
                         </li>
-                        <li><a class="text-dark" href="{{ route('sellers.grid') }}">Vendedores</a>
-                        </li>
+                        {{-- <li><a class="text-dark" href="{{ route('sellers.grid') }}">Vendedores</a>
+                        </li> --}}
                         <li><a class="text-dark" href="{{ route('contact') }}">Contacto</a>
                         </li>
                         <li class="d-none d-xl-none d-block d-lg-block"><a href="login.html">Login</a></li>

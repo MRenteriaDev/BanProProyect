@@ -213,7 +213,7 @@
                                                     </div>
                                                     <div class="rld-single-select">
                                                         <select class="select single-select mr-0">
-                                                            <option value="1">Location</option>
+                                                            <option value="1">Locacion</option>
                                                             <option value="2">Los Angeles</option>
                                                             <option value="3">Chicago</option>
                                                             <option value="3">Philadelphia</option>
@@ -1115,7 +1115,7 @@
     </section>
     <!-- END SECTION RECENTLY PROPERTIES -->
 
-    <!-- START SECTION AGENTS -->
+    {{-- <!-- START SECTION AGENTS -->
     <section class="team bg-white rec-pro">
         <div class="container-fluid">
             <div class="sec-title">
@@ -1253,7 +1253,7 @@
             </div>
         </div>
     </section>
-    <!-- END SECTION AGENTS -->
+    <!-- END SECTION AGENTS --> --}}
 
     <!-- START SECTION TESTIMONIALS -->
     <section class="testimonials bg-white-2 rec-pro">
