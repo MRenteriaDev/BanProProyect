@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Cliente;
 
 use App\Http\Controllers\Controller;
+use App\Models\Propiedades;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use phpDocumentor\Reflection\Location;
@@ -17,7 +18,8 @@ class IndexController extends Controller
 
     public function propertyGrid($id)
     {
-        $property = DB::table('propiedades')->where('id', $id)->get();
+
+        $property = Propiedades::where('id', $id)->get();
         return view('cliente.property', compact("property"));
     }
 
