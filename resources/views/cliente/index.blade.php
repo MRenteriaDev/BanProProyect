@@ -1037,6 +1037,7 @@
 
                     @foreach ($recent_properties as $recent_propertie)
                     @php
+                        $fotosrp = DB::table('galeria_propiedades')->where('propiedad_id', '=', $recent_propertie->id)->first();
                     @endphp
                     <div class="agents-grid" data-aos="fade-up">
                         <div class="people">
@@ -1044,16 +1045,15 @@
                                 <div class="project-inner project-head">
                                     <div class="homes">
                                         <!-- homes img -->
-                                        @forelse($recent_propertie->foto as $foto)
-                                        <a href="single-property-1.html" class="homes-img">
+
+                                        <a href="{{ route('properties.grid-single', $recent_propertie->id) }}" class="homes-img">
                                             <div class="homes-tag button sale rent">For Rent</div>
-                                            <img src="{{asset('/propiedades_documentos/'.$foto['nombre_archivo'] )}}" class="img-responsive">
+                                            <img src="{{asset('/propiedades_documentos/'.$fotosrp->nombre_archivo )}}" class="img-responsive">
                                         </a>
-                                        @empty
-                                        @endforelse
+
                                     </div>
                                     <div class="button-effect">
-                                        <a href="single-property-1.html" class="btn"><i class="fa fa-link"></i></a>
+                                        <a href="{{ route('properties.grid-single', $recent_propertie->id) }}" class="btn"><i class="fa fa-link"></i></a>
                                         <a href="https://www.youtube.com/watch?v=14semTlwyUY"
                                             class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
                                         <a href="single-property-2.html" class="img-poppu btn"><i
@@ -1063,9 +1063,9 @@
                                 <!-- homes content -->
                                 <div class="homes-content">
                                     <!-- homes address -->
-                                    <h3><a href="single-property-1.html">{{$recent_propertie->nombre}}</a></h3>
+                                    <h3><a href="{{ route('properties.grid-single', $recent_propertie->id) }}">{{$recent_propertie->nombre}}</a></h3>
                                     <p class="homes-address mb-3">
-                                        <a href="single-property-1.html">
+                                        <a href="{{ route('properties.grid-single', $recent_propertie->id) }}">
                                             <i class="fa fa-map-marker"></i><span>Direccion pendiente</span>
                                         </a>
                                     </p>
@@ -1090,7 +1090,7 @@
                                     </ul>
                                     <div class="price-properties footer pt-3 pb-0">
                                         <h3 class="title mt-3">
-                                            <a href="single-property-1.html">{{"$ ". number_format($recent_propertie->precio)}}</a>
+                                            <a href="{{ route('properties.grid-single', $recent_propertie->id) }}">{{"$ ". number_format($recent_propertie->precio)}}</a>
                                         </h3>
                                         <div class="compare">
                                             <a href="#" title="Compare">
