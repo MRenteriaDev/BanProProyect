@@ -90,7 +90,7 @@
                                 <li>
                                     <div class="info">
                                         <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                        <p class="in-p">Benito Juarez y Tamaulpias #657</p>
+                                        <p class="in-p">Benito Juarez y Tamaulpias #65</p>
                                     </div>
                                 </li>
                                 <li>

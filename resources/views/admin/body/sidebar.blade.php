@@ -5,7 +5,7 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a href="{{ route('admin.dashboard') }}">
-            <img src="{{ asset('admin/img/BanProBlanco.png') }}" alt="BanPro" class="w-50" style="margin-left:4rem"
+            <img src="{{ asset('admin/img/BanProBlanco.png') }}" alt="BanPro" id="logo" class="w-50" style="margin-left:4rem"
                 style="opacity: .8">
         </a>
 
@@ -68,7 +68,7 @@
                             </p>
                         </a>
                     </li>
-                    <li class="nav-item has-treeview">
+                    {{-- <li class="nav-item has-treeview">
                         <a href="{{ route('galeriapropiedad.index') }}" class="nav-link {{$route == 'galeriapropiedad.index' ? 'active': ''}}">
                             <i class="fa-solid fa-building-flag"></i>
                             <p>
@@ -76,7 +76,7 @@
                             </p>
                         </a>
 
-                    </li>
+                    </li> --}}
                     <li class="nav-item has-treeview">
                         <a href="{{ route('nearby.index') }}" class="nav-link {{$route == 'nearby.index' ? 'active': ''}}">
                             <i class="fa-solid fa-arrow-right-to-city"></i>
