@@ -57,31 +57,28 @@
                     <div class="divider-fade"></div>
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13943.081115978002!2d-110.97073396842316!3d29.112462630154635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86ce877bf69c20e1%3A0x31327e7e36dfa21b!2sclinica%20shaddai!5e0!3m2!1sen!2smx!4v1664506806647!5m2!1sen!2smx" width="1200" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
-                <div class="row">
-                    <div class="col-lg-8 col-md-12">
-                        <h3 class="mb-4">Contactanos</h3>
-                        <form id="contactform" class="contact-form" name="contactform" method="post" novalidate>
-                            <div id="success" class="successform">
-                                <p class="alert alert-success font-weight-bold" role="alert">Your message was sent successfully!</p>
-                            </div>
-                            <div id="error" class="errorform">
-                                <p>Something went wrong, try refreshing and submitting the form again.</p>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" required class="form-control input-custom input-full" name="name" placeholder="Nombres">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" required class="form-control input-custom input-full" name="lastname" placeholder="Apellidos">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control input-custom input-full" name="email" placeholder="Correo">
-                            </div>
-                            <div class="form-group">
-                                <textarea class="form-control textarea-custom input-full" id="ccomment" name="message" required rows="8" placeholder="Mensaje"></textarea>
-                            </div>
-                            <button type="submit" id="submit-contact" class="btn btn-primary btn-lg">Aceptar</button>
-                        </form>
-                    </div>
+                    <div class="row">
+                        <div class="col-lg-8 col-md-12">
+                            <h3 class="mb-4">Contactanos</h3>
+                            <form  class="contact-form" name="contactform" method="POST" action="{{ route('contact.store') }}">
+                                @csrf
+                                <div class="form-group">
+                                    <input type="text" required class="form-control input-custom input-full" name="nombre" placeholder="Nombres">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" required class="form-control input-custom input-full" name="apellido" placeholder="Apellidos">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control input-custom input-full" name="correo" placeholder="Correo">
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control textarea-custom input-full" id="ccomment" name="mensaje" required rows="8" placeholder="Mensaje"></textarea>
+                                </div>
+                                <button type="submit" id="submit-contact" class="btn btn-primary btn-lg">Aceptar</button>
+                            </form>
+                        </div>
+
+
                     <div class="col-lg-4 col-md-12 bgc">
                         <div class="call-info">
                             <h3>Detalles De Contacto</h3>

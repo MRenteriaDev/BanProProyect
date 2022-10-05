@@ -1048,7 +1048,7 @@
 
                                         <a href="{{ route('properties.grid-single', $recent_propertie->id) }}" class="homes-img">
                                             <div class="homes-tag button sale rent">For Rent</div>
-                                            <img src="{{asset('/propiedades_documentos/'.$fotosrp->nombre_archivo )}}" class="img-responsive">
+                                         <img src="{{asset('/propiedades_documentos/'.$fotosrp->nombre_archivo )}}" class="img-responsive">
                                         </a>
 
                                     </div>

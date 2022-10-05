@@ -239,7 +239,8 @@ Route::prefix('sellers')->group(function () {
 });
 
 Route::prefix('contacts')->group(function () {
-    Route::get('/contact', [IndexController::class, 'contact'])->name('contact');
+    Route::get('/', [IndexController::class, 'contact'])->name('contact');
+    Route::post('/', [IndexController::class, 'contactStore'])->name('contact.store');
 });
 
 /// fin de las  Rutas del index
