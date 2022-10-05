@@ -23,7 +23,9 @@ return [
     'postmark' => [
         'token' => env('POSTMARK_TOKEN'),
     ],
-
+    'stripe' => [
+        'secret' => env('STRIPE_SECRET'),
+    ],
     'ses' => [
         'key' => env('AWS_ACCESS_KEY_ID'),
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
@@ -40,6 +42,6 @@ return [
         'client_id' => '1212104939332732',
         'client_secret' => '9430edc7bacf86d00bd9316ab2fba304',
         'redirect' => 'http://127.0.0.1:8000/callback/facebook',
-      ],
+    ],
 
 ];

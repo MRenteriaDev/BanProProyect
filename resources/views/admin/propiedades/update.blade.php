@@ -30,15 +30,18 @@
             <div class=navbar navbar-light bg-faded>
                 <ul class=nav navbar-nav>
                     <li>
-                        <a class=nav-item nav-link active data-toggle=tab href=#start><button type="button" class="btn btn-primary mr-3">Propiedades</button></a>
+                        <a class=nav-item nav-link active data-toggle=tab href=#start><button type="button"
+                                class="btn btn-primary mr-3">Propiedades</button></a>
                     </li>
 
                     <li>
-                        <a class=nav-item nav-link data-toggle=tab href=#form><button type="button" class="btn btn-primary mr-3">Galeria Propiedad</button></a>
+                        <a class=nav-item nav-link data-toggle=tab href=#form><button type="button"
+                                class="btn btn-primary mr-3">Galeria Propiedad</button></a>
                     </li>
 
                     <li>
-                        <a class=nav-item nav-link data-toggle=tab href=#planes><button type="button" class="btn btn-primary mr-3">Planos</button></a>
+                        <a class=nav-item nav-link data-toggle=tab href=#planes><button type="button"
+                                class="btn btn-primary mr-3">Planos</button></a>
                     </li>
 
                     {{-- <li>
@@ -46,17 +49,18 @@
                     </li> --}}
 
                 </ul>
-              </div>
+            </div>
 
-              <div class=tab-content>
+            <div class=tab-content>
                 <div class=tab-pane active id=start>
-                    <form class="row g-3" method="POST" action="{{ route('propiedades.update', $propiedades->id) }}" enctype="multipart/form-data">
+                    <form class="row g-3" method="POST" action="{{ route('propiedades.update', $propiedades->id) }}"
+                        enctype="multipart/form-data">
                         @csrf
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="nombre">Nombre</label>
-                                <input type="text" name="nombre" class="form-control" id="nombre"
-                                    placeholder="Introduzca Nombre">
+                                <input type="text" name="nombre" value="{{ $propiedades->nombre }}" class="form-control"
+                                    id="nombre" placeholder="Introduzca Nombre">
                                 @error('nombre')
                                     <span class="text-danger"> {{ $message }} </span>
                                 @enderror
@@ -65,8 +69,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="precio">Precio</label>
-                                <input type="number" name="precio" class="form-control" id="precio"
-                                    placeholder="Introduzca Precio">
+                                <input type="number" name="precio" value="{{ $propiedades->precio }}" class="form-control"
+                                    id="precio" placeholder="Introduzca Precio">
                                 @error('precio')
                                     <span class="text-danger"> {{ $message }} </span>
                                 @enderror
@@ -75,8 +79,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="tamano_propiedad">Tamaño de la propiedad</label>
-                                <input type="text" name="tamano_propiedad" class="form-control" id="tamano_propiedad"
-                                    placeholder="Tamaño de la propiedad">
+                                <input type="text" name="tamano_propiedad" value="{{ $propiedades->tamano_propiedad }}"
+                                    class="form-control" id="tamano_propiedad" placeholder="Tamaño de la propiedad">
                                 @error('tamano_propiedad')
                                     <span class="text-danger"> {{ $message }} </span>
                                 @enderror
@@ -85,7 +89,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="tamano_propiedad_construido">Tamaño de la propiedad construida</label>
-                                <input type="text" name="tamano_propiedad_construido" class="form-control"
+                                <input type="text" name="tamano_propiedad_construido"
+                                    value="{{ $propiedades->tamano_propiedad_construido }}" class="form-control"
                                     id="tamano_propiedad_construido" placeholder="Tamaño de la propiedad construida">
                                 @error('tamano_propiedad_construido')
                                     <span class="text-danger"> {{ $message }} </span>
@@ -95,8 +100,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="bano">Baño</label>
-                                <input type="number" name="bano" class="form-control" id="bano"
-                                    placeholder="Cantidad de baños">
+                                <input type="number" name="bano" value="{{ $propiedades->bano }}" class="form-control"
+                                    id="bano" placeholder="Cantidad de baños">
                                 @error('bano')
                                     <span class="text-danger"> {{ $message }} </span>
                                 @enderror
@@ -105,8 +110,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="recamaras">Recamaras</label>
-                                <input type="number" name="recamaras" class="form-control" id="recamaras"
-                                    placeholder="Cantidad de recamaras">
+                                <input type="number" name="recamaras" value="{{ $propiedades->recamaras }}"
+                                    class="form-control" id="recamaras" placeholder="Cantidad de recamaras">
                                 @error('recamaras')
                                     <span class="text-danger"> {{ $message }} </span>
                                 @enderror
@@ -115,8 +120,9 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="fecha_construccion">Fecha de construccion</label>
-                                <input type="date" name="fecha_construccion" class="form-control" id="fecha_construccion"
-                                    placeholder="Introduzca fecha de construccion">
+                                <input type="date" name="fecha_construccion"
+                                    value="{{ $propiedades->fecha_construccion }}" class="form-control"
+                                    id="fecha_construccion" placeholder="Introduzca fecha de construccion">
                                 @error('fecha_construccion')
                                     <span class="text-danger"> {{ $message }} </span>
                                 @enderror
@@ -125,7 +131,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="aire_condicionado">Aire acondicionado</label>
-                                <input type="checkbox" value="1" name="aire_condicionado" class="form-control"
+                                <input type="checkbox" value="1" name="aire_condicionado"
+                                    value="{{ $propiedades->aire_condicionado }}" class="form-control"
                                     id="aire_condicionado" placeholder="">
                                 @error('aire_condicionado')
                                     <span class="text-danger"> {{ $message }} </span>
@@ -135,8 +142,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="balcon">Balcon</label>
-                                <input type="checkbox" value="2" name="balcon" class="form-control" id="balcon"
-                                    placeholder="Enter name">
+                                <input type="checkbox" value="2" name="balcon" value="{{ $propiedades->balcon }}"
+                                    class="form-control" id="balcon" placeholder="Enter name">
                                 @error('balcon')
                                     <span class="text-danger"> {{ $message }} </span>
                                 @enderror
@@ -145,7 +152,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="internet">Internet</label>
-                                <input type="checkbox" value="3" name="internet" class="form-control" id="internet"
+                                <input type="checkbox" value="3" name="internet"
+                                    value="{{ $propiedades->internet }}" class="form-control" id="internet"
                                     placeholder="Enter name">
                                 @error('internet')
                                     <span class="text-danger"> {{ $message }} </span>
@@ -155,8 +163,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="Cable">Cable</label>
-                                <input type="checkbox" value="4" name="cable" class="form-control" id="cable"
-                                    placeholder="Enter name">
+                                <input type="checkbox" value="4" name="cable" value="{{ $propiedades->cable }}"
+                                    class="form-control" id="cable" placeholder="Enter name">
                                 @error('cable')
                                     <span class="text-danger"> {{ $message }} </span>
                                 @enderror
@@ -165,7 +173,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="alberca">Alberca</label>
-                                <input type="checkbox" value="5" name="alberca" class="form-control" id="alberca"
+                                <input type="checkbox" value="5" name="alberca"
+                                    value="{{ $propiedades->alberca }}" class="form-control" id="alberca"
                                     placeholder="Enter name">
                                 @error('alberca')
                                     <span class="text-danger"> {{ $message }} </span>
@@ -175,7 +184,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="lavaplatos">Lavaplatos</label>
-                                <input type="checkbox" value="6" name="lavaplatos" class="form-control" id="lavaplatos"
+                                <input type="checkbox" value="6" name="lavaplatos"
+                                    value="{{ $propiedades->lavaplatos }}" class="form-control" id="lavaplatos"
                                     placeholder="Enter name">
                                 @error('lavaplatos')
                                     <span class="text-danger"> {{ $message }} </span>
@@ -185,7 +195,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="estacionamiento">Estacionamiento</label>
-                                <input type="checkbox" value="7" name="estacionamiento" class="form-control"
+                                <input type="checkbox" value="7" name="estacionamiento"
+                                    value="{{ $propiedades->estacionamiento }}" class="form-control"
                                     id="estacionamiento" placeholder="Enter name">
                                 @error('estacionamiento')
                                     <span class="text-danger"> {{ $message }} </span>
@@ -195,24 +206,31 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="refrigerador">Refrigerador</label>
-                                <input type="checkbox" value="8" name="refrigerador" class="form-control"
-                                    id="refrigerador" placeholder="Enter name">
+                                <input type="checkbox" value="8" name="refrigerador"
+                                    value="{{ $propiedades->refrigerador }}" class="form-control" id="refrigerador"
+                                    placeholder="Enter name">
                                 @error('refrigerador')
                                     <span class="text-danger"> {{ $message }} </span>
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Seleccionar Nearbys</label>
-                                <select class="form-control select2" name="nearby_id" style="width: 100%;height: 100%;">
-                                    <option selected="selected">Seleccionar</option>
-                                    @foreach ($nearbys as $nearby)
-                                        <option value={{ $nearby->id }}>{{ $nearby->nombre }}</option>
-                                    @endforeach
-                                </select>
+                        <div class="row mb-3">
+                            <label class="col-sm-4 col-form-label">Nearbys actuales: <b>
+                                    {{ $propiedades->nearbys->nombre ?? 'Ninguno' }}</b></label>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Seleccionar Nearbys</label>
+                                    <select class="form-select" aria-label="Default select example" name="nearby_id"
+                                        style="width: 100%;height: 100%;">
+                                        <option value="{{$propiedades->nearby->id ?? ''}}"></option>
+                                        @foreach ($nearbys as $nearby)
+                                            <option value={{ $nearby->id }}>{{ $nearby->nombre }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
                         </div>
+
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Seleccionar Solicitud del vendedor</label>
@@ -253,7 +271,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Seleccionar Tipo de propiedad</label>
-                                <select class="form-control select2" name="tipo_propiedad_id" style="width: 100%;height: 100%;">
+                                <select class="form-control select2" name="tipo_propiedad_id"
+                                    style="width: 100%;height: 100%;">
                                     <option selected="selected">Seleccionar</option>
                                     @foreach ($tipopropiedades as $tipopropiedad)
                                         <option value={{ $tipopropiedad->id }}>{{ $tipopropiedad->nombre }}</option>
@@ -264,7 +283,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Seleccionar Locacion</label>
-                                <select class="form-control select2" name="locacion_id" style="width: 100%;height: 100%;">
+                                <select class="form-control select2" name="locacion_id"
+                                    style="width: 100%;height: 100%;">
                                     <option selected="selected">Seleccionar</option>
                                     @foreach ($locacion as $locacion)
                                         <option value={{ $locacion->id }}>{{ $locacion->nombre }}</option>
@@ -310,7 +330,7 @@
                             <a href="{{ route('propiedades.index') }}" class="btn btn-danger">Cancelar</a>
                         </div>
 
-                    {{-- <button onclick="showVideo();convertYoutube();">Check</button> --}}
+                        {{-- <button onclick="showVideo();convertYoutube();">Check</button> --}}
 
                 </div>
                 <div class=tab-pane id=form>
@@ -326,7 +346,8 @@
                         <div id="status"></div>
                         <div id="photos" class="row"></div>
                         <div class="col-12">
-                            <button type="button" onclick="remove_image();change();" class="btn btn-primary btn-sm">Borrar
+                            <button type="button" onclick="remove_image();change();"
+                                class="btn btn-primary btn-sm">Borrar
                                 Fotos</button>
                         </div>
                     </div>
@@ -378,8 +399,8 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="planos">Planos</label>
-                            <input type="file" onchange="readBlueprint(this);" name="planos[]" class="form-control" id="planos"
-                                placeholder="Cargar plano">
+                            <input type="file" onchange="readBlueprint(this);" name="planos[]" class="form-control"
+                                id="planos" placeholder="Cargar plano">
                             @error('planos')
                                 <span class="text-danger"> {{ $message }} </span>
                             @enderror
@@ -388,7 +409,8 @@
                         <div id="area"></div>
                         <div id="blueprint" class="row"></div>
                         <div class="col-12">
-                            <button type="button" onclick="remove_blueprint();clear();" class="btn btn-primary btn-sm">Borrar
+                            <button type="button" onclick="remove_blueprint();clear();"
+                                class="btn btn-primary btn-sm">Borrar
                                 Fotos</button>
                         </div>
                     </div>
@@ -426,7 +448,7 @@
                         }
 
                         function clear() {
-                            var ab = document.getElementById('planos').value;
+                            var abs = document.getElementById('planos').value;
                             document.getElementById('planos').value = "";
                             $('#planos').val('dsds');
                         }
@@ -437,7 +459,7 @@
                         <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0"width="788.54" height="443" type="text/html" src="https://www.youtube.com/embed/flYQ7EnEsME?autoplay=0&fs=1&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0&origin=http://youtubeembedcode.com"><div><small><a href="https://youtubeembedcode.com/nl/">youtubeembedcode nl</a></small></div><div><small><a href="https://casinoutanspelpaustrustly.se">casinoutanspelpaustrustly.se</a></small></div><div><small><a href="https://youtubeembedcode.com/de/">youtubeembedcode.com/de/</a></small></div><div><small><a href="https://casinoutansvensklicenszimpler.se">https://casinoutansvensklicenszimpler.se</a></small></div><div><small><a href="https://youtubeembedcode.com/de/">youtubeembedcode.com/de/</a></small></div><div><small><a href="https://casinoutanlicenstrustly.nu">casino utan licens trustly</a></small></div></iframe>
                     </div>
                 </div> --}}
-              </div>
+            </div>
             </form>
         </div>
     </div>

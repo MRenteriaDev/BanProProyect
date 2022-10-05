@@ -103,7 +103,10 @@
                                 </div>
                             </header>
                             <div class="collapse" id="debit-credit" role="tablist" aria-expanded="false">
-                                <div class="payment-card-body">
+                                <form role="form" method="POST" action="{{ route('stripe.post') }}"
+                                    class="payment-card-body" data-cc-on-file="false"
+                                    data-srtipe-publishable-key="{{ env('STRIPE_KEY') }}" id="payment_form">
+                                    @csrf
                                     <div class="row mrg-bot-20">
                                         <div class="col-sm-6">
                                             <label>Card Holder Name</label>
@@ -111,21 +114,21 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label>Card No.</label>
-                                            <input type="email" class="form-control" placeholder="1800 5785 6758 2458">
+                                            <input type="number" class="form-control card-number">
                                         </div>
                                     </div>
                                     <div class="row mrg-bot-20">
                                         <div class="col-sm-4 col-md-4">
                                             <label>Expire Month</label>
-                                            <input type="text" class="form-control" placeholder="09">
+                                            <input type="number" class="form-control card-expiry-month" placeholder="09">
                                         </div>
                                         <div class="col-sm-4 col-md-4">
                                             <label>Expire Year</label>
-                                            <input type="email" class="form-control" placeholder="2022">
+                                            <input type="number" class="form-control card-expiry-year" placeholder="2022">
                                         </div>
                                         <div class="col-sm-4 col-md-4">
                                             <label>CCV Code</label>
-                                            <input type="email" class="form-control" placeholder="258">
+                                            <input type="number" class="form-control card-cvc" placeholder="258">
                                         </div>
                                     </div>
                                     <div class="row mrg-bot-20">
@@ -151,7 +154,7 @@
                                             <button type="submit" class="btn btn-m btn-success">Checkout</button>
                                         </div>
                                     </div>
-                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -186,3 +189,57 @@
         </div>
     </section>
 @endsection
+
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script type="text/javascript">
+    $(function() {
+        var $form = $(".require-validation");
+        $('form.require-validation').bind('submit', function(e) {
+            var $form = $(".require-validation"),
+                inputSelector = ['input[type=email]', 'input[type=password]',
+                    'input[type=text]', 'input[type=file]',
+                    'textarea'
+                ].join(', '),
+                $inputs = $form.find('.required').find(inputSelector),
+                $errorMessage = $form.find('div.error'),
+                valid = true;
+            $errorMessage.addClass('hide');
+            $('.has-error').removeClass('has-error');
+            $inputs.each(function(i, el) {
+                var $input = $(el);
+                if ($input.val() === '') {
+                    $input.parent().addClass('has-error');
+                    $errorMessage.removeClass('hide');
+                    e.preventDefault();
+                }
+            });
+            if (!$form.data('cc-on-file')) {
+                e.preventDefault();
+                Stripe.setPublishableKey($form.data(
+                    'pk_test_51L9rBoH3TO4CUc7Ttb4qbZCqMnKXO3Th8ovbUXTK3S4vk0dYvEJZUceam5zQPvaZpd3F0tsrP4cYb3KoZWzpxNUo00GXwPRZ3t'
+                    ));
+                Stripe.createToken({
+                    number: $('.card-number').val(),
+                    cvc: $('.card-cvc').val(),
+                    exp_month: $('.card-expiry-month').val(),
+                    exp_year: $('.card-expiry-year').val()
+                }, stripeResponseHandler);
+            }
+        });
+
+        function stripeResponseHandler(status, response) {
+            if (response.error) {
+                $('.error')
+                    .removeClass('hide')
+                    .find('.alert')
+                    .text(response.error.message);
+            } else {
+                /* token contains id, last4, and card type */
+                var token = response['id'];
+                $form.find('input[type=text]').empty();
+                $form.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
+                $form.get(0).submit();
+            }
+        }
+    });
+</script>
