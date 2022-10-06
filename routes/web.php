@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\ZonasController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Cliente\IndexController;
+use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\MetodosPagosController;
 use App\Http\Controllers\SellerController;
 use App\Models\Propiedades;
@@ -241,6 +242,8 @@ Route::prefix('sellers')->group(function () {
 Route::prefix('contacts')->group(function () {
     Route::get('/', [IndexController::class, 'contact'])->name('contact');
     Route::post('/', [IndexController::class, 'contactStore'])->name('contact.store');
+    Route::get('/index', [ContactoController::class, 'index'])->name('contact.index');
+    Route::get('/destroy/{id}', [ContactoController::class, 'destroy'])->name('contact.destroy');
 });
 
 /// fin de las  Rutas del index

@@ -129,6 +129,15 @@
                         </a>
                     </li>
 
+                    <li class="nav-item has-treeview">
+                        <a href="{{ route('contact.index') }}" class="nav-link {{$route == 'contact.index' ? 'active': ''}}">
+                            <i class="fa-regular fa-id-badge"></i>
+                            <p>
+                                Contactos
+                            </p>
+                        </a>
+                    </li>
+
 
             </nav>
             <!-- /.sidebar-menu -->
