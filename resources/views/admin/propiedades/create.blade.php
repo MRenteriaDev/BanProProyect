@@ -336,8 +336,8 @@
                     <div class="form-floathing">
                         <label for="planos"> Planos</label>
 
-                        <input type="file" onchange="readblueprint(this);" id="planos" name="planos[]"
-                            class="form-control" multiple>
+                        <input type="file" onchange="readblueprint(this);" id="planos" name="planos"
+                            class="form-control">
 
                     </div>
                     <br>

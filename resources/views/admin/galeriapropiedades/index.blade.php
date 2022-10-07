@@ -8,7 +8,7 @@
                 <div class="col-sm-6">
                     <h1>Galeria propiedades </h1>
                 </div>
-                <div class="col-sm-6">
+                {{-- <div class="col-sm-6">
                     <ol class="breadcrumb float-md-right">
                          <a class="btn btn-primary btn-md" href="{{ route('galeriapropiedad.create') }}"><i
                                 class="fas fa-plus-circle"></i>
@@ -16,7 +16,7 @@
                             &nbsp; Agregar imagenes
                         </a>
                     </ol>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>
