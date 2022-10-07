@@ -24,6 +24,7 @@
             <div class="card-header">
                 <h3 class="card-title">Creación de Propiedad</h3>
             </div>
+            <br>
             <!-- /.card-header -->
 
 
@@ -180,14 +181,9 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="form-group">
-                        <label>Seleccionar Nearbys</label>
-                        <select class="form-control select2" name="nearby_id" style="width: 100%;height: 100%;">
-                            <option selected="selected">Seleccionar</option>
-                            @foreach ($nearbys as $nearby)
-                                <option value={{ $nearby->id }}>{{ $nearby->nombre }}</option>
-                            @endforeach
-                        </select>
+                    <div class="form-floathing">
+                        <label for="nearbys">Especifica si hay lugares de interés cerca</label>
+                        <textarea name="nearbys" class="form-control" cols="10" rows="2"></textarea>
                     </div>
                 </div>
                 <div class="col-md-6">

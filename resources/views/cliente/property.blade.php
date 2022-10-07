@@ -4,7 +4,7 @@
 
 @php
     $fotos = DB::table('galeria_propiedades')->where('propiedad_id', '=', $property[0]->id)->get();
-
+    $plano = DB::table('galeria_planos')->where('propiedad_id', '=', $property[0]->id)->get();
 @endphp
 
     <body class="inner-pages sin-1 homepage-4 hd-white">
@@ -43,7 +43,7 @@
                                             <div class="single detail-wrapper mr-2">
                                                 <div class="detail-wrapper-body">
                                                     <div class="listing-title-bar">
-                                                        <h4>$ {{ $property[0]->precio }}</h4>
+                                                        <h4>$ {{ number_format($property[0]->precio, 2) }}</h4>
                                                         <div class="mt-0">
                                                             <a href="#listing-location" class="listing-address">
                                                                 <p>$ {{ number_format($property[0]->precio / $property[0]->tamano_propiedad_construido, 2) . ' / m²'}}
@@ -144,56 +144,56 @@
                                 <!-- cars List -->
                                 <ul class="homes-list clearfix">
 
-                                    @if(isset($property[0]->aire_condicionado))
+                                    @if($property[0]->aire_condicionado >= 1)
                                     <li>
                                         <i class="fa fa-check-square" aria-hidden="true"></i>
                                         <span>Aire acondicionado</span>
                                     </li>
                                     @endif
 
-                                    @if(isset($property[0]->balcon))
+                                    @if($property[0]->balcon >= 1)
                                     <li>
                                         <i class="fa fa-check-square" aria-hidden="true"></i>
                                         <span>Balcon</span>
                                     </li>
                                     @endif
 
-                                    @if(isset($property[0]->internet))
+                                    @if($property[0]->internet >= 1)
                                     <li>
                                         <i class="fa fa-check-square" aria-hidden="true"></i>
                                         <span>Internet</span>
                                     </li>
                                     @endif
 
-                                    @if(isset($property[0]->lavaplatos))
+                                    @if($property[0]->lavaplatos >= 1)
                                     <li>
                                         <i class="fa fa-check-square" aria-hidden="true"></i>
                                         <span>Lavaplatos</span>
                                     </li>
                                     @endif
 
-                                    @if(isset($property[0]->cable))
+                                    @if($property[0]->cable >= 1)
                                     <li>
                                         <i class="fa fa-check-square" aria-hidden="true"></i>
                                         <span>TV Cable</span>
                                     </li>
                                     @endif
 
-                                    @if(isset($property[0]->estacionamiento))
+                                    @if($property[0]->estacionamiento >= 1)
                                     <li>
                                         <i class="fa fa-check-square" aria-hidden="true"></i>
                                         <span>Estacionamiento</span>
                                     </li>
                                     @endif
 
-                                    @if(isset($property[0]->alberca))
+                                    @if($property[0]->alberca >= 1)
                                     <li>
                                         <i class="fa fa-check-square" aria-hidden="true"></i>
                                         <span>Alberca</span>
                                     </li>
                                     @endif
 
-                                    @if(isset($property[0]->refrigerador))
+                                    @if($property[0]->refrigerador >= 1)
                                     <li>
                                         <i class="fa fa-check-square" aria-hidden="true"></i>
                                         <span>Refrigerador</span>
@@ -204,8 +204,12 @@
                             </div>
                             <div class="floor-plan property wprt-image-video w50 pro">
                                 <h5>Planos de construcción</h5>
-                                <img alt="image" src="{{ asset('cliente/images/bg/floor-plan-1.png') }}">
-                            </div>
+                                @if(!$plano->isEmpty())
+                                <img alt="image" src="{{ asset('/planos_documentos/' . $plano[0]->nombre_archivo) }}">
+                                @else
+                                <p class="mb-3">No hay planos disponibles</p>
+                                @endif
+                                </div>
 
                             <div class="floor-plan property wprt-image-video w50 pro">
                                 <h5>Nearbys</h5>
@@ -214,177 +218,22 @@
                                         <div class="col-lg-12">
                                             <div class="nearby-info mb-4">
                                                 <span class="nearby-title mb-3 d-block text-info">
-                                                    <i class="fas fa-graduation-cap mr-2"></i><b
-                                                        class="title">Educacion</b>
+                                                    <i class="fas fa-building mr-2"></i><b
+                                                        class="title">Lugares cercanos</b>
                                                 </span>
                                                 <div class="nearby-list">
                                                     <ul class="property-list list-unstyled mb-0">
                                                         <li class="d-flex">
-                                                            <h6 class="mb-3 mr-2">Education Mandarin</h6>
-                                                            <span>(15.61 miles)</span>
-                                                            <ul class="list-unstyled list-inline ml-auto">
-                                                                <li class="list-inline-item m-0 text-warning"><i
-                                                                        class="fas fa-star fa-xs"></i></li>
-                                                                <li class="list-inline-item m-0 text-warning"><i
-                                                                        class="fas fa-star fa-xs"></i></li>
-                                                                <li class="list-inline-item m-0 text-warning"><i
-                                                                        class="fas fa-star fa-xs"></i></li>
-                                                                <li class="list-inline-item m-0 text-warning"><i
-                                                                        class="fas fa-star fa-xs"></i></li>
-                                                                <li class="list-inline-item m-0 text-warning"><i
-                                                                        class="fas fa-star-half fa-xs"></i></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li class="d-flex">
-                                                            <h6 class="mb-3 mr-2">Marry's Education</h6>
-                                                            <span>(15.23 miles)</span>
-                                                            <ul class="list-unstyled list-inline ml-auto">
-                                                                <li class="list-inline-item m-0 text-warning"><i
-                                                                        class="fas fa-star fa-xs"></i></li>
-                                                                <li class="list-inline-item m-0 text-warning"><i
-                                                                        class="fas fa-star fa-xs"></i></li>
-                                                                <li class="list-inline-item m-0 text-warning"><i
-                                                                        class="fas fa-star fa-xs"></i></li>
-                                                                <li class="list-inline-item m-0 text-warning"><i
-                                                                        class="fas fa-star-half fa-xs"></i></li>
-                                                                <li class="list-inline-item m-0 text-warning"><i
-                                                                        class="far fa-star fa-xs"></i></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li class="d-flex">
-                                                            <h6 class="mb-3 mr-2">The Kaplan</h6>
-                                                            <span>(15.16 miles)</span>
-                                                            <ul class="list-unstyled list-inline ml-auto">
-                                                                <li class="list-inline-item m-0 text-warning"><i
-                                                                        class="fas fa-star fa-xs"></i></li>
-                                                                <li class="list-inline-item m-0 text-warning"><i
-                                                                        class="fas fa-star fa-xs"></i></li>
-                                                                <li class="list-inline-item m-0 text-warning"><i
-                                                                        class="fas fa-star-half fa-xs"></i></li>
-                                                                <li class="list-inline-item m-0 text-warning"><i
-                                                                        class="far fa-star fa-xs"></i></li>
-                                                                <li class="list-inline-item m-0 text-warning"><i
-                                                                        class="far fa-star fa-xs"></i></li>
-                                                            </ul>
+                                                            @if(!$property[0]->nearbys == null)
+                                                            <h6 class="mb-3 mr-2">{{$property[0]->nearbys}}</h6>
+                                                            @else
+                                                            <h6 class="mb-3 mr-2">No hay información para mostrar.</h6>
+                                                            @endif
                                                         </li>
                                                     </ul>
                                                 </div>
                                             </div>
-                                            <div class="nearby-info mb-4">
-                                                <span class="nearby-title mb-3 d-block text-success">
-                                                    <i class="fas fa-user-md mr-2"></i><b class="title">Health &
-                                                        Medical</b>
-                                                </span>
-                                                <div class="nearby-list">
-                                                    <ul class="property-list list-unstyled mb-0">
-                                                        <li class="d-flex">
-                                                            <h6 class="mb-3 mr-2">Natural Market</h6>
-                                                            <span>(13.20 miles)</span>
-                                                            <ul class="list-unstyled list-inline ml-auto">
-                                                                <li class="list-inline-item m-0 text-warning"><i
-                                                                        class="fas fa-star fa-xs"></i></li>
-                                                                <li class="list-inline-item m-0 text-warning"><i
-                                                                        class="fas fa-star fa-xs"></i></li>
-                                                                <li class="list-inline-item m-0 text-warning"><i
-                                                                        class="fas fa-star fa-xs"></i></li>
-                                                                <li class="list-inline-item m-0 text-warning"><i
-                                                                        class="fas fa-star fa-xs"></i></li>
-                                                                <li class="list-inline-item m-0 text-warning"><i
-                                                                        class="fas fa-star-half fa-xs"></i></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li class="d-flex">
-                                                            <h6 class="mb-3 mr-2">Food For Health</h6>
-                                                            <span>(13.22 miles)</span>
-                                                            <ul class="list-unstyled list-inline ml-auto">
-                                                                <li class="list-inline-item m-0 text-warning"><i
-                                                                        class="fas fa-star fa-xs"></i></li>
-                                                                <li class="list-inline-item m-0 text-warning"><i
-                                                                        class="fas fa-star fa-xs"></i></li>
-                                                                <li class="list-inline-item m-0 text-warning"><i
-                                                                        class="fas fa-star fa-xs"></i></li>
-                                                                <li class="list-inline-item m-0 text-warning"><i
-                                                                        class="fas fa-star-half fa-xs"></i></li>
-                                                                <li class="list-inline-item m-0 text-warning"><i
-                                                                        class="far fa-star fa-xs"></i></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li class="d-flex">
-                                                            <h6 class="mb-3 mr-2">A Matter of Health</h6>
-                                                            <span>(13.34 miles)</span>
-                                                            <ul class="list-unstyled list-inline ml-auto">
-                                                                <li class="list-inline-item m-0 text-warning"><i
-                                                                        class="fas fa-star fa-xs"></i></li>
-                                                                <li class="list-inline-item m-0 text-warning"><i
-                                                                        class="fas fa-star fa-xs"></i></li>
-                                                                <li class="list-inline-item m-0 text-warning"><i
-                                                                        class="fas fa-star-half fa-xs"></i></li>
-                                                                <li class="list-inline-item m-0 text-warning"><i
-                                                                        class="far fa-star fa-xs"></i></li>
-                                                                <li class="list-inline-item m-0 text-warning"><i
-                                                                        class="far fa-star fa-xs"></i></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="nearby-info">
-                                                <span class="nearby-title mb-3 d-block text-danger">
-                                                    <i class="fas fa-car mr-2"></i><b class="title">Transportation</b>
-                                                </span>
-                                                <div class="nearby-list">
-                                                    <ul class="property-list list-unstyled mb-0">
-                                                        <li class="d-flex">
-                                                            <h6 class="mb-3 mr-2">Airport Transportation</h6>
-                                                            <span>(11.36 miles)</span>
-                                                            <ul class="list-unstyled list-inline ml-auto">
-                                                                <li class="list-inline-item m-0 text-warning"><i
-                                                                        class="fas fa-star fa-xs"></i></li>
-                                                                <li class="list-inline-item m-0 text-warning"><i
-                                                                        class="fas fa-star fa-xs"></i></li>
-                                                                <li class="list-inline-item m-0 text-warning"><i
-                                                                        class="fas fa-star fa-xs"></i></li>
-                                                                <li class="list-inline-item m-0 text-warning"><i
-                                                                        class="fas fa-star fa-xs"></i></li>
-                                                                <li class="list-inline-item m-0 text-warning"><i
-                                                                        class="fas fa-star-half fa-xs"></i></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li class="d-flex">
-                                                            <h6 class="mb-3 mr-2">NYC Executive Limo</h6>
-                                                            <span>(11.87 miles)</span>
-                                                            <ul class="list-unstyled list-inline ml-auto">
-                                                                <li class="list-inline-item m-0 text-warning"><i
-                                                                        class="fas fa-star fa-xs"></i></li>
-                                                                <li class="list-inline-item m-0 text-warning"><i
-                                                                        class="fas fa-star fa-xs"></i></li>
-                                                                <li class="list-inline-item m-0 text-warning"><i
-                                                                        class="fas fa-star fa-xs"></i></li>
-                                                                <li class="list-inline-item m-0 text-warning"><i
-                                                                        class="fas fa-star-half fa-xs"></i></li>
-                                                                <li class="list-inline-item m-0 text-warning"><i
-                                                                        class="far fa-star fa-xs"></i></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li class="d-flex">
-                                                            <h6 class="mb-3 mr-2">Empire Limousine</h6>
-                                                            <span>(11.52 miles)</span>
-                                                            <ul class="list-unstyled list-inline ml-auto">
-                                                                <li class="list-inline-item m-0 text-warning"><i
-                                                                        class="fas fa-star fa-xs"></i></li>
-                                                                <li class="list-inline-item m-0 text-warning"><i
-                                                                        class="fas fa-star fa-xs"></i></li>
-                                                                <li class="list-inline-item m-0 text-warning"><i
-                                                                        class="fas fa-star-half fa-xs"></i></li>
-                                                                <li class="list-inline-item m-0 text-warning"><i
-                                                                        class="far fa-star fa-xs"></i></li>
-                                                                <li class="list-inline-item m-0 text-warning"><i
-                                                                        class="far fa-star fa-xs"></i></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -460,6 +309,7 @@
                                 <!-- End: Schedule a Tour -->
                                 <!-- end author-verified-badge -->
                                 <div class="sidebar">
+                                    <br><br><br><br>
                                     <div class="widget-boxed mt-33 mt-5">
                                         <div class="widget-boxed-header">
                                             <h4>Información de contacto</h4>
@@ -739,7 +589,7 @@
                         </aside>
                     </div>
                     <!-- START SIMILAR PROPERTIES -->
-                    <section class="similar-property featured portfolio p-0 bg-white-inner">
+                    {{-- <section class="similar-property featured portfolio p-0 bg-white-inner">
                         <div class="container">
                             <h5>Similar Properties</h5>
                             <div class="row portfolio-items">
@@ -925,7 +775,7 @@
                                 </div>
                             </div>
                         </div>
-                    </section>
+                    </section> --}}
                     <!-- END SIMILAR PROPERTIES -->
                 </div>
             </section>
