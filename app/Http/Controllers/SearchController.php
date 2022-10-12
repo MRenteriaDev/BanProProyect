@@ -8,17 +8,20 @@ use App\Models\Locacion;
 
 class SearchController extends Controller
 {
-    public function locacion(Request $request){
-        $term = $request->get('term');
+    public function busqueda(Request $request){
 
-        $query = Locacion::where('nombre', 'LIKE', '%' . $term . '%')->get();
+        // $term = $request->get('term');
+        // $tipop = $request->get('tipo_propiedad');
 
-        $data = [];
-        foreach($query as $q){
-            $data[] = [
-                'label' => $q->nombre
-            ];
-        }
-        return($data);
+        // $query = Locacion::where('nombre', 'LIKE', '%' . $term . '%')->get();
+
+        // $data = [];
+        // foreach($query as $q){
+        //     $data[] = [
+        //         'label' => $q->nombre,
+        //         'tipo' => $q->tipo_propiedad
+        //     ];
+        // }
+        // return view('cliente.properties-grid', compact('query'));
     }
 }

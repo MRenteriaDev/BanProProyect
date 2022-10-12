@@ -43,7 +43,7 @@
             @php
                 use Illuminate\Support\Facades\Auth;
                 $userauth = Auth::user();
-                dd($userauth);
+
 
             @endphp
             <!-- Right Side Content / End -->
@@ -53,10 +53,10 @@
                     @if (!isset(Auth::user()->name))
                         {{-- <span><img src="{{ asset('cliente/images/testimonials/ts-1.jpg') }}" alt=""></span>Hola! --}}
                     @else
-                        <span><img src="{{ asset('cliente/images/testimonials/ts-1.jpg') }}"
+                        <span><img src="{{ $userauth->avatar }}"
                                 alt=""></span>{{ Auth::user()->name }}
                     @endif
-                    <span><img src="{{ asset('cliente/images/testimonials/ts-1.jpg') }}" alt=""></span>
+                    <span><img src="{{ $userauth->avatar ?? '' }}" alt=""></span>
                     {{ $user->name ?? '' }}
                 </div>
                 @if (!isset(Auth::user()->name))

@@ -12461,7 +12461,7 @@ section.visited-cities {
 
 .rld-single-select .single-select .list {
   margin-top: 0px;
-  width: 100%;
+  width: auto;
 }
 
 .rld-price-slider-wrap .rld-price-slider,
@@ -24818,3 +24818,4 @@ section.ui-element {
 }
 
 /*# sourceMappingURL=styles.css.map */
+
