@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddDistanciaKmToNearbys extends Migration
+class AddActiveToSellers extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddDistanciaKmToNearbys extends Migration
      */
     public function up()
     {
-        Schema::table('nearbys', function (Blueprint $table) {
-            $table->string("distancia_km")->nullable();
+        Schema::table('sellers', function (Blueprint $table) {
+            $table->boolean('seller_active')->nullable();
         });
     }
 
@@ -25,8 +25,8 @@ class AddDistanciaKmToNearbys extends Migration
      */
     public function down()
     {
-        Schema::table('nearbys', function (Blueprint $table) {
-            $table->string("distancia_km")->nullable();
+        Schema::table('sellers', function (Blueprint $table) {
+            $table->boolean('seller_active')->nullable();
         });
     }
 }

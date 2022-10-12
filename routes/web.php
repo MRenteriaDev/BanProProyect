@@ -19,6 +19,7 @@ use App\Http\Controllers\SellerController;
 use App\Models\Propiedades;
 use App\Http\Controllers\SocialController;
 use App\Http\Controllers\FacebookSocialiteController;
+use App\Http\Controllers\ReportesController;
 use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\SearchController;
 
@@ -195,6 +196,14 @@ Route::prefix('metodospagos')->group(function () {
 });
 /* ------------- End Metodos de Pago -------------- */
 
+/* ------------- Reportes -------------- */
+Route::prefix('reportes')->group(function () {
+    Route::get('/index', [ReportesController::class, 'index'])->name('reportes.index');
+    Route::post('/index', [ReportesController::class, 'getpropertiesbydates'])->name('reportes.generar');
+
+});
+/* ------------- End Reportes -------------- */
+
 
 
 
@@ -211,7 +220,7 @@ Route::prefix('seller')->group(function () {
 
 
 
-    Route::get('/logout', [SellerController::class, 'SellerLogout'])->name('seller.logout')->middleware('seller');
+    Route::get('/logout', [SellerController::class, 'SellerLogout'])->name('seller.logout');
 
     Route::get('/register', [SellerController::class, 'SellerRegister'])->name('seller.register');
 
@@ -259,12 +268,12 @@ Route::prefix('busqueda')->group(function () {
 /// fin de las  Rutas del index
 Route::get('/', function () {
     return view('cliente.index');
-});
+})->name('index.page');
 
 
 /// Configuración de cliente
 Route::get('payments', function () {
-    return view('sellers.payments');
+    return view('clienteRegistrado.makevendedord');
 })->middleware(['auth'])->name('payments');
 
 // Payments Routes
@@ -273,7 +282,7 @@ Route::controller(StripePaymentController::class)->group(function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('sellers.profile');
+    return view('clienteRegistrado.profile');
 })->middleware(['auth'])->name('dashboard');
 
 

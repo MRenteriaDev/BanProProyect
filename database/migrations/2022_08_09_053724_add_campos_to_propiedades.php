@@ -33,8 +33,6 @@ class AddCamposToPropiedades extends Migration
             $table->boolean("lavaplatos")->nullable();
             $table->boolean("estacionamiento")->nullable();
             $table->boolean("refrigerador")->nullable();
-            $table->unsignedBigInteger("nearby_id")->nullable();
-            $table->foreign("nearby_id")->references("id")->on("nearbys")->onDelete("cascade");
             $table->string("video_propiedad")->nullable();
             $table->unsignedBigInteger("review_id")->nullable();
             $table->foreign("review_id")->references("id")->on("reviews")->onDelete("cascade");

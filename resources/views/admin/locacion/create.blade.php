@@ -41,10 +41,10 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Seleccionar Zona</label>
-                            <select class="form-control select2" name="zona_id" style="width: 100%;height: 100%;">
-                                <option selected="selected">Seleccionar</option>
+                            <select class="form-control select2" aria-label="Default select example" name="zona_id" style="width: 100%;height: 100%;">
+                                <option selected disabled>Seleccionar</option>
                                 @foreach ($zonas as $zona)
-                                    <option value={{ $zona->id }}>{{ $zona->zona_nombre }}</option>
+                                    <option value="{{ $zona->id }}" selected="selected">{{ $zona->zona_nombre }}</option>
                                 @endforeach
                             </select>
                         </div>

@@ -8,18 +8,11 @@
             <img src="{{ asset('admin/img/BanProBlanco.png') }}" alt="BanPro" id="logo" class="w-50" style="margin-left:4rem"
                 style="opacity: .8">
         </a>
+        <br>
+        <br>
 
         <!-- Sidebar -->
         <div class="sidebar">
-            <!-- Sidebar user panel (optional) -->
-            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-
-                <div class="info">
-
-                    <a href="#" class="d-block"><i class="fa-solid fa-chalkboard-user" style="margin-left:4.5rem">
-                        </i> Users</a>
-                </div>
-            </div>
 
             <!-- Sidebar Menu -->
             <nav class="mt-2">
@@ -68,24 +61,7 @@
                             </p>
                         </a>
                     </li>
-                    {{-- <li class="nav-item has-treeview">
-                        <a href="{{ route('galeriapropiedad.index') }}" class="nav-link {{$route == 'galeriapropiedad.index' ? 'active': ''}}">
-                            <i class="fa-solid fa-building-flag"></i>
-                            <p>
-                                Galeria Propiedades
-                            </p>
-                        </a>
 
-                    </li> --}}
-                    <li class="nav-item has-treeview">
-                        <a href="{{ route('nearby.index') }}" class="nav-link {{$route == 'nearby.index' ? 'active': ''}}">
-                            <i class="fa-solid fa-arrow-right-to-city"></i>
-                            <p>
-                                Nearbys
-                            </p>
-                        </a>
-
-                    </li>
                     <li class="nav-item">
                         <a href="{{ route('review.index') }}" class="nav-link {{$route == 'review.index' ? 'active': ''}}">
                             <i class="fa-solid fa-pen-nib"></i>
@@ -137,6 +113,16 @@
                             </p>
                         </a>
                     </li>
+
+                    <li class="nav-item has-treeview">
+                        <a href="{{ route('reportes.index') }}" class="nav-link {{$route == 'reportes.index' ? 'active': ''}}">
+                            <i class="fa-regular fa-id-badge"></i>
+                            <p>
+                                Reportes
+                            </p>
+                        </a>
+                    </li>
+
 
 
             </nav>

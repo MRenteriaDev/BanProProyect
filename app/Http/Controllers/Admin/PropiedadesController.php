@@ -40,10 +40,9 @@ class PropiedadesController extends Controller
         $estatuspropiedad = DB::table('estatus_propiedads')->get();
         $locacion = DB::table('locacions')->get();
         $tipopropiedades = DB::table('tipo_propiedads')->get();
-        $nearbys = DB::table('nearbys')->get();
         $reviews = DB::table('reviews')->get();
         $solicitudvendedor = DB::table('solicitud_vendedors')->get();
-        return view('admin.propiedades.create', compact('estatuspropiedad', 'locacion', 'tipopropiedades', 'nearbys', 'reviews', 'solicitudvendedor'));
+        return view('admin.propiedades.create', compact('estatuspropiedad', 'locacion', 'tipopropiedades',  'reviews', 'solicitudvendedor'));
     }
 
     /**
@@ -57,6 +56,8 @@ class PropiedadesController extends Controller
         $data = $request->validate([
             'nombre' => 'required',
             'precio' => 'required',
+            'planos' => 'required',
+            'nearbys' => 'required',
 
         ], [
             'solicitud_vendedor_id.required' => 'Se debe seleccionar algo',
@@ -64,6 +65,8 @@ class PropiedadesController extends Controller
             'estatus_propiedad_id.required' => 'Se debe seleccionar algo',
             'locacion_id.required' => 'Se debe seleccionar algo',
             'tipo_propiedad_id.required' => 'Se debe seleccionar algo',
+            'planos' => 'Se debe seleccionar algo',
+            'nearbys' => 'Se debe escribir algo',
 
         ]);
 
@@ -93,8 +96,8 @@ class PropiedadesController extends Controller
             'estatus_propiedad_id' => $request->estatus_propiedad_id,
             'locacion_id' => $request->locacion_id,
             'tipo_propiedad_id' => $request->tipo_propiedad_id,
-            //'nearbys' => $request->nearbys,
-            // 'galeria_planos_id' => $request->galeria_planos_id,
+            'planos' => $request->$imageSave,
+            'nearbys' => $request->nearbys,
             'created_at' => Carbon::now()
         ]);
 
@@ -150,11 +153,10 @@ class PropiedadesController extends Controller
             $estatuspropiedad = EstatusPropiedad::latest()->get();
             $locacion = Locacion::latest()->get();
             $tipopropiedades = TipoPropiedad::latest()->get();
-            $nearbys = Nearbys::latest()->get();
             $reviews = Reviews::latest()->get();
             $solicitudvendedor = SolicitudVendedor::latest()->get();
             $galeria_priopiedad = GaleriaPropiedades::where('propiedad_id', $propiedades->id)->get();
-            return view('admin.propiedades.update', compact("propiedades", "estatuspropiedad", "locacion", "tipopropiedades", "nearbys", "reviews", "solicitudvendedor", "galeria_priopiedad"));
+            return view('admin.propiedades.update', compact("propiedades", "estatuspropiedad", "locacion", "tipopropiedades",  "reviews", "solicitudvendedor", "galeria_priopiedad"));
         }
 
         $notification = array(

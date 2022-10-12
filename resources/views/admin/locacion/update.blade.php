@@ -45,7 +45,7 @@
                             <select class="form-control select2" name="zona_id" style="width: 100%;height: 100%;">
                                 <option selected="selected">{{ $locacion->zona_id }}</option>
                                 @foreach ($zonas as $zona)
-                                    <option value={{ $zona->id }}>{{ $zona->zona_nombre }}</option>
+                                    <option value={{ $zona->id }} selected="selected">{{ $zona->zona_nombre }}</option>
                                 @endforeach
                             </select>
                         </div>

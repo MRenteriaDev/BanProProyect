@@ -20,6 +20,8 @@ class StripePaymentController extends Controller
             "description" => "Paymen of membresy of banpro"
         ]);
 
+
+
         $notification = array(
             'message' => 'pago realizado con éxito',
             'type-alert' => "success"
