@@ -20,6 +20,7 @@ use App\Models\Propiedades;
 use App\Http\Controllers\SocialController;
 use App\Http\Controllers\FacebookSocialiteController;
 use App\Http\Controllers\StripePaymentController;
+use App\Http\Controllers\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -246,6 +247,11 @@ Route::prefix('contacts')->group(function () {
     Route::get('/destroy/{id}', [ContactoController::class, 'destroy'])->name('contact.destroy');
 });
 
+Route::prefix('search')->group(function () {
+    Route::get('locacion', [SearchController::class, 'locacion'])->name('locacion');
+});
+
+
 /// fin de las  Rutas del index
 Route::get('/', function () {
     return view('cliente.index');
@@ -265,5 +271,7 @@ Route::controller(StripePaymentController::class)->group(function () {
 Route::get('/dashboard', function () {
     return view('sellers.profile');
 })->middleware(['auth'])->name('dashboard');
+
+
 
 require __DIR__ . '/auth.php';
