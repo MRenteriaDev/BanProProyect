@@ -13,12 +13,14 @@ use App\Http\Controllers\Admin\ZonasController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Cliente\IndexController;
+use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\MetodosPagosController;
 use App\Http\Controllers\SellerController;
 use App\Models\Propiedades;
 use App\Http\Controllers\SocialController;
 use App\Http\Controllers\FacebookSocialiteController;
 use App\Http\Controllers\StripePaymentController;
+use App\Http\Controllers\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -239,8 +241,16 @@ Route::prefix('sellers')->group(function () {
 });
 
 Route::prefix('contacts')->group(function () {
-    Route::get('/contact', [IndexController::class, 'contact'])->name('contact');
+    Route::get('/', [IndexController::class, 'contact'])->name('contact');
+    Route::post('/', [IndexController::class, 'contactStore'])->name('contact.store');
+    Route::get('/index', [ContactoController::class, 'index'])->name('contact.index');
+    Route::get('/destroy/{id}', [ContactoController::class, 'destroy'])->name('contact.destroy');
 });
+
+Route::prefix('search')->group(function () {
+    Route::get('locacion', [SearchController::class, 'locacion'])->name('locacion');
+});
+
 
 /// fin de las  Rutas del index
 Route::get('/', function () {
@@ -261,5 +271,7 @@ Route::controller(StripePaymentController::class)->group(function () {
 Route::get('/dashboard', function () {
     return view('clienteRegistrado.profile');
 })->middleware(['auth'])->name('dashboard');
+
+
 
 require __DIR__ . '/auth.php';

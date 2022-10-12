@@ -19,8 +19,8 @@
     <link rel="stylesheet" href="{{ asset('cliente/css/fontawesome-5-all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('cliente/css/font-awesome.min.css') }}">
     <script src="https://kit.fontawesome.com/72ed50f906.js" crossorigin="anonymous"></script>
-     <!-- Page Icon -->
-     <link rel="icon" href="{{ asset('cliente/images/123.png') }}"/>
+    <!-- Page Icon -->
+    <link rel="icon" href="{{ asset('cliente/images/123.png') }}" />
     <!-- ARCHIVES CSS -->
     <link rel="stylesheet" href="{{ asset('cliente/css/search.css') }}">
     <link rel="stylesheet" href="{{ asset('cliente/css/animate.css') }}">
@@ -34,7 +34,11 @@
     <link rel="stylesheet" href="{{ asset('cliente/css/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('cliente/css/styles.css') }}">
     <link rel="stylesheet" href="{{ asset('cliente/css/maps.css') }}">
-    <link rel="stylesheet" id="color" href="{{asset('cliente/css/default.css')}}">
+    <link rel="stylesheet" id="color" href="{{ asset('cliente/css/default.css') }}">
+    {{-- Toast R --}}
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+
+
 </head>
 
 <body class="homepage-9 hp-6 homepage-1">
@@ -80,6 +84,12 @@
         <script src="{{ asset('cliente/js/map-style2.js') }}"></script>
         <script src="{{ asset('cliente/js/range.js') }}"></script>
         <script src="{{ asset('cliente/js/color-switcher.js') }}"></script>
+
+
+        <!-- start dropdwon yt -->
+
+
+
         <script>
             $(window).on('scroll load', function() {
                 $("#header.cloned #logo img").attr("src", $('#header #logo img').attr('data-sticky-logo'));
@@ -206,8 +216,33 @@
             });
         </script>
 
+
+        <script src="{{ asset('admin/plugins/jquery/jquery.min.js') }}"></script>
         <!-- MAIN JS -->
         <script src="{{ asset('cliente/js/script.js') }}j"></script>
+
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <!-- Template Main JS File -->
+
+        <script>
+            @if (Session::has('message'))
+                var type = "{{ Session::get('alert-type', 'info') }}"
+                switch (type) {
+                    case 'info':
+                        toastr.info(" {{ Session::get('message') }} ");
+                        break;
+                    case 'success':
+                        toastr.success(" {{ Session::get('message') }} ");
+                        break;
+                    case 'warning':
+                        toastr.warning(" {{ Session::get('message') }} ");
+                        break;
+                    case 'error':
+                        toastr.error(" {{ Session::get('message') }} ");
+                        break;
+                }
+            @endif
+        </script>
 
     </div>
     <!-- Wrapper / End -->

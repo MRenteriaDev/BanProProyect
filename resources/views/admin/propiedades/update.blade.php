@@ -222,7 +222,7 @@
                                     <label>Seleccionar Nearbys</label>
                                     <select class="form-select" aria-label="Default select example" name="nearby_id"
                                         style="width: 100%;height: 100%;">
-                                        <option value="{{$propiedades->nearby->id ?? ''}}"></option>
+                                        <option value="{{ $propiedades->nearby->id ?? '' }}"></option>
                                         @foreach ($nearbys as $nearby)
                                             <option value={{ $nearby->id }}>{{ $nearby->nombre }}</option>
                                         @endforeach
@@ -323,12 +323,6 @@
                         </div> --}}
 
 
-
-                        <!-- /.card-body -->
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">Crear</button>
-                            <a href="{{ route('propiedades.index') }}" class="btn btn-danger">Cancelar</a>
-                        </div>
 
                         {{-- <button onclick="showVideo();convertYoutube();">Check</button> --}}
 
@@ -454,6 +448,12 @@
                         }
                     </script>
                 </div>
+
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Actualizar</button>
+                            <a href="{{ route('propiedades.index') }}" class="btn btn-danger">Cancelar</a>
+                        </div>
                 {{-- <div class=tab-pane id=video>
                     <div class="embed-responsive embed-responsive-16by9">
                         <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0"width="788.54" height="443" type="text/html" src="https://www.youtube.com/embed/flYQ7EnEsME?autoplay=0&fs=1&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0&origin=http://youtubeembedcode.com"><div><small><a href="https://youtubeembedcode.com/nl/">youtubeembedcode nl</a></small></div><div><small><a href="https://casinoutanspelpaustrustly.se">casinoutanspelpaustrustly.se</a></small></div><div><small><a href="https://youtubeembedcode.com/de/">youtubeembedcode.com/de/</a></small></div><div><small><a href="https://casinoutansvensklicenszimpler.se">https://casinoutansvensklicenszimpler.se</a></small></div><div><small><a href="https://youtubeembedcode.com/de/">youtubeembedcode.com/de/</a></small></div><div><small><a href="https://casinoutanlicenstrustly.nu">casino utan licens trustly</a></small></div></iframe>

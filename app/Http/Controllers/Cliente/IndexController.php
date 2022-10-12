@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Cliente;
 
 use App\Http\Controllers\Controller;
+use App\Models\Contacto;
+use App\Models\Propiedades;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use phpDocumentor\Reflection\Location;
@@ -17,7 +20,8 @@ class IndexController extends Controller
 
     public function propertyGrid($id)
     {
-        $property = DB::table('propiedades')->where('id', $id)->get();
+
+        $property = Propiedades::where('id', $id)->get();
         return view('cliente.property', compact("property"));
     }
 
@@ -36,5 +40,38 @@ class IndexController extends Controller
     public function contact()
     {
         return view('cliente.contact');
+    }
+
+    public function contactStore(Request $request)
+    {
+
+        $request->validate([
+           'nombre' => 'required',
+           'apellido' => 'required',
+           'correo' => 'required',
+           'mensaje' => 'required',
+
+       ], [
+           'nombre.required' => 'El nombre es requerido',
+           'apellido.required' => 'El apellido es requerido',
+           'correo.required' => 'El correo es requerido',
+           'mensaje.required' => 'El mensaje es requerido',
+
+       ]);
+
+       Contacto::insert([
+        'nombre' => $request->nombre,
+        'apellido' => $request->apellido,
+        'correo' => $request->correo,
+        'mensaje' => $request->mensaje,
+        'created_at' => Carbon::now()
+        ]);
+
+        $notification  = array(
+            'message' => "La información se envio correctamente",
+            'alert-type' => "success",
+        );
+
+       return redirect()->back()->with($notification);
     }
 }

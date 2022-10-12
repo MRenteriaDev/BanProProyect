@@ -43,6 +43,7 @@
             @php
                 use Illuminate\Support\Facades\Auth;
                 $userauth = Auth::user();
+                dd($userauth);
 
             @endphp
             <!-- Right Side Content / End -->

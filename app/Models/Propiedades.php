@@ -52,4 +52,10 @@ class Propiedades extends Model
         return $this->hasMany(GaleriaPropiedades::class, "propiedad_id");
     }
 
+    public function plano()
+    {
+
+        return $this->hasMany(GaleriaPlanos::class, "propiedad_id");
+    }
+
 }
