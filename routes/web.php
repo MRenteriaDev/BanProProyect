@@ -236,7 +236,7 @@ Route::prefix('properties')->group(function () {
 });
 
 Route::prefix('sellers')->group(function () {
-    Route::get('/grid', [IndexController::class, 'sellersGrid'])->name('sellers.grid');
+    Route::post('/grid', [IndexController::class, 'sellersGrid'])->name('sellers.grid');
     Route::get('/grid/{id}', [IndexController::class, 'sellerGrid'])->name('seller.grid-single');
 });
 
@@ -247,8 +247,12 @@ Route::prefix('contacts')->group(function () {
     Route::get('/destroy/{id}', [ContactoController::class, 'destroy'])->name('contact.destroy');
 });
 
-Route::prefix('search')->group(function () {
-    Route::get('locacion', [SearchController::class, 'locacion'])->name('locacion');
+// Route::prefix('search')->group(function () {
+//     Route::post('/busqueda', [SearchController::class, 'busqueda'])->name('busqueda');
+// });
+
+Route::prefix('busqueda')->group(function () {
+    Route::get('/busqueda', [SearchController::class, 'busqueda'])->name('busqueda');
 });
 
 

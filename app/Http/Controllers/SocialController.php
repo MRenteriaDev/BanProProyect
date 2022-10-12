@@ -31,11 +31,13 @@ class SocialController extends Controller
 
             $user = Socialite::driver('google')->user();
 
+
             $finduser = User::where('social_id', $user->id)->first();
 
             if($finduser){
 
                 Auth::login($finduser);
+
 
                 return Redirect::back();
 
@@ -44,9 +46,12 @@ class SocialController extends Controller
                     'name' => $user->name,
                     'email' => $user->email,
                     'social_id'=> $user->id,
+                    'avatar' => $user->avatar,
                     'social_type'=> 'google',
-                    'password' => encrypt('my-google')
+                    'password' => encrypt('my-google'),
+
                 ]);
+
 
                 Auth::login($newUser);
 
