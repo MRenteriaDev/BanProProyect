@@ -199,7 +199,8 @@ Route::prefix('metodospagos')->group(function () {
 /* ------------- Reportes -------------- */
 Route::prefix('reportes')->group(function () {
     Route::get('/index', [ReportesController::class, 'index'])->name('reportes.index');
-    Route::post('/index', [ReportesController::class, 'getpropertiesbydates'])->name('reportes.generar');
+    Route::post('/index2', [ReportesController::class, 'getpropertiesbydates'])->name('reportes.generar');
+    Route::post('/index3', [ReportesController::class, 'getpropertiesbytipe'])->name('reportes.tipe');
 
 });
 /* ------------- End Reportes -------------- */
