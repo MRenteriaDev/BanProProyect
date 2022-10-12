@@ -214,22 +214,14 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="row mb-3">
-                            <label class="col-sm-4 col-form-label">Nearbys actuales: <b>
-                                    {{ $propiedades->nearbys->nombre ?? 'Ninguno' }}</b></label>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Seleccionar Nearbys</label>
-                                    <select class="form-select" aria-label="Default select example" name="nearby_id"
-                                        style="width: 100%;height: 100%;">
-                                        <option value="{{ $propiedades->nearby->id ?? '' }}"></option>
-                                        @foreach ($nearbys as $nearby)
-                                            <option value={{ $nearby->id }}>{{ $nearby->nombre }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                        <div class="col-md-12">
+                            <div class="form-floathing">
+                                <label for="nearbys">Especifica si hay lugares de interés cerca</label>
+                                <textarea name="nearbys" id="nearbys" value="{{ $propiedades->nearbys }}" placeholder="Escribe lugares cercanos" class="form-control" cols="10"
+                                    rows="2"></textarea>
                             </div>
                         </div>
+
 
                         <div class="col-md-6">
                             <div class="form-group">

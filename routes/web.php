@@ -19,6 +19,7 @@ use App\Http\Controllers\SellerController;
 use App\Models\Propiedades;
 use App\Http\Controllers\SocialController;
 use App\Http\Controllers\FacebookSocialiteController;
+use App\Http\Controllers\ReportesController;
 use App\Http\Controllers\StripePaymentController;
 
 /*
@@ -193,6 +194,14 @@ Route::prefix('metodospagos')->group(function () {
     Route::get('/destroy/{id}', [MetodosPagosController::class, 'destroy'])->name('metodospagos.destroy');
 });
 /* ------------- End Metodos de Pago -------------- */
+
+/* ------------- Reportes -------------- */
+Route::prefix('reportes')->group(function () {
+    Route::get('/index', [ReportesController::class, 'index'])->name('reportes.index');
+    Route::post('/index', [ReportesController::class, 'getpropertiesbydates'])->name('reportes.generar');
+
+});
+/* ------------- End Reportes -------------- */
 
 
 

@@ -180,10 +180,11 @@
                         @enderror
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="form-floathing">
                         <label for="nearbys">Especifica si hay lugares de interés cerca</label>
-                        <textarea name="nearbys" class="form-control" cols="10" rows="2"></textarea>
+                        <textarea name="nearbys" id="nearbys" placeholder="Escribe lugares cercanos" class="form-control" cols="10"
+                            rows="2"></textarea>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -344,7 +345,8 @@
                     <div id="area"></div>
                     <div id="blueprint" class="row"></div>
                     <div class="col-12">
-                        <button type="button" onclick="remove_blueprint();clear();" class="btn btn-primary btn-sm">Borrar
+                        <button type="button" onclick="remove_blueprint();clear();"
+                            class="btn btn-primary btn-sm">Borrar
                             Fotos</button>
                     </div>
                 </div>
