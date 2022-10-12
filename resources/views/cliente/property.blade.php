@@ -35,7 +35,7 @@
                                                     <div class="mt-0">
                                                         <a href="#listing-location" class="listing-address">
                                                             <i class="fa fa-map-marker pr-2 ti-location-pin mrg-r-5">
-                                                                {{ '<Esto es una direccion>' }}</i>
+                                                                {{ $property[0]->Locacion->nombre }}</i>
                                                         </a>
                                                     </div>
                                                 </div>

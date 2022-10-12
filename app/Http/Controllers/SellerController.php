@@ -11,42 +11,51 @@ use Illuminate\Support\Facades\DB;
 
 class SellerController extends Controller
 {
-    public function SellerIndex(){
+    public function SellerIndex()
+    {
         return view('seller.seller_login');
     } // END METHOD
 
 
-    public function SellerDashboard(){
+    public function SellerDashboard()
+    {
         return view('seller.index');
-    }// END METHOD
+    } // END METHOD
 
 
- public function SellerLogin(Request $request){
+    public function SellerLogin(Request $request)
+    {
         // dd($request->all());
 
         $check = $request->all();
-        if(Auth::guard('seller')->attempt(['email' => $check['email'], 'password' => $check['password']  ])){
-            return redirect()->route('seller.dashboard')->with('error','Seller Login Successfully');
-        }else{
-            return back()->with('error','Invaild Email Or Password');
+        if (Auth::guard('seller')->attempt(['email' => $check['email'], 'password' => $check['password']])) {
+            return redirect()->route('seller.dashboard')->with('error', 'Seller Login Successfully');
+        } else {
+            return back()->with('error', 'Invaild Email Or Password');
         }
-
     } // end mehtod
 
 
-    public function SellerLogout(){
+    public function SellerLogout()
+    {
 
-         Auth::guard('seller')->logout();
-        return redirect()->route('seller_login_from')->with('error','Seller Logout Successfully');
+        Auth::guard('web')->logout();
+        $notification = array(
+            'message' => "Vendedor Desconectado exitosamente",
+            "alert-type" => "success"
+        );
+        return redirect()->route('index.page')->with($notification);
     } // end mehtod
 
 
-    public function SellerRegister(){
+    public function SellerRegister()
+    {
         return view('seller.seller_register');
-    }// end mehtod
+    } // end mehtod
 
 
-    public function SellerRegisterCreate(Request $request){
+    public function SellerRegisterCreate(Request $request)
+    {
 
         // dd($request->all());
 
@@ -58,8 +67,7 @@ class SellerController extends Controller
 
         ]);
 
-         return redirect()->route('seller_login_from')->with('error','Seller Created Successfully');
-
+        return redirect()->route('seller_login_from')->with('error', 'Seller Created Successfully');
     } // end mehtod
 
     public function index()

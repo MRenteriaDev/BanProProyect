@@ -1,17 +1,28 @@
 @php
-    use App\Models\Propiedades;
+use App\Models\Propiedades;
+use App\Models\Locacion;
 
-    $principal_places = DB::table('locacions')->take(5)->get();
-    $featured_properties = DB::table('propiedades')->take(6)->get();
-    $recent_properties = Propiedades::latest()->take(10)->get();
-
-
+$principal_places = DB::table('locacions')
+    ->take(5)
+    ->get();
+$featured_properties = DB::table('propiedades')
+    ->take(6)
+    ->get();
+$recent_properties = Propiedades::latest()
+    ->take(10)
+    ->get();
+$colonias = Locacion::get();
 @endphp
+
 
 @extends('cliente.cliente_master')
 @section('cliente')
     <!-- STAR HEADER SEARCH -->
+
+
     <section id="hero-area" class="parallax-searchs home15 overlay thome-6 thome-1" data-stellar-background-ratio="0.5">
+
+
         <div class="hero-main">
             <div class="container" data-aos="zoom-in">
                 <div class="row">
@@ -21,7 +32,8 @@
                             <div class="welcome-text">
                                 <h1 class="h1">Encuentra Tu Hogar
                                     <br class="d-md-none">
-                              {{--     <--  <span class="typed border-bottom"></span> --> --}}
+
+                                    {{--     <--  <span class="typed border-bottom"></span> --> --}}
                                 </h1>
                                 <p class="mt-4">Tenemos diferentes opciones para ti </p>
                             </div>
@@ -52,17 +64,20 @@
                                                             <option value="3">Condo</option>
                                                         </select>
                                                     </div>
+
+
+
                                                     <div class="rld-single-select">
                                                         <select class="select single-select mr-0">
-                                                            <option value="1">Locacion</option>
-                                                            <option value="2">Los Angeles</option>
-                                                            <option value="3">Chicago</option>
-                                                            <option value="3">Philadelphia</option>
-                                                            <option value="3">San Francisco</option>
-                                                            <option value="3">Miami</option>
-                                                            <option value="3">Houston</option>
+                                                            style="width: 100%;height: 100%;">
+                                                            <option selected="selected">Seleccionar</option>
+                                                            @foreach ($colonias as $colonia)
+                                                                <option value={{ $colonia->id }}>{{ $colonia->nombre }}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
+
+
                                                     <div class="dropdown-filter"><span>Busqueda Avanzada</span></div>
                                                     <div class="col-xl-2 col-lg-2 col-md-4">
                                                         <a class="btn btn-yellow" href="#">Buscar</a>
@@ -74,7 +89,8 @@
                                                                 <div class="form-group categories">
                                                                     <div class="nice-select form-control wide"
                                                                         tabindex="0"><span class="current"><i
-                                                                                class="fa fa-home"></i>Estatus de la propiedad</span>
+                                                                                class="fa fa-home"></i>Estatus de la
+                                                                            propiedad</span>
                                                                         <ul class="list">
                                                                             <li data-value="1" class="option selected ">For
                                                                                 Sale</li>
@@ -374,23 +390,24 @@
     <section class="feature-categories bg-white rec-pro">
         <div class="container-fluid">
             <div class="sec-title">
-                <h2><span>Lugares  </span>Populares</h2>
+                <h2><span>Lugares </span>Populares</h2>
                 <p>Propiedades en lugares populares</p>
             </div>
             <div class="row">
                 <!-- Single category -->
                 @foreach ($principal_places as $principal_place)
-                <div class="col-xl-3 col-lg-6 col-sm-6" data-aos="fade-up" data-aos-delay="150">
-                    <div class="small-category-2">
-                        <div class="small-category-2-thumb img-1">
-                            <a href="properties-map.html"><img src="{{asset('cliente/images/popular-places/12.jpg')}}" alt=""></a>
-                        </div>
-                        <div class="sc-2-detail">
-                            <h4 class="sc-jb-title"><a href="#">{{$principal_place->nombre}}</a></h4>
-                            <span>203 Properties</span>
+                    <div class="col-xl-3 col-lg-6 col-sm-6" data-aos="fade-up" data-aos-delay="150">
+                        <div class="small-category-2">
+                            <div class="small-category-2-thumb img-1">
+                                <a href="properties-map.html"><img
+                                        src="{{ asset('cliente/images/popular-places/12.jpg') }}" alt=""></a>
+                            </div>
+                            <div class="sc-2-detail">
+                                <h4 class="sc-jb-title"><a href="#">{{ $principal_place->nombre }}</a></h4>
+                                <span>203 Properties</span>
+                            </div>
                         </div>
                     </div>
-                </div>
                 @endforeach
 
             </div>
@@ -408,72 +425,75 @@
             </div>
             <div class="row portfolio-items">
                 @foreach ($featured_properties as $feature_property)
-                <div class="item col-xl-6 col-lg-12 col-md-12 col-xs-12 landscapes sale">
-                    <div class="project-single" data-aos="fade-right">
-                        <div class="project-inner project-head">
-                            <div class="homes">
-                                <!-- homes img -->
-                                <a href="single-property-1.html" class="homes-img">
-                                    <div class="homes-tag button alt featured">Featured</div>
-                                    <div class="homes-tag button alt sale">For Sale</div>
-                                    <img src="{{asset('cliente/images/blog/b-11.jpg')}}" alt="home-1" class="img-responsive">
-                                </a>
-                            </div>
-                            <div class="button-effect">
-                                <a href="single-property-1.html" class="btn"><i class="fa fa-link"></i></a>
-                                <a href="https://www.youtube.com/watch?v=14semTlwyUY"
-                                    class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
-                                <a href="single-property-2.html" class="img-poppu btn"><i class="fa fa-photo"></i></a>
-                            </div>
-                        </div>
-                        <!-- homes content -->
-                        <div class="homes-content">
-                            <!-- homes address -->
-                            <h3><a href="{{route('properties.grid-single', $principal_place->id)}}">Real Luxury Family House Villa</a></h3>
-                            <p class="homes-address mb-3">
-                                <a href="single-property-1.html">
-                                    <i class="fa fa-map-marker"></i><span>Est St, 77 - Central Park South, NYC</span>
-                                </a>
-                            </p>
-                            <!-- homes List -->
-                            <ul class="homes-list clearfix pb-3">
-                                <li class="the-icons">
-                                    <i class="flaticon-bed mr-2" aria-hidden="true"></i>
-                                    <span>6 Bedrooms</span>
-                                </li>
-                                <li class="the-icons">
-                                    <i class="flaticon-bathtub mr-2" aria-hidden="true"></i>
-                                    <span>3 Bathrooms</span>
-                                </li>
-                                <li class="the-icons">
-                                    <i class="flaticon-square mr-2" aria-hidden="true"></i>
-                                    <span>720 sq ft</span>
-                                </li>
-                                <li class="the-icons">
-                                    <i class="flaticon-car mr-2" aria-hidden="true"></i>
-                                    <span>2 Garages</span>
-                                </li>
-                            </ul>
-                            <div class="price-properties footer pt-3 pb-0">
-                                <h3 class="title mt-3">
-                                    <a href="single-property-1.html">$ 150,000</a>
-                                </h3>
-                                <div class="compare">
-                                    <a href="#" title="Share">
-                                        <i class="flaticon-share"></i>
+                    <div class="item col-xl-6 col-lg-12 col-md-12 col-xs-12 landscapes sale">
+                        <div class="project-single" data-aos="fade-right">
+                            <div class="project-inner project-head">
+                                <div class="homes">
+                                    <!-- homes img -->
+                                    <a href="single-property-1.html" class="homes-img">
+                                        <div class="homes-tag button alt featured">Featured</div>
+                                        <div class="homes-tag button alt sale">For Sale</div>
+                                        <img src="{{ asset('cliente/images/blog/b-11.jpg') }}" alt="home-1"
+                                            class="img-responsive">
                                     </a>
-                                    <a href="#" title="Favorites">
-                                        <i class="flaticon-heart"></i>
+                                </div>
+                                <div class="button-effect">
+                                    <a href="single-property-1.html" class="btn"><i class="fa fa-link"></i></a>
+                                    <a href="https://www.youtube.com/watch?v=14semTlwyUY"
+                                        class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
+                                    <a href="single-property-2.html" class="img-poppu btn"><i
+                                            class="fa fa-photo"></i></a>
+                                </div>
+                            </div>
+                            <!-- homes content -->
+                            <div class="homes-content">
+                                <!-- homes address -->
+                                <h3><a href="{{ route('properties.grid-single', $principal_place->id) }}">Real Luxury
+                                        Family House Villa</a></h3>
+                                <p class="homes-address mb-3">
+                                    <a href="single-property-1.html">
+                                        <i class="fa fa-map-marker"></i><span>Est St, 77 - Central Park South, NYC</span>
                                     </a>
+                                </p>
+                                <!-- homes List -->
+                                <ul class="homes-list clearfix pb-3">
+                                    <li class="the-icons">
+                                        <i class="flaticon-bed mr-2" aria-hidden="true"></i>
+                                        <span>6 Bedrooms</span>
+                                    </li>
+                                    <li class="the-icons">
+                                        <i class="flaticon-bathtub mr-2" aria-hidden="true"></i>
+                                        <span>3 Bathrooms</span>
+                                    </li>
+                                    <li class="the-icons">
+                                        <i class="flaticon-square mr-2" aria-hidden="true"></i>
+                                        <span>720 sq ft</span>
+                                    </li>
+                                    <li class="the-icons">
+                                        <i class="flaticon-car mr-2" aria-hidden="true"></i>
+                                        <span>2 Garages</span>
+                                    </li>
+                                </ul>
+                                <div class="price-properties footer pt-3 pb-0">
+                                    <h3 class="title mt-3">
+                                        <a href="single-property-1.html">$ 150,000</a>
+                                    </h3>
+                                    <div class="compare">
+                                        <a href="#" title="Share">
+                                            <i class="flaticon-share"></i>
+                                        </a>
+                                        <a href="#" title="Favorites">
+                                            <i class="flaticon-heart"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 @endforeach
             </div>
             <div class="bg-all">
-                <a href="{{route('properties.grid')}}" class="btn btn-outline-light">View More</a>
+                <a href="{{ route('properties.grid') }}" class="btn btn-outline-light">View More</a>
             </div>
         </div>
     </section>
@@ -483,7 +503,7 @@
     <section class="how-it-works bg-white rec-pro">
         <div class="container-fluid">
             <div class="sec-title">
-                <h2><span>Por qué  </span>eligirnos</h2>
+                <h2><span>Por qué </span>eligirnos</h2>
                 <p>Te proveemos el mejor servicio</p>
             </div>
             <div class="row service-1">
@@ -554,72 +574,80 @@
                 <div class="slick-lancers">
 
                     @foreach ($recent_properties as $recent_propertie)
-                    @php
-                        $fotosrp = DB::table('galeria_propiedades')->where('propiedad_id', '=', $recent_propertie->id)->first();
-                    @endphp
-                    <div class="agents-grid" data-aos="fade-up">
-                        <div class="people">
-                            <div class="project-single">
-                                <div class="project-inner project-head">
-                                    <div class="homes">
-                                        <!-- homes img -->
+                        @php
+                            $fotosrp = DB::table('galeria_propiedades')
+                                ->where('propiedad_id', '=', $recent_propertie->id)
+                                ->first();
+                        @endphp
+                        <div class="agents-grid" data-aos="fade-up">
+                            <div class="people">
+                                <div class="project-single">
+                                    <div class="project-inner project-head">
+                                        <div class="homes">
+                                            <!-- homes img -->
 
-                                        <a href="{{ route('properties.grid-single', $recent_propertie->id) }}" class="homes-img">
-                                            <div class="homes-tag button sale rent">En {{$recent_propertie->EstatusPropiedad->nombre}}</div>
-                                            {{-- <img src="{{asset('/propiedades_documentos/'.$fotosrp->nombre_archivo )}}" class="img-responsive"> --}}
-                                        </a>
+                                            <a href="{{ route('properties.grid-single', $recent_propertie->id) }}"
+                                                class="homes-img">
+                                                <div class="homes-tag button sale rent">En
+                                                    {{ $recent_propertie->EstatusPropiedad->nombre }}</div>
+                                                <img src="{{ asset('/propiedades_documentos/' . $fotosrp->nombre_archivo) }}"
+                                                    class="img-responsive">
+                                            </a>
+
+                                        </div>
 
                                     </div>
-
-                                </div>
-                                <!-- homes content -->
-                                <div class="homes-content">
-                                    <!-- homes address -->
-                                    <h3><a href="{{ route('properties.grid-single', $recent_propertie->id) }}">{{$recent_propertie->nombre}}</a></h3>
-                                    <p class="homes-address mb-3">
-                                        <a href="{{ route('properties.grid-single', $recent_propertie->id) }}">
-                                            <i class="fa fa-map-marker"></i><span>Direccion pendiente</span>
-                                        </a>
-                                    </p>
-                                    <!-- homes List -->
-                                    <ul class="homes-list clearfix pb-3">
-                                        <li class="the-icons">
-                                            <i class="flaticon-bed mr-2" aria-hidden="true"></i>
-                                            <span>{{$recent_propertie->recamaras . " Recamaras"}}</span>
-                                        </li>
-                                        <li class="the-icons">
-                                            <i class="flaticon-bathtub mr-2" aria-hidden="true"></i>
-                                            <span>{{$recent_propertie->bano . " Baños"}}</span>
-                                        </li>
-                                        <li class="the-icons">
-                                            <i class="flaticon-square mr-2" aria-hidden="true"></i>
-                                            <span>{{$recent_propertie->tamano_propiedad . " m2"}}</span>
-                                        </li>
-                                        {{-- <li class="the-icons">
+                                    <!-- homes content -->
+                                    <div class="homes-content">
+                                        <!-- homes address -->
+                                        <h3><a
+                                                href="{{ route('properties.grid-single', $recent_propertie->id) }}">{{ $recent_propertie->nombre }}</a>
+                                        </h3>
+                                        <p class="homes-address mb-3">
+                                            <a href="{{ route('properties.grid-single', $recent_propertie->id) }}">
+                                                <i class="fa fa-map-marker"></i><span>Direccion pendiente</span>
+                                            </a>
+                                        </p>
+                                        <!-- homes List -->
+                                        <ul class="homes-list clearfix pb-3">
+                                            <li class="the-icons">
+                                                <i class="flaticon-bed mr-2" aria-hidden="true"></i>
+                                                <span>{{ $recent_propertie->recamaras . ' Recamaras' }}</span>
+                                            </li>
+                                            <li class="the-icons">
+                                                <i class="flaticon-bathtub mr-2" aria-hidden="true"></i>
+                                                <span>{{ $recent_propertie->bano . ' Baños' }}</span>
+                                            </li>
+                                            <li class="the-icons">
+                                                <i class="flaticon-square mr-2" aria-hidden="true"></i>
+                                                <span>{{ $recent_propertie->tamano_propiedad . ' m2' }}</span>
+                                            </li>
+                                            {{-- <li class="the-icons">
                                             <i class="flaticon-car mr-2" aria-hidden="true"></i>
                                             <span>2 Garages</span>
                                         </li> --}}
-                                    </ul>
-                                    <div class="price-properties footer pt-3 pb-0">
-                                        <h3 class="title mt-3">
-                                            <a href="{{ route('properties.grid-single', $recent_propertie->id) }}">{{"$ ". number_format($recent_propertie->precio)}}</a>
-                                        </h3>
-                                        <div class="compare">
-                                            <a href="#" title="Compare">
-                                                <i class="flaticon-compare"></i>
-                                            </a>
-                                            <a href="#" title="Share">
-                                                <i class="flaticon-share"></i>
-                                            </a>
-                                            <a href="#" title="Favorites">
-                                                <i class="flaticon-heart"></i>
-                                            </a>
+                                        </ul>
+                                        <div class="price-properties footer pt-3 pb-0">
+                                            <h3 class="title mt-3">
+                                                <a
+                                                    href="{{ route('properties.grid-single', $recent_propertie->id) }}">{{ "$ " . number_format($recent_propertie->precio) }}</a>
+                                            </h3>
+                                            <div class="compare">
+                                                <a href="#" title="Compare">
+                                                    <i class="flaticon-compare"></i>
+                                                </a>
+                                                <a href="#" title="Share">
+                                                    <i class="flaticon-share"></i>
+                                                </a>
+                                                <a href="#" title="Favorites">
+                                                    <i class="flaticon-heart"></i>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     @endforeach
                 </div>
             </div>
@@ -922,8 +950,7 @@
                                         <label>Email Address *</label>
                                         <input name="email" type="text" onClick="this.select()" value="">
                                         <label>Password *</label>
-                                        <input name="password" type="password" onClick="this.select()"
-                                            value="">
+                                        <input name="password" type="password" onClick="this.select()" value="">
                                         <button type="submit" class="log-submit-btn"><span>Register</span></button>
                                     </form>
                                 </div>
@@ -943,4 +970,29 @@
         </div>
     </div>
     <!-- END PRELOADER --> --}}
+@endsection
+
+@section('js')
+    {{-- Libreria jquery --}}
+    <script src="{{ asset('vendor/jquery-ui/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('admin/plugins/select2/js/select2.full.min.js') }}"></script>
+
+    <script>
+        $('#search').autocomplete({
+            source: function(request, response) {
+                $.ajax({
+                    url: "{{ route('locacion') }}",
+                    dataType: 'json',
+                    data: {
+                        term: request.term
+                    },
+                    success: function(data) {
+                        response(data)
+                    }
+                });
+            }
+        });
+    </script>
+
+
 @endsection

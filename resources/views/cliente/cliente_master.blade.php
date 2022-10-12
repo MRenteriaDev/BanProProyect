@@ -35,7 +35,6 @@
     <link rel="stylesheet" href="{{ asset('cliente/css/styles.css') }}">
     <link rel="stylesheet" href="{{ asset('cliente/css/maps.css') }}">
     <link rel="stylesheet" id="color" href="{{ asset('cliente/css/default.css') }}">
-
     {{-- Toast R --}}
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 
@@ -85,6 +84,12 @@
         <script src="{{ asset('cliente/js/map-style2.js') }}"></script>
         <script src="{{ asset('cliente/js/range.js') }}"></script>
         <script src="{{ asset('cliente/js/color-switcher.js') }}"></script>
+
+
+        <!-- start dropdwon yt -->
+
+
+
         <script>
             $(window).on('scroll load', function() {
                 $("#header.cloned #logo img").attr("src", $('#header #logo img').attr('data-sticky-logo'));
@@ -210,6 +215,8 @@
 
             });
         </script>
+
+
         <script src="{{ asset('admin/plugins/jquery/jquery.min.js') }}"></script>
         <!-- MAIN JS -->
         <script src="{{ asset('cliente/js/script.js') }}j"></script>
