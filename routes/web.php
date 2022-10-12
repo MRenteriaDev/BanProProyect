@@ -209,7 +209,7 @@ Route::prefix('seller')->group(function () {
 
 
 
-    Route::get('/logout', [SellerController::class, 'SellerLogout'])->name('seller.logout')->middleware('seller');
+    Route::get('/logout', [SellerController::class, 'SellerLogout'])->name('seller.logout');
 
     Route::get('/register', [SellerController::class, 'SellerRegister'])->name('seller.register');
 
@@ -245,12 +245,12 @@ Route::prefix('contacts')->group(function () {
 /// fin de las  Rutas del index
 Route::get('/', function () {
     return view('cliente.index');
-});
+})->name('index.page');
 
 
 /// Configuración de cliente
 Route::get('payments', function () {
-    return view('sellers.payments');
+    return view('clienteRegistrado.makevendedord');
 })->middleware(['auth'])->name('payments');
 
 // Payments Routes
@@ -259,7 +259,7 @@ Route::controller(StripePaymentController::class)->group(function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('sellers.profile');
+    return view('clienteRegistrado.profile');
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__ . '/auth.php';
