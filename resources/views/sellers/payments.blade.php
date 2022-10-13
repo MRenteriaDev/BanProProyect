@@ -12,35 +12,35 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <label>Name</label>
-                                <input type="text" class="form-control">
+                                <input type="text" name="billing_name" class="form-control">
                             </div>
                             <div class="col-sm-6">
                                 <label>Email</label>
-                                <input type="email" class="form-control">
+                                <input type="email" name="billing_email" class="form-control">
                             </div>
                             <div class="col-sm-6">
                                 <label>Phone</label>
-                                <input type="text" class="form-control">
+                                <input type="text" name="billing_phone" class="form-control">
                             </div>
                             <div class="col-sm-6">
                                 <label>City</label>
-                                <input type="text" class="form-control">
+                                <input type="text" name="billing_city" class="form-control">
                             </div>
                             <div class="col-sm-6">
                                 <label>State</label>
-                                <input type="text" class="form-control">
+                                <input type="text" name="billing_state" class="form-control">
                             </div>
                             <div class="col-sm-6">
                                 <label>Country</label>
-                                <input type="text" class="form-control">
+                                <input type="text" name="billing_country" class="form-control">
                             </div>
                             <div class="col-sm-6">
                                 <label>Address</label>
-                                <input type="text" class="form-control address mb-0">
+                                <input type="text" name="billing_city" class="form-control address mb-0">
                             </div>
                             <div class="col-sm-6">
                                 <label>Zip</label>
-                                <input type="text" class="form-control mb-0">
+                                <input type="text" name="billing_zip" class="form-control mb-0">
                             </div>
                         </div>
                     </div>
@@ -52,45 +52,6 @@
                         <div class="tr-single-header">
                             <h4><i class="far fa-credit-card pr-2"></i>Payment Method</h4>
                         </div>
-                        {{-- <!-- Paypal Option -->
-                        <div class="payment-card">
-                            <header class="payment-card-header cursor-pointer" data-toggle="collapse" data-target="#paypal"
-                                aria-expanded="true">
-                                <div class="payment-card-title flexbox">
-                                    <h4>PayPal</h4>
-                                </div>
-                                <div class="pull-right">
-                                    <img src="images/paypal.png" class="img-responsive" alt="">
-                                </div>
-                            </header>
-                            <div class="collapse" id="paypal" role="tablist" aria-expanded="false">
-                                <div class="payment-card-body">
-                                    <div class="row mrg-bot-20">
-                                        <div class="col-sm-6">
-                                            <span class="custom-checkbox d-block font-12 mb-2">
-                                                <input type="checkbox" id="promo1">
-                                                <label for="promo1"></label>
-                                                Have a promo code?
-                                            </span>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                        <div class="col-sm-6 padd-top-10 text-right">
-                                            <label>Total Order</label>
-                                            <h2 class="mrg-0"><span class="theme-cl">$</span>950</h2>
-                                        </div>
-                                        <div class="col-sm-12 bt-1 padd-top-15 pt-3">
-                                            <span class="custom-checkbox d-block font-12 mb-3">
-                                                <input type="checkbox" id="privacy">
-                                                <label for="privacy"></label>
-                                                By ordering you are agreeing to our <a href="#"
-                                                    class="theme-cl">Privacy policy</a>.
-                                            </span>
-                                            <button type="submit" class="btn btn-m btn-success">Checkout</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> --}}
                         <!-- Debit card option -->
                         <div class="payment-card mb-0">
                             <header class="payment-card-header cursor-pointer" data-toggle="collapse"
@@ -217,7 +178,7 @@
                 e.preventDefault();
                 Stripe.setPublishableKey($form.data(
                     'pk_test_51L9rBoH3TO4CUc7Ttb4qbZCqMnKXO3Th8ovbUXTK3S4vk0dYvEJZUceam5zQPvaZpd3F0tsrP4cYb3KoZWzpxNUo00GXwPRZ3t'
-                    ));
+                ));
                 Stripe.createToken({
                     number: $('.card-number').val(),
                     cvc: $('.card-cvc').val(),

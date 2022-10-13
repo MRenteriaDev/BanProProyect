@@ -5,23 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Locacion;
+use Illuminate\Support\Facades\DB;
 
 class SearchController extends Controller
 {
-    public function busqueda(Request $request){
+    public function busqueda($tipo_prpiedad){
 
-        // $term = $request->get('term');
-        // $tipop = $request->get('tipo_propiedad');
+        $propiedades = DB::table('propiedades')->where('tipo_propiedad_id', $tipo_prpiedad)->get();
 
-        // $query = Locacion::where('nombre', 'LIKE', '%' . $term . '%')->get();
-
-        // $data = [];
-        // foreach($query as $q){
-        //     $data[] = [
-        //         'label' => $q->nombre,
-        //         'tipo' => $q->tipo_propiedad
-        //     ];
-        // }
-        // return view('cliente.properties-grid', compact('query'));
+        dd($propiedades);
+        die();
     }
 }
