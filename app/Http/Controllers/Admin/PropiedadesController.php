@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Propiedades;
 use App\Models\Reviews;
+use App\Models\Seller;
 use App\Models\SolicitudVendedor;
 use App\Models\TipoPropiedad;
 use Image;
@@ -42,7 +43,8 @@ class PropiedadesController extends Controller
         $tipopropiedades = DB::table('tipo_propiedads')->get();
         $reviews = DB::table('reviews')->get();
         $solicitudvendedor = DB::table('solicitud_vendedors')->get();
-        return view('admin.propiedades.create', compact('estatuspropiedad', 'locacion', 'tipopropiedades',  'reviews', 'solicitudvendedor'));
+        $seller = DB::table('sellers')->get();
+        return view('admin.propiedades.create', compact('estatuspropiedad', 'locacion', 'tipopropiedades',  'reviews', 'solicitudvendedor', 'seller'));
     }
 
     /**
@@ -56,8 +58,6 @@ class PropiedadesController extends Controller
         $data = $request->validate([
             'nombre' => 'required',
             'precio' => 'required',
-            'planos' => 'required',
-            'nearbys' => 'required',
 
         ], [
             'solicitud_vendedor_id.required' => 'Se debe seleccionar algo',
@@ -67,6 +67,7 @@ class PropiedadesController extends Controller
             'tipo_propiedad_id.required' => 'Se debe seleccionar algo',
             'planos' => 'Se debe seleccionar algo',
             'nearbys' => 'Se debe escribir algo',
+            'seller_id'=> 'Se debe seleccionar algo '
 
         ]);
 
@@ -98,6 +99,7 @@ class PropiedadesController extends Controller
             'tipo_propiedad_id' => $request->tipo_propiedad_id,
             'planos' => $request->$imageSave,
             'nearbys' => $request->nearbys,
+            'seller_id' => $request->seller_id,
             'created_at' => Carbon::now()
         ]);
 
@@ -155,8 +157,9 @@ class PropiedadesController extends Controller
             $tipopropiedades = TipoPropiedad::latest()->get();
             $reviews = Reviews::latest()->get();
             $solicitudvendedor = SolicitudVendedor::latest()->get();
+            $seller = Seller::latest()->get();
             $galeria_priopiedad = GaleriaPropiedades::where('propiedad_id', $propiedades->id)->get();
-            return view('admin.propiedades.update', compact("propiedades", "estatuspropiedad", "locacion", "tipopropiedades",  "reviews", "solicitudvendedor", "galeria_priopiedad"));
+            return view('admin.propiedades.update', compact("propiedades", "estatuspropiedad", "locacion", "tipopropiedades",  "reviews", "solicitudvendedor", "galeria_priopiedad", "seller"));
         }
 
         $notification = array(
