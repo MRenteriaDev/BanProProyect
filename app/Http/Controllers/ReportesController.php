@@ -40,9 +40,9 @@ class ReportesController extends Controller
 
     public function getpropertiesbyseller(Request $request)
     {
-        dd($request->seller_id);
-        die();
-        $seller = $request->seller_id;
-        return Excel::download(new PropiedadesExportBySeller($seller), 'SellerPropiedades.xlsx');
+        // dd($request->seller_id);
+        // die();
+        $seller_id = $request->seller_id;
+        return Excel::download(new PropiedadesExportBySeller($seller_id), 'SellerPropiedades.xlsx');
     }
 }

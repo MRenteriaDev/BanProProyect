@@ -69,7 +69,7 @@
       </div>
       <div class="card card-primary col-sm-3">
         <div class="card-header">
-          <h3 class="card-title">Reportes por Vendedor</h3>
+          <h3 class="card-title">Vendedores Por Fecha</h3>
         </div>
         <!-- /.card-header -->
         <!-- form start -->
@@ -92,26 +92,25 @@
           </div>
         </form>
       </div>
-
       <div class="card card-primary col-sm-3">
         <div class="card-header">
-          <h3 class="card-title">Reportes por Vendedor y Propiedades</h3>
+          <h3 class="card-title">Vendedores Por Seller</h3>
         </div>
         <!-- /.card-header -->
         <!-- form start -->
         <form class="reportes-form"  method="POST" action="{{ route('reportes.propiedadesSeller') }}">
             @csrf
-          <div class="card-body">
-            <div class="form-group">
-              <label for="seller_id">Vendedor Propiedades </label>
-              <select class="form-control select2"  style="width: 100%;height: 100%;">
-                <option selected="selected" >Seleccionar</option>
-                @foreach ($sellers as $seller)
-                    <option name="seller_id" value={{ $seller->id }}>{{ $seller->name }}</option>
-                @endforeach
-            </select>
-            </div>
-          </div>
+            <div class="card-body">
+                <div class="form-group">
+                  <label for="seller_id">Tipo</label>
+                  <select class="form-control select2"  style="width: 100%;height: 100%;">
+                    <option selected="selected" >Seleccionar</option>
+                    @foreach ($sellers as $seller)
+                        <option name="seller_id" value={{ $seller->id }}>{{ $seller->name }}</option>
+                    @endforeach
+                </select>
+                </div>
+              </div>
           <!-- /.card-body -->
 
           <div class="card-footer">
