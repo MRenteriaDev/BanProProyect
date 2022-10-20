@@ -251,6 +251,7 @@ Route::prefix('busqueda')->group(function () {
 Route::prefix('properties')->group(function () {
     Route::get('/grid', [IndexController::class, 'propertiesGrid'])->name('properties.grid');
     Route::get('/grid/{id}', [IndexController::class, 'propertyGrid'])->name('properties.grid-single');
+
 });
 
 Route::prefix('sellers')->group(function () {
@@ -288,8 +289,8 @@ Route::controller(StripePaymentController::class)->group(function () {
     Route::post('stripe', 'stripePost')->name('stripe.post');
 });
 
-// Social Media Routes
-Route::get('/social-media-shares', [SocialMediaShareButtonController::class, 'index']);
+// // Social Media Routes
+// Route::get('/social-media-shares', [SocialMediaShareButtonController::class, 'index']);
 
 Route::get('/dashboard', function () {
     return view('clienteRegistrado.profile');

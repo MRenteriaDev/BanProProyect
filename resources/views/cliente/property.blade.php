@@ -4,7 +4,7 @@
 
 @php
     $fotos = DB::table('galeria_propiedades')->where('propiedad_id', '=', $property[0]->id)->get();
-    $plano = DB::table('galeria_planos')->where('propiedad_id', '=', $property[0]->id)->get();
+     $plano = DB::table('propiedades')->select('planos')->get();
 @endphp
 
     <body class="inner-pages sin-1 homepage-4 hd-white">
@@ -44,12 +44,12 @@
                                                 <div class="detail-wrapper-body">
                                                     <div class="listing-title-bar">
                                                         <h4>$ {{ number_format($property[0]->precio, 2) }}</h4>
-                                                        <div class="mt-0">
+                                                        {{-- <div class="mt-0">
                                                             <a href="#listing-location" class="listing-address">
                                                                 <p>$ {{ number_format($property[0]->precio / $property[0]->tamano_propiedad_construido, 2) . ' / m²'}}
                                                                 </p>
                                                             </a>
-                                                        </div>
+                                                        </div> --}}
                                                     </div>
                                                 </div>
                                             </div>
@@ -204,11 +204,11 @@
                             </div>
                             <div class="floor-plan property wprt-image-video w50 pro">
                                 <h5>Planos de construcción</h5>
-                                @if(!$plano->isEmpty())
+                                {{-- @if(!$plano->isEmpty())
                                 <img alt="image" src="{{ asset('/planos_documentos/' . $plano[0]->nombre_archivo) }}">
                                 @else
                                 <p class="mb-3">No hay planos disponibles</p>
-                                @endif
+                                @endif --}}
                                 </div>
 
                             <div class="floor-plan property wprt-image-video w50 pro">
@@ -335,6 +335,16 @@
 
                                             </div>
                                         </div>
+                                        <div class="container-fluid p-2 py-0 pb-3">
+                                            <div class="row p-0 p-md-2 py-0 py-md-0">
+                                              <div class="col-12">
+                                                    <div class="socialmedia">
+                                                      <h5>Compartelo en tus redes sociales</h5>
+                                                      <div class="inline-block" style="border: 1px solid #cccc">{!! $share_buttons !!}</div>
+                                                    </div>
+                                              </div>
+                                            </div>
+                                          </div>
                                     </div>
                                     <div class="main-search-field-2">
                                         {{-- <div class="widget-boxed mt-5">

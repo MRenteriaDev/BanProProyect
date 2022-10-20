@@ -59,6 +59,7 @@ class PropiedadesController extends Controller
             'nombre' => 'required',
             'precio' => 'required',
 
+
         ], [
             'solicitud_vendedor_id.required' => 'Se debe seleccionar algo',
             'review_id.required' => 'Se debe seleccionar algo',

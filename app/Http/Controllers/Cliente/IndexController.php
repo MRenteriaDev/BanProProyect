@@ -22,8 +22,20 @@ class IndexController extends Controller
     {
 
         $property = Propiedades::where('id', $id)->get();
-        return view('cliente.property', compact("property"));
+        $propertyName = Propiedades::where('id', $id)->select('nombre')->get();
+        $share_buttons = \Share::page(
+            'http://127.0.0.1:8000/properties/grid/' . $id,
+            "Propiedad {$property[0]->nombre}"
+        )
+        ->facebook()
+        ->twitter()
+        ->linkedin()
+        ->whatsapp()
+        ->telegram()
+        ->reddit();
+        return view('cliente.property', compact("property", "share_buttons"));
     }
+
 
     public function sellersGrid()
     {
