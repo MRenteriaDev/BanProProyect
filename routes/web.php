@@ -242,6 +242,11 @@ Route::prefix('seller')->group(function () {
 /* ------------- End Seller Route -------------- */
 
 
+Route::prefix('busqueda')->group(function () {
+    Route::get('/resultados', [SearchController::class, 'resultados'])->name('resultados');
+    Route::post('/busqueda', [SearchController::class, 'busqueda'])->name('busqueda');
+});
+
 /// Rutas del index
 Route::prefix('properties')->group(function () {
     Route::get('/grid', [IndexController::class, 'propertiesGrid'])->name('properties.grid');
@@ -264,9 +269,7 @@ Route::prefix('contacts')->group(function () {
 //     Route::post('/busqueda', [SearchController::class, 'busqueda'])->name('busqueda');
 // });
 
-Route::prefix('busqueda')->group(function () {
-    Route::get('/busqueda', [SearchController::class, 'busqueda'])->name('busqueda');
-});
+
 
 
 /// fin de las  Rutas del index

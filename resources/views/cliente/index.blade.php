@@ -1,22 +1,22 @@
 @php
-use App\Models\Propiedades;
-use App\Models\Locacion;
-use App\Models\TipoPropiedad;
-use App\Models\EstatusPropiedad;
+    use App\Models\Propiedades;
+    use App\Models\Locacion;
+    use App\Models\TipoPropiedad;
+    use App\Models\EstatusPropiedad;
 
-$principal_places = DB::table('locacions')
-    ->take(5)
-    ->get();
-$featured_properties = DB::table('propiedades')
-    ->take(6)
-    ->get();
-$recent_properties = Propiedades::latest()
-    ->take(10)
-    ->get();
-$colonias = Locacion::get();
-$array = array(1,2,3,4,5,6,7,8,9,10);
-$tipop = TipoPropiedad::get();
-$estatusp = EstatusPropiedad::get();
+    $principal_places = DB::table('locacions')
+        ->take(5)
+        ->get();
+    $featured_properties = DB::table('propiedades')
+        ->take(6)
+        ->get();
+    $recent_properties = Propiedades::latest()
+        ->take(10)
+        ->get();
+    $colonias = Locacion::get();
+    $array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    $tipop = TipoPropiedad::get();
+    $estatusp = EstatusPropiedad::get();
 @endphp
 
 
@@ -43,8 +43,23 @@ $estatusp = EstatusPropiedad::get();
                                 <p class="mt-4">Tenemos diferentes opciones para ti </p>
                             </div>
                             <!--/ End Welcome Text -->
+                            {{-- <!-- prueba form ajax -->
+                            <form method="post" action="{{ route('busqueda') }}">
+                                {{ csrf_field() }}
+                                <label>Name:</label>
+                                <input type="text" name="person_name"><br>
+                                <label>Email:</label>
+                                <input type="text" name="person_email"><br>
+                                <div class="col-xl-2 col-lg-2 col-md-4">
+                                    <a class="btn" type='submit' href="{{ route('busqueda') }}">Buscar</a>
+                                </div>
+
+                            </form>
+                            <!-- end prueba --> --}}
+
                             <!-- Search Form -->
-                            <form action="{{route("busqueda")}}" method="GET">
+                            <form action="{{route("busqueda")}}" method="POST">
+                                @method('POST')
                                 @csrf
                                 <div class="banner-search-wrap">
                                     <div class="tab-content">
@@ -53,59 +68,70 @@ $estatusp = EstatusPropiedad::get();
                                                 <div class="row">
 
                                                     <div class="rld-single-input">
-                                                        <input type="text" placeholder="Escribe...">
+                                                        <input name="uin" type="text" placeholder="Escribe...">
                                                     </div>
-
-                                                    <div class="rld-single-select" >
-                                                        <select class="select single-select mr-0"
-                                                            style="width: 100%;height: 100%;">
-                                                            <option selected="selected">Tipo De Propiedad</option>
-                                                            @foreach ($tipop as $tipo)
-                                                                <option name="tipo_propiedad" value={{ $tipo->id }}>{{ $tipo->nombre }}
-                                                                </option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
-
 
 
                                                     <div class="rld-single-select">
-                                                        <select class="select single-select mr-0"
+                                                        <select name="tipo_propiedad" id="tipo_propiedad"
+                                                            class="select single-select mr-0"
                                                             style="width: 100%;height: 100%;">
-                                                            <option selected="selected">Seleccionar</option>
-                                                            @foreach ($colonias as $colonia)
-                                                                <option name="colonia" value={{ $colonia->id }}>{{ $colonia->nombre }}
+                                                            <option selected="selected" value="">Tipo De Propiedad</option>
+                                                            @foreach ($tipop as $tipo)
+                                                                <option value={{ $tipo->id }}>
+                                                                    {{ $tipo->nombre }}
                                                                 </option>
                                                             @endforeach
                                                         </select>
                                                     </div>
 
-
-                                                    <div class="dropdown-filter"><span>Busqueda Avanzada</span></div>
-                                                    <div class="col-xl-2 col-lg-2 col-md-4">
-                                                        <a class="btn btn-yellow" type='submit' href="{{ route('busqueda') }}">Buscar</a>
+                                                    <div class="rld-single-select">
+                                                        <select name="colonia" class="select single-select mr-0"
+                                                            style="width: 100%;height: 100%;">
+                                                            <option selected="selected" value=''>Selecciona la colonia</option>
+                                                            @foreach ($colonias as $colonia)
+                                                                <option name="colonia" value={{ $colonia->id }}>
+                                                                    {{ $colonia->nombre }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
                                                     </div>
-                                                    <div class="explore__form-checkbox-list full-filter">
+
+                                                    <div class="rld-single-input">
+                                                        <input name="precio" type="text" placeholder="Prespuesto máximo...">
+                                                    </div>
+
+                                                     {{-- <div class="dropdown-filter"><span>Busqueda Avanzada</span></div> --}}
+                                                    <div class="col-xl-2 col-lg-2 col-md-4">
+                                                        <button class="btn" type='submit'
+                                                            href="{{ route('busqueda') }}">Buscar</button>
+                                                    </div>
+                                                    {{-- <div class="explore__form-checkbox-list full-filter">
                                                         <div class="row">
-                                                            <div class="col-lg-4 col-md-6 py-1 pr-30 pl-0">
+                                                            <div class="col-lg-4 col-md-6 py-0 pr-30 pl-0">
                                                                 <!-- Form Property Status -->
-                                                                <div class="form-group categories">
-                                                                    <div class="nice-select form-control wide"
-                                                                        tabindex="0"><span class="current"><i
-                                                                                class="fa fa-home"></i>Estatus de la
-                                                                            propiedad</span>
-                                                                        <ul class="list">
-                                                                            @foreach ($estatusp as $estap)
-                                                                                <li name="estatus_propiedad" data-value="{{ $estap->id }}"
-                                                                                    class="option">{{ $estap->nombre }}</li>
-                                                                            @endforeach
-                                                                        </ul>
-                                                                    </div>
+                                                                <div class="rld-single-select">
+                                                                    <label>Estatus de la propiedad</label>
+                                                                    <select name="estatus_propiedad"
+                                                                        class="select single-select mr-0"
+                                                                        style="width: 100%;height: 100%;">
+                                                                        <option selected="selected">Estatus de la
+                                                                            propiedad</option>
+                                                                        @foreach ($estatusp as $estap)
+                                                                            <option value={{ $estap->id }}>
+                                                                                {{ $estap->nombre }}
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </select>
+
+
                                                                 </div>
                                                                 <!--/ End Form Property Status -->
-                                                            </div>
-                                                            <div class="col-lg-4 col-md-6 py-1 pr-30 pl-0 ">
+                                                            </div> --}}
+
+
                                                                 <!-- Form Bedrooms -->
+                                                                {{--
                                                                 <div class="form-group beds">
                                                                     <div class="nice-select form-control wide"
                                                                         tabindex="0"><span class="current"><i
@@ -113,51 +139,40 @@ $estatusp = EstatusPropiedad::get();
                                                                             Recamaras</span>
                                                                         <ul class="list">
                                                                             @foreach ($array as $a)
-                                                                            <li name="rec" class="option">{{$a}}</li>
+                                                                                <li name="rec" class="option">
+                                                                                    {{ $a }}</li>
                                                                             @endforeach
 
                                                                         </ul>
                                                                     </div>
-                                                                </div>
+                                                                </div> --}}
                                                                 <!--/ End Form Bedrooms -->
-                                                            </div>
-                                                            <div class="col-lg-4 col-md-6 py-1 pl-0 pr-0">
+
+
+
                                                                 <!-- Form Bathrooms -->
-                                                                <div class="form-group bath">
+                                                                {{-- <div class="form-group bath">
                                                                     <div class="nice-select form-control wide"
                                                                         tabindex="0"><span class="current"><i
                                                                                 class="fa fa-bath" aria-hidden="true"></i>
                                                                             Baños</span>
                                                                         <ul class="list">
                                                                             @foreach ($array as $a)
-                                                                            <li name="bano" class="option">{{$a}}</li>
+                                                                                <li name="bano" class="option">
+                                                                                    {{ $a }}</li>
                                                                             @endforeach
                                                                         </ul>
                                                                     </div>
-                                                                </div>
+                                                                </div> --}}
                                                                 <!--/ End Form Bathrooms -->
-                                                            </div>
-                                                            <div class="col-lg-5 col-md-12 col-sm-12 py-1 pr-30 mr-5 sld">
+
+                                                            {{-- <div class="col-lg-5 col-md-12 col-sm-12 py-1 pr-30 mr-5 sld">
                                                                 <!-- Price Fields -->
-                                                                <div class="main-search-field-2">
-                                                                    <!-- Area Range -->
-                                                                    <div class="range-slider" name="tamano">
-                                                                        <label>Tamaño de propiedad</label>
-                                                                        <div id="area-range" data-min="0"
-                                                                            data-max="1000" data-unit="m²"></div>
-                                                                        <div class="clearfix"></div>
-                                                                    </div>
-                                                                    <br>
-                                                                    <!-- Price Range -->
-                                                                    <div class="range-slider" name="precio">
-                                                                        <label>Rango de precio</label>
-                                                                        <div id="price-range" data-min="0"
-                                                                            data-max="10000000" data-unit="$"></div>
-                                                                        <div class="clearfix"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-3 col-md-6 col-sm-12 py-1 pr-30">
+
+
+
+                                                            </div> --}}
+                                                            {{-- <div class="col-lg-3 col-md-6 col-sm-12 py-1 pr-30">
                                                                 <!-- Checkboxes -->
                                                                 <div class="checkboxes one-in-row margin-bottom-10 ch-1">
                                                                     <input id="check-1" type="checkbox" name="aire">
@@ -175,20 +190,27 @@ $estatusp = EstatusPropiedad::get();
                                                             <div class="col-lg-3 col-md-6 col-sm-12 py-1 pr-30">
                                                                 <!-- Checkboxes -->
                                                                 <div class="checkboxes one-in-row margin-bottom-10 ch-2">
-                                                                    <input id="check-5" type="checkbox" name="cable">
-                                                                    <label for="check-6">Cable</label>
+
                                                                     <input id="check-7" type="checkbox" name="lavaplatos">
                                                                     <label for="check-7">Lavaplatos</label>
-                                                                    <input id="check-8" type="checkbox" name="estacionamiento">
+                                                                    <input id="check-8" type="checkbox"
+                                                                        name="estacionamiento">
                                                                     <label for="check-8">Estacionamiento</label>
-                                                                    <input id="check-9" type="checkbox" name="refrigerador">
+                                                                    <input id="check-9" type="checkbox"
+                                                                        name="refrigerador">
                                                                     <label for="check-9">Refrigerador</label>
 
                                                                 </div>
                                                                 <!-- Checkboxes / End -->
                                                             </div>
-                                                        </div>
-                                                    </div>
+
+                                                            <div class="rld-single-input">
+                                                                <input name="precio" type="text" placeholder="Precio en pesos...">
+                                                            </div> --}}
+
+                                                        {{-- </div>
+                                                    </div>  --}}
+
                                                 </div>
                                             </div>
                                         </div>
@@ -409,8 +431,8 @@ $estatusp = EstatusPropiedad::get();
                                                 class="homes-img">
                                                 <div class="homes-tag button sale rent">En
                                                     {{ $recent_propertie->EstatusPropiedad->nombre }}</div>
-                                                {{-- <img src="{{ asset('/propiedades_documentos/' . $fotosrp->nombre_archivo) }}"
-                                                    class="img-responsive"> --}}
+                                                 <img src="{{ asset('/propiedades_documentos/' . $fotosrp->nombre_archivo) }}"
+                                                    class="img-responsive">
                                             </a>
 
                                         </div>
@@ -651,27 +673,148 @@ $estatusp = EstatusPropiedad::get();
 @endsection
 
 @section('js')
-    {{-- Libreria jquery --}}
-    {{-- <script src="{{ asset('vendor/jquery-ui/jquery-ui.min.js') }}"></script>
-    <script src="{{ asset('admin/plugins/select2/js/select2.full.min.js') }}"></script>
+    <script src="{{ asset('vendor/jquery-ui/jquery-ui.min.js') }}"></script>
 
-    <script>
-        $('#search').autocomplete({
-            source: function(request, response) {
+
+
+
+    {{-- <script> $(".btn").click(function(){
+        //get frm inputs into array
+        var frm_data = $("#bs").serializeArray();
+
+        $.ajax({
+             type:"POST",
+             url: "{{ route('busqueda') }}",
+             data: frm_data,
+             dataType:'json',
+             cache:false,
+             contenttype:"application/jsonrequest; charset=utf-8",
+             error: function (jqXHR, textStatus) {
+               //do on error
+             },
+             success: function (data){
+                response(data)
+             }
+        });
+    });
+    </script> --}}
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('select[name="tipo_propiedad"]').on('change', function() {
+                var tipo_propiedad = $(this).val();
+            });
+
+            $('select[name="colonia"]').on('change', function() {
+                var colonia = $(this).val();
+            });
+
+            $('li[name="estatus_propiedad"]').on('change', function() {
+                var estatus_propiedad = $(this).val();
+            });
+
+
+
+            var aire = "";
+            $(":aire").each(function() {
+                var airechecked = $(this).is(":checked");
+                if (airechecked) {
+                    aire += $(this).val() + "|";
+                }
+            });
+            alert(aire);
+
+            var alberca = "";
+            $(":alberca").each(function() {
+                var albercachecked = $(this).is(":checked");
+                if (albercachecked) {
+                    alberca += $(this).val() + "|";
+                }
+            });
+            alert(alberca);
+
+
+            var balcon = "";
+            $(":balcon").each(function() {
+                var balconchecked = $(this).is(":checked");
+                if (balconchecked) {
+                    balcon += $(this).val() + "|";
+                }
+            });
+            alert(balcon);
+
+            var internet = "";
+            $(":internet").each(function() {
+                var internetchecked = $(this).is(":checked");
+                if (internetchecked) {
+                    internet += $(this).val() + "|";
+                }
+            });
+            alert(internet);
+
+            var cable = "";
+            $(":cable").each(function() {
+                var cablechecked = $(this).is(":checked");
+                if (cablechecked) {
+                    cable += $(this).val() + "|";
+                }
+            });
+            alert(cable);
+
+            var lavaplatos = "";
+            $(":lavaplatos").each(function() {
+                var lavaplatoschecked = $(this).is(":checked");
+                if (lavaplatoschecked) {
+                    lavaplatos += $(this).val() + "|";
+                }
+            });
+            alert(lavaplatos);
+
+
+            var estacionamiento = "";
+            $(":estacionamiento").each(function() {
+                var estacionamientochecked = $(this).is(":checked");
+                if (estacionamientochecked) {
+                    estacionamiento += $(this).val() + "|";
+                }
+            });
+            alert(estacionamiento);
+
+
+            var refrigerador = "";
+            $(":refrigerador").each(function() {
+                var refrigeradorchecked = $(this).is(":checked");
+                if (refrigeradorchecked) {
+                    refrigerador += $(this).val() + "|";
+                }
+            });
+            alert(refrigerador);
+
+
+
+
+
+
+            if (tipo_propiedad || colonia) {
                 $.ajax({
-                    type: 'POST',
-
-                    url: "{{ route('busqueda') }}",
-                    dataType: 'json',
-                    data: {
-                        term: request.term
-                        tipop: request.tipo_propiedad
+                    url: "route('busqueda')",
+                    type: "POST",
+                    dataType: "json",
+                    success: function(response) {
+                        var d1 = $('select[name="tipo_propiedad"]').empty();
+                        var d2 = $('select[name="colonia"]').empty();
+                        var d3 = $('select[name="estatus_propiedad"]').empty();
+                        $.each(response, function(key, value) {
+                            console.log(value.tipo_propiedad);
+                            console.log(value.colonia);
+                            console.log(value.estatus_propiedad);
+                        });
                     },
-                    success: function(data) {
-                        response(data)
-                    }
                 });
+            } else {
+                alert('danger');
             }
         });
-    </script> --}}
+    </script>
 @endsection
