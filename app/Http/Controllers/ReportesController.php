@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Propiedades;
 use Illuminate\Http\Request;
 use App\Exports\Propiedadesexport;
+use App\Exports\PropiedadesExportByTipo;
+use App\Models\PropiedadesExportBySeller;
+use App\Models\SellersExport;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ReportesController extends Controller
@@ -20,5 +23,26 @@ class ReportesController extends Controller
         $from_date = $request->fechainicio;
         $to_date = $request->fechafinal;
         return Excel::download(new Propiedadesexport($from_date, $to_date), 'Propiedades.xlsx');
+    }
+
+    public function getpropertiesbytipe(Request $request)
+    {
+        $tipoPropiedad = $request->tipo_propiedad_id;
+        return Excel::download(new PropiedadesExportByTipo($tipoPropiedad), 'PropiedadesTipo.xlsx');
+    }
+
+    public function getSellers(Request $request)
+    {
+        $from_date = $request->fechainicio;
+        $to_date = $request->fechafinal;
+        return Excel::download(new SellersExport($from_date, $to_date), 'Seller.xlsx');
+    }
+
+    public function getpropertiesbyseller(Request $request)
+    {
+        // dd($request->seller_id);
+        // die();
+        $seller_id = $request->seller_id;
+        return Excel::download(new PropiedadesExportBySeller($seller_id), 'SellerPropiedades.xlsx');
     }
 }

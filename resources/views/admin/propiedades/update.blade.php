@@ -230,7 +230,7 @@
                                     style="width: 100%;height: 100%;">
                                     <option selected="selected">Seleccionar</option>
                                     @foreach ($solicitudvendedor as $solicitudvendedo)
-                                        <option value={{ $solicitudvendedo->id }}>{{ $solicitudvendedo->nombre }}
+                                        <option value={{ $solicitudvendedo->id }} selected="selected">{{ $solicitudvendedo->nombre }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -242,7 +242,7 @@
                                 <select class="form-control select2" name="review_id" style="width: 100%;height: 100%;">
                                     <option selected="selected">Seleccionar</option>
                                     @foreach ($reviews as $review)
-                                        <option value={{ $review->id }}>{{ $review->nombre }}</option>
+                                        <option value={{ $review->id }} selected="selected">{{ $review->nombre }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -254,7 +254,7 @@
                                     style="width: 100%;height: 100%;">
                                     <option selected="selected">Seleccionar</option>
                                     @foreach ($estatuspropiedad as $estatupropiedad)
-                                        <option value={{ $estatupropiedad->id }}>{{ $estatupropiedad->nombre }}
+                                        <option value={{ $estatupropiedad->id }} selected="selected">{{ $estatupropiedad->nombre }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -267,7 +267,7 @@
                                     style="width: 100%;height: 100%;">
                                     <option selected="selected">Seleccionar</option>
                                     @foreach ($tipopropiedades as $tipopropiedad)
-                                        <option value={{ $tipopropiedad->id }}>{{ $tipopropiedad->nombre }}</option>
+                                        <option value={{ $tipopropiedad->id }} selected="selected">{{ $tipopropiedad->nombre }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -279,7 +279,18 @@
                                     style="width: 100%;height: 100%;">
                                     <option selected="selected">Seleccionar</option>
                                     @foreach ($locacion as $locacion)
-                                        <option value={{ $locacion->id }}>{{ $locacion->nombre }}</option>
+                                        <option value={{ $locacion->id }} selected="selected">{{ $locacion->nombre }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Seleccionar Seller</label>
+                                <select class="form-control select2" name="seller_id" style="width: 100%;height: 100%;">
+                                    <option selected="selected">Seleccionar</option>
+                                    @foreach ($seller as $seller)
+                                        <option value={{ $seller->id }} selected="selected">{{ $seller->name }}</option>
                                     @endforeach
                                 </select>
                             </div>

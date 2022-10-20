@@ -246,6 +246,17 @@
                         </select>
                     </div>
                 </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Seleccionar Seller</label>
+                        <select class="form-control select2" name="seller_id" style="width: 100%;height: 100%;">
+                            <option selected="selected">Seleccionar</option>
+                            @foreach ($seller as $seller)
+                                <option value={{ $seller->id }}>{{ $seller->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
                 {{-- <div class="col-md-12">
                     <div class="form-group">
                         <label for="video_propiedad">Videos de la propiedad</label>

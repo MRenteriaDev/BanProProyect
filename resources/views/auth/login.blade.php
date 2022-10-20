@@ -54,6 +54,7 @@
                             <div class="float-right mt-1"><a id="forgot" href="javascript:void(0);">Forgot
                                     Password?</a></div>
                         </div>
+                        <button type="submit" href="#0" class="btn_1 rounded full-width">Accesar a BanPro</button>
                         <div class="text-center add_top_10">Nuevo en nuestro sitio? <strong><a
                                     href="{{ route('register') }}">Registrate Aquí!</a></strong></div>
                     </form>

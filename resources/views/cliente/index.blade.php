@@ -58,17 +58,9 @@
                             <!-- end prueba --> --}}
 
                             <!-- Search Form -->
-                            <form method="post" id="bs" action="{{ route('busqueda') }}">
-                                {{ csrf_field() }}
+                            <form action="{{route("busqueda")}}" method="GET">
+                                @csrf
                                 <div class="banner-search-wrap">
-                                    {{-- <ul class="nav nav-tabs rld-banner-tab">
-                                        <li class="nav-item">
-                                            <a class="nav-link active" data-toggle="tab" href="#tabs_1">Venta</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#tabs_2">Renta</a>
-                                        </li>
-                                    </ul> --}}
                                     <div class="tab-content">
                                         <div class="tab-pane fade show active" id="tabs_1">
                                             <div class="rld-main-search">
@@ -265,7 +257,7 @@
     <!-- END SECTION POPULAR PLACES -->
 
     <!-- START SECTION FEATURED PROPERTIES -->
-    <section class="featured portfolio bg-white-2 rec-pro full-l">
+    {{-- <section class="featured portfolio bg-white-2 rec-pro full-l">
         <div class="container-fluid">
             <div class="sec-title">
                 <h2><span>Propiedades </span>Destacadas</h2>
@@ -344,7 +336,7 @@
                 <a href="{{ route('properties.grid') }}" class="btn btn-outline-light">View More</a>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- END SECTION FEATURED PROPERTIES -->
 
     <!-- START SECTION WHY CHOOSE US -->
@@ -438,8 +430,8 @@
                                                 class="homes-img">
                                                 <div class="homes-tag button sale rent">En
                                                     {{ $recent_propertie->EstatusPropiedad->nombre }}</div>
-                                                <img src="{{ asset('/propiedades_documentos/' . $fotosrp->nombre_archivo) }}"
-                                                    class="img-responsive">
+                                                {{-- <img src="{{ asset('/propiedades_documentos/' . $fotosrp->nombre_archivo) }}"
+                                                    class="img-responsive"> --}}
                                             </a>
 
                                         </div>
@@ -501,147 +493,6 @@
             </div>
         </div>
     </section>
-    <!-- END SECTION RECENTLY PROPERTIES -->
-
-    {{-- <!-- START SECTION AGENTS -->
-    <section class="team bg-white rec-pro">
-        <div class="container-fluid">
-            <div class="sec-title">
-                <h2><span>Conoce </span>Nuestros Agentes</h2>
-                <p>Nuestros agentes estan aqui para ayudar</p>
-            </div>
-            <div class="row team-all">
-                <!--Team Block-->
-                <div class="team-block col-sm-6 col-md-4 col-lg-4 col-xl-2" data-aos="fade-up" data-aos-delay="150">
-                    <div class="inner-box team-details">
-                        <div class="image team-head">
-                            <a href="{{route('seller.grid-single', $principal_place->id)}}"><img src="images/team/t-5.jpg" alt="" /></a>
-                            <div class="team-hover">
-                                <ul class="team-social">
-                                    <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
-                                    <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="lower-box">
-                            <h3><a href="{{route('seller.grid-single', $principal_place->id)}}">Carls Jhons</a></h3>
-                            <div class="designation">Real Estate Agent</div>
-                        </div>
-                    </div>
-                </div>
-                <!--Team Block-->
-                <div class="team-block col-sm-6 col-md-4 col-lg-4 col-xl-2" data-aos="fade-up" data-aos-delay="250">
-                    <div class="inner-box team-details">
-                        <div class="image team-head">
-                            <a href="agents-listing-grid.html"><img src="images/team/t-6.jpg" alt="" /></a>
-                            <div class="team-hover">
-                                <ul class="team-social">
-                                    <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
-                                    <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="lower-box">
-                            <h3><a href="agents-listing-grid.html">Arling Tracy</a></h3>
-                            <div class="designation">Real Estate Agent</div>
-                        </div>
-                    </div>
-                </div>
-                <!--Team Block-->
-                <div class="team-block col-sm-6 col-md-4 col-lg-4 col-xl-2" data-aos="fade-up" data-aos-delay="350">
-                    <div class="inner-box team-details">
-                        <div class="image team-head">
-                            <a href="agents-listing-grid.html"><img src="images/team/t-7.jpg" alt="" /></a>
-                            <div class="team-hover">
-                                <ul class="team-social">
-                                    <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
-                                    <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="lower-box">
-                            <h3><a href="agents-listing-grid.html">Mark Web</a></h3>
-                            <div class="designation">Real Estate Agent</div>
-                        </div>
-                    </div>
-                </div>
-                <!--Team Block-->
-                <div class="team-block col-sm-6 col-md-4 col-lg-4 col-xl-2 pb-none" data-aos="fade-up"
-                    data-aos-delay="450">
-                    <div class="inner-box team-details">
-                        <div class="image team-head">
-                            <a href="agents-listing-grid.html"><img src="images/team/t-8.jpg" alt="" /></a>
-                            <div class="team-hover">
-                                <ul class="team-social">
-                                    <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
-                                    <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="lower-box">
-                            <h3><a href="agents-listing-grid.html">Katy Grace</a></h3>
-                            <div class="designation">Real Estate Agent</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="team-block col-sm-6 col-md-4 col-lg-4 col-xl-2 pb-none" data-aos="fade-up"
-                    data-aos-delay="550">
-                    <div class="inner-box team-details">
-                        <div class="image team-head">
-                            <a href="agents-listing-grid.html"><img src="images/team/team-image-2.jpg"
-                                    alt="" /></a>
-                            <div class="team-hover">
-                                <ul class="team-social">
-                                    <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
-                                    <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="lower-box">
-                            <h3><a href="agents-listing-grid.html">Chris Melo</a></h3>
-                            <div class="designation">Real Estate Agent</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="team-block col-sm-6 col-md-4 col-lg-4 col-xl-2 pb-none" data-aos="fade-up"
-                    data-aos-delay="650">
-                    <div class="inner-box team-details">
-                        <div class="image team-head">
-                            <a href="agents-listing-grid.html"><img src="images/team/team-image-7.jpg"
-                                    alt="" /></a>
-                            <div class="team-hover">
-                                <ul class="team-social">
-                                    <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
-                                    <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="lower-box">
-                            <h3><a href="agents-listing-grid.html">Nina Thomas</a></h3>
-                            <div class="designation">Real Estate Agent</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br>
-            <div class="bg-all">
-                <a href="{{route('sellers.grid')}}" class="btn btn-outline-light">View More</a>
-            </div>
-        </div>
-    </section>
-    <!-- END SECTION AGENTS --> --}}
 
     <!-- START SECTION TESTIMONIALS -->
     <section class="testimonials bg-white-2 rec-pro">
@@ -723,7 +574,7 @@
     <!-- END SECTION TESTIMONIALS -->
 
     <!-- STAR SECTION PARTNERS -->
-    <div class="partners bg-white rec-pro">
+    {{-- <div class="partners bg-white rec-pro">
         <div class="container-fluid">
             <div class="sec-title">
                 <h2><span>Nuestros </span>Aliados</h2>
@@ -742,7 +593,7 @@
                 <div class="owl-item" data-aos="fade-up"><img src="images/partners/13.jpg" alt=""></div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- END SECTION PARTNERS -->
 
     @include('cliente.body.footer')
