@@ -58,7 +58,8 @@
                             <!-- end prueba --> --}}
 
                             <!-- Search Form -->
-                            <form action="{{route("busqueda")}}" method="GET">
+                            <form action="{{route("busqueda")}}" method="POST">
+                                @method('POST')
                                 @csrf
                                 <div class="banner-search-wrap">
                                     <div class="tab-content">
