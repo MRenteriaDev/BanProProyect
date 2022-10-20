@@ -364,7 +364,7 @@
 
                                                                 margin: 1px;
                                                                 font-size: 30px;
-                                                                color: #222;
+                                                                color: #FF385C;
 
 
                                                             }
