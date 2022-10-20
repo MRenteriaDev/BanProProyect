@@ -22,6 +22,7 @@
      <!-- Page Icon -->
      <link rel="icon" href="{{ asset('cliente/images/123.png') }}"/>
     <!-- ARCHIVES CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ asset('cliente/css/search.css') }}">
     <link rel="stylesheet" href="{{ asset('cliente/css/animate.css') }}">
     <link rel="stylesheet" href="{{ asset('cliente/css/aos.css') }}">
