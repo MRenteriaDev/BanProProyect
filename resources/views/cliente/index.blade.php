@@ -431,8 +431,8 @@
                                                 class="homes-img">
                                                 <div class="homes-tag button sale rent">En
                                                     {{ $recent_propertie->EstatusPropiedad->nombre }}</div>
-                                                {{-- <img src="{{ asset('/propiedades_documentos/' . $fotosrp->nombre_archivo) }}"
-                                                    class="img-responsive"> --}}
+                                                 <img src="{{ asset('/propiedades_documentos/' . $fotosrp->nombre_archivo) }}"
+                                                    class="img-responsive">
                                             </a>
 
                                         </div>
