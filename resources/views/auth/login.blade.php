@@ -63,7 +63,7 @@
             <!-- END SECTION LOGIN -->
 
             <!-- START FOOTER -->
-            <footer class="first-footer">
+            {{-- <footer class="first-footer">
                 <div class="top-footer">
                     <div class="container">
                         <div class="row">
@@ -188,7 +188,7 @@
                         </ul>
                     </div>
                 </div>
-            </footer>
+            </footer> --}}
 
             <a data-scroll href="#wrapper" class="go-up"><i class="fa fa-angle-double-up" aria-hidden="true"></i></a>
             <!-- END FOOTER -->

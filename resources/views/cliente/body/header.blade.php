@@ -73,7 +73,7 @@
                 <div class="header-widget sign-in">
                     @if (!isset(Auth::user()->name))
                         <div class="show-reg-form modal-open"><a
-                                href="{{ route('login') }}"class="text-secondary">Unete!</a></div>
+                                href="{{ route('login') }}"class="text-danger">Unete!</a></div>
                     @else
                     @endif
 

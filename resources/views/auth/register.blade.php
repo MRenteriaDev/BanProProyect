@@ -14,8 +14,8 @@
             <section class="headings">
                 <div class="text-heading text-center">
                     <div class="container">
-                        <h1>Register</h1>
-                        <h2><a href="index.html">Home </a> &nbsp;/&nbsp; Register</h2>
+                        <h1>Registro</h1>
+
                     </div>
                 </div>
             </section>
@@ -27,36 +27,39 @@
                     <form autocomplete="off" method="POST" action="{{ route('register') }}">
                         @csrf
                         <div class="form-group">
-                            <label>Your Name</label>
+                            <label>Nombre completo</label>
                             <input class="form-control" type="text" name="name">
                             <i class="ti-user"></i>
                         </div>
                         <div class="form-group">
-                            <label>Your Email</label>
+                            <label>Celular</label>
+                            <input class="form-control" type="text" name="cel">
+                            <i class="ti-user"></i>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
                             <input class="form-control" type="email" name="email">
                             <i class="icon_mail_alt"></i>
                         </div>
                         <div class="form-group">
-                            <label>Your password</label>
+                            <label>Contraseña</label>
                             <input class="form-control" type="password" id="password1" name="password">
                             <i class="icon_lock_alt"></i>
                         </div>
                         <div class="form-group">
-                            <label>Confirm password</label>
+                            <label>Confirmar contraseña</label>
                             <input class="form-control" type="password" id="password2" name="password_confirmation">
                             <i class="icon_lock_alt"></i>
                         </div>
                         <div id="pass-info" class="clearfix"></div>
-                        <button type="submit" class="btn_1 rounded full-width add_top_30">Register Now!</button>
-                        <div class="text-center add_top_10">Already have an acccount? <strong><a href="login.html">Sign
-                                    In</a></strong></div>
+                        <button type="submit" class="btn_1 rounded full-width add_top_30">Registrate</button>
                     </form>
                 </div>
             </div>
             <!-- END SECTION 404 -->
 
             <!-- START FOOTER -->
-            <footer class="first-footer">
+            {{-- <footer class="first-footer">
                 <div class="top-footer">
                     <div class="container">
                         <div class="row">
@@ -181,10 +184,13 @@
                         </ul>
                     </div>
                 </div>
-            </footer>
+            </footer> --}}
 
             <a data-scroll href="#wrapper" class="go-up"><i class="fa fa-angle-double-up" aria-hidden="true"></i></a>
             <!-- END FOOTER -->
             <!-- Wrapper / End -->
+
     </body>
+
+    @include('cliente.body.footer')
 @endsection
