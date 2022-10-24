@@ -48,7 +48,7 @@
                             <select class="form-control select2" name="seller_id" style="width: 100%;height: 100%;">
                                 <option selected="selected">Seleccionar</option>
                                 @foreach ($sellers as $seller)
-                                    <option value={{ $seller->id }}>{{ $seller->name }}</option>
+                                    <option value={{ $seller->id }} selected="selected">{{ $seller->name }}</option>
                                 @endforeach
                             </select>
                         </div>

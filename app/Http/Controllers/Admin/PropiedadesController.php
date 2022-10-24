@@ -15,7 +15,7 @@ use App\Models\Reviews;
 use App\Models\Seller;
 use App\Models\SolicitudVendedor;
 use App\Models\TipoPropiedad;
-use Image;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class PropiedadesController extends Controller
 {
@@ -59,6 +59,7 @@ class PropiedadesController extends Controller
             'nombre' => 'required',
             'precio' => 'required',
 
+
         ], [
             'solicitud_vendedor_id.required' => 'Se debe seleccionar algo',
             'review_id.required' => 'Se debe seleccionar algo',
@@ -71,9 +72,15 @@ class PropiedadesController extends Controller
 
         ]);
 
-        $originalImage = $request->file('planos');
-        $originalImageMove = $data['nombre'] . '-documento-' . time() . rand(1, 1000) . '.' . $originalImage->extension();
-        $imageSave = $originalImage->move(public_path('planos_documentos'), $originalImageMove);
+        if($request->file('planos') != null){
+            $originalImage = $request->file('planos');
+            $originalImageMove = $data['nombre'] . '-documento-' . time() . rand(1, 1000) . '.' . $originalImage->extension();
+            $imageSave = $originalImage->move(public_path('planos_documentos'), $originalImageMove);
+        }else{
+            $originalImageMove = null;
+        }
+
+
 
 
         Propiedades::insert([
@@ -97,8 +104,9 @@ class PropiedadesController extends Controller
             'estatus_propiedad_id' => $request->estatus_propiedad_id,
             'locacion_id' => $request->locacion_id,
             'tipo_propiedad_id' => $request->tipo_propiedad_id,
-            'planos' => $request->$imageSave,
+            'planos' => $originalImageMove,
             'nearbys' => $request->nearbys,
+            'descripcion' => $request->descripcion,
             'seller_id' => $request->seller_id,
             'created_at' => Carbon::now()
         ]);
@@ -111,7 +119,13 @@ class PropiedadesController extends Controller
         if ($request->has('nombre_archivo')) {
             foreach ($request->file('nombre_archivo') as $documento) {
                 $documento_nname = $data['nombre'] . '-documento-' . time() . rand(1, 1000) . '.' . $documento->extension();
+                $thumbnail = "resized-". $documento_nname;
+                $file = public_path('propiedades_documentos') . $documento_nname;
+                $ruta = public_path('propiedades_documentos/thumb/') . $thumbnail;
+                Image::make($documento)->resize(345,280)->save($ruta);
                 $documento->move(public_path('propiedades_documentos'), $documento_nname);
+
+
                 GaleriaPropiedades::create([
                     'propiedad_id' => $last[0]->id,
                     'nombre_archivo' => $documento_nname,

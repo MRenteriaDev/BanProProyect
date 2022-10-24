@@ -23,8 +23,7 @@
                     <ul id="responsive">
                         <li><a href="{{ url('/') }}" class="text-dark">Panel</a>
                         </li>
-                        <li><a class="text-dark" href="{{ route('properties.grid') }}">Propiedades</a>
-                        </li>
+
                         {{-- <li><a class="text-dark" href="{{ route('sellers.grid') }}">Vendedores</a>
                         </li> --}}
                         <li><a class="text-dark" href="{{ route('contact') }}">Contacto</a>
@@ -43,7 +42,7 @@
             @php
                 use Illuminate\Support\Facades\Auth;
                 $userauth = Auth::user();
-
+                $fd = "asset('cliente/images/testimonials/ts-1.jpg')";
 
             @endphp
             <!-- Right Side Content / End -->
@@ -56,7 +55,7 @@
                         <span><img src="{{ $userauth->avatar }}"
                                 alt=""></span>{{ Auth::user()->name }}
                     @endif
-                    <span><img src="{{ $userauth->avatar ?? '' }}" alt=""></span>
+                    <span><img src="{{ $userauth->avatar ?? '[$fd]' }}" alt=""></span>
                     {{ $user->name ?? '' }}
                 </div>
                 @if (!isset(Auth::user()->name))

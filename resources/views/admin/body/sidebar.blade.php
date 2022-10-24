@@ -116,7 +116,7 @@
 
                     <li class="nav-item has-treeview">
                         <a href="{{ route('reportes.index') }}" class="nav-link {{$route == 'reportes.index' ? 'active': ''}}">
-                            <i class="fa-regular fa-id-badge"></i>
+                            <i class="fa-solid fa-pen"></i>
                             <p>
                                 Reportes
                             </p>

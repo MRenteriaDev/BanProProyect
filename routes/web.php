@@ -22,6 +22,7 @@ use App\Http\Controllers\FacebookSocialiteController;
 use App\Http\Controllers\ReportesController;
 use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\SocialMediaShareButtonController;
 
 /*
 |--------------------------------------------------------------------------
@@ -240,10 +241,16 @@ Route::prefix('seller')->group(function () {
 /* ------------- End Seller Route -------------- */
 
 
+Route::prefix('busqueda')->group(function () {
+    Route::get('/resultados', [SearchController::class, 'resultados'])->name('resultados');
+    Route::post('/busqueda', [SearchController::class, 'busqueda'])->name('busqueda');
+});
+
 /// Rutas del index
 Route::prefix('properties')->group(function () {
     Route::get('/grid', [IndexController::class, 'propertiesGrid'])->name('properties.grid');
     Route::get('/grid/{id}', [IndexController::class, 'propertyGrid'])->name('properties.grid-single');
+
 });
 
 Route::prefix('sellers')->group(function () {
@@ -262,9 +269,7 @@ Route::prefix('contacts')->group(function () {
 //     Route::post('/busqueda', [SearchController::class, 'busqueda'])->name('busqueda');
 // });
 
-Route::prefix('busqueda')->group(function () {
-    Route::get('/busqueda', [SearchController::class, 'busqueda'])->name('busqueda');
-});
+
 
 
 /// fin de las  Rutas del index
@@ -280,6 +285,9 @@ Route::prefix('payments')->group(function () {
     Route::get('/payment', [StripePaymentController::class, 'stripeGet'])->name('stripeGet')->middleware('auth');
     Route::post('/payment', [StripePaymentController::class, 'stripePost'])->name('stripePost')->middleware('auth');
 });
+
+// // Social Media Routes
+// Route::get('/social-media-shares', [SocialMediaShareButtonController::class, 'index']);
 
 Route::get('/dashboard', function () {
     return view('clienteRegistrado.profile');
