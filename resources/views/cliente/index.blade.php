@@ -228,7 +228,7 @@
     <!-- END HEADER SEARCH -->
 
     <!-- START SECTION POPULAR PLACES -->
-    <section class="feature-categories bg-white rec-pro">
+    {{-- <section class="feature-categories bg-white rec-pro">
         <div class="container-fluid">
             <div class="sec-title">
                 <h2><span>Lugares </span>Populares</h2>
@@ -254,7 +254,7 @@
             </div>
             <!-- /row -->
         </div>
-    </section>
+    </section> --}}
     <!-- END SECTION POPULAR PLACES -->
 
     <!-- START SECTION FEATURED PROPERTIES -->
@@ -351,56 +351,50 @@
                 <article class="col-lg-3 col-md-6 col-xs-12 serv" data-aos="fade-up" data-aos-delay="150">
                     <div class="serv-flex">
                         <div class="art-1 img-13">
-                            <img src="images/icons/icon-4.svg" alt="">
-                            <h3>Wide Renge Of Properties</h3>
+                            <img src="{{asset('cliente/images/mejora.jpg')}}" alt="">
+                            <h3>Mejora continua...</h3>
                         </div>
                         <div class="service-text-p">
-                            <p class="text-center">lorem ipsum dolor sit amet, consectetur pro adipisici consectetur debits
-                                adipisicing lacus consectetur Business Directory.</p>
+                            <p class="text-center">Porque jamás dejamos de mejorar nuestros servicios, incluyendo metodologías de desarrollo y técnicas de gestión</p>
                         </div>
                     </div>
                 </article>
                 <article class="col-lg-3 col-md-6 col-xs-12 serv" data-aos="fade-up" data-aos-delay="250">
                     <div class="serv-flex">
                         <div class="art-1 img-14">
-                            <img src="images/icons/icon-5.svg" alt="">
-                            <h3>Trusted by thousands</h3>
+                            <img src="{{asset('cliente/images/prof.png')}}" alt="">
+                            <h3>Profesionalismo</h3>
                         </div>
                         <div class="service-text-p">
-                            <p class="text-center">lorem ipsum dolor sit amet, consectetur pro adipisici consectetur debits
-                                adipisicing lacus consectetur Business Directory.</p>
+                            <p class="text-center">Porque somos profesionales y trabajamos para asegurar el éxito de nuestros clientes en cada aspecto posible.</p>
                         </div>
                     </div>
                 </article>
                 <article class="col-lg-3 col-md-6 col-xs-12 serv mb-0 pt" data-aos="fade-up" data-aos-delay="350">
                     <div class="serv-flex arrow">
                         <div class="art-1 img-15">
-                            <img src="images/icons/icon-6.svg" alt="">
-                            <h3>Financing made easy</h3>
+                            <img src="{{asset('cliente/images/1.png')}}" alt="">
+                            <h3>Variedad de casas</h3>
                         </div>
                         <div class="service-text-p">
-                            <p class="text-center">lorem ipsum dolor sit amet, consectetur pro adipisici consectetur debits
-                                adipisicing lacus consectetur Business Directory.</p>
+                            <p class="text-center">En <b> Banpro</b> encontraras la casa ideal rentar o comprar, no busque más, estas en el lugar indicado.</p>
                         </div>
                     </div>
                 </article>
                 <article class="col-lg-3 col-md-6 col-xs-12 serv mb-0 pt its-2" data-aos="fade-up" data-aos-delay="450">
                     <div class="serv-flex">
                         <div class="art-1 img-14">
-                            <img src="images/icons/icon-15.svg" alt="">
-                            <h3>We are here near you</h3>
+                            <img src="{{asset('cliente/images/ubicacion.png')}}" alt="">
+                            <h3>Estamos cerca de ti</h3>
                         </div>
                         <div class="service-text-p">
-                            <p class="text-center">lorem ipsum dolor sit amet, consectetur pro adipisici consectetur debits
-                                adipisicing lacus consectetur Business Directory.</p>
+                            <p class="text-center">La tendencia actual está dando un importante giro ante las indiscutibles ventajas que ofrece estar situado dentro de las ciudades.</p>
                         </div>
                     </div>
                 </article>
             </div>
         </div>
-        <div class="bg-all">
-            <a href="#" class="btn btn-outline-light">View More</a>
-        </div>
+
     </section>
     <!-- END SECTION WHY CHOOSE US -->
 

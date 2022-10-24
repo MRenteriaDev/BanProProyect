@@ -7,11 +7,11 @@
                 <div class="tr-single-box">
                     <div class="tr-single-body">
                         <div class="tr-single-header">
-                            <h4><i class="far fa-address-card pr-2"></i>Billing Information</h4>
+                            <h4><i class="far fa-address-card pr-2"></i>Información de facturación</h4>
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
-                                <label>Name</label>
+                                <label>Nombre</label>
                                 <input type="text" class="form-control">
                             </div>
                             <div class="col-sm-6">
@@ -19,27 +19,27 @@
                                 <input type="email" class="form-control">
                             </div>
                             <div class="col-sm-6">
-                                <label>Phone</label>
+                                <label>Telefono</label>
                                 <input type="text" class="form-control">
                             </div>
                             <div class="col-sm-6">
-                                <label>City</label>
+                                <label>Ciudad</label>
                                 <input type="text" class="form-control">
                             </div>
                             <div class="col-sm-6">
-                                <label>State</label>
+                                <label>Estado</label>
                                 <input type="text" class="form-control">
                             </div>
                             <div class="col-sm-6">
-                                <label>Country</label>
+                                <label>Pais</label>
                                 <input type="text" class="form-control">
                             </div>
                             <div class="col-sm-6">
-                                <label>Address</label>
+                                <label>Direccion</label>
                                 <input type="text" class="form-control address mb-0">
                             </div>
                             <div class="col-sm-6">
-                                <label>Zip</label>
+                                <label>Codigo Postal</label>
                                 <input type="text" class="form-control mb-0">
                             </div>
                         </div>
@@ -50,14 +50,14 @@
                 <div class="tr-single-box">
                     <div class="tr-single-body">
                         <div class="tr-single-header">
-                            <h4><i class="far fa-credit-card pr-2"></i>Payment Method</h4>
+                            <h4><i class="far fa-credit-card pr-2"></i>Metodo de pago</h4>
                         </div>
                         <!-- Debit card option -->
                         <div class="payment-card mb-0">
                             <header class="payment-card-header cursor-pointer" data-toggle="collapse"
                                 data-target="#debit-credit" aria-expanded="true">
                                 <div class="payment-card-title flexbox">
-                                    <h4>Credit / Debit Card</h4>
+                                    <h4>Tarjeta de Credito / Debito</h4>
                                 </div>
                                 <div class="pull-right">
                                     <img src="images/credit.png" class="img-responsive" alt="">
@@ -70,48 +70,39 @@
                                     @csrf
                                     <div class="row mrg-bot-20">
                                         <div class="col-sm-6">
-                                            <label>Card Holder Name</label>
+                                            <label>Titular de la tarjeta</label>
                                             <input type="text" class="form-control" placeholder="Chris Seail">
                                         </div>
                                         <div class="col-sm-6">
-                                            <label>Card No.</label>
+                                            <label>Numero de tarjeta</label>
                                             <input type="number" class="form-control card-number">
                                         </div>
                                     </div>
                                     <div class="row mrg-bot-20">
                                         <div class="col-sm-4 col-md-4">
-                                            <label>Expire Month</label>
+                                            <label>MM</label>
                                             <input type="number" class="form-control card-expiry-month" placeholder="09">
                                         </div>
                                         <div class="col-sm-4 col-md-4">
-                                            <label>Expire Year</label>
+                                            <label>YYYY</label>
                                             <input type="number" class="form-control card-expiry-year" placeholder="2022">
                                         </div>
                                         <div class="col-sm-4 col-md-4">
-                                            <label>CCV Code</label>
+                                            <label>CCV</label>
                                             <input type="number" class="form-control card-cvc" placeholder="258">
                                         </div>
                                     </div>
                                     <div class="row mrg-bot-20">
                                         <div class="col-sm-7">
-                                            <span class="custom-checkbox d-block font-12 mb-2">
-                                                <input type="checkbox" id="promo">
-                                                <label for="promo"></label>
-                                                Have a promo code?
-                                            </span>
-                                            <input type="text" class="form-control">
+
+
                                         </div>
                                         <div class="col-sm-5 padd-top-10 text-right">
-                                            <label>Total Order</label>
-                                            <h2 class="mrg-0"><span class="theme-cl">$</span>987</h2>
+                                            <label>Total</label>
+                                            <h2 class="mrg-0"><span class="theme-cl">$</span>10</h2>
                                         </div>
                                         <div class="col-sm-12 bt-1 padd-top-15 pt-3">
-                                            <span class="custom-checkbox d-block font-12 mb-3">
-                                                <input type="checkbox" id="privacy1">
-                                                <label for="privacy1"></label>
-                                                By ordering you are agreeing to our <a href="#"
-                                                    class="theme-cl">Privacy policy</a>.
-                                            </span>
+
                                             <button type="submit" class="btn btn-m btn-success">Checkout</button>
                                         </div>
                                     </div>

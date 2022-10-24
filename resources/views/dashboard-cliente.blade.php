@@ -51,17 +51,17 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-12 col-xs-12 pl-0 pr-0 user-dash">
                         <div class="user-profile-box mb-0">
-                            <div class="sidebar-header"><img src="{{ asset('cliente/images/logo-blue.svg') }}"
+                            <div class="sidebar-header"><img src="{{ asset('cliente/images/logo-white-1.png') }}"
                                     alt="header-logo2.png">
                             </div>
-                            <div class="header clearfix">
+                            {{-- <div class="header clearfix">
                                 <img src="{{ asset('cliente/images/testimonials/ts-1.jpg') }}" alt="avatar"
                                     class="img-fluid profile-img">
-                            </div>
-                            <div class="active-user">
+                            </div> --}}
+                            {{-- <div class="active-user">
                                 <h2>Mary Smith</h2>
-                            </div>
-                            <div class="detail clearfix">
+                            </div> --}}
+                            {{-- <div class="detail clearfix">
                                 <ul class="mb-0">
                                     <li>
                                         <a class="active" href="{{route('dashboard')}}">
@@ -84,7 +84,7 @@
                                         </a>
                                     </li>
                                 </ul>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-xs-6 widget-boxed mt-33 mt-0 offset-lg-2 offset-md-3">
@@ -127,8 +127,8 @@
         <!-- END SECTION USER PROFILE -->
         <div class="second-footer ad mt-3">
             <div class="container">
-                <p>2021 © Copyright - All Rights Reserved.</p>
-                <p>Made With <i class="fa fa-heart" aria-hidden="true"></i> By Code-Theme</p>
+                <p>2022 Banpro © Copyright - Todos los derechos reservados.</p>
+
             </div>
         </div>
 
