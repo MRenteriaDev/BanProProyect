@@ -4,7 +4,8 @@
 
 @php
     $fotos = DB::table('galeria_propiedades')->where('propiedad_id', '=', $property[0]->id)->get();
-    $plano = DB::table('galeria_planos')->where('propiedad_id', '=', $property[0]->id)->get();
+    //$plano = DB::table('galeria_planos')->where('propiedad_id', '=', $property[0]->id)->get();
+
 @endphp
 
     <body class="inner-pages sin-1 homepage-4 hd-white">
@@ -64,13 +65,13 @@
                                                 @if ($i == 0)
                                                     <div class="active item carousel-item"
                                                         data-slide-number="{{ $i }}">
-                                                        <img src="{{ asset('/propiedades_documentos/' . $fotos[$i]->nombre_archivo) }}"
-                                                            class="img-fluid" alt="slider-listing">
+                                                        <img height="600" src="{{ asset('/propiedades_documentos/' . $fotos[$i]->nombre_archivo) }}"
+                                                            class="img-fluid" alt="slider-listing" height="600">
                                                     </div>
                                                 @else
                                                     <div class="item carousel-item" data-slide-number="{{ $i }}">
-                                                        <img src="{{ asset('/propiedades_documentos/' . $fotos[$i]->nombre_archivo) }}"
-                                                            class="img-fluid" alt="slider-listing">
+                                                        <img src="{{ asset('/propiedades_documentos/' . $fotos[$i]->nombre_archivo) }} "
+                                                            class="img-fluid" alt="slider-listing" style="width:auto;height:600px;" >
                                                     </div>
                                                 @endif
                                             @endfor
@@ -209,11 +210,11 @@
                             </div>
                             <div class="floor-plan property wprt-image-video w50 pro">
                                 <h5>Planos de construcción</h5>
-                                @if(!$plano->isEmpty())
-                                <img alt="image" src="{{ asset('/planos_documentos/' . $plano[0]->nombre_archivo) }}">
+                                @if(!$property[0]->planos == null)
+                                <img alt="image" src="{{ asset('/planos_documentos/' . $property[0]->planos ) }}">
                                 @else
                                 <p class="mb-3">No hay planos disponibles</p>
-                                @endif --}}
+                                @endif
                             </div>
 
                             <div class="floor-plan property wprt-image-video w50 pro">

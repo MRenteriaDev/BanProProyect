@@ -419,7 +419,9 @@
                             $fotosrp = DB::table('galeria_propiedades')
                                 ->where('propiedad_id', '=', $recent_propertie->id)
                                 ->first();
+
                             $thumb = "resized-" . $fotosrp->nombre_archivo;
+
 
 
                         @endphp
@@ -434,7 +436,7 @@
                                                 class="homes-img">
                                                 <div class="homes-tag button sale rent">En
                                                     {{ $recent_propertie->EstatusPropiedad->nombre }}</div>
-                                                 <img src="{{ asset("/propiedades_documentos/thumb/". $thumb) }}"
+                                                 <img src="{{ asset("/propiedades_documentos/thumb/". $thumb)}} "
                                                     class="img-responsive">
                                             </a>
 

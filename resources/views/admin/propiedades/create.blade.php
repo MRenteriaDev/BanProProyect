@@ -187,6 +187,15 @@
                             rows="2"></textarea>
                     </div>
                 </div>
+
+                <div class="col-md-12">
+                    <div class="form-floathing">
+                        <label for="descripcion">Descripcion</label>
+                        <textarea name="descripcion" id="descripcion" placeholder="Escribe lugares cercanos" class="form-control" cols="10"
+                            rows="2"></textarea>
+                    </div>
+                </div>
+
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Seleccionar Solicitud del vendedor</label>

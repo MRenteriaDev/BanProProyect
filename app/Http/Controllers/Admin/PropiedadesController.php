@@ -106,6 +106,7 @@ class PropiedadesController extends Controller
             'tipo_propiedad_id' => $request->tipo_propiedad_id,
             'planos' => $originalImageMove,
             'nearbys' => $request->nearbys,
+            'descripcion' => $request->descripcion,
             'seller_id' => $request->seller_id,
             'created_at' => Carbon::now()
         ]);
