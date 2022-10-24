@@ -4,7 +4,7 @@
 
 @php
     $fotos = DB::table('galeria_propiedades')->where('propiedad_id', '=', $property[0]->id)->get();
-    //$plano = DB::table('galeria_planos')->where('propiedad_id', '=', $property[0]->id)->get();
+    $plano = DB::table('galeria_planos')->where('propiedad_id', '=', $property[0]->id)->get();
 @endphp
 
     <body class="inner-pages sin-1 homepage-4 hd-white">
@@ -12,7 +12,7 @@
         <div id="wrapper">
             <!-- START SECTION HEADINGS -->
             <!-- Header Container
-                ================================================== -->
+                        ================================================== -->
             @include('cliente.body.header')
             <div class="clearfix"></div>
             <br><br>
@@ -44,12 +44,12 @@
                                                 <div class="detail-wrapper-body">
                                                     <div class="listing-title-bar">
                                                         <h4>$ {{ number_format($property[0]->precio, 2) }}</h4>
-                                                        <div class="mt-0">
+                                                        {{-- <div class="mt-0">
                                                             <a href="#listing-location" class="listing-address">
                                                                 <p>$ {{ number_format($property[0]->precio / $property[0]->tamano_propiedad_construido, 2) . ' / m²'}}
                                                                 </p>
                                                             </a>
-                                                        </div>
+                                                        </div> --}}
                                                     </div>
                                                 </div>
                                             </div>
@@ -61,18 +61,18 @@
                                         <h5 class="mb-4">Galeria</h5>
                                         <div class="carousel-inner">
                                             @for ($i = 0; $i < count($fotos); $i++)
-                                                @if($i == 0)
-                                                <div class="active item carousel-item" data-slide-number="{{$i}}">
-                                                    <img src="{{ asset('/propiedades_documentos/' . $fotos[$i]->nombre_archivo) }}"
-                                                        class="img-fluid" alt="slider-listing">
-                                                </div>
+                                                @if ($i == 0)
+                                                    <div class="active item carousel-item"
+                                                        data-slide-number="{{ $i }}">
+                                                        <img src="{{ asset('/propiedades_documentos/' . $fotos[$i]->nombre_archivo) }}"
+                                                            class="img-fluid" alt="slider-listing">
+                                                    </div>
                                                 @else
-                                                <div class="item carousel-item" data-slide-number="{{$i}}">
-                                                    <img src="{{ asset('/propiedades_documentos/' . $fotos[$i]->nombre_archivo) }}"
-                                                        class="img-fluid" alt="slider-listing">
-                                                </div>
+                                                    <div class="item carousel-item" data-slide-number="{{ $i }}">
+                                                        <img src="{{ asset('/propiedades_documentos/' . $fotos[$i]->nombre_archivo) }}"
+                                                            class="img-fluid" alt="slider-listing">
+                                                    </div>
                                                 @endif
-
                                             @endfor
 
                                             <a class="carousel-control left" href="#listingDetailsSlider"
@@ -84,20 +84,24 @@
                                         <!-- main slider carousel nav controls -->
                                         <ul class="carousel-indicators smail-listing list-inline">
                                             @for ($j = 0; $j < count($fotos); $j++)
-                                                @if($j == 0)
-                                                <li class="list-inline-item active">
-                                                    <a id="{{"carousel-selector-".$j}}" data-slide-to="{{$j}}"
-                                                        data-target="#listingDetailsSlider">
-                                                        <img src="{{ asset('/propiedades_documentos/' . $fotos[$j]->nombre_archivo) }}"
-                                                            class="img-fluid" alt="listing-small">
-                                                    </a>
-                                                </li>
+                                                @if ($j == 0)
+                                                    <li class="list-inline-item active">
+                                                        <a id="{{ 'carousel-selector-' . $j }}"
+                                                            data-slide-to="{{ $j }}"
+                                                            data-target="#listingDetailsSlider">
+                                                            <img src="{{ asset('/propiedades_documentos/' . $fotos[$j]->nombre_archivo) }}"
+                                                                class="img-fluid" alt="listing-small">
+                                                        </a>
+                                                    </li>
                                                 @else
-                                                <li class="list-inline-item">
-                                                    <a id="{{"carousel-selector-".$j}}" data-slide-to="{{$j}}" data-target="#listingDetailsSlider">
-                                                        <img src="{{ asset('/propiedades_documentos/' . $fotos[$j]->nombre_archivo) }}" class="img-fluid" alt="listing-small">
-                                                    </a>
-                                                </li>
+                                                    <li class="list-inline-item">
+                                                        <a id="{{ 'carousel-selector-' . $j }}"
+                                                            data-slide-to="{{ $j }}"
+                                                            data-target="#listingDetailsSlider">
+                                                            <img src="{{ asset('/propiedades_documentos/' . $fotos[$j]->nombre_archivo) }}"
+                                                                class="img-fluid" alt="listing-small">
+                                                        </a>
+                                                    </li>
                                                 @endif
                                             @endfor
 
@@ -106,7 +110,8 @@
                                     </div>
                                     <div class="blog-info details mb-30">
                                         <h5 class="mb-4">Descripción</h5>
-                                        <p class="mb-3">{{$property[0]->descripcion ?? 'No hay descripcion disponible'}}</p>
+                                        <p class="mb-3">
+                                            {{ $property[0]->descripcion ?? 'No hay descripcion disponible' }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -116,27 +121,27 @@
                                 <ul class="homes-list clearfix">
                                     <li>
                                         <span class="font-weight-bold mr-1">Tipo de propiedad:</span>
-                                        <span class="det">{{$property[0]->TipoPropiedad->nombre}}</span>
+                                        <span class="det">{{ $property[0]->TipoPropiedad->nombre }}</span>
                                     </li>
                                     <li>
                                         <span class="font-weight-bold mr-1">Estatus de propiedad:</span>
-                                        <span class="det">{{$property[0]->EstatusPropiedad->nombre}}</span>
+                                        <span class="det">{{ $property[0]->EstatusPropiedad->nombre }}</span>
                                     </li>
                                     <li>
                                         <span class="font-weight-bold mr-1">Precio:</span>
-                                        <span class="det">{{"$ ". number_format($property[0]->precio, 2)}}</span>
+                                        <span class="det">{{ "$ " . number_format($property[0]->precio, 2) }}</span>
                                     </li>
                                     <li>
                                         <span class="font-weight-bold mr-1">Habitaciones:</span>
-                                        <span class="det">{{$property[0]->recamaras}}</span>
+                                        <span class="det">{{ $property[0]->recamaras }}</span>
                                     </li>
                                     <li>
                                         <span class="font-weight-bold mr-1">Baños:</span>
-                                        <span class="det">{{$property[0]->bano}}</span>
+                                        <span class="det">{{ $property[0]->bano }}</span>
                                     </li>
                                     <li>
                                         <span class="font-weight-bold mr-1">Fecha de construcción:</span>
-                                        <span class="det">{{$property[0]->fecha_construccion}}</span>
+                                        <span class="det">{{ $property[0]->fecha_construccion }}</span>
                                     </li>
                                 </ul>
                                 <!-- title -->
@@ -144,72 +149,72 @@
                                 <!-- cars List -->
                                 <ul class="homes-list clearfix">
 
-                                    @if($property[0]->aire_condicionado >= 1)
-                                    <li>
-                                        <i class="fa fa-check-square" aria-hidden="true"></i>
-                                        <span>Aire acondicionado</span>
-                                    </li>
+                                    @if ($property[0]->aire_condicionado >= 1)
+                                        <li>
+                                            <i class="fa fa-check-square" aria-hidden="true"></i>
+                                            <span>Aire acondicionado</span>
+                                        </li>
                                     @endif
 
-                                    @if($property[0]->balcon >= 1)
-                                    <li>
-                                        <i class="fa fa-check-square" aria-hidden="true"></i>
-                                        <span>Balcon</span>
-                                    </li>
+                                    @if ($property[0]->balcon >= 1)
+                                        <li>
+                                            <i class="fa fa-check-square" aria-hidden="true"></i>
+                                            <span>Balcon</span>
+                                        </li>
                                     @endif
 
-                                    @if($property[0]->internet >= 1)
-                                    <li>
-                                        <i class="fa fa-check-square" aria-hidden="true"></i>
-                                        <span>Internet</span>
-                                    </li>
+                                    @if ($property[0]->internet >= 1)
+                                        <li>
+                                            <i class="fa fa-check-square" aria-hidden="true"></i>
+                                            <span>Internet</span>
+                                        </li>
                                     @endif
 
-                                    @if($property[0]->lavaplatos >= 1)
-                                    <li>
-                                        <i class="fa fa-check-square" aria-hidden="true"></i>
-                                        <span>Lavaplatos</span>
-                                    </li>
+                                    @if ($property[0]->lavaplatos >= 1)
+                                        <li>
+                                            <i class="fa fa-check-square" aria-hidden="true"></i>
+                                            <span>Lavaplatos</span>
+                                        </li>
                                     @endif
 
-                                    @if($property[0]->cable >= 1)
-                                    <li>
-                                        <i class="fa fa-check-square" aria-hidden="true"></i>
-                                        <span>TV Cable</span>
-                                    </li>
+                                    @if ($property[0]->cable >= 1)
+                                        <li>
+                                            <i class="fa fa-check-square" aria-hidden="true"></i>
+                                            <span>TV Cable</span>
+                                        </li>
                                     @endif
 
-                                    @if($property[0]->estacionamiento >= 1)
-                                    <li>
-                                        <i class="fa fa-check-square" aria-hidden="true"></i>
-                                        <span>Estacionamiento</span>
-                                    </li>
+                                    @if ($property[0]->estacionamiento >= 1)
+                                        <li>
+                                            <i class="fa fa-check-square" aria-hidden="true"></i>
+                                            <span>Estacionamiento</span>
+                                        </li>
                                     @endif
 
-                                    @if($property[0]->alberca >= 1)
-                                    <li>
-                                        <i class="fa fa-check-square" aria-hidden="true"></i>
-                                        <span>Alberca</span>
-                                    </li>
+                                    @if ($property[0]->alberca >= 1)
+                                        <li>
+                                            <i class="fa fa-check-square" aria-hidden="true"></i>
+                                            <span>Alberca</span>
+                                        </li>
                                     @endif
 
-                                    @if($property[0]->refrigerador >= 1)
-                                    <li>
-                                        <i class="fa fa-check-square" aria-hidden="true"></i>
-                                        <span>Refrigerador</span>
-                                    </li>
+                                    @if ($property[0]->refrigerador >= 1)
+                                        <li>
+                                            <i class="fa fa-check-square" aria-hidden="true"></i>
+                                            <span>Refrigerador</span>
+                                        </li>
                                     @endif
 
                                 </ul>
                             </div>
                             <div class="floor-plan property wprt-image-video w50 pro">
                                 <h5>Planos de construcción</h5>
-                                @if(!$property[0]->planos == null)
-                                <img alt="image" src="{{ asset('/planos_documentos/' . $property[0]->planos) }}">
+                                @if(!$plano->isEmpty())
+                                <img alt="image" src="{{ asset('/planos_documentos/' . $plano[0]->nombre_archivo) }}">
                                 @else
                                 <p class="mb-3">No hay planos disponibles</p>
-                                @endif
-                                </div>
+                                @endif --}}
+                            </div>
 
                             <div class="floor-plan property wprt-image-video w50 pro">
                                 <h5>Nearbys</h5>
@@ -218,16 +223,16 @@
                                         <div class="col-lg-12">
                                             <div class="nearby-info mb-4">
                                                 <span class="nearby-title mb-3 d-block text-info">
-                                                    <i class="fas fa-building mr-2"></i><b
-                                                        class="title">Lugares cercanos</b>
+                                                    <i class="fas fa-building mr-2"></i><b class="title">Lugares
+                                                        cercanos</b>
                                                 </span>
                                                 <div class="nearby-list">
                                                     <ul class="property-list list-unstyled mb-0">
                                                         <li class="d-flex">
-                                                            @if(!$property[0]->nearbys == null)
-                                                            <h6 class="mb-3 mr-2">{{$property[0]->nearbys}}</h6>
+                                                            @if (!$property[0]->nearbys == null)
+                                                                <h6 class="mb-3 mr-2">{{ $property[0]->nearbys }}</h6>
                                                             @else
-                                                            <h6 class="mb-3 mr-2">No hay información para mostrar.</h6>
+                                                                <h6 class="mb-3 mr-2">No hay información para mostrar.</h6>
                                                             @endif
                                                         </li>
                                                     </ul>
@@ -324,15 +329,49 @@
                                                 </div>
                                                 <ul class="author__contact">
                                                     <li><span class="la la-map-marker"><i
-                                                                class="fa fa-map-marker"></i></span>{{"<Dirección Banpro>"}}
+                                                                class="fa fa-map-marker"></i></span>{{ '<Dirección Banpro>' }}
                                                     </li>
                                                     <li><span class="la la-phone"><i class="fa fa-phone"
-                                                                aria-hidden="true"></i></span><a href="#">{{"<Número Banpro>"}}</a></li>
+                                                                aria-hidden="true"></i></span><a
+                                                            href="#">{{ '<Número Banpro>' }}</a></li>
                                                     <li><span class="la la-envelope-o"><i class="fa fa-envelope"
                                                                 aria-hidden="true"></i></span><a
-                                                            href="#">{{"<Correo Banpro>"}}</a></li>
+                                                            href="#">{{ '<Correo Banpro>' }}</a></li>
                                                 </ul>
 
+                                            </div>
+                                        </div>
+                                        <div class="container-fluid p-2 py-0 pb-3">
+                                            <div class="row p-0 p-md-2 py-0 py-md-0">
+                                                <div class="col-12">
+                                                    <div class="">
+                                                        <style>
+                                                            .fa {
+                                                                margin: 0 auto;
+                                                                max-width: 500px;
+
+                                                            }
+                                                            .fa ul li {
+                                                                display: inline-flex;
+
+
+                                                            }
+                                                            .fa ul li a {
+                                                                padding: 30px;
+
+                                                                margin: 1px;
+                                                                font-size: 30px;
+                                                                color: #FF385C;
+
+
+                                                            }
+                                                        </style>
+                                                        <h5>Compartelo en tus redes sociales</h5>
+                                                        <div class="fa">
+                                                            {!! $share_buttons !!}
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

@@ -179,6 +179,7 @@ return [
 
 
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        Jorenvh\Share\Providers\ShareServiceProvider::class,
     ],
 
     /*
@@ -234,7 +235,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Image' => Intervention\Image\Facades\Image::class,
-        'Excel' => Maatwebsite\Excel\Facades\Excel::class
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'Share' => Jorenvh\Share\ShareFacade::class,
 
     ],
 
