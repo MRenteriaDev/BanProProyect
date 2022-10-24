@@ -3,50 +3,7 @@
 @section('cliente-registrado-dashboard')
     <section class="payment-method notfound col-xs-12">
         <div class="row">
-            <div class="col-md-12 col-lg-6">
-                <div class="tr-single-box">
-                    <div class="tr-single-body">
-                        <div class="tr-single-header">
-                            <h4><i class="far fa-address-card pr-2"></i>Información de facturación</h4>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <label>Nombre</label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="col-sm-6">
-                                <label>Email</label>
-                                <input type="email" class="form-control">
-                            </div>
-                            <div class="col-sm-6">
-                                <label>Telefono</label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="col-sm-6">
-                                <label>Ciudad</label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="col-sm-6">
-                                <label>Estado</label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="col-sm-6">
-                                <label>Pais</label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="col-sm-6">
-                                <label>Direccion</label>
-                                <input type="text" class="form-control address mb-0">
-                            </div>
-                            <div class="col-sm-6">
-                                <label>Codigo Postal</label>
-                                <input type="text" class="form-control mb-0">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-12 col-lg-6">
+            <div class="col-md-12 col-lg-12">
                 <div class="tr-single-box">
                     <div class="tr-single-body">
                         <div class="tr-single-header">
@@ -64,7 +21,7 @@
                                 </div>
                             </header>
                             <div class="collapse" id="debit-credit" role="tablist" aria-expanded="false">
-                                <form role="form" method="POST" action="{{ route('stripe.post') }}"
+                                <form role="form" method="POST" action="{{ route('stripePost') }}"
                                     class="payment-card-body" data-cc-on-file="false"
                                     data-srtipe-publishable-key="{{ env('STRIPE_KEY') }}" id="payment_form">
                                     @csrf
@@ -113,32 +70,6 @@
                 </div>
             </div>
         </div>
-        {{-- <div class="col-md-12">
-            <div class="tr-single-box mb-0">
-                <div class="tr-single-body">
-                    <div class="tr-single-header">
-                        <h4><i class="fa fa-star-o"></i>Booking Summary</h4>
-                    </div>
-                    <div class="booking-price-detail side-list no-border mb-3">
-                        <h5>Reservation Details</h5>
-                        <ul>
-                            <li>Date<strong class="pull-right">18 Jun 2018</strong></li>
-                            <li>Time<strong class="pull-right">9pm 10pm</strong></li>
-                            <li>From<strong class="pull-right">10 jan 2019</strong></li>
-                        </ul>
-                    </div>
-                    <div class="booking-price-detail side-list no-border">
-                        <h5>Pricing Details</h5>
-                        <ul>
-                            <li>Dining<strong class="pull-right">$150</strong></li>
-                            <li>Reservation<strong class="pull-right">$60</strong></li>
-                            <li>Tax<strong class="pull-right">$53</strong></li>
-                            <li class="red pb-0">Total Cost<strong class="pull-right">$263</strong></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
     </section>
 @endsection
 

@@ -61,7 +61,7 @@
                 @else
                     <ul>
                         <li><a href="{{ route('dashboard') }}"> Editar perfil</a></li>
-                        <li><a href="{{route('payments')}}">Convierte en Vendedor</a></li>
+                        <li><a href="{{route('billing')}}">Convierte en Vendedor</a></li>
                         <li><a href="{{ route('seller.logout') }}">Cerrar Sesión</a></li>
                     </ul>
                 @endif

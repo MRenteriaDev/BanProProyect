@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace App\Exports;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\Propiedades;
+use Maatwebsite\Excel\Concerns\FromCollection;
 use Illuminate\Support\Facades\DB;
+
 use Maatwebsite\Excel\Concerns\FromQuery;
 
 use Maatwebsite\Excel\Concerns\Exportable;
@@ -18,19 +19,20 @@ class PropiedadesExportBySeller implements FromQuery, WithHeadings
      */
     use Exportable;
 
-    protected $seller_id;
+    protected $sellerid;
 
 
-    function __construct($seller_id)
+    function __construct($sellerid)
     {
-        $this->seller_id = $seller_id;
+        $this->s_i = $sellerid;
+
     }
 
     public function query()
     {
         $data = DB::table('propiedades')
-            ->where('seller_id', $this->seller_id)
-            ->select(['id','created_at', 'updated_at', 'nombre', 'precio', 'tamano_propiedad', 'tamano_propiedad_construido', 'descripcion', 'fecha_construccion', 'recamaras', 'bano', 'aire_condicionado', 'balcon', 'internet', 'cable', 'alberca', 'lavaplatos', 'estacionamiento', 'refrigerador', 'nearbys'])
+            ->where('seller_id', $this->s_i)
+            ->select(['id','created_at', 'updated_at', 'nombre', 'estatus_propiedad_id', 'locacion_id', 'tipo_propiedad_id','precio', 'tamano_propiedad', 'tamano_propiedad_construido', 'descripcion', 'fecha_construccion', 'recamaras', 'bano', 'aire_condicionado', 'balcon', 'internet', 'cable', 'alberca', 'lavaplatos', 'estacionamiento', 'refrigerador', 'video_propiedad', 'review_id', 'solicitud_vendedor_id', 'planos', 'nearbys'])
             ->orderBy("id");
 
         return $data;
@@ -43,6 +45,9 @@ class PropiedadesExportBySeller implements FromQuery, WithHeadings
             'Fecha De Creacion',
             'Fecha De Actualizacion',
             'Nombre',
+            'Estado De La Propiedad',
+            'Locacion',
+            'Tipo De Propiedad',
             'Precio',
             'Tamaño De La Propiedad',
             'Tamaño De La Propiedad Construida',
@@ -58,6 +63,10 @@ class PropiedadesExportBySeller implements FromQuery, WithHeadings
             'Lavaplatos',
             'Estacionamiento',
             'Refrigerador',
+            'Video',
+            'Review',
+            'Solicitud Del Vendedor',
+            'Planos',
             'Cercanas',
         ];
     }

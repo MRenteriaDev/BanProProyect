@@ -1,48 +1,44 @@
-@extends('dashboard')
+@extends('dashboard-cliente')
 
-@section('seller-dashboard')
+@section('cliente-registrado-dashboard')
     <section class="payment-method notfound col-xs-12">
         <div class="row">
-            <div class="col-md-12 col-lg-6">
+            <div class="col-md-12 col-lg-12">
                 <div class="tr-single-box">
                     <div class="tr-single-body">
                         <div class="tr-single-header">
                             <h4><i class="far fa-address-card pr-2"></i>Billing Information</h4>
                         </div>
-                        <div class="row">
+                        <form class="row" action="{{ route('billding.post') }}" method="POST">
+                            @csrf
                             <div class="col-sm-6">
-                                <label>Name</label>
+                                <label>Nombre</label>
                                 <input type="text" name="billing_name" class="form-control">
                             </div>
                             <div class="col-sm-6">
-                                <label>Email</label>
-                                <input type="email" name="billing_email" class="form-control">
-                            </div>
-                            <div class="col-sm-6">
-                                <label>Phone</label>
+                                <label>Telefóno</label>
                                 <input type="text" name="billing_phone" class="form-control">
                             </div>
                             <div class="col-sm-6">
-                                <label>City</label>
+                                <label>Ciudad</label>
                                 <input type="text" name="billing_city" class="form-control">
                             </div>
                             <div class="col-sm-6">
-                                <label>State</label>
+                                <label>Estado</label>
                                 <input type="text" name="billing_state" class="form-control">
                             </div>
                             <div class="col-sm-6">
-                                <label>Country</label>
-                                <input type="text" name="billing_country" class="form-control">
+                                <label>Calle de Dirección</label>
+                                <input type="text" name="billing_address" class="form-control address mb-0">
                             </div>
                             <div class="col-sm-6">
-                                <label>Address</label>
-                                <input type="text" name="billing_city" class="form-control address mb-0">
-                            </div>
-                            <div class="col-sm-6">
-                                <label>Zip</label>
+                                <label>Código Postal</label>
                                 <input type="text" name="billing_zip" class="form-control mb-0">
                             </div>
-                        </div>
+                            <div class="col-sm-12">
+                                <button type="submit" class="btn btn-primary mt-4">Submit Property</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

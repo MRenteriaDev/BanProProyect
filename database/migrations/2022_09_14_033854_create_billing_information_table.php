@@ -20,13 +20,10 @@ class CreateBillingInformationTable extends Migration
             $table->string('billing_phone');
             $table->string('billing_city');
             $table->string('billing_state');
-            $table->string('billing_country');
             $table->string('billing_address');
             $table->string('billing_zip');
             $table->unsignedBigInteger('seller_id');
             $table->foreign('seller_id')->references('id')->on('sellers')->onDelete('cascade');
-            $table->unsignedBigInteger('metodo_pago_id');
-            $table->foreign('metodo_pago_id')->references('id')->on('metodos_pagos')->onDelete('cascade');
             $table->timestamps();
         });
     }

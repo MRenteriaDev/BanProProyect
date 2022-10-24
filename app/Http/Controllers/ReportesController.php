@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Propiedades;
 use Illuminate\Http\Request;
 use App\Exports\Propiedadesexport;
+use App\Exports\PropiedadesExportBySeller;
 use App\Exports\PropiedadesExportByTipo;
-use App\Models\PropiedadesExportBySeller;
 use App\Models\SellersExport;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -40,9 +40,7 @@ class ReportesController extends Controller
 
     public function getpropertiesbyseller(Request $request)
     {
-        // dd($request->seller_id);
-        // die();
-        $seller_id = $request->seller_id;
-        return Excel::download(new PropiedadesExportBySeller($seller_id), 'SellerPropiedades.xlsx');
+        $seller = $request->seller_id;
+        return Excel::download(new PropiedadesExportBySeller($seller), 'SellerPropiedades.xlsx');
     }
 }
