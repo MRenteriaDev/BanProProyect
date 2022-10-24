@@ -110,7 +110,7 @@
                                 <div class="row mrg-bot-20">
                                     <div class="col-sm-6">
                                         <label>Titular de tarjeta</label>
-                                        <input type="text" class="form-control" placeholder="Chris Seail">
+                                        <input type="text" class="form-control" placeholder="Nombre...">
                                     </div>
                                     <div class="col-sm-6">
                                         <label>Numero de tarjeta</label>
