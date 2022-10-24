@@ -203,7 +203,6 @@ Route::prefix('reportes')->group(function () {
     Route::post('/index3', [ReportesController::class, 'getpropertiesbytipe'])->name('reportes.tipe');
     Route::post('/index4', [ReportesController::class, 'getSellers'])->name('reportes.seller');
     Route::post('/index5', [ReportesController::class, 'getpropertiesbyseller'])->name('reportes.propiedadesSeller');
-
 });
 /* ------------- End Reportes -------------- */
 
@@ -275,18 +274,16 @@ Route::get('/', function () {
 
 
 /// Configuración de cliente
-Route::get('payments', function () {
-    return view('clienteRegistrado.makevendedord');
-})->middleware(['auth'])->name('payments');
-
-// Payments Routes
-Route::controller(StripePaymentController::class)->group(function () {
-    Route::post('stripe', 'stripePost')->name('stripe.post');
+Route::prefix('payments')->group(function () {
+    Route::get('/', [StripePaymentController::class, 'fillbinding'])->name('billing')->middleware('auth');
+    Route::post('/', [StripePaymentController::class, 'fillbindingpost'])->name('billding.post')->middleware('auth');
+    Route::get('/payment', [StripePaymentController::class, 'stripeGet'])->name('stripeGet')->middleware('auth');
+    Route::post('/payment', [StripePaymentController::class, 'stripePost'])->name('stripePost')->middleware('auth');
 });
 
 Route::get('/dashboard', function () {
     return view('clienteRegistrado.profile');
-})->middleware(['auth'])->name('dashboard');
+})->middleware(['auth',])->name('dashboard');
 
 
 

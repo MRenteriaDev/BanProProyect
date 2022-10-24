@@ -23,7 +23,8 @@ class Seller extends Authenticatable
         'name',
         'email',
         'password',
-        'stauts'
+        'stauts',
+        'seller_active'
     ];
 
     /**
