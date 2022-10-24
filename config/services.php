@@ -35,7 +35,7 @@ return [
     'google' => [
         'client_id' => '608028889420-fl04a28j8qdrsp40j0hgroldf42nof74.apps.googleusercontent.com',
         'client_secret' => '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',
-        'redirect' => 'http://127.0.0.1:8000/callback/google',
+        'redirect' => 'https://banprotest.herokuapp.com/callback/google',
     ],
 
     'facebook' => [

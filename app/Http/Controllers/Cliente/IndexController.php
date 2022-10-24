@@ -24,7 +24,7 @@ class IndexController extends Controller
         $property = Propiedades::where('id', $id)->get();
         $propertyName = Propiedades::where('id', $id)->select('nombre')->get();
         $share_buttons = \Share::page(
-            'http://127.0.0.1:8000/properties/grid/' . $id,
+            'https://banprotest.herokuapp.com/properties/grid/' . $id,
             "Propiedad {$property[0]->nombre}"
         )
         ->facebook()
