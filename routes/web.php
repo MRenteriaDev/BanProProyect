@@ -204,6 +204,7 @@ Route::prefix('reportes')->group(function () {
     Route::post('/index3', [ReportesController::class, 'getpropertiesbytipe'])->name('reportes.tipe');
     Route::post('/index4', [ReportesController::class, 'getSellers'])->name('reportes.seller');
     Route::post('/index5', [ReportesController::class, 'getpropertiesbyseller'])->name('reportes.propiedadesSeller');
+    Route::post('/index6', [ReportesController::class, 'getpropertiesbyprice'])->name('reportes.propiedadesPrice');
 });
 /* ------------- End Reportes -------------- */
 

@@ -414,7 +414,7 @@
                                 ->where('propiedad_id', '=', $recent_propertie->id)
                                 ->first();
 
-                            $thumb = "resized-" . $fotosrp->nombre_archivo;
+                            // $thumb = "resized-" . $fotosrp->nombre_archivo;
 
 
 
@@ -428,9 +428,9 @@
 
                                             <a href="{{ route('properties.grid-single', $recent_propertie->id) }}"
                                                 class="homes-img">
-                                                <div class="homes-tag button sale rent">En
-                                                    {{ $recent_propertie->EstatusPropiedad->nombre }}</div>
-                                                 <img src="{{ asset("/propiedades_documentos/thumb/". $thumb)}} "
+                                                {{-- <div class="homes-tag button sale rent">En
+                                                    {{ $recent_propertie->EstatusPropiedad->nombre }}</div> --}}
+                                                 {{-- <img src="{{ asset("/propiedades_documentos/thumb/". $thumb)}} " --}}
                                                     class="img-responsive">
                                             </a>
 
