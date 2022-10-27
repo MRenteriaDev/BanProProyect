@@ -1,6 +1,7 @@
 @extends('admin.admin_master')
 
 @section('admin')
+
     <section class="content-header" style="margin-top: 10px">
         <title>Propiedades | BanPro</title>
         <div class="container-fluid">
@@ -42,6 +43,11 @@
                     <li>
                         <a class=nav-item nav-link data-toggle=tab href=#planes><button type="button"
                                 class="btn btn-primary mr-3">Planos</button></a>
+                    </li>
+
+                    <li>
+                        <a class=nav-item nav-link data-toggle=tab href=#ubicacion><button type="button"
+                                class="btn btn-primary mr-3">Ubicacion</button></a>
                     </li>
 
                     {{-- <li>
@@ -117,17 +123,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="fecha_construccion">Fecha de construccion</label>
-                                <input type="date" name="fecha_construccion"
-                                    value="{{ $propiedades->fecha_construccion }}" class="form-control"
-                                    id="fecha_construccion" placeholder="Introduzca fecha de construccion">
-                                @error('fecha_construccion')
-                                    <span class="text-danger"> {{ $message }} </span>
-                                @enderror
-                            </div>
-                        </div>
+
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="aire_condicionado">Aire acondicionado</label>
@@ -217,7 +213,14 @@
                         <div class="col-md-12">
                             <div class="form-floathing">
                                 <label for="nearbys">Especifica si hay lugares de interés cerca</label>
-                                <textarea name="nearbys" id="nearbys" value="{{ $propiedades->nearbys }}" placeholder="Escribe lugares cercanos" class="form-control" cols="10"
+                                <textarea name="nearbys" id="nearbys" value="{{ $propiedades->nearbys }}" placeholder="Escribe lugares cercanos"
+                                    class="form-control" cols="10" rows="2"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-floathing">
+                                <label for="descripcion">Descripcion</label>
+                                <textarea name="descripcion" id="descripcion" value="{{ $propiedades->descripcion }}" placeholder="Escriba caracteristicas" class="form-control" cols="10"
                                     rows="2"></textarea>
                             </div>
                         </div>
@@ -230,7 +233,8 @@
                                     style="width: 100%;height: 100%;">
                                     <option selected="selected">Seleccionar</option>
                                     @foreach ($solicitudvendedor as $solicitudvendedo)
-                                        <option value={{ $solicitudvendedo->id }} selected="selected">{{ $solicitudvendedo->nombre }}
+                                        <option value={{ $solicitudvendedo->id }} selected="selected">
+                                            {{ $solicitudvendedo->nombre }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -242,7 +246,8 @@
                                 <select class="form-control select2" name="review_id" style="width: 100%;height: 100%;">
                                     <option selected="selected">Seleccionar</option>
                                     @foreach ($reviews as $review)
-                                        <option value={{ $review->id }} selected="selected">{{ $review->nombre }}</option>
+                                        <option value={{ $review->id }} selected="selected">{{ $review->nombre }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -254,7 +259,8 @@
                                     style="width: 100%;height: 100%;">
                                     <option selected="selected">Seleccionar</option>
                                     @foreach ($estatuspropiedad as $estatupropiedad)
-                                        <option value={{ $estatupropiedad->id }} selected="selected">{{ $estatupropiedad->nombre }}
+                                        <option value={{ $estatupropiedad->id }} selected="selected">
+                                            {{ $estatupropiedad->nombre }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -267,7 +273,8 @@
                                     style="width: 100%;height: 100%;">
                                     <option selected="selected">Seleccionar</option>
                                     @foreach ($tipopropiedades as $tipopropiedad)
-                                        <option value={{ $tipopropiedad->id }} selected="selected">{{ $tipopropiedad->nombre }}</option>
+                                        <option value={{ $tipopropiedad->id }} selected="selected">
+                                            {{ $tipopropiedad->nombre }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -279,7 +286,8 @@
                                     style="width: 100%;height: 100%;">
                                     <option selected="selected">Seleccionar</option>
                                     @foreach ($locacion as $locacion)
-                                        <option value={{ $locacion->id }} selected="selected">{{ $locacion->nombre }}</option>
+                                        <option value={{ $locacion->id }} selected="selected">{{ $locacion->nombre }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -290,7 +298,8 @@
                                 <select class="form-control select2" name="seller_id" style="width: 100%;height: 100%;">
                                     <option selected="selected">Seleccionar</option>
                                     @foreach ($seller as $seller)
-                                        <option value={{ $seller->id }} selected="selected">{{ $seller->name }}</option>
+                                        <option value={{ $seller->id }} selected="selected">{{ $seller->name }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -452,18 +461,41 @@
                     </script>
                 </div>
 
-                        <!-- /.card-body -->
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">Actualizar</button>
-                            <a href="{{ route('propiedades.index') }}" class="btn btn-danger">Cancelar</a>
+                <div class=tab-pane active id=ubicacion>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="ubicacion">Ubicacion</label>
+                            <input type="text" name="ubicacion"
+                                class="form-control" id="ubicacion" placeholder="Introduzca ubicacion">
                         </div>
-                {{-- <div class=tab-pane id=video>
+                        @error('ubicacion')
+                            <span class="text-danger"> {{ $message }} </span>
+                        @enderror
+                    </div>
+
+                    <div class="property-location mb-5">
+                        <div class="divider-fade">
+                            {!!$propiedades->ubicacion!!}
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Actualizar</button>
+                <a href="{{ route('propiedades.index') }}" class="btn btn-danger">Cancelar</a>
+            </div>
+            {{-- <div class=tab-pane id=video>
                     <div class="embed-responsive embed-responsive-16by9">
                         <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0"width="788.54" height="443" type="text/html" src="https://www.youtube.com/embed/flYQ7EnEsME?autoplay=0&fs=1&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0&origin=http://youtubeembedcode.com"><div><small><a href="https://youtubeembedcode.com/nl/">youtubeembedcode nl</a></small></div><div><small><a href="https://casinoutanspelpaustrustly.se">casinoutanspelpaustrustly.se</a></small></div><div><small><a href="https://youtubeembedcode.com/de/">youtubeembedcode.com/de/</a></small></div><div><small><a href="https://casinoutansvensklicenszimpler.se">https://casinoutansvensklicenszimpler.se</a></small></div><div><small><a href="https://youtubeembedcode.com/de/">youtubeembedcode.com/de/</a></small></div><div><small><a href="https://casinoutanlicenstrustly.nu">casino utan licens trustly</a></small></div></iframe>
                     </div>
                 </div> --}}
-            </div>
-            </form>
         </div>
+        </form>
+    </div>
     </div>
 @endsection

@@ -88,7 +88,6 @@ class PropiedadesController extends Controller
             'precio' => $request->precio,
             'tamano_propiedad' => $request->tamano_propiedad,
             'tamano_propiedad_construido' => $request->tamano_propiedad_construido,
-            'fecha_construccion' => $request->fecha_construccion,
             'recamaras' => $request->recamaras,
             'bano' => $request->bano,
             'aire_condicionado' => $request->aire_condicionado,
@@ -108,6 +107,7 @@ class PropiedadesController extends Controller
             'nearbys' => $request->nearbys,
             'descripcion' => $request->descripcion,
             'seller_id' => $request->seller_id,
+            'ubicacion' => $request->ubicacion,
             'created_at' => Carbon::now()
         ]);
 
