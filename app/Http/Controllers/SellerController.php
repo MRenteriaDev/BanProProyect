@@ -168,7 +168,7 @@ class SellerController extends Controller
         Seller::findOrFail($id)->update([
             'name' => $request->name,
             'email' => $request->email,
-            'foto' =>  $Imgf,
+            'foto' => $fotomove,
             'celular' =>  $request->celular,
             'stauts' => 0,
             'updated_at' => Carbon::now()
