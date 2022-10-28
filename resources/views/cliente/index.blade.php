@@ -17,6 +17,7 @@
     $array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     $tipop = TipoPropiedad::get();
     $estatusp = EstatusPropiedad::get();
+
 @endphp
 
 
@@ -25,7 +26,7 @@
     <!-- STAR HEADER SEARCH -->
 
 
-    <section id="hero-area" class="parallax-searchs home15 overlay thome-6 thome-1" data-stellar-background-ratio="0.5">
+    <section id="hero-area" class="parallax-searchs home15 overlay thome-6 thome-1" data-stellar-background-ratio="1">
 
 
         <div class="hero-main">
@@ -35,12 +36,13 @@
                         <div class="hero-inner">
                             <!-- Welcome Text -->
                             <div class="welcome-text">
-                                <h1 class="h1">Encuentra Tu Hogar
+                                <h1 class="h1 text-white">EN <b class="text-danger">BANPRO</b> LO TENEMOS TODO!...
                                     <br class="d-md-none">
 
                                     {{--     <--  <span class="typed border-bottom"></span> --> --}}
                                 </h1>
-                                <p class="mt-4">Tenemos diferentes opciones para ti </p>
+                                <BR><BR>
+
                             </div>
                             <!--/ End Welcome Text -->
                             {{-- <!-- prueba form ajax -->
@@ -58,25 +60,34 @@
                             <!-- end prueba --> --}}
 
                             <!-- Search Form -->
-                            <form action="{{route("busqueda")}}" method="POST">
+                            <form action="{{ route('busqueda') }}" method="POST">
                                 @method('POST')
                                 @csrf
                                 <div class="banner-search-wrap">
+                                    <ul class="nav nav-tabs rld-banner-tab">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" data-toggle="tab" href="#tabs_1">En Venta</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" href="#tabs_2">En Renta</a>
+                                        </li>
+                                    </ul>
                                     <div class="tab-content">
                                         <div class="tab-pane fade show active" id="tabs_1">
                                             <div class="rld-main-search">
                                                 <div class="row">
 
                                                     <div class="rld-single-input">
-                                                        <input name="uin" type="text" placeholder="Escribe...">
+                                                        <input name="vuin" type="text" placeholder="Escribe...">
                                                     </div>
 
 
                                                     <div class="rld-single-select">
-                                                        <select name="tipo_propiedad" id="tipo_propiedad"
+                                                        <select name="vtipo_propiedad" id="vtipo_propiedad"
                                                             class="select single-select mr-0"
                                                             style="width: 100%;height: 100%;">
-                                                            <option selected="selected" value="">Tipo De Propiedad</option>
+                                                            <option selected="selected" value="">Tipo De Propiedad
+                                                            </option>
                                                             @foreach ($tipop as $tipo)
                                                                 <option value={{ $tipo->id }}>
                                                                     {{ $tipo->nombre }}
@@ -86,9 +97,10 @@
                                                     </div>
 
                                                     <div class="rld-single-select">
-                                                        <select name="colonia" class="select single-select mr-0"
+                                                        <select name="vcolonia" class="select single-select mr-0"
                                                             style="width: 100%;height: 100%;">
-                                                            <option selected="selected" value=''>Selecciona la colonia</option>
+                                                            <option selected="selected" value=''>Selecciona la colonia
+                                                            </option>
                                                             @foreach ($colonias as $colonia)
                                                                 <option name="colonia" value={{ $colonia->id }}>
                                                                     {{ $colonia->nombre }}
@@ -97,14 +109,14 @@
                                                         </select>
                                                     </div>
 
-                                                    <div class="rld-single-input">
-                                                        <input name="precio" type="text" placeholder="Prespuesto máximo...">
-                                                    </div>
 
-                                                     {{-- <div class="dropdown-filter"><span>Busqueda Avanzada</span></div> --}}
-                                                    <div class="col-xl-2 col-lg-2 col-md-4">
-                                                        <button class="btn" type='submit'
-                                                            href="{{ route('busqueda') }}">Buscar</button>
+
+
+
+                                                    {{-- <div class="dropdown-filter"><span>Busqueda Avanzada</span></div> --}}
+                                                    <div class="col-xl-3 col-lg-2 col-md-4">
+                                                        <button class="btn" type='submit' value="venta" name="bv"
+                                                            href="{{ route('busqueda') }}">Buscar en venta</button>
                                                     </div>
                                                     {{-- <div class="explore__form-checkbox-list full-filter">
                                                         <div class="row">
@@ -130,8 +142,8 @@
                                                             </div> --}}
 
 
-                                                                <!-- Form Bedrooms -->
-                                                                {{--
+                                                    <!-- Form Bedrooms -->
+                                                    {{--
                                                                 <div class="form-group beds">
                                                                     <div class="nice-select form-control wide"
                                                                         tabindex="0"><span class="current"><i
@@ -146,12 +158,12 @@
                                                                         </ul>
                                                                     </div>
                                                                 </div> --}}
-                                                                <!--/ End Form Bedrooms -->
+                                                    <!--/ End Form Bedrooms -->
 
 
 
-                                                                <!-- Form Bathrooms -->
-                                                                {{-- <div class="form-group bath">
+                                                    <!-- Form Bathrooms -->
+                                                    {{-- <div class="form-group bath">
                                                                     <div class="nice-select form-control wide"
                                                                         tabindex="0"><span class="current"><i
                                                                                 class="fa fa-bath" aria-hidden="true"></i>
@@ -164,15 +176,15 @@
                                                                         </ul>
                                                                     </div>
                                                                 </div> --}}
-                                                                <!--/ End Form Bathrooms -->
+                                                    <!--/ End Form Bathrooms -->
 
-                                                            {{-- <div class="col-lg-5 col-md-12 col-sm-12 py-1 pr-30 mr-5 sld">
+                                                    {{-- <div class="col-lg-5 col-md-12 col-sm-12 py-1 pr-30 mr-5 sld">
                                                                 <!-- Price Fields -->
 
 
 
                                                             </div> --}}
-                                                            {{-- <div class="col-lg-3 col-md-6 col-sm-12 py-1 pr-30">
+                                                    {{-- <div class="col-lg-3 col-md-6 col-sm-12 py-1 pr-30">
                                                                 <!-- Checkboxes -->
                                                                 <div class="checkboxes one-in-row margin-bottom-10 ch-1">
                                                                     <input id="check-1" type="checkbox" name="aire">
@@ -208,9 +220,184 @@
                                                                 <input name="precio" type="text" placeholder="Precio en pesos...">
                                                             </div> --}}
 
-                                                        {{-- </div>
+                                                    {{-- </div>
                                                     </div>  --}}
 
+                                                </div>
+                                                <div class="row">
+                                                    <div class="rld-single-input">
+                                                        <input name="vpreciomin" type="text"
+                                                            placeholder="Prespuesto minimo...">
+                                                    </div>
+
+                                                    <div class="rld-single-input">
+                                                        <input name="vpreciomax" type="text"
+                                                            placeholder="Prespuesto máximo...">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="tab-pane fade" id="tabs_2">
+                                            <div class="rld-main-search">
+                                                <div class="row">
+
+                                                    <div class="rld-single-input">
+                                                        <input name="ruin" type="text" placeholder="Escribe...">
+                                                    </div>
+
+
+                                                    <div class="rld-single-select">
+                                                        <select name="rtipo_propiedad" id="rtipo_propiedad"
+                                                            class="select single-select mr-0"
+                                                            style="width: 100%;height: 100%;">
+                                                            <option selected="selected" value="">Tipo De Propiedad
+                                                            </option>
+                                                            @foreach ($tipop as $tipo)
+                                                                <option value={{ $tipo->id }}>
+                                                                    {{ $tipo->nombre }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="rld-single-select">
+                                                        <select name="rcolonia" class="select single-select mr-0"
+                                                            style="width: 100%;height: 100%;">
+                                                            <option selected="selected" value=''>Selecciona la colonia
+                                                            </option>
+                                                            @foreach ($colonias as $colonia)
+                                                                <option name="colonia" value={{ $colonia->id }}>
+                                                                    {{ $colonia->nombre }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+
+
+
+                                                    {{-- <div class="dropdown-filter"><span>Busqueda Avanzada</span></div> --}}
+                                                    <div class="col-xl-3 col-lg-2 col-md-4">
+                                                        <button class="btn" type='submit' value="renta" name="br"
+                                                            href="{{ route('busqueda') }}">Buscar en renta</button>
+                                                    </div>
+                                                    {{-- <div class="explore__form-checkbox-list full-filter">
+                                                        <div class="row">
+                                                            <div class="col-lg-4 col-md-6 py-0 pr-30 pl-0">
+                                                                <!-- Form Property Status -->
+                                                                <div class="rld-single-select">
+                                                                    <label>Estatus de la propiedad</label>
+                                                                    <select name="estatus_propiedad"
+                                                                        class="select single-select mr-0"
+                                                                        style="width: 100%;height: 100%;">
+                                                                        <option selected="selected">Estatus de la
+                                                                            propiedad</option>
+                                                                        @foreach ($estatusp as $estap)
+                                                                            <option value={{ $estap->id }}>
+                                                                                {{ $estap->nombre }}
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </select>
+
+
+                                                                </div>
+                                                                <!--/ End Form Property Status -->
+                                                            </div> --}}
+
+
+                                                    <!-- Form Bedrooms -->
+                                                    {{--
+                                                                <div class="form-group beds">
+                                                                    <div class="nice-select form-control wide"
+                                                                        tabindex="0"><span class="current"><i
+                                                                                class="fa fa-bed" aria-hidden="true"></i>
+                                                                            Recamaras</span>
+                                                                        <ul class="list">
+                                                                            @foreach ($array as $a)
+                                                                                <li name="rec" class="option">
+                                                                                    {{ $a }}</li>
+                                                                            @endforeach
+
+                                                                        </ul>
+                                                                    </div>
+                                                                </div> --}}
+                                                    <!--/ End Form Bedrooms -->
+
+
+
+                                                    <!-- Form Bathrooms -->
+                                                    {{-- <div class="form-group bath">
+                                                                    <div class="nice-select form-control wide"
+                                                                        tabindex="0"><span class="current"><i
+                                                                                class="fa fa-bath" aria-hidden="true"></i>
+                                                                            Baños</span>
+                                                                        <ul class="list">
+                                                                            @foreach ($array as $a)
+                                                                                <li name="bano" class="option">
+                                                                                    {{ $a }}</li>
+                                                                            @endforeach
+                                                                        </ul>
+                                                                    </div>
+                                                                </div> --}}
+                                                    <!--/ End Form Bathrooms -->
+
+                                                    {{-- <div class="col-lg-5 col-md-12 col-sm-12 py-1 pr-30 mr-5 sld">
+                                                                <!-- Price Fields -->
+
+
+
+                                                            </div> --}}
+                                                    {{-- <div class="col-lg-3 col-md-6 col-sm-12 py-1 pr-30">
+                                                                <!-- Checkboxes -->
+                                                                <div class="checkboxes one-in-row margin-bottom-10 ch-1">
+                                                                    <input id="check-1" type="checkbox" name="aire">
+                                                                    <label for="check-1">Aire acondicionado</label>
+                                                                    <input id="check-2" type="checkbox" name="alberca">
+                                                                    <label for="check-2">Alberca</label>
+                                                                    <input id="check-3" type="checkbox" name="balcon">
+                                                                    <label for="check-3">Balcon</label>
+                                                                    <input id="check-4" type="checkbox" name="internet">
+                                                                    <label for="check-4">Internet</label>
+
+                                                                </div>
+                                                                <!-- Checkboxes / End -->
+                                                            </div>
+                                                            <div class="col-lg-3 col-md-6 col-sm-12 py-1 pr-30">
+                                                                <!-- Checkboxes -->
+                                                                <div class="checkboxes one-in-row margin-bottom-10 ch-2">
+
+                                                                    <input id="check-7" type="checkbox" name="lavaplatos">
+                                                                    <label for="check-7">Lavaplatos</label>
+                                                                    <input id="check-8" type="checkbox"
+                                                                        name="estacionamiento">
+                                                                    <label for="check-8">Estacionamiento</label>
+                                                                    <input id="check-9" type="checkbox"
+                                                                        name="refrigerador">
+                                                                    <label for="check-9">Refrigerador</label>
+
+                                                                </div>
+                                                                <!-- Checkboxes / End -->
+                                                            </div>
+
+                                                            <div class="rld-single-input">
+                                                                <input name="precio" type="text" placeholder="Precio en pesos...">
+                                                            </div> --}}
+
+                                                    {{-- </div>
+                                                    </div>  --}}
+
+                                                </div>
+                                                <div class="row">
+                                                    <div class="rld-single-input">
+                                                        <input name="rpreciomin" type="text"
+                                                            placeholder="Prespuesto minimo...">
+                                                    </div>
+
+                                                    <div class="rld-single-input">
+                                                        <input name="rpreciomax" type="text"
+                                                            placeholder="Prespuesto máximo...">
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -351,44 +538,48 @@
                 <article class="col-lg-3 col-md-6 col-xs-12 serv" data-aos="fade-up" data-aos-delay="150">
                     <div class="serv-flex">
                         <div class="art-1 img-13">
-                            <img src="{{asset('cliente/images/mejora.jpg')}}" alt="">
+                            <img src="{{ asset('cliente/images/mejora.jpg') }}" alt="">
                             <h3>Mejora continua...</h3>
                         </div>
                         <div class="service-text-p">
-                            <p class="text-center">Porque jamás dejamos de mejorar nuestros servicios, incluyendo metodologías de desarrollo y técnicas de gestión</p>
+                            <p class="text-center">Porque jamás dejamos de mejorar nuestros servicios, incluyendo
+                                metodologías de desarrollo y técnicas de gestión</p>
                         </div>
                     </div>
                 </article>
                 <article class="col-lg-3 col-md-6 col-xs-12 serv" data-aos="fade-up" data-aos-delay="250">
                     <div class="serv-flex">
                         <div class="art-1 img-14">
-                            <img src="{{asset('cliente/images/prof.png')}}" alt="">
+                            <img src="{{ asset('cliente/images/prof.png') }}" alt="">
                             <h3>Profesionalismo</h3>
                         </div>
                         <div class="service-text-p">
-                            <p class="text-center">Porque somos profesionales y trabajamos para asegurar el éxito de nuestros clientes en cada aspecto posible.</p>
+                            <p class="text-center">Porque somos profesionales y trabajamos para asegurar el éxito de
+                                nuestros clientes en cada aspecto posible.</p>
                         </div>
                     </div>
                 </article>
                 <article class="col-lg-3 col-md-6 col-xs-12 serv mb-0 pt" data-aos="fade-up" data-aos-delay="350">
                     <div class="serv-flex arrow">
                         <div class="art-1 img-15">
-                            <img src="{{asset('cliente/images/1.png')}}" alt="">
+                            <img src="{{ asset('cliente/images/1.png') }}" alt="">
                             <h3>Variedad de casas</h3>
                         </div>
                         <div class="service-text-p">
-                            <p class="text-center">En <b> Banpro</b> encontraras la casa ideal rentar o comprar, no busque más, estas en el lugar indicado.</p>
+                            <p class="text-center">En <b> Banpro</b> encontraras la casa ideal rentar o comprar, no busque
+                                más, estas en el lugar indicado.</p>
                         </div>
                     </div>
                 </article>
                 <article class="col-lg-3 col-md-6 col-xs-12 serv mb-0 pt its-2" data-aos="fade-up" data-aos-delay="450">
                     <div class="serv-flex">
                         <div class="art-1 img-14">
-                            <img src="{{asset('cliente/images/ubicacion.png')}}" alt="">
+                            <img src="{{ asset('cliente/images/ubicacion.png') }}" alt="">
                             <h3>Estamos cerca de ti</h3>
                         </div>
                         <div class="service-text-p">
-                            <p class="text-center">La tendencia actual está dando un importante giro ante las indiscutibles ventajas que ofrece estar situado dentro de las ciudades.</p>
+                            <p class="text-center">La tendencia actual está dando un importante giro ante las indiscutibles
+                                ventajas que ofrece estar situado dentro de las ciudades.</p>
                         </div>
                     </div>
                 </article>
@@ -414,9 +605,7 @@
                                 ->where('propiedad_id', '=', $recent_propertie->id)
                                 ->first();
 
-                            $thumb = "resized-" . $fotosrp->nombre_archivo;
-
-
+                            $thumb = 'resized-' . $fotosrp->nombre_archivo;
 
                         @endphp
                         <div class="agents-grid" data-aos="fade-up">
@@ -426,14 +615,14 @@
                                         <div class="homes">
                                             <!-- homes img -->
 
+
+                                            <div class="homes-tag button sale rent">En
+                                                {{ $recent_propertie->EstatusPropiedad->nombre }}</div>
                                             <a href="{{ route('properties.grid-single', $recent_propertie->id) }}"
                                                 class="homes-img">
-                                                <div class="homes-tag button sale rent">En
-                                                    {{ $recent_propertie->EstatusPropiedad->nombre }}</div>
-                                                 <img src="{{ asset("/propiedades_documentos/thumb/". $thumb)}} "
-                                                    class="img-responsive">
+                                                <img src="{{ asset('/propiedades_documentos/thumb/' . $thumb) }} "
+                                                    >
                                             </a>
-
                                         </div>
 
                                     </div>
@@ -701,11 +890,11 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-            $('select[name="tipo_propiedad"]').on('change', function() {
+            $('select[name="vtipo_propiedad"]').on('change', function() {
                 var tipo_propiedad = $(this).val();
             });
 
-            $('select[name="colonia"]').on('change', function() {
+            $('select[name="vcolonia"]').on('change', function() {
                 var colonia = $(this).val();
             });
 
@@ -713,6 +902,19 @@
                 var estatus_propiedad = $(this).val();
             });
 
+            let bv = document.getElementById("bv");
+            let br = document.getElementById("br");
+
+            // Adding event listener to button
+            bv.addEventListener("click", () => {
+                // Fetching Button value
+                let btnValue = bv.value;
+            });
+
+            br.addEventListener("click", () => {
+                // Fetching Button value
+                let btnValue = br.value;
+            });
 
 
             var aire = "";
@@ -797,17 +999,18 @@
 
             if (tipo_propiedad || colonia) {
                 $.ajax({
+                    btnValue: btnValue
                     url: "route('busqueda')",
                     type: "POST",
                     dataType: "json",
                     success: function(response) {
-                        var d1 = $('select[name="tipo_propiedad"]').empty();
-                        var d2 = $('select[name="colonia"]').empty();
-                        var d3 = $('select[name="estatus_propiedad"]').empty();
+                        var d1 = $('select[name="vtipo_propiedad"]').empty();
+                        var d2 = $('select[name="vcolonia"]').empty();
+                        var d3 = $('select[name="vestatus_propiedad"]').empty();
                         $.each(response, function(key, value) {
-                            console.log(value.tipo_propiedad);
-                            console.log(value.colonia);
-                            console.log(value.estatus_propiedad);
+                            console.log(value.vtipo_propiedad);
+                            console.log(value.vcolonia);
+                            console.log(value.vestatus_propiedad);
                         });
                     },
                 });

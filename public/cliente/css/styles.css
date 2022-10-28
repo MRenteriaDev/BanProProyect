@@ -7496,7 +7496,7 @@ html input[disabled] {
 }
 
 .hp-6 .rld-main-search {
-  height: 112px;
+  height: 170px;
   padding: 30px 20px 30px 20px;
   border-radius: 8px;
 }
@@ -7793,7 +7793,7 @@ html input[disabled] {
 }
 
 .hp-6 .rld-single-select .single-select {
-  width: 180px;
+  width: 255px;
 }
 
 .hp-6 .rld-single-input input {

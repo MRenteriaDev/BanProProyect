@@ -13,10 +13,18 @@ class SearchController extends Controller
     public function busqueda(Request $request)
     {
 
-        $uin = $request->get('uin');
-        $precio = $request->get('precio');
-        $tipo_propiedad = $request->get('tipo_propiedad');
-        $colonia = $request->get('colonia');
+        $vuin = $request->get('vuin');
+        $vpreciomax = $request->get('vpreciomax');
+        $vpreciomin = $request->get('vpreciomin');
+        $vtipo_propiedad = $request->get('vtipo_propiedad');
+        $vcolonia = $request->get('vcolonia');
+
+        $ruin = $request->get('ruin');
+        $rpreciomax = $request->get('rpreciomax');
+        $rpreciomin = $request->get('rpreciomin');
+        $rtipo_propiedad = $request->get('rtipo_propiedad');
+        $rcolonia = $request->get('rcolonia');
+
         $estatus_propiedad = $request->get('estatus_propiedad');
         $aire = $request->get('aire');
         $alberca = $request->get('alberca');
@@ -26,104 +34,51 @@ class SearchController extends Controller
         $lavaplatos = $request->get('lavaplatos');
         $estacionamiento = $request->get('estacionamiento');
         $refrigerador = $request->get('refrigerador');
+        $bv = $request->get('bv');
+        $br = $request->get('br');
 
 
 
-        if ($uin <> null && $colonia <> null && $tipo_propiedad <> null && $precio <> null) {
-            $propiedades_filtradas = Propiedades::where('locacion_id', '=', $colonia)
-                ->where('tipo_propiedad_id', '=', $tipo_propiedad)
-                ->where('precio', '<=', $precio)
-                ->where('nombre', 'LIKE', '%' . $uin . '%')
+
+        if ($bv != null) {
+            $propiedades_filtradas = Propiedades::where('estatus_propiedad_id', '=', 42)
+                ->when(!is_null($vuin), function ($query) use ($request) {
+                    $query->where('nombre', 'LIKE', '%' . $request->vuin . '%');
+                })
+                ->when(!is_null($vcolonia), function ($query) use ($request) {
+                    $query->where('locacion_id', '=', $request->vcolonia);
+                })
+                ->when(!is_null($vpreciomax), function ($query) use ($request) {
+                    $query->where('precio', '>=', $request->vpreciomax);
+                })
+                ->when(!is_null($vpreciomin), function ($query) use ($request) {
+                    $query->where('precio', '>=', $request->vpreciomin);
+                })
+                ->when(!is_null($vtipo_propiedad), function ($query) use ($request) {
+                    $query->where('tipo_propiedad_id', '=', $request->vtipo_propiedad);
+                })
+
                 ->get();
         }
+        if ($br != null) {
 
+            $propiedades_filtradas = Propiedades::where('estatus_propiedad_id', '=', 41)
+                ->when(!is_null($ruin), function ($query) use ($request) {
+                    $query->where('nombre', 'LIKE', '%' . $request->ruin . '%');
+                })
+                ->when(!is_null($rcolonia), function ($query) use ($request) {
+                    $query->where('locacion_id', '=', $request->rcolonia);
+                })
+                ->when(!is_null($rpreciomax), function ($query) use ($request) {
+                    $query->where('precio', '>=', $request->rpreciomax);
+                })
+                ->when(!is_null($rpreciomin), function ($query) use ($request) {
+                    $query->where('precio', '>=', $request->rpreciomin);
+                })
+                ->when(!is_null($rtipo_propiedad), function ($query) use ($request) {
+                    $query->where('tipo_propiedad_id', '=', $request->rtipo_propiedad);
+                })
 
-        if ($uin == null && $colonia == null && $tipo_propiedad == null && $precio == null) {
-            $propiedades_filtradas = Propiedades::latest()->get();
-        }
-
-        if ($uin == null && $colonia <> null && $tipo_propiedad <> null && $precio <> null) {
-            $propiedades_filtradas = Propiedades::where('locacion_id', '=', $colonia)
-                ->where('tipo_propiedad_id', '=', $tipo_propiedad)
-                ->where('precio', '<=', $precio)
-                ->get();
-        }
-
-        if ($uin <> null && $colonia == null && $tipo_propiedad <> null && $precio <> null) {
-            $propiedades_filtradas = Propiedades::where('tipo_propiedad_id', '=', $tipo_propiedad)
-                ->where('precio', '<=', $precio)
-                ->where('nombre', 'LIKE', '%' . $uin . '%')
-                ->get();
-        }
-
-        if ($uin <> null && $colonia <> null && $tipo_propiedad == null && $precio <> null) {
-            $propiedades_filtradas = Propiedades::where('locacion_id', '=', $colonia)
-                ->where('precio', '<=', $precio)
-                ->where('nombre', 'LIKE', '%' . $uin . '%')
-                ->get();
-        }
-
-        if ($uin <> null && $colonia <> null && $tipo_propiedad <> null && $precio == null) {
-            $propiedades_filtradas = Propiedades::where('locacion_id', '=', $colonia)
-                ->where('tipo_propiedad_id', '=', $tipo_propiedad)
-                ->where('nombre', 'LIKE', '%' . $uin . '%')
-                ->get();
-        }
-
-        if ($uin == null && $colonia == null && $tipo_propiedad <> null && $precio <> null) {
-            $propiedades_filtradas = Propiedades::where('tipo_propiedad_id', '=', $tipo_propiedad)
-                ->where('precio', '<=', $precio)
-                ->get();
-        }
-
-        if ($uin == null && $colonia <> null && $tipo_propiedad == null && $precio <> null) {
-            $propiedades_filtradas = Propiedades::where('locacion_id', '=', $colonia)
-                ->where('precio', '<=', $precio)
-                ->get();
-        }
-
-        if ($uin == null && $colonia <> null && $tipo_propiedad <> null && $precio == null) {
-            $propiedades_filtradas = Propiedades::where('locacion_id', '=', $colonia)
-                ->where('tipo_propiedad_id', '=', $tipo_propiedad)
-                ->get();
-        }
-
-        if ($uin <> null && $colonia == null && $tipo_propiedad == null && $precio <> null) {
-            $propiedades_filtradas = Propiedades::where('precio', '<=', $precio)
-                ->where('nombre', 'LIKE', '%' . $uin . '%')
-                ->get();
-        }
-
-        if ($uin <> null && $colonia == null && $tipo_propiedad <> null && $precio == null) {
-            $propiedades_filtradas = Propiedades::where('tipo_propiedad_id', '=', $tipo_propiedad)
-                ->where('nombre', 'LIKE', '%' . $uin . '%')
-                ->get();
-        }
-
-        if ($uin <> null && $colonia <> null && $tipo_propiedad == null && $precio == null) {
-            $propiedades_filtradas = Propiedades::where('locacion_id', '=', $colonia)
-                ->where('nombre', 'LIKE', '%' . $uin . '%')
-                ->get();
-        }
-
-
-        if ($uin == null && $colonia == null && $tipo_propiedad == null && $precio <> null) {
-            $propiedades_filtradas = Propiedades::where('precio', '<=', $precio)
-                ->get();
-        }
-
-        if ($uin == null && $colonia == null && $tipo_propiedad <> null && $precio == null) {
-            $propiedades_filtradas = Propiedades::where('tipo_propiedad_id', '=', $tipo_propiedad)
-                ->get();
-        }
-
-        if ($uin == null && $colonia <> null && $tipo_propiedad == null && $precio == null) {
-            $propiedades_filtradas = Propiedades::where('locacion_id', '=', $colonia)
-                ->get();
-        }
-
-        if ($uin <> null && $colonia == null && $tipo_propiedad == null && $precio == null) {
-            $propiedades_filtradas = Propiedades::where('nombre', 'LIKE', '%' . $uin . '%')
                 ->get();
         }
 
@@ -132,6 +87,8 @@ class SearchController extends Controller
 
         //  $query = Locacion::where('nombre', 'LIKE', '%' . $uin . '%')->get();
         $Response = ['success' => 'logrado'];
+
+
 
         return view('cliente.properties-grid', compact('propiedades_filtradas'));
 
