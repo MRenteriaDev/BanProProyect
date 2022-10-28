@@ -88,11 +88,13 @@ class SellerController extends Controller
             'name' => 'required',
             'email' => 'required',
             'foto' => 'required',
+            'celular' => 'required'
 
         ], [
             'name.required' => 'El nombre del Seller es requerido',
             'email.required' => 'El correo del Seller es requerido',
             'foto.required' => 'La foto del Seller es requerida',
+            'celular.required' => 'El celular del Seller es requerido',
 
 
         ]);
@@ -111,6 +113,7 @@ class SellerController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'foto' =>  $fotomove,
+            'celular' =>  $request->celular,
             'stauts' => 0,
             'created_at' => Carbon::now()
         ]);
@@ -140,19 +143,33 @@ class SellerController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
+        $data = $request->validate([
             'name' => 'required',
             'email' => 'required',
+            'foto' => 'required',
+            'celular' => 'required'
 
         ], [
             'name.required' => 'El nombre del Seller es requerido',
             'email.required' => 'El correo del Seller es requerido',
+            'foto.required' => 'La foto del Seller es requerida',
+            'celular.required' => 'El celular del Seller es requerido',
 
         ]);
+
+        if($request->file('foto') != null){
+            $Imgf = $request->file('foto');
+            $fotomove = $data['name'] . '-documento-' . time() . rand(1, 1000) . '.' . $Imgf->extension();
+            $imgS = $Imgf->move(public_path('fotos_documentos'), $fotomove);
+        }else{
+            $fotomove = null;
+        }
 
         Seller::findOrFail($id)->update([
             'name' => $request->name,
             'email' => $request->email,
+            'foto' =>  $Imgf,
+            'celular' =>  $request->celular,
             'stauts' => 0,
             'updated_at' => Carbon::now()
         ]);
