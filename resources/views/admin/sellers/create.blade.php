@@ -45,6 +45,15 @@
                         @enderror
                     </div>
 
+                    <div class="form-group">
+                        <label for="celular">Celular</label>
+                        <input type="number" name="celular"  class="form-control"
+                            id="celular" placeholder="Introduzca Celular">
+                        @error('celular')
+                            <span class="number-danger"> {{ $message }} </span>
+                        @enderror
+                    </div>
+
                     <div class="col-md-12">
                         <div class="form-floathing">
                             <label for="foto">Foto</label>
@@ -74,7 +83,7 @@
 
                                     reader.onload = function(e) {
                                         $("#fotos").append('<div class="col-md-3 col-sm-3 col-xs-3"><img src="' + e.target.result +
-                                            '" class="img-thumbnail" onclick="remove_foto()" id="img"></div>');
+                                            '" class="img-thumbnail" onclick="remove_foto();clean" id="img"></div>');
                                     };
 
                                     reader.readAsDataURL(input.files[x]);

@@ -3,10 +3,15 @@
 @section('clienteherencia')
 
 @php
+    use App\Models\Sellers;
+    $sellers = DB::table('sellers')
+        ->take(2)
+        ->get();
     $fotos = DB::table('galeria_propiedades')->where('propiedad_id', '=', $property[0]->id)->get();
     //$plano = DB::table('galeria_planos')->where('propiedad_id', '=', $property[0]->id)->get();
 
 @endphp
+
 
     <body class="inner-pages sin-1 homepage-4 hd-white">
         <!-- Wrapper -->
@@ -30,8 +35,8 @@
                                     <section class="headings-2 pt-0">
                                         <div class="pro-wrapper">
                                             <div class="detail-wrapper-body">
-                                                <div class="listing-title-bar">
-                                                    <h3>{{ $property[0]->nombre }}<span class="mrg-l-5 category-tag">{{ $property[0]->EstatusPropiedad->nombre }}</span></h3>
+                                                <div class="section-title">
+                                                    <h2>{{ $property[0]->nombre }}<span class="mrg-l-5 category-tag">{{ $property[0]->EstatusPropiedad->nombre }}</span></h2>
                                                     <div class="mt-0">
                                                         <a href="#listing-location" class="listing-address">
                                                             <i class="fa fa-map-marker pr-2 ti-location-pin mrg-r-5">
@@ -331,8 +336,9 @@
                                 <div class="sidebar">
                                     <br><br><br><br>
                                     <div class="widget-boxed mt-33 mt-5">
-                                        <div class="widget-boxed-header">
-                                            <h4>Información de contacto</h4>
+                                        <div class="section-title">
+                                            <h3>Informacion Del </h3>
+                                            <h2>Contacto</h2>
                                         </div>
                                         <div class="widget-boxed-body">
                                             <div class="sidebar-widget author-widget2">
@@ -356,6 +362,34 @@
 
                                             </div>
                                         </div>
+
+                                                <div class="section-title">
+                                                    <h3>Conoce nuestros</h3>
+                                                    <h2>Vendedores</h2>
+                                                </div>
+                                                <div id="carouselSeller" class="carousel slide" data-ride="carousel">
+                                                    <div class="carousel-inner">
+                                                      <div class="carousel-item active">
+                                                          <img src="#" class="d-block w-10" alt="...">
+                                                          <div>
+                                                            @foreach ($sellers as $seller)
+                                                            <div>
+                                                                {{$seller->name}}
+                                                            </div>
+
+
+                                                            <div>
+
+                                                            </div>
+                                                            @endforeach
+                                                          </div>
+                                                      </div>
+
+                                                    </div>
+                                                  </div>
+
+
+
                                         <div class="container-fluid p-2 py-0 pb-3">
                                             <div class="row p-0 p-md-2 py-0 py-md-0">
                                                 <div class="col-12">
@@ -381,7 +415,10 @@
 
                                                             }
                                                         </style>
-                                                        <h5>Compartelo en tus redes sociales</h5>
+                                                       <div class="section-title">
+                                                        <h3>Compartelo en tus</h3>
+                                                        <h2>Redes Sociales</h2>
+                                                    </div>
                                                         <div class="fa">
                                                             {!! $share_buttons !!}
                                                         </div>
