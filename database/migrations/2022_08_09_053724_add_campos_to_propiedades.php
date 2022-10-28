@@ -22,7 +22,6 @@ class AddCamposToPropiedades extends Migration
             $table->string("tamano_propiedad")->nullable();
             $table->string("tamano_propiedad_construido")->nullable();
             $table->string("descripcion")->nullable();
-            $table->date("fecha_construccion")->nullable();
             $table->integer("recamaras")->nullable();
             $table->integer("bano")->nullable();
             $table->boolean("aire_condicionado")->nullable();
@@ -33,7 +32,6 @@ class AddCamposToPropiedades extends Migration
             $table->boolean("lavaplatos")->nullable();
             $table->boolean("estacionamiento")->nullable();
             $table->boolean("refrigerador")->nullable();
-            $table->string("video_propiedad")->nullable();
             $table->unsignedBigInteger("review_id")->nullable();
             $table->foreign("review_id")->references("id")->on("reviews")->onDelete("cascade");
             $table->unsignedBigInteger("solicitud_vendedor_id")->nullable();
@@ -58,7 +56,6 @@ class AddCamposToPropiedades extends Migration
             $table->string("tamano_propiedad")->nullable();
             $table->string("tamano_propiedad_construido")->nullable();
             $table->string("descripcion")->nullable();
-            $table->date("fecha_construccion")->nullable();
             $table->integer("recamaras")->nullable();
             $table->integer("bano")->nullable();
             $table->boolean("aire_condicionado")->nullable()->default(false);
@@ -71,7 +68,6 @@ class AddCamposToPropiedades extends Migration
             $table->boolean("refrigerador")->nullable()->default(false);
             $table->unsignedBigInteger("nearby_id")->nullable();
             $table->foreign("nearby_id")->references("id")->on("nearbys")->onDelete("cascade");
-            $table->string("video_propiedad")->nullable();
             $table->unsignedBigInteger("review_id")->nullable();
             $table->foreign("review_id")->references("id")->on("reviews")->onDelete("cascade");
             $table->unsignedBigInteger("solicitud_vendedor_id")->nullable();

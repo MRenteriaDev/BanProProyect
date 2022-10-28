@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\PropiedadesByPrice;
+use App\Exports\PropiedadesBySeller;
 use App\Models\Propiedades;
 use Illuminate\Http\Request;
 use App\Exports\Propiedadesexport;
@@ -41,6 +43,15 @@ class ReportesController extends Controller
     public function getpropertiesbyseller(Request $request)
     {
         $seller = $request->seller_id;
-        return Excel::download(new PropiedadesExportBySeller($seller), 'SellerPropiedades.xlsx');
+        return Excel::download(new PropiedadesBySeller($seller), 'SellerPropiedades.xlsx');
     }
+
+    public function getpropertiesbyprice(Request $request)
+    {
+        $from_precio = $request->precioinicial;
+        $to_precio = $request->preciofinal;
+        return Excel::download(new PropiedadesByPrice($from_precio, $to_precio), 'PricePropiedades.xlsx');
+    }
+
+
 }

@@ -13,6 +13,7 @@ class Seller extends Authenticatable
 {
    use HasApiTokens, HasFactory, Notifiable;
 
+
     /**
      * The attributes that are mass assignable.
      *
@@ -45,4 +46,23 @@ class Seller extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function Propiedad()
+    {
+        return $this->belongsTo(Propiedades::class);
+        return $this->hasMany(Propiedades::class, "propiedad_id");
+    }
+}
+
+class Sellers extends model {
+
+    protected $guarded = [];
+    public function Propiedad()
+    {
+        return $this->belongsTo(Propiedades::class);
+        return $this->hasMany(Propiedades::class, "propiedad_id");
+    }
+
+
+
 }

@@ -90,16 +90,6 @@
                         @enderror
                     </div>
                 </div>
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label for="fecha_construccion">Fecha de construccion</label>
-                        <input type="date" name="fecha_construccion" class="form-control" id="fecha_construccion"
-                            placeholder="Introduzca fecha de construccion">
-                        @error('fecha_construccion')
-                            <span class="text-danger"> {{ $message }} </span>
-                        @enderror
-                    </div>
-                </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="aire_condicionado">Aire acondicionado</label>
@@ -191,7 +181,7 @@
                 <div class="col-md-12">
                     <div class="form-floathing">
                         <label for="descripcion">Descripcion</label>
-                        <textarea name="descripcion" id="descripcion" placeholder="Escribe lugares cercanos" class="form-control" cols="10"
+                        <textarea name="descripcion" id="descripcion" placeholder="Escriba caracteristicas" class="form-control" cols="10"
                             rows="2"></textarea>
                     </div>
                 </div>
@@ -264,6 +254,16 @@
                                 <option value={{ $seller->id }}>{{ $seller->name }}</option>
                             @endforeach
                         </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="ubicacion">Ubicacion</label>
+                        <input type="text" name="ubicacion" class="form-control" id="ubicacion"
+                            placeholder="Introduzca link de ubicacion">
+                        @error('ubicacion')
+                            <span class="text-danger"> {{ $message }} </span>
+                        @enderror
                     </div>
                 </div>
                 {{-- <div class="col-md-12">

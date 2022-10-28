@@ -2,9 +2,10 @@
 
 namespace App\Exports;
 
-use App\Models\Propiedades;
+use App\Models\User;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Illuminate\Support\Facades\DB;
+
 
 use Maatwebsite\Excel\Concerns\FromQuery;
 
@@ -12,28 +13,30 @@ use Maatwebsite\Excel\Concerns\Exportable;
 
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class PropiedadesBySeller implements FromQuery, WithHeadings
+class PropiedadesByPrice implements FromQuery, WithHeadings
 {
     /**
      * @return \Illuminate\Support\Collection
      */
     use Exportable;
 
-    protected $sellerid;
+    protected $from_precio;
+    protected $to_precio;
 
 
-    function __construct($sellerid)
+    function __construct($from_precio, $to_precio)
     {
-        $this->s_i = $sellerid;
+        $this->from_precio = $from_precio;
+        $this->to_precio = $to_precio;
 
     }
 
     public function query()
     {
         $data = DB::table('propiedades')
-            ->where('seller_id', $this->s_i)
-            ->select(['id','created_at', 'updated_at', 'nombre', 'estatus_propiedad_id', 'locacion_id', 'tipo_propiedad_id','precio', 'tamano_propiedad', 'tamano_propiedad_construido', 'descripcion', 'fecha_construccion', 'recamaras', 'bano', 'aire_condicionado', 'balcon', 'internet', 'cable', 'alberca', 'lavaplatos', 'estacionamiento', 'refrigerador', 'video_propiedad', 'review_id', 'solicitud_vendedor_id', 'planos', 'nearbys'])
-            ->orderBy("id");
+        ->whereBetween('precio', [$this->from_precio, $this->to_precio])
+        ->select(['id','created_at', 'updated_at', 'nombre', 'estatus_propiedad_id', 'locacion_id', 'tipo_propiedad_id','precio', 'tamano_propiedad', 'tamano_propiedad_construido', 'descripcion', 'fecha_construccion', 'recamaras', 'bano', 'aire_condicionado', 'balcon', 'internet', 'cable', 'alberca', 'lavaplatos', 'estacionamiento', 'refrigerador', 'video_propiedad', 'review_id', 'solicitud_vendedor_id', 'planos', 'nearbys'])
+        ->orderBy("id");
 
         return $data;
     }
