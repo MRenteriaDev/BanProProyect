@@ -45,6 +45,63 @@
                         @enderror
                     </div>
 
+                    <div class="col-md-12">
+                        <div class="form-floathing">
+                            <label for="foto">Foto</label>
+
+                            <input type="file" onchange="readfoto(this);" id="foto" name="foto"
+                                class="form-control">
+
+                        </div>
+                        <br>
+                        <div id="area"></div>
+                        <div id="fotos" class="row"></div>
+                        <div class="col-12">
+                            <button type="button" onclick="remove_foto();clean();"
+                                class="btn btn-primary btn-sm">Borrar
+                                Fotos</button>
+                        </div>
+                    </div>
+
+                    <script>
+                        function readfoto(input) {
+                            $("#area").html('Processing...');
+                            counter = input.files.length;
+                            for (x = 0; x < counter; x++) {
+                                if (input.files && input.files[x]) {
+
+                                    var reader = new FileReader();
+
+                                    reader.onload = function(e) {
+                                        $("#fotos").append('<div class="col-md-3 col-sm-3 col-xs-3"><img src="' + e.target.result +
+                                            '" class="img-thumbnail" onclick="remove_foto()" id="img"></div>');
+                                    };
+
+                                    reader.readAsDataURL(input.files[x]);
+                                }
+                            }
+                            if (counter == x) {
+                                $("#area").html('');
+                            }
+
+                        }
+
+                        function remove_foto() {
+                            var images = document.getElementsByTagName('img');
+                            var l = images.length;
+                            for (var i = 0; i < l; i++) {
+                                images[0].parentNode.removeChild(images[0]);
+                            }
+                        }
+
+                        function clean() {
+                            var ab = document.getElementById('foto').value;
+                            document.getElementById('foto').value = "";
+                            $('#foto').val('dsds');
+                        }
+                    </script>
+
+
 
                 <!-- /.card-body -->
 
