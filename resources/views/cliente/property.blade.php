@@ -31,8 +31,7 @@
                                         <div class="pro-wrapper">
                                             <div class="detail-wrapper-body">
                                                 <div class="listing-title-bar">
-                                                    <h3>{{ $property[0]->nombre }}<span class="mrg-l-5 category-tag">For
-                                                            Sale</span></h3>
+                                                    <h3>{{ $property[0]->nombre }}<span class="mrg-l-5 category-tag">{{ $property[0]->EstatusPropiedad->nombre }}</span></h3>
                                                     <div class="mt-0">
                                                         <a href="#listing-location" class="listing-address">
                                                             <i class="fa fa-map-marker pr-2 ti-location-pin mrg-r-5">
@@ -82,6 +81,8 @@
                                                 data-slide="next"><i class="fa fa-angle-right"></i></a>
 
                                         </div>
+
+
                                         <!-- main slider carousel nav controls -->
                                         <ul class="carousel-indicators smail-listing list-inline">
                                             @for ($j = 0; $j < count($fotos); $j++)
@@ -109,6 +110,16 @@
                                         </ul>
                                         <!-- main slider carousel items -->
                                     </div>
+
+                                    <div class="floor-plan property wprt-image-video w50 pro">
+                                        <h5>Ubicacion</h5>
+                                        @if(!$property[0]->ubicacion == null)
+                                         {{!!$property[0]->ubicacion!!}}
+                                        @else
+                                        <p class="mb-3">No hay ubicacion disponible</p>
+                                        @endif
+                                    </div>
+
                                     <div class="blog-info details mb-30">
                                         <h5 class="mb-4">Descripción</h5>
                                         <p class="mb-3">
@@ -217,6 +228,8 @@
                                 @endif
                             </div>
 
+
+
                             <div class="floor-plan property wprt-image-video w50 pro">
                                 <h5>Nearbys</h5>
                                 <div class="property-nearby">
@@ -244,6 +257,7 @@
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                         <aside class="col-lg-4 col-md-12 car">
                             <div class="single widget">
@@ -325,7 +339,7 @@
                                                 <div class="author-box clearfix">
                                                     <img src="{{ asset('cliente/images/testimonials/ts-1.jpg') }}"
                                                         alt="author-image" class="author__img">
-                                                    <h4 class="author__title">Banpro</h4>
+                                                    <h4 class="author__title">{{ $property[0]->seller->name }}</h4>
                                                     <p class="author__meta">Bienes raíces</p>
                                                 </div>
                                                 <ul class="author__contact">
