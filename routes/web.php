@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\TipoPropiedadController;
 use App\Http\Controllers\Admin\ZonasController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BannerController;
 use App\Http\Controllers\Cliente\IndexController;
 use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\MetodosPagosController;
@@ -207,6 +208,16 @@ Route::prefix('reportes')->group(function () {
     Route::post('/index6', [ReportesController::class, 'getpropertiesbyprice'])->name('reportes.propiedadesPrice');
 });
 /* ------------- End Reportes -------------- */
+
+
+/* ------------- Banner -------------- */
+Route::prefix('banner')->group(function () {
+    Route::get('/index', [BannerController::class, 'index'])->name('banner.index');
+    Route::get('/create', [BannerController::class, 'create'])->name('banner.create');
+    Route::post('/store', [BannerController::class, 'store'])->name('banner.store');
+    Route::get('/destroy/{id}', [BannerController::class, 'destroy'])->name('banner.destroy');
+});
+/* ------------- End Banner -------------- */
 
 
 

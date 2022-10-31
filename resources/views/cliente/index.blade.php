@@ -17,7 +17,7 @@
     $array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     $tipop = TipoPropiedad::get();
     $estatusp = EstatusPropiedad::get();
-
+    $banner = DB::table('banners')->get();
 @endphp
 
 
@@ -415,6 +415,71 @@
     <!-- END HEADER SEARCH -->
 
     <!-- START SECTION POPULAR PLACES -->
+
+    <section class="feature-categories bg-white rec-pro">
+        <div class="container-fluid">
+            {{-- <div class="sec-title">
+                <h2><span>Popular </span>Places</h2>
+                <p>Properties In Most Popular Places.</p>
+            </div> --}}
+            <div class="row">
+                <div id="listingDetailsSlider" class="carousel listing-details-sliders slide mb-30">
+                    <div class="carousel-inner">
+
+                        @for ($i = 0; $i < count($banner); $i++)
+                            @if ($i == 0)
+                                <div class="active item carousel-item" data-slide-number="{{ $i }}">
+                                    <img src="{{ asset('/cliente/images/banner/' . $banner[$i]->nombre_archivo) }}"
+                                        class="img-fluid" alt="slider-listing">
+                                </div>
+                            @else
+                                <div class="item carousel-item" data-slide-number="{{ $i }}">
+                                    <img src="{{ asset('/cliente/images/banner/' . $banner[$i]->nombre_archivo) }} " class="img-fluid"
+                                        alt="slider-listing">
+                                </div>
+                            @endif
+                        @endfor
+
+
+                        <a class="carousel-control left" href="#listingDetailsSlider" data-slide="prev"><i
+                                class="fa fa-angle-left"></i></a>
+                        <a class="carousel-control right" href="#listingDetailsSlider" data-slide="next"><i
+                                class="fa fa-angle-right"></i></a>
+
+
+                    </div>
+
+
+
+                    <!-- main slider carousel nav controls -->
+                    {{-- <ul class="carousel-indicators smail-listing list-inline">
+                        @for ($j = 0; $j < count($fotos); $j++)
+                            @if ($j == 0)
+                                <li class="list-inline-item active">
+                                    <a id="{{ 'carousel-selector-' . $j }}" data-slide-to="{{ $j }}"
+                                        data-target="#listingDetailsSlider">
+                                        <img src="{{ asset('/propiedades_documentos/' . $fotos[$j]->nombre_archivo) }}"
+                                            class="img-fluid" alt="listing-small">
+                                    </a>
+                                </li>
+                            @else
+                                <li class="list-inline-item">
+                                    <a id="{{ 'carousel-selector-' . $j }}" data-slide-to="{{ $j }}"
+                                        data-target="#listingDetailsSlider">
+                                        <img src="{{ asset('/propiedades_documentos/' . $fotos[$j]->nombre_archivo) }}"
+                                            class="img-fluid" alt="listing-small">
+                                    </a>
+                                </li>
+                            @endif
+                        @endfor
+
+                    </ul> --}}
+                    <!-- main slider carousel items -->
+                </div>
+            </div>
+            <!-- /row -->
+        </div>
+    </section>
     {{-- <section class="feature-categories bg-white rec-pro">
         <div class="container-fluid">
             <div class="sec-title">
@@ -620,8 +685,7 @@
                                                 {{ $recent_propertie->EstatusPropiedad->nombre }}</div>
                                             <a href="{{ route('properties.grid-single', $recent_propertie->id) }}"
                                                 class="homes-img">
-                                                <img src="{{ asset('/propiedades_documentos/thumb/' . $thumb) }} "
-                                                    >
+                                                <img src="{{ asset('/propiedades_documentos/thumb/' . $thumb) }} ">
                                             </a>
                                         </div>
 
@@ -661,17 +725,6 @@
                                                 <a
                                                     href="{{ route('properties.grid-single', $recent_propertie->id) }}">{{ "$ " . number_format($recent_propertie->precio) }}</a>
                                             </h3>
-                                            <div class="compare">
-                                                <a href="#" title="Compare">
-                                                    <i class="flaticon-compare"></i>
-                                                </a>
-                                                <a href="#" title="Share">
-                                                    <i class="flaticon-share"></i>
-                                                </a>
-                                                <a href="#" title="Favorites">
-                                                    <i class="flaticon-heart"></i>
-                                                </a>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>

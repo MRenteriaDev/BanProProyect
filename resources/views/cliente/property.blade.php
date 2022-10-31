@@ -69,8 +69,8 @@
                                                 @if ($i == 0)
                                                     <div class="active item carousel-item"
                                                         data-slide-number="{{ $i }}">
-                                                        <img height="600" src="{{ asset('/propiedades_documentos/' . $fotos[$i]->nombre_archivo) }}"
-                                                            class="img-fluid" alt="slider-listing" height="600">
+                                                        <img src="{{ asset('/propiedades_documentos/' . $fotos[$i]->nombre_archivo) }}"
+                                                            class="img-fluid" alt="slider-listing" height="600px">
                                                     </div>
                                                 @else
                                                     <div class="item carousel-item" data-slide-number="{{ $i }}">

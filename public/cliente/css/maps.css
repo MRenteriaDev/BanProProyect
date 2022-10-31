@@ -1935,7 +1935,7 @@ screen and (max-height:300px) {
 }
 /*---------------------------------------*/
 /*--------- 17. PARALLAX IMAGE ----------*/
-/*---------------------------------------*/ 
+/*---------------------------------------*/
 /* Search Form */
 .search-2 .trip-search {
 	background: #fff;
@@ -2024,7 +2024,7 @@ screen and (max-height:300px) {
     border: none;
     border-radius: 5px;
     width: 100%;
-    height: 50px;	
+    height: 50px;
     padding-left: 20px;
 }
 .search-2 .form-group.location {
@@ -2066,7 +2066,7 @@ screen and (max-height:300px) {
         width: 100%;
 	}
 }
-@media only screen and (max-width: 991px) {	
+@media only screen and (max-width: 991px) {
 	.search-2 .hero-inner {
         margin: 97px 0;
 	}
@@ -2326,7 +2326,8 @@ screen and (max-height:300px) {
 /*------ 11. FEATURED CATEGORIES HOME 3 ------*/
 /*----------------------------------------------*/
 section.feature-categories {
-    padding: 4.6rem 0;
+    padding-left: 22px;
+    padding-top: 60px;
 }
 .homepage-9 .small-category-2 {
     background: #fff;
@@ -2401,7 +2402,7 @@ section.feature-categories {
     .homepage-9 .m-t-30 {
         margin-top: 30px;
     }
-    .homepage-9.homepage-4 a.button.border, 
+    .homepage-9.homepage-4 a.button.border,
     a.button {
         width: 240px;
     }
