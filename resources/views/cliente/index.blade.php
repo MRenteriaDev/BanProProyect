@@ -20,6 +20,7 @@
     $array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     $tipop = TipoPropiedad::get();
     $estatusp = EstatusPropiedad::get();
+    $banner = DB::table('banners')->get();
 @endphp
 
 
@@ -28,7 +29,7 @@
     <!-- STAR HEADER SEARCH -->
 
 
-    <section id="hero-area" class="parallax-searchs home15 overlay thome-6 thome-1" data-stellar-background-ratio="0.5">
+    <section id="hero-area" class="parallax-searchs home15 overlay thome-6 thome-1" data-stellar-background-ratio="1">
 
 
         <div class="hero-main">
@@ -38,12 +39,13 @@
                         <div class="hero-inner">
                             <!-- Welcome Text -->
                             <div class="welcome-text">
-                                <h1 class="h1">Encuentra Tu Hogar
+                                <h1 class="h1 text-white">EN <b class="text-danger">BANPRO</b> LO TENEMOS TODO!...
                                     <br class="d-md-none">
 
                                     {{--     <--  <span class="typed border-bottom"></span> --> --}}
                                 </h1>
-                                <p class="mt-4">Tenemos diferentes opciones para ti </p>
+                                <BR><BR>
+
                             </div>
                             <!--/ End Welcome Text -->
                             {{-- <!-- prueba form ajax -->
@@ -65,18 +67,26 @@
                                 @method('POST')
                                 @csrf
                                 <div class="banner-search-wrap">
+                                    <ul class="nav nav-tabs rld-banner-tab">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" data-toggle="tab" href="#tabs_1">En Venta</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" href="#tabs_2">En Renta</a>
+                                        </li>
+                                    </ul>
                                     <div class="tab-content">
                                         <div class="tab-pane fade show active" id="tabs_1">
                                             <div class="rld-main-search">
                                                 <div class="row">
 
                                                     <div class="rld-single-input">
-                                                        <input name="uin" type="text" placeholder="Escribe...">
+                                                        <input name="vuin" type="text" placeholder="Escribe...">
                                                     </div>
 
 
                                                     <div class="rld-single-select">
-                                                        <select name="tipo_propiedad" id="tipo_propiedad"
+                                                        <select name="vtipo_propiedad" id="vtipo_propiedad"
                                                             class="select single-select mr-0"
                                                             style="width: 100%;height: 100%;">
                                                             <option selected="selected" value="">Tipo De Propiedad
@@ -90,7 +100,7 @@
                                                     </div>
 
                                                     <div class="rld-single-select">
-                                                        <select name="colonia" class="select single-select mr-0"
+                                                        <select name="vcolonia" class="select single-select mr-0"
                                                             style="width: 100%;height: 100%;">
                                                             <option selected="selected" value=''>Selecciona la colonia
                                                             </option>
@@ -102,15 +112,14 @@
                                                         </select>
                                                     </div>
 
-                                                    <div class="rld-single-input">
-                                                        <input name="precio" type="text"
-                                                            placeholder="Prespuesto máximo...">
-                                                    </div>
+
+
+
 
                                                     {{-- <div class="dropdown-filter"><span>Busqueda Avanzada</span></div> --}}
-                                                    <div class="col-xl-2 col-lg-2 col-md-4">
-                                                        <button class="btn" type='submit'
-                                                            href="{{ route('busqueda') }}">Buscar</button>
+                                                    <div class="col-xl-3 col-lg-2 col-md-4">
+                                                        <button class="btn" type='submit' value="venta" name="bv"
+                                                            href="{{ route('busqueda') }}">Buscar en venta</button>
                                                     </div>
                                                     {{-- <div class="explore__form-checkbox-list full-filter">
                                                         <div class="row">
@@ -218,6 +227,181 @@
                                                     </div>  --}}
 
                                                 </div>
+                                                <div class="row">
+                                                    <div class="rld-single-input">
+                                                        <input name="vpreciomin" type="text"
+                                                            placeholder="Prespuesto minimo...">
+                                                    </div>
+
+                                                    <div class="rld-single-input">
+                                                        <input name="vpreciomax" type="text"
+                                                            placeholder="Prespuesto máximo...">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="tab-pane fade" id="tabs_2">
+                                            <div class="rld-main-search">
+                                                <div class="row">
+
+                                                    <div class="rld-single-input">
+                                                        <input name="ruin" type="text" placeholder="Escribe...">
+                                                    </div>
+
+
+                                                    <div class="rld-single-select">
+                                                        <select name="rtipo_propiedad" id="rtipo_propiedad"
+                                                            class="select single-select mr-0"
+                                                            style="width: 100%;height: 100%;">
+                                                            <option selected="selected" value="">Tipo De Propiedad
+                                                            </option>
+                                                            @foreach ($tipop as $tipo)
+                                                                <option value={{ $tipo->id }}>
+                                                                    {{ $tipo->nombre }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="rld-single-select">
+                                                        <select name="rcolonia" class="select single-select mr-0"
+                                                            style="width: 100%;height: 100%;">
+                                                            <option selected="selected" value=''>Selecciona la colonia
+                                                            </option>
+                                                            @foreach ($colonias as $colonia)
+                                                                <option name="colonia" value={{ $colonia->id }}>
+                                                                    {{ $colonia->nombre }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+
+
+
+                                                    {{-- <div class="dropdown-filter"><span>Busqueda Avanzada</span></div> --}}
+                                                    <div class="col-xl-3 col-lg-2 col-md-4">
+                                                        <button class="btn" type='submit' value="renta" name="br"
+                                                            href="{{ route('busqueda') }}">Buscar en renta</button>
+                                                    </div>
+                                                    {{-- <div class="explore__form-checkbox-list full-filter">
+                                                        <div class="row">
+                                                            <div class="col-lg-4 col-md-6 py-0 pr-30 pl-0">
+                                                                <!-- Form Property Status -->
+                                                                <div class="rld-single-select">
+                                                                    <label>Estatus de la propiedad</label>
+                                                                    <select name="estatus_propiedad"
+                                                                        class="select single-select mr-0"
+                                                                        style="width: 100%;height: 100%;">
+                                                                        <option selected="selected">Estatus de la
+                                                                            propiedad</option>
+                                                                        @foreach ($estatusp as $estap)
+                                                                            <option value={{ $estap->id }}>
+                                                                                {{ $estap->nombre }}
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </select>
+
+
+                                                                </div>
+                                                                <!--/ End Form Property Status -->
+                                                            </div> --}}
+
+
+                                                    <!-- Form Bedrooms -->
+                                                    {{--
+                                                                <div class="form-group beds">
+                                                                    <div class="nice-select form-control wide"
+                                                                        tabindex="0"><span class="current"><i
+                                                                                class="fa fa-bed" aria-hidden="true"></i>
+                                                                            Recamaras</span>
+                                                                        <ul class="list">
+                                                                            @foreach ($array as $a)
+                                                                                <li name="rec" class="option">
+                                                                                    {{ $a }}</li>
+                                                                            @endforeach
+
+                                                                        </ul>
+                                                                    </div>
+                                                                </div> --}}
+                                                    <!--/ End Form Bedrooms -->
+
+
+
+                                                    <!-- Form Bathrooms -->
+                                                    {{-- <div class="form-group bath">
+                                                                    <div class="nice-select form-control wide"
+                                                                        tabindex="0"><span class="current"><i
+                                                                                class="fa fa-bath" aria-hidden="true"></i>
+                                                                            Baños</span>
+                                                                        <ul class="list">
+                                                                            @foreach ($array as $a)
+                                                                                <li name="bano" class="option">
+                                                                                    {{ $a }}</li>
+                                                                            @endforeach
+                                                                        </ul>
+                                                                    </div>
+                                                                </div> --}}
+                                                    <!--/ End Form Bathrooms -->
+
+                                                    {{-- <div class="col-lg-5 col-md-12 col-sm-12 py-1 pr-30 mr-5 sld">
+                                                                <!-- Price Fields -->
+
+
+
+                                                            </div> --}}
+                                                    {{-- <div class="col-lg-3 col-md-6 col-sm-12 py-1 pr-30">
+                                                                <!-- Checkboxes -->
+                                                                <div class="checkboxes one-in-row margin-bottom-10 ch-1">
+                                                                    <input id="check-1" type="checkbox" name="aire">
+                                                                    <label for="check-1">Aire acondicionado</label>
+                                                                    <input id="check-2" type="checkbox" name="alberca">
+                                                                    <label for="check-2">Alberca</label>
+                                                                    <input id="check-3" type="checkbox" name="balcon">
+                                                                    <label for="check-3">Balcon</label>
+                                                                    <input id="check-4" type="checkbox" name="internet">
+                                                                    <label for="check-4">Internet</label>
+
+                                                                </div>
+                                                                <!-- Checkboxes / End -->
+                                                            </div>
+                                                            <div class="col-lg-3 col-md-6 col-sm-12 py-1 pr-30">
+                                                                <!-- Checkboxes -->
+                                                                <div class="checkboxes one-in-row margin-bottom-10 ch-2">
+
+                                                                    <input id="check-7" type="checkbox" name="lavaplatos">
+                                                                    <label for="check-7">Lavaplatos</label>
+                                                                    <input id="check-8" type="checkbox"
+                                                                        name="estacionamiento">
+                                                                    <label for="check-8">Estacionamiento</label>
+                                                                    <input id="check-9" type="checkbox"
+                                                                        name="refrigerador">
+                                                                    <label for="check-9">Refrigerador</label>
+
+                                                                </div>
+                                                                <!-- Checkboxes / End -->
+                                                            </div>
+
+                                                            <div class="rld-single-input">
+                                                                <input name="precio" type="text" placeholder="Precio en pesos...">
+                                                            </div> --}}
+
+                                                    {{-- </div>
+                                                    </div>  --}}
+
+                                                </div>
+                                                <div class="row">
+                                                    <div class="rld-single-input">
+                                                        <input name="rpreciomin" type="text"
+                                                            placeholder="Prespuesto minimo...">
+                                                    </div>
+
+                                                    <div class="rld-single-input">
+                                                        <input name="rpreciomax" type="text"
+                                                            placeholder="Prespuesto máximo...">
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
 
@@ -234,6 +418,71 @@
     <!-- END HEADER SEARCH -->
 
     <!-- START SECTION POPULAR PLACES -->
+
+    <section class="feature-categories bg-white rec-pro">
+        <div class="container-fluid">
+            {{-- <div class="sec-title">
+                <h2><span>Popular </span>Places</h2>
+                <p>Properties In Most Popular Places.</p>
+            </div> --}}
+            <div class="row">
+                <div id="listingDetailsSlider" class="carousel listing-details-sliders slide mb-30">
+                    <div class="carousel-inner">
+
+                        @for ($i = 0; $i < count($banner); $i++)
+                            @if ($i == 0)
+                                <div class="active item carousel-item" data-slide-number="{{ $i }}">
+                                    <img src="{{ asset('/cliente/images/banner/' . $banner[$i]->nombre_archivo) }}"
+                                        class="img-fluid" alt="slider-listing">
+                                </div>
+                            @else
+                                <div class="item carousel-item" data-slide-number="{{ $i }}">
+                                    <img src="{{ asset('/cliente/images/banner/' . $banner[$i]->nombre_archivo) }} " class="img-fluid"
+                                        alt="slider-listing">
+                                </div>
+                            @endif
+                        @endfor
+
+
+                        <a class="carousel-control left" href="#listingDetailsSlider" data-slide="prev"><i
+                                class="fa fa-angle-left"></i></a>
+                        <a class="carousel-control right" href="#listingDetailsSlider" data-slide="next"><i
+                                class="fa fa-angle-right"></i></a>
+
+
+                    </div>
+
+
+
+                    <!-- main slider carousel nav controls -->
+                    {{-- <ul class="carousel-indicators smail-listing list-inline">
+                        @for ($j = 0; $j < count($fotos); $j++)
+                            @if ($j == 0)
+                                <li class="list-inline-item active">
+                                    <a id="{{ 'carousel-selector-' . $j }}" data-slide-to="{{ $j }}"
+                                        data-target="#listingDetailsSlider">
+                                        <img src="{{ asset('/propiedades_documentos/' . $fotos[$j]->nombre_archivo) }}"
+                                            class="img-fluid" alt="listing-small">
+                                    </a>
+                                </li>
+                            @else
+                                <li class="list-inline-item">
+                                    <a id="{{ 'carousel-selector-' . $j }}" data-slide-to="{{ $j }}"
+                                        data-target="#listingDetailsSlider">
+                                        <img src="{{ asset('/propiedades_documentos/' . $fotos[$j]->nombre_archivo) }}"
+                                            class="img-fluid" alt="listing-small">
+                                    </a>
+                                </li>
+                            @endif
+                        @endfor
+
+                    </ul> --}}
+                    <!-- main slider carousel items -->
+                </div>
+            </div>
+            <!-- /row -->
+        </div>
+    </section>
     {{-- <section class="feature-categories bg-white rec-pro">
         <div class="container-fluid">
             <div class="sec-title">
@@ -424,7 +673,7 @@
                                 ->where('propiedad_id', '=', $recent_propertie->id)
                                 ->first();
 
-                            // $thumb = "resized-" . $fotosrp->nombre_archivo;
+                            $thumb = 'resized-' . $fotosrp->nombre_archivo;
 
                         @endphp
                         <div class="agents-grid" data-aos="fade-up">
@@ -436,14 +685,13 @@
                                         <div class="homes">
                                             <!-- homes img -->
 
+
+                                            <div class="homes-tag button sale rent">En
+                                                {{ $recent_propertie->EstatusPropiedad->nombre }}</div>
                                             <a href="{{ route('properties.grid-single', $recent_propertie->id) }}"
                                                 class="homes-img">
-                                                {{-- <div class="homes-tag button sale rent">En
-                                                    {{ $recent_propertie->EstatusPropiedad->nombre }}</div> --}}
-                                                {{-- <img src="{{ asset("/propiedades_documentos/thumb/". $thumb)}} " --}}
-                                                class="img-responsive">
+                                                <img src="{{ asset('/propiedades_documentos/thumb/' . $thumb) }} ">
                                             </a>
-
                                         </div>
 
                                     </div>
@@ -482,17 +730,6 @@
                                                 <a
                                                     href="{{ route('properties.grid-single', $recent_propertie->id) }}">{{ "$ " . number_format($recent_propertie->precio) }}</a>
                                             </h3>
-                                            <div class="compare">
-                                                <a href="#" title="Compare">
-                                                    <i class="flaticon-compare"></i>
-                                                </a>
-                                                <a href="#" title="Share">
-                                                    <i class="flaticon-share"></i>
-                                                </a>
-                                                <a href="#" title="Favorites">
-                                                    <i class="flaticon-heart"></i>
-                                                </a>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -636,11 +873,11 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-            $('select[name="tipo_propiedad"]').on('change', function() {
+            $('select[name="vtipo_propiedad"]').on('change', function() {
                 var tipo_propiedad = $(this).val();
             });
 
-            $('select[name="colonia"]').on('change', function() {
+            $('select[name="vcolonia"]').on('change', function() {
                 var colonia = $(this).val();
             });
 
@@ -648,6 +885,19 @@
                 var estatus_propiedad = $(this).val();
             });
 
+            let bv = document.getElementById("bv");
+            let br = document.getElementById("br");
+
+            // Adding event listener to button
+            bv.addEventListener("click", () => {
+                // Fetching Button value
+                let btnValue = bv.value;
+            });
+
+            br.addEventListener("click", () => {
+                // Fetching Button value
+                let btnValue = br.value;
+            });
 
 
             var aire = "";
@@ -732,17 +982,18 @@
 
             if (tipo_propiedad || colonia) {
                 $.ajax({
+                    btnValue: btnValue
                     url: "route('busqueda')",
                     type: "POST",
                     dataType: "json",
                     success: function(response) {
-                        var d1 = $('select[name="tipo_propiedad"]').empty();
-                        var d2 = $('select[name="colonia"]').empty();
-                        var d3 = $('select[name="estatus_propiedad"]').empty();
+                        var d1 = $('select[name="vtipo_propiedad"]').empty();
+                        var d2 = $('select[name="vcolonia"]').empty();
+                        var d3 = $('select[name="vestatus_propiedad"]').empty();
                         $.each(response, function(key, value) {
-                            console.log(value.tipo_propiedad);
-                            console.log(value.colonia);
-                            console.log(value.estatus_propiedad);
+                            console.log(value.vtipo_propiedad);
+                            console.log(value.vcolonia);
+                            console.log(value.vestatus_propiedad);
                         });
                     },
                 });

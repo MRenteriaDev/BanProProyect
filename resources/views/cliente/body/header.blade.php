@@ -45,45 +45,45 @@
 
             @endphp
             <!-- Right Side Content / End -->
-            <div class="header-user-menu user-menu add">
-                <div class="header-user-name">
-
-                    @if (!isset(Auth::user()->name))
-                        {{-- <span><img src="{{ asset('cliente/images/testimonials/ts-1.jpg') }}" alt=""></span>Hola! --}}
-                    @else
-                        <span><img src="{{ $userauth->avatar }}"
-                                alt=""></span>{{ Auth::user()->name }}
-                    @endif
-                    <span><img src="{{ $userauth->avatar ?? '[$fd]' }}" alt=""></span>
-                    {{ $user->name ?? '' }}
-                </div>
-                @if (!isset(Auth::user()->name))
-                @else
-                    <ul>
-                        <li><a href="{{ route('dashboard') }}"> Editar perfil</a></li>
-                        <li><a href="{{route('billing')}}">Convierte en Vendedor</a></li>
-                        <li><a href="{{ route('seller.logout') }}">Cerrar Sesión</a></li>
-                    </ul>
-                @endif
-            </div>
-            <!-- Right Side Content / End -->
-
-            <div class="right-side d-none d-none d-lg-none d-xl-flex sign ml-0">
-                <!-- Header Widget -->
-                <div class="header-widget sign-in">
-                    @if (!isset(Auth::user()->name))
-                        <div class="show-reg-form modal-open"><a
-                                href="{{ route('login') }}"class="text-danger">Unete!</a></div>
-                    @else
-                    @endif
+            @if (!isset(Auth::user()->name))
+                {{-- <span><img src="{{ asset('cliente/images/testimonials/ts-1.jpg') }}" alt=""></span>Hola! --}}
+            @else
+                <div class="header-user-menu user-menu add">
+                    <div class="header-user-name">
+                        <span><img src="{{ $userauth->avatar }}" alt=""></span>{{ Auth::user()->name }}
+                        <span><img src="{{ $userauth->avatar ?? '[$fd]' }}" alt=""></span>
+                        {{ $user->name ?? '' }}
+                    </div>
+            @endif
 
 
-                </div>
-                <!-- Header Widget / End -->
-            </div>
-            <!-- Right Side Content / End -->
+        @if (!isset(Auth::user()->name))
+        @else
+            <ul>
+                <li><a href="{{ route('dashboard') }}"> Editar perfil</a></li>
+                <li><a href="{{ route('billing') }}">Convierte en Vendedor</a></li>
+                <li><a href="{{ route('seller.logout') }}">Cerrar Sesión</a></li>
+            </ul>
+        @endif
+    </div>
+    <!-- Right Side Content / End -->
+
+    <div class="right-side d-none d-none d-lg-none d-xl-flex sign ml-0">
+        <!-- Header Widget -->
+        <div class="header-widget sign-in">
+            @if (!isset(Auth::user()->name))
+                <div class="show-reg-form modal-open"><a
+                        href="{{ route('login') }}"class="text-danger"><b>Unete!</b></a></div>
+            @else
+            @endif
+
 
         </div>
+        <!-- Header Widget / End -->
+    </div>
+    <!-- Right Side Content / End -->
+
+    </div>
     </div>
     <!-- Header / End -->
 

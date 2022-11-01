@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddCelularToSellers extends Migration
+class CreateBannersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class AddCelularToSellers extends Migration
      */
     public function up()
     {
-        Schema::table('sellers', function (Blueprint $table) {
-            $table->bigIntegers('celular')->nullable();
+        Schema::create('banners', function (Blueprint $table) {
+            $table->bigIncrements("id");
+            $table->string("nombre_archivo");
+            $table->timestamps();
         });
     }
 
@@ -25,8 +27,6 @@ class AddCelularToSellers extends Migration
      */
     public function down()
     {
-        Schema::table('sellers', function (Blueprint $table) {
-            $table->bigInteger('celular')->nullable();
-        });
+        Schema::dropIfExists('banners');
     }
 }
