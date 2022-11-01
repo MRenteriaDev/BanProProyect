@@ -1459,7 +1459,7 @@ section.recently.portfolio {
 }
 
 .hp1 .parallax-searchs.home15.thome-6 .hero-inner {
-  padding: 293px 0;
+  padding: 160px 0;
 }
 
 .homepage-1 .full-l .project-single {
@@ -10518,7 +10518,7 @@ a.button {
 
 .parallax-searchs.home15.thome-6 .hero-inner {
   text-align: center;
-  padding: 290px 0;
+  padding: 195px 0;
 }
 
 .th-15 .rec-pro .container-fluid {
@@ -16702,11 +16702,13 @@ div.datedropper.my-style.picker-lkd .pick-submit {
 .ag-de .portfolio.py-0.age,
 .det .similar-property {
   padding: 1.5rem !important;
-  background: #fff;
+  background: #eaeff5;
   border: 1px solid #eaeff5;
   -webkit-box-shadow: 0 0 10px 1px rgba(71, 85, 95, 0.08);
           box-shadow: 0 0 10px 1px rgba(71, 85, 95, 0.08);
 }
+
+
 
 .wprt-image-video.w50.pro {
   margin-bottom: 30px !important;
