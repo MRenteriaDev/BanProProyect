@@ -680,12 +680,7 @@
                             <div class="people">
 
                                 <div class="project-single">
-<<<<<<< HEAD
-                                    <div class="project-inner project-head">
-
-=======
                                     <div class="project-inner">
->>>>>>> c3407bb2cb5346931bc983cb3bce971006c7c706
 
                                         <div class="homes">
                                             <!-- homes img -->
