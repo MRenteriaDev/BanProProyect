@@ -684,7 +684,8 @@
 
                                         <div class="homes">
                                             <!-- homes img -->
-                                            <a href="{{ route('properties.grid-single', $recent_propertie->id) }}" class="homes-img">
+                                            <a href="{{ route('properties.grid-single', $recent_propertie->id) }}"
+                                                class="homes-img">
                                                 <img src="{{ asset('/propiedades_documentos/thumb/' . $thumb) }} ">
                                             </a>
                                             <div class="homes-tag button sale rent">En
@@ -740,28 +741,32 @@
     </section>
 
     <!-- START SECTION TESTIMONIALS -->
-    <section class="testimonials bg-white-2 rec-pro">
-        <div class="container-fluid">
-            <div class="sec-title">
-                <h2><span>Vendedores</h2>
-            </div>
-
-            <div class="owl-carousel job_clientSlide">
-                @foreach ($sellers as $seller)
-                    <div class="singleJobClinet" data-aos="zoom-in" data-aos-delay="150">
-                        <h3>
-                            {{ $seller->name }}
-                        </h3>
-                        <div class="detailJC">
-                            <span> <img src="{{  asset( '/fotos_documentos/' . $seller->foto)}}"  /></span>
-                            <h5>{{ $seller->email }}</h5>
-                            <p>{{ $seller->celular }}</p>
-                        </div>
+    @if (Route::has('login'))
+        @auth
+            <section class="testimonials bg-white-2 rec-pro">
+                <div class="container-fluid">
+                    <div class="sec-title">
+                        <h2><span>Vendedores</h2>
                     </div>
-                @endforeach
-            </div>
-        </div>
-    </section>
+
+                    <div class="owl-carousel job_clientSlide">
+                        @foreach ($sellers as $seller)
+                            <div class="singleJobClinet" data-aos="zoom-in" data-aos-delay="150">
+                                <h3>
+                                    {{ $seller->name }}
+                                </h3>
+                                <div class="detailJC">
+                                    <span> <img src="{{ asset('/fotos_documentos/' . $seller->foto) }}" /></span>
+                                    <h5>{{ $seller->email }}</h5>
+                                    <p>{{ $seller->celular }}</p>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </section>
+        @endauth
+    @endif
     <!-- END SECTION TESTIMONIALS -->
 
 
