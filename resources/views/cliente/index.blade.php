@@ -13,6 +13,9 @@
     $recent_properties = Propiedades::latest()
         ->take(10)
         ->get();
+    $sellers = DB::table('sellers')
+        ->take(3)
+        ->get();
     $colonias = Locacion::get();
     $array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     $tipop = TipoPropiedad::get();
@@ -58,7 +61,7 @@
                             <!-- end prueba --> --}}
 
                             <!-- Search Form -->
-                            <form action="{{route("busqueda")}}" method="POST">
+                            <form action="{{ route('busqueda') }}" method="POST">
                                 @method('POST')
                                 @csrf
                                 <div class="banner-search-wrap">
@@ -76,7 +79,8 @@
                                                         <select name="tipo_propiedad" id="tipo_propiedad"
                                                             class="select single-select mr-0"
                                                             style="width: 100%;height: 100%;">
-                                                            <option selected="selected" value="">Tipo De Propiedad</option>
+                                                            <option selected="selected" value="">Tipo De Propiedad
+                                                            </option>
                                                             @foreach ($tipop as $tipo)
                                                                 <option value={{ $tipo->id }}>
                                                                     {{ $tipo->nombre }}
@@ -88,7 +92,8 @@
                                                     <div class="rld-single-select">
                                                         <select name="colonia" class="select single-select mr-0"
                                                             style="width: 100%;height: 100%;">
-                                                            <option selected="selected" value=''>Selecciona la colonia</option>
+                                                            <option selected="selected" value=''>Selecciona la colonia
+                                                            </option>
                                                             @foreach ($colonias as $colonia)
                                                                 <option name="colonia" value={{ $colonia->id }}>
                                                                     {{ $colonia->nombre }}
@@ -98,10 +103,11 @@
                                                     </div>
 
                                                     <div class="rld-single-input">
-                                                        <input name="precio" type="text" placeholder="Prespuesto máximo...">
+                                                        <input name="precio" type="text"
+                                                            placeholder="Prespuesto máximo...">
                                                     </div>
 
-                                                     {{-- <div class="dropdown-filter"><span>Busqueda Avanzada</span></div> --}}
+                                                    {{-- <div class="dropdown-filter"><span>Busqueda Avanzada</span></div> --}}
                                                     <div class="col-xl-2 col-lg-2 col-md-4">
                                                         <button class="btn" type='submit'
                                                             href="{{ route('busqueda') }}">Buscar</button>
@@ -130,8 +136,8 @@
                                                             </div> --}}
 
 
-                                                                <!-- Form Bedrooms -->
-                                                                {{--
+                                                    <!-- Form Bedrooms -->
+                                                    {{--
                                                                 <div class="form-group beds">
                                                                     <div class="nice-select form-control wide"
                                                                         tabindex="0"><span class="current"><i
@@ -146,12 +152,12 @@
                                                                         </ul>
                                                                     </div>
                                                                 </div> --}}
-                                                                <!--/ End Form Bedrooms -->
+                                                    <!--/ End Form Bedrooms -->
 
 
 
-                                                                <!-- Form Bathrooms -->
-                                                                {{-- <div class="form-group bath">
+                                                    <!-- Form Bathrooms -->
+                                                    {{-- <div class="form-group bath">
                                                                     <div class="nice-select form-control wide"
                                                                         tabindex="0"><span class="current"><i
                                                                                 class="fa fa-bath" aria-hidden="true"></i>
@@ -164,15 +170,15 @@
                                                                         </ul>
                                                                     </div>
                                                                 </div> --}}
-                                                                <!--/ End Form Bathrooms -->
+                                                    <!--/ End Form Bathrooms -->
 
-                                                            {{-- <div class="col-lg-5 col-md-12 col-sm-12 py-1 pr-30 mr-5 sld">
+                                                    {{-- <div class="col-lg-5 col-md-12 col-sm-12 py-1 pr-30 mr-5 sld">
                                                                 <!-- Price Fields -->
 
 
 
                                                             </div> --}}
-                                                            {{-- <div class="col-lg-3 col-md-6 col-sm-12 py-1 pr-30">
+                                                    {{-- <div class="col-lg-3 col-md-6 col-sm-12 py-1 pr-30">
                                                                 <!-- Checkboxes -->
                                                                 <div class="checkboxes one-in-row margin-bottom-10 ch-1">
                                                                     <input id="check-1" type="checkbox" name="aire">
@@ -208,7 +214,7 @@
                                                                 <input name="precio" type="text" placeholder="Precio en pesos...">
                                                             </div> --}}
 
-                                                        {{-- </div>
+                                                    {{-- </div>
                                                     </div>  --}}
 
                                                 </div>
@@ -351,44 +357,48 @@
                 <article class="col-lg-3 col-md-6 col-xs-12 serv" data-aos="fade-up" data-aos-delay="150">
                     <div class="serv-flex">
                         <div class="art-1 img-13">
-                            <img src="{{asset('cliente/images/mejora.jpg')}}" alt="">
+                            <img src="{{ asset('cliente/images/mejora.jpg') }}" alt="">
                             <h3>Mejora continua...</h3>
                         </div>
                         <div class="service-text-p">
-                            <p class="text-center">Porque jamás dejamos de mejorar nuestros servicios, incluyendo metodologías de desarrollo y técnicas de gestión</p>
+                            <p class="text-center">Porque jamás dejamos de mejorar nuestros servicios, incluyendo
+                                metodologías de desarrollo y técnicas de gestión</p>
                         </div>
                     </div>
                 </article>
                 <article class="col-lg-3 col-md-6 col-xs-12 serv" data-aos="fade-up" data-aos-delay="250">
                     <div class="serv-flex">
                         <div class="art-1 img-14">
-                            <img src="{{asset('cliente/images/prof.png')}}" alt="">
+                            <img src="{{ asset('cliente/images/prof.png') }}" alt="">
                             <h3>Profesionalismo</h3>
                         </div>
                         <div class="service-text-p">
-                            <p class="text-center">Porque somos profesionales y trabajamos para asegurar el éxito de nuestros clientes en cada aspecto posible.</p>
+                            <p class="text-center">Porque somos profesionales y trabajamos para asegurar el éxito de
+                                nuestros clientes en cada aspecto posible.</p>
                         </div>
                     </div>
                 </article>
                 <article class="col-lg-3 col-md-6 col-xs-12 serv mb-0 pt" data-aos="fade-up" data-aos-delay="350">
                     <div class="serv-flex arrow">
                         <div class="art-1 img-15">
-                            <img src="{{asset('cliente/images/1.png')}}" alt="">
+                            <img src="{{ asset('cliente/images/1.png') }}" alt="">
                             <h3>Variedad de casas</h3>
                         </div>
                         <div class="service-text-p">
-                            <p class="text-center">En <b> Banpro</b> encontraras la casa ideal rentar o comprar, no busque más, estas en el lugar indicado.</p>
+                            <p class="text-center">En <b> Banpro</b> encontraras la casa ideal rentar o comprar, no busque
+                                más, estas en el lugar indicado.</p>
                         </div>
                     </div>
                 </article>
                 <article class="col-lg-3 col-md-6 col-xs-12 serv mb-0 pt its-2" data-aos="fade-up" data-aos-delay="450">
                     <div class="serv-flex">
                         <div class="art-1 img-14">
-                            <img src="{{asset('cliente/images/ubicacion.png')}}" alt="">
+                            <img src="{{ asset('cliente/images/ubicacion.png') }}" alt="">
                             <h3>Estamos cerca de ti</h3>
                         </div>
                         <div class="service-text-p">
-                            <p class="text-center">La tendencia actual está dando un importante giro ante las indiscutibles ventajas que ofrece estar situado dentro de las ciudades.</p>
+                            <p class="text-center">La tendencia actual está dando un importante giro ante las indiscutibles
+                                ventajas que ofrece estar situado dentro de las ciudades.</p>
                         </div>
                     </div>
                 </article>
@@ -416,13 +426,13 @@
 
                             // $thumb = "resized-" . $fotosrp->nombre_archivo;
 
-
-
                         @endphp
                         <div class="agents-grid" data-aos="fade-up">
                             <div class="people">
                                 <div class="project-single">
                                     <div class="project-inner project-head">
+
+
                                         <div class="homes">
                                             <!-- homes img -->
 
@@ -430,8 +440,8 @@
                                                 class="homes-img">
                                                 {{-- <div class="homes-tag button sale rent">En
                                                     {{ $recent_propertie->EstatusPropiedad->nombre }}</div> --}}
-                                                 {{-- <img src="{{ asset("/propiedades_documentos/thumb/". $thumb)}} " --}}
-                                                    class="img-responsive">
+                                                {{-- <img src="{{ asset("/propiedades_documentos/thumb/". $thumb)}} " --}}
+                                                class="img-responsive">
                                             </a>
 
                                         </div>
@@ -498,103 +508,28 @@
     <section class="testimonials bg-white-2 rec-pro">
         <div class="container-fluid">
             <div class="sec-title">
-                <h2><span>Testimonios </span>Del Cliente</h2>
-                <p>Tenemos encuenta tu opinión</p>
+                <h2><span>Vendedores</h2>
             </div>
+
             <div class="owl-carousel job_clientSlide">
-                <div class="singleJobClinet" data-aos="zoom-in" data-aos-delay="150">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                        et dolore gna a. Ut enim ad minim veniam,
-                    </p>
-                    <div class="detailJC">
-                        <span><img src="images/testimonials/ts-1.jpg" alt="" /></span>
-                        <h5>Lisa Smith</h5>
-                        <p>New York</p>
+                @foreach ($sellers as $seller)
+                    <div class="singleJobClinet" data-aos="zoom-in" data-aos-delay="150">
+                        <h3>
+                            {{ $seller->name }}
+                        </h3>
+                        <div class="detailJC">
+                            <span> <img src="{{  asset( '/fotos_documentos/' . $seller->foto)}}"  /></span>
+                            <h5>{{ $seller->email }}</h5>
+                            <p>{{ $seller->celular }}</p>
+                        </div>
                     </div>
-                </div>
-                <div class="singleJobClinet" data-aos="zoom-in" data-aos-delay="250">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                        et dolore gna a. Ut enim ad minim veniam,
-                    </p>
-                    <div class="detailJC">
-                        <span><img src="images/testimonials/ts-2.jpg" alt="" /></span>
-                        <h5>Jhon Morris</h5>
-                        <p>Los Angeles</p>
-                    </div>
-                </div>
-                <div class="singleJobClinet" data-aos="zoom-in" data-aos-delay="350">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                        et dolore gna a. Ut enim ad minim veniam,
-                    </p>
-                    <div class="detailJC">
-                        <span><img src="images/testimonials/ts-3.jpg" alt="" /></span>
-                        <h5>Mary Deshaw</h5>
-                        <p>Chicago</p>
-                    </div>
-                </div>
-                <div class="singleJobClinet">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                        et dolore gna a. Ut enim ad minim veniam,
-                    </p>
-                    <div class="detailJC">
-                        <span><img src="images/testimonials/ts-4.jpg" alt="" /></span>
-                        <h5>Gary Steven</h5>
-                        <p>Philadelphia</p>
-                    </div>
-                </div>
-                <div class="singleJobClinet">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                        et dolore gna a. Ut enim ad minim veniam,
-                    </p>
-                    <div class="detailJC">
-                        <span><img src="images/testimonials/ts-5.jpg" alt="" /></span>
-                        <h5>Cristy Mayer</h5>
-                        <p>San Francisco</p>
-                    </div>
-                </div>
-                <div class="singleJobClinet">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                        et dolore gna a. Ut enim ad minim veniam,
-                    </p>
-                    <div class="detailJC">
-                        <span><img src="images/testimonials/ts-6.jpg" alt="" /></span>
-                        <h5>Ichiro Tasaka</h5>
-                        <p>Houston</p>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
     <!-- END SECTION TESTIMONIALS -->
 
-    <!-- STAR SECTION PARTNERS -->
-    {{-- <div class="partners bg-white rec-pro">
-        <div class="container-fluid">
-            <div class="sec-title">
-                <h2><span>Nuestros </span>Aliados</h2>
-                <p></p>
-            </div>
-            <div class="owl-carousel style2">
-                <div class="owl-item" data-aos="fade-up"><img src="images/partners/11.jpg" alt=""></div>
-                <div class="owl-item" data-aos="fade-up"><img src="images/partners/12.jpg" alt=""></div>
-                <div class="owl-item" data-aos="fade-up"><img src="images/partners/13.jpg" alt=""></div>
-                <div class="owl-item" data-aos="fade-up"><img src="images/partners/14.jpg" alt=""></div>
-                <div class="owl-item" data-aos="fade-up"><img src="images/partners/15.jpg" alt=""></div>
-                <div class="owl-item" data-aos="fade-up"><img src="images/partners/16.jpg" alt=""></div>
-                <div class="owl-item" data-aos="fade-up"><img src="images/partners/17.jpg" alt=""></div>
-                <div class="owl-item" data-aos="fade-up"><img src="images/partners/11.jpg" alt=""></div>
-                <div class="owl-item" data-aos="fade-up"><img src="images/partners/12.jpg" alt=""></div>
-                <div class="owl-item" data-aos="fade-up"><img src="images/partners/13.jpg" alt=""></div>
-            </div>
-        </div>
-    </div> --}}
-    <!-- END SECTION PARTNERS -->
+
 
     @include('cliente.body.footer')
 
