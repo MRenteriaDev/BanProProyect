@@ -2327,7 +2327,9 @@ screen and (max-height:300px) {
 /*----------------------------------------------*/
 section.feature-categories {
     padding-left: 22px;
-    padding-top: 60px;
+    background: #FF385C;
+    margin-right: auto;
+    margin-left: auto;
 }
 .homepage-9 .small-category-2 {
     background: #fff;

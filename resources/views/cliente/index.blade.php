@@ -419,7 +419,7 @@
 
     <!-- START SECTION POPULAR PLACES -->
 
-    <section class="feature-categories bg-white rec-pro">
+    <section class="feature-categories rec-pro">
         <div class="container-fluid">
             {{-- <div class="sec-title">
                 <h2><span>Popular </span>Places</h2>
@@ -437,8 +437,8 @@
                                 </div>
                             @else
                                 <div class="item carousel-item" data-slide-number="{{ $i }}">
-                                    <img src="{{ asset('/cliente/images/banner/' . $banner[$i]->nombre_archivo) }} " class="img-fluid"
-                                        alt="slider-listing">
+                                    <img src="{{ asset('/cliente/images/banner/' . $banner[$i]->nombre_archivo) }} "
+                                        class="img-fluid" alt="slider-listing">
                                 </div>
                             @endif
                         @endfor
@@ -678,20 +678,23 @@
                         @endphp
                         <div class="agents-grid" data-aos="fade-up">
                             <div class="people">
+
                                 <div class="project-single">
+<<<<<<< HEAD
                                     <div class="project-inner project-head">
 
+=======
+                                    <div class="project-inner">
+>>>>>>> c3407bb2cb5346931bc983cb3bce971006c7c706
 
                                         <div class="homes">
                                             <!-- homes img -->
-
-
-                                            <div class="homes-tag button sale rent">En
-                                                {{ $recent_propertie->EstatusPropiedad->nombre }}</div>
-                                            <a href="{{ route('properties.grid-single', $recent_propertie->id) }}"
-                                                class="homes-img">
+                                            <a href="{{ route('properties.grid-single', $recent_propertie->id) }}" class="homes-img">
                                                 <img src="{{ asset('/propiedades_documentos/thumb/' . $thumb) }} ">
                                             </a>
+                                            <div class="homes-tag button sale rent">En
+                                                {{ $recent_propertie->EstatusPropiedad->nombre }}</div>
+
                                         </div>
 
                                     </div>
