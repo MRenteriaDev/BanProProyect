@@ -138,7 +138,7 @@
                     <li class="nav-item has-treeview">
                         <a href="{{ route('banner.index') }}"
                             class="nav-link {{ $route == 'bannerr.index' ? 'active' : '' }}">
-                            <i class="fa-solid fa-image-landscape"></i>
+                            <i class="fa-solid fa-image"></i>
                             <p>
                                 Banner
                             </p>

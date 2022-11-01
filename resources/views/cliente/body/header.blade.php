@@ -81,10 +81,5 @@
         </div>
         <!-- Header Widget / End -->
     </div>
-    <!-- Right Side Content / End -->
-
-    </div>
-    </div>
-    <!-- Header / End -->
 
 </header>

@@ -52,11 +52,11 @@
         <!-- START SECTION CONTACT US -->
         <section class="contact-us">
             <div class="container">
-                <div class="property-location mb-5">
+
                     <h3>Nuestra locacion</h3>
                     <div class="divider-fade"></div>
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13943.081115978002!2d-110.97073396842316!3d29.112462630154635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86ce877bf69c20e1%3A0x31327e7e36dfa21b!2sclinica%20shaddai!5e0!3m2!1sen!2smx!4v1664506806647!5m2!1sen!2smx" width="1200" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
+
                     <div class="row">
                         <div class="col-lg-8 col-md-12">
                             <h3 class="mb-4">Contactanos</h3>
@@ -77,6 +77,7 @@
                                 <button type="submit" id="submit-contact" class="btn btn-primary btn-lg">Aceptar</button>
                             </form>
                         </div>
+
 
 
                     <div class="col-lg-4 col-md-12 bgc">
@@ -119,6 +120,7 @@
 
         <!-- START FOOTER -->
         <footer class="first-footer">
+
             <div class="second-footer">
                 <div class="container">
                     <p>2021 © Copyright - All Rights Reserved.</p>
