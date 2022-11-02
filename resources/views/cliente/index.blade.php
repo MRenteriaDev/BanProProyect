@@ -13,6 +13,9 @@
     $recent_properties = Propiedades::latest()
         ->take(10)
         ->get();
+    $sellers = DB::table('sellers')
+        ->take(3)
+        ->get();
     $colonias = Locacion::get();
     $array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     $tipop = TipoPropiedad::get();
@@ -685,7 +688,8 @@
 
                                         <div class="homes">
                                             <!-- homes img -->
-                                            <a href="{{ route('properties.grid-single', $recent_propertie->id) }}" class="homes-img">
+                                            <a href="{{ route('properties.grid-single', $recent_propertie->id) }}"
+                                                class="homes-img">
                                                 <img src="{{ asset('/propiedades_documentos/thumb/' . $thumb) }} ">
                                             </a>
                                             <div class="homes-tag button sale rent">En
@@ -741,106 +745,35 @@
     </section>
 
     <!-- START SECTION TESTIMONIALS -->
-    <section class="testimonials bg-white-2 rec-pro">
-        <div class="container-fluid">
-            <div class="sec-title">
-                <h2><span>Testimonios </span>Del Cliente</h2>
-                <p>Tenemos encuenta tu opinión</p>
-            </div>
-            <div class="owl-carousel job_clientSlide">
-                <div class="singleJobClinet" data-aos="zoom-in" data-aos-delay="150">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                        et dolore gna a. Ut enim ad minim veniam,
-                    </p>
-                    <div class="detailJC">
-                        <span><img src="images/testimonials/ts-1.jpg" alt="" /></span>
-                        <h5>Lisa Smith</h5>
-                        <p>New York</p>
+    @if (Route::has('login'))
+        @auth
+            <section class="testimonials bg-white-2 rec-pro">
+                <div class="container-fluid">
+                    <div class="sec-title">
+                        <h2><span>Vendedores</h2>
+                    </div>
+
+                    <div class="owl-carousel job_clientSlide">
+                        @foreach ($sellers as $seller)
+                            <div class="singleJobClinet" data-aos="zoom-in" data-aos-delay="150">
+                                <h3>
+                                    {{ $seller->name }}
+                                </h3>
+                                <div class="detailJC">
+                                    <span> <img src="{{ asset('/fotos_documentos/' . $seller->foto) }}" /></span>
+                                    <h5>{{ $seller->email }}</h5>
+                                    <p>{{ $seller->celular }}</p>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
-                <div class="singleJobClinet" data-aos="zoom-in" data-aos-delay="250">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                        et dolore gna a. Ut enim ad minim veniam,
-                    </p>
-                    <div class="detailJC">
-                        <span><img src="images/testimonials/ts-2.jpg" alt="" /></span>
-                        <h5>Jhon Morris</h5>
-                        <p>Los Angeles</p>
-                    </div>
-                </div>
-                <div class="singleJobClinet" data-aos="zoom-in" data-aos-delay="350">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                        et dolore gna a. Ut enim ad minim veniam,
-                    </p>
-                    <div class="detailJC">
-                        <span><img src="images/testimonials/ts-3.jpg" alt="" /></span>
-                        <h5>Mary Deshaw</h5>
-                        <p>Chicago</p>
-                    </div>
-                </div>
-                <div class="singleJobClinet">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                        et dolore gna a. Ut enim ad minim veniam,
-                    </p>
-                    <div class="detailJC">
-                        <span><img src="images/testimonials/ts-4.jpg" alt="" /></span>
-                        <h5>Gary Steven</h5>
-                        <p>Philadelphia</p>
-                    </div>
-                </div>
-                <div class="singleJobClinet">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                        et dolore gna a. Ut enim ad minim veniam,
-                    </p>
-                    <div class="detailJC">
-                        <span><img src="images/testimonials/ts-5.jpg" alt="" /></span>
-                        <h5>Cristy Mayer</h5>
-                        <p>San Francisco</p>
-                    </div>
-                </div>
-                <div class="singleJobClinet">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                        et dolore gna a. Ut enim ad minim veniam,
-                    </p>
-                    <div class="detailJC">
-                        <span><img src="images/testimonials/ts-6.jpg" alt="" /></span>
-                        <h5>Ichiro Tasaka</h5>
-                        <p>Houston</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+            </section>
+        @endauth
+    @endif
     <!-- END SECTION TESTIMONIALS -->
 
-    <!-- STAR SECTION PARTNERS -->
-    {{-- <div class="partners bg-white rec-pro">
-        <div class="container-fluid">
-            <div class="sec-title">
-                <h2><span>Nuestros </span>Aliados</h2>
-                <p></p>
-            </div>
-            <div class="owl-carousel style2">
-                <div class="owl-item" data-aos="fade-up"><img src="images/partners/11.jpg" alt=""></div>
-                <div class="owl-item" data-aos="fade-up"><img src="images/partners/12.jpg" alt=""></div>
-                <div class="owl-item" data-aos="fade-up"><img src="images/partners/13.jpg" alt=""></div>
-                <div class="owl-item" data-aos="fade-up"><img src="images/partners/14.jpg" alt=""></div>
-                <div class="owl-item" data-aos="fade-up"><img src="images/partners/15.jpg" alt=""></div>
-                <div class="owl-item" data-aos="fade-up"><img src="images/partners/16.jpg" alt=""></div>
-                <div class="owl-item" data-aos="fade-up"><img src="images/partners/17.jpg" alt=""></div>
-                <div class="owl-item" data-aos="fade-up"><img src="images/partners/11.jpg" alt=""></div>
-                <div class="owl-item" data-aos="fade-up"><img src="images/partners/12.jpg" alt=""></div>
-                <div class="owl-item" data-aos="fade-up"><img src="images/partners/13.jpg" alt=""></div>
-            </div>
-        </div>
-    </div> --}}
-    <!-- END SECTION PARTNERS -->
+
 
     @include('cliente.body.footer')
 

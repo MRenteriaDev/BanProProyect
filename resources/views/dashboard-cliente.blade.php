@@ -51,8 +51,7 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-12 col-xs-12 pl-0 pr-0 user-dash">
                         <div class="user-profile-box mb-0">
-                            <div class="sidebar-header"><img src="{{ asset('cliente/images/logo-white-1.png') }}"
-                                    alt="header-logo2.png">
+                            <div class="img-fluid"><img src="{{ asset('cliente/images/logo-white-1.png') }}">
                             </div>
                             {{-- <div class="header clearfix">
                                 <img src="{{ asset('cliente/images/testimonials/ts-1.jpg') }}" alt="avatar"
