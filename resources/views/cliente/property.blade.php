@@ -343,50 +343,24 @@
                                         <div class="widget-boxed-body">
                                             <div class="sidebar-widget author-widget2">
                                                 <div class="author-box clearfix">
-                                                    <img src="{{ asset('cliente/images/testimonials/ts-1.jpg') }}"
-                                                        alt="author-image" class="author__img">
+                                                    <img src="{{ asset('/fotos_documentos/' . $property[0]->seller->foto) }}" />
+
                                                     <h4 class="author__title">{{ $property[0]->seller->name }}</h4>
                                                     <p class="author__meta">Bienes raíces</p>
                                                 </div>
                                                 <ul class="author__contact">
-                                                    <li><span class="la la-map-marker"><i
-                                                                class="fa fa-map-marker"></i></span>{{ '<Dirección Banpro>' }}
-                                                    </li>
                                                     <li><span class="la la-phone"><i class="fa fa-phone"
                                                                 aria-hidden="true"></i></span><a
-                                                            href="#">{{ '<Número Banpro>' }}</a></li>
+                                                            href="#">{{ $property[0]->seller->celular }}</a></li>
                                                     <li><span class="la la-envelope-o"><i class="fa fa-envelope"
                                                                 aria-hidden="true"></i></span><a
-                                                            href="#">{{ '<Correo Banpro>' }}</a></li>
+                                                            href="#">{{$property[0]->seller->email }}</a></li>
                                                 </ul>
 
                                             </div>
                                         </div>
 
-                                                <div class="section-title">
-                                                    <h3>Conoce nuestros</h3>
-                                                    <h2>Vendedores</h2>
-                                                </div>
-                                                <div id="carouselSeller" class="carousel slide" data-ride="carousel">
-                                                    <div class="carousel-inner">
-                                                      <div class="carousel-item active">
-                                                          <img src="#" class="d-block w-10" alt="...">
-                                                          <div>
-                                                            @foreach ($sellers as $seller)
-                                                            <div>
-                                                                {{$seller->name}}
-                                                            </div>
 
-
-                                                            <div>
-
-                                                            </div>
-                                                            @endforeach
-                                                          </div>
-                                                      </div>
-
-                                                    </div>
-                                                  </div>
 
 
 
