@@ -26,7 +26,11 @@
 
 @extends('cliente.cliente_master')
 @section('cliente')
+
+
     <!-- STAR HEADER SEARCH -->
+
+
 
 
     <section id="hero-area" class="parallax-searchs home15 overlay thome-6 thome-1" data-stellar-background-ratio="1">

@@ -45,6 +45,8 @@ class StripePaymentController extends Controller
             'seller_active' => false,
         ]);
 
+
+
         $notification = array(
             'message' => "Alta de datos necesaroios, correcta",
             'alert-type' => "success"
