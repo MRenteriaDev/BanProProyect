@@ -5078,7 +5078,7 @@ section.counterup {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin-left: auto;
+  margin-left: 300px;
 }
 
 .second-footer p .fa-heart:before {
