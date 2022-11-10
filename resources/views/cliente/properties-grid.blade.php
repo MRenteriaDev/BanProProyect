@@ -7,7 +7,7 @@
         <div id="wrapper">
             <!-- START SECTION HEADINGS -->
             <!-- Header Container
-            ================================================== -->
+                ================================================== -->
             @include('cliente.body.header')
             <div class="clearfix"></div>
             <br>
@@ -32,8 +32,11 @@
                             </div>
                         </div>
                     </section>
+
+
+
                     <div class="row">
-                        <div class="col-lg-8 col-md-12 blog-pots">
+                        <div class="col-lg-12 col-md-12 blog-pots">
                             <section class="headings-2 pt-0">
                                 <div class="pro-wrapper">
                                     <div class="detail-wrapper-body">
@@ -60,8 +63,53 @@
                                     </div>
                                 </div> --}}
                                 </div>
+
+                                <br>
+                                <!-- INICIO DE LISTA -->
+
+
+                                <div class="dashborad-box">
+                                    <h4 class="title">Listado de casas</h4>
+                                    <div class="section-body listing-table">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Nombre</th>
+                                                        <th>Colonia</th>
+                                                        <th>Precio</th>
+                                                        <th class="text-center">Ver más...</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($propiedades_filtradas as $lp)
+                                                        <tr>
+                                                            <td>{{ $lp->nombre }}</td>
+                                                            <td>{{ $lp->Locacion->nombre }}</td>
+                                                            <td>{{ "$ " . number_format($lp->precio, 2) }}</td>
+                                                            <td class="text-center"><a
+                                                                    href="{{ route('properties.grid-single', $lp->id) }}">
+                                                                    <i class="fa fa-eye"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
+                                <!-- FIN DE LISTA -->
+
+
                             </section>
                             <div class="row portfolio-items">
+
                                 @foreach ($propiedades_filtradas as $prop)
                                     @php
                                         $fotosp = DB::table('galeria_propiedades')
@@ -70,21 +118,26 @@
                                     @endphp
 
                                     <div class="item col-lg-6 col-md-6 col-xs-12 landscapes sale">
-                                        <a href="{{ route('properties.grid-single', $prop->id) }}" class="recent-16" data-aos="fade-up">
+                                        <a href="{{ route('properties.grid-single', $prop->id) }}" class="recent-16"
+                                            data-aos="fade-up">
                                             <div class="recent-img16 img-center"
                                                 style="background-image: url('{{ asset('/propiedades_documentos/' . $fotosp->nombre_archivo) }}')">
                                             </div>
                                             <div class="recent-content"></div>
                                             <div class="recent-details">
-                                                <div class="recent-title"> {{$prop->nombre}}</div>
-                                                <div class="recent-price"><label>$ </label>{{number_format($prop->precio,2)}}</div>
-                                                <div class="house-details">{{$prop->recamaras}} recamaras <span>|</span> {{$prop->bano}} baños <span>|</span> {{$prop->tamano_propiedad_construido}}
+                                                <div class="recent-title"> {{ $prop->nombre }}</div>
+                                                <div class="recent-price"><label>$
+                                                    </label>{{ number_format($prop->precio, 2) }}</div>
+                                                <div class="house-details">{{ $prop->recamaras }} recamaras <span>|</span>
+                                                    {{ $prop->bano }} baños <span>|</span>
+                                                    {{ $prop->tamano_propiedad_construido }}
                                                     m2</div>
                                             </div>
                                             <div class="view-proper">Ver Detalles</div>
                                         </a>
                                     </div>
                                 @endforeach
+
 
                             </div>
                         </div>
@@ -263,7 +316,7 @@
                             </div>
                         </aside>
                     </div> --}}
-                    {{-- <nav aria-label="..." class="pt-55">
+                        {{-- <nav aria-label="..." class="pt-55">
                         <ul class="pagination disabled">
                             <li class="page-item">
                                 <a class="page-link" href="#" tabindex="-1">Previous</a>
@@ -280,7 +333,7 @@
                             </li>
                         </ul>
                     </nav> --}}
-                </div>
+                    </div>
             </section>
             <!-- END SECTION PROPERTIES LISTING -->
 
@@ -312,8 +365,7 @@
                                             <label>Username or Email Address * </label>
                                             <input name="email" type="text" onClick="this.select()" value="">
                                             <label>Password * </label>
-                                            <input name="password" type="password" onClick="this.select()"
-                                                value="">
+                                            <input name="password" type="password" onClick="this.select()" value="">
                                             <button type="submit" class="log-submit-btn"><span>Log In</span></button>
                                             <div class="clearfix"></div>
                                             <div class="filter-tags">
@@ -332,11 +384,9 @@
                                             <form method="post" name="registerform" class="main-register-form"
                                                 id="main-register-form2">
                                                 <label>First Name * </label>
-                                                <input name="name" type="text" onClick="this.select()"
-                                                    value="">
+                                                <input name="name" type="text" onClick="this.select()" value="">
                                                 <label>Second Name *</label>
-                                                <input name="name2" type="text" onClick="this.select()"
-                                                    value="">
+                                                <input name="name2" type="text" onClick="this.select()" value="">
                                                 <label>Email Address *</label>
                                                 <input name="email" type="text" onClick="this.select()"
                                                     value="">

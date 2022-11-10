@@ -762,7 +762,7 @@
                                 <div class="detailJC">
                                     <span> <img src="{{ asset('/fotos_documentos/' . $seller->foto) }}" /></span>
                                     <h5>{{ $seller->email }}</h5>
-                                    <p>{{ $seller->celular }}</p>
+                                    <p>{{ $seller->celular ?? '' }}</p>
                                 </div>
                             </div>
                         @endforeach

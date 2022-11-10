@@ -7724,7 +7724,7 @@ html input[disabled] {
   font-size: 16px;
   text-align: center;
   text-decoration: none;
-  margin-top: 30px;
+  margin-top: 15px;
 }
 
 .hd-white .header-widget.sign-in a,
@@ -7757,11 +7757,11 @@ html input[disabled] {
 }
 .right-side.sign {
   float: right;
-  width: 90px;
-  padding: 0 10px 0 20px;
+  width: auto;
+  padding: 0 10px 0 10px;
   border-left: 1px solid #fff;
   border-right: 1px solid #fff;
-  margin-top: 20px;
+  margin-top: 0px;
   margin-left: 0px !important;
   margin-right: 55px;
   display: inline-block;
@@ -16073,7 +16073,7 @@ section.headings-2 {
 }
 
 .inner-pages .headings-2 .listing-title-bar h4 {
-  font-size: 24px;
+  font-size: 17px;
   font-weight: 600;
   color: #FF385C;
   text-transform: capitalize !important;

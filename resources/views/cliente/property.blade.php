@@ -48,7 +48,9 @@
                                             <div class="single detail-wrapper mr-2">
                                                 <div class="detail-wrapper-body">
                                                     <div class="listing-title-bar">
-                                                        <h4>$ {{ number_format($property[0]->precio, 2) }}</h4>
+                                                        <b>   Precio:</b>
+                                                        <br>
+                                                        <h4>{{ "$ " . number_format($property[0]->precio, 2) }}</h4>
                                                         {{-- <div class="mt-0">
                                                             <a href="#listing-location" class="listing-address">
                                                                 <p>$ {{ number_format($property[0]->precio / $property[0]->tamano_propiedad_construido, 2) . ' / m²'}}
