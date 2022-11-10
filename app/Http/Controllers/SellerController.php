@@ -14,7 +14,7 @@ class SellerController extends Controller
 {
     public function SellerIndex()
     {
-        return view('seller.seller_login');
+        return view('sellers.register');
     } // END METHOD
 
 

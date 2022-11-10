@@ -53,37 +53,39 @@
                         <div class="user-profile-box mb-0">
                             <div class="img-fluid"><img src="{{ asset('cliente/images/logo-white-1.png') }}">
                             </div>
-                            {{-- <div class="header clearfix">
-                                <img src="{{ asset('cliente/images/testimonials/ts-1.jpg') }}" alt="avatar"
-                                    class="img-fluid profile-img">
-                            </div> --}}
-                            {{-- <div class="active-user">
-                                <h2>Mary Smith</h2>
-                            </div> --}}
-                            {{-- <div class="detail clearfix">
-                                <ul class="mb-0">
-                                    <li>
-                                        <a class="active" href="{{route('dashboard')}}">
-                                            <i class="fa fa-user"></i>Profile
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="favorited-listings.html">
-                                            <i class="fa fa-heart" aria-hidden="true"></i>Favorited Properties
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="change-password.html">
-                                            <i class="fa fa-lock"></i>Change Password
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="index.html">
-                                            <i class="fas fa-sign-out-alt"></i>Log Out
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div> --}}
+
+                                    <div class="header clearfix">
+                                        <img alt="avatar" class="img-fluid profile-img"
+                                            src="{{ asset('/fotos_documentos/' . $user->avatar) }}" />
+                                    </div>
+                                    <div class="active-user">
+                                        <h2>{{ $user->name }}</h2>
+                                    </div>
+                                    <div class="detail clearfix">
+                                        <ul class="mb-0">
+                                            <li>
+                                                <a class="active" href="{{ route('dashboard') }}">
+                                                    <i class="fa fa-user"></i>Profile
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="favorited-listings.html">
+                                                    <i class="fa fa-heart" aria-hidden="true"></i>Favorited Properties
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="change-password.html">
+                                                    <i class="fa fa-lock"></i>Change Password
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="index.html">
+                                                    <i class="fas fa-sign-out-alt"></i>Log Out
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-xs-6 widget-boxed mt-33 mt-0 offset-lg-2 offset-md-3">
@@ -94,7 +96,7 @@
                                         Dashboard Navigation</button>
                                     <ul id="myDropdown" class="dropdown-content">
                                         <li>
-                                            <a class="active" href="{{route('dashboard')}}">
+                                            <a class="active" href="{{ route('dashboard') }}">
                                                 <i class="fa fa-user mr-3"></i>Profile
                                             </a>
                                         </li>

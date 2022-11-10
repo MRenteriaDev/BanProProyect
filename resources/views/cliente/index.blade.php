@@ -745,7 +745,7 @@
     </section>
 
     <!-- START SECTION TESTIMONIALS -->
-    @if (Route::has('login'))
+    @if (Route::has('seller.login'))
         @auth
             <section class="testimonials bg-white-2 rec-pro">
                 <div class="container-fluid">

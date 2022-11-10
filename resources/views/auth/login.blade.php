@@ -26,7 +26,7 @@
 
             <!-- START SECTION LOGIN -->
             <div class="row">
-                <div class="col-6" id="login">
+                <div class="col-12" id="login">
                     <div class="login">
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
@@ -62,7 +62,7 @@
                     </div>
                 </div>
 
-                <div class="col-6">
+                {{-- <div class="col-6">
                     <div class="section-title">
                         <div class="col-12 align-self-center mx-5">
                             <h3>Conviertete En </h3>
@@ -70,12 +70,12 @@
                         </div>
 
                         <div class="col-12 align-self-center mx-5 my-5">
-                            <a href="#">
+                            <a href="{{ route('seller.index')}}">
                                 <img src="{{ asset('cliente/images/vendedor.jpg') }}" class="rounded-circle" style="width: 30%" />
                             </a>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
 
 
