@@ -24,7 +24,7 @@
             <!-- START SECTION 404 -->
             <div id="login">
                 <div class="login">
-                    <form autocomplete="off" method="POST" action="{{ route('register') }}">
+                    <form autocomplete="off" method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label>Nombre completo</label>
@@ -33,7 +33,7 @@
                         </div>
                         <div class="form-group">
                             <label>Celular</label>
-                            <input class="form-control" type="text" name="cel">
+                            <input class="form-control" type="number" name="celular">
                             <i class="ti-user"></i>
                         </div>
                         <div class="form-group">
@@ -51,140 +51,68 @@
                             <input class="form-control" type="password" id="password2" name="password_confirmation">
                             <i class="icon_lock_alt"></i>
                         </div>
+                            <div class="form-group">
+                                <label for="foto">Foto</label>
+
+                                <input type="file" onchange="readfoto(this);" id="foto" name="foto"
+                                    class="form-control">
+
+                            </div>
+                            <br>
+                            <div id="area"></div>
+                            <div id="fotos" class="row"></div>
+                            <div class="col-12 my-5">
+                                <button type="button" onclick="remove_foto();clean();"
+                                    class="btn btn-primary btn-sm">Borrar
+                                    Fotos</button>
+                            </div>
+
+
+                        <script>
+                            function readfoto(input) {
+                                $("#area").html('Processing...');
+                                counter = input.files.length;
+                                for (x = 0; x < counter; x=1) {
+                                    if (input.files && input.files[x]) {
+
+                                        var reader = new FileReader();
+
+                                        reader.onload = function(e) {
+                                            $("#fotos").append('<div class="col-md-6 col-sm-6 col-xs-3"><img src="' + e.target.result +
+                                                '" class="img-thumbnail" style="width:250px" onclick="remove_foto();clean" id="img"></div>');
+                                        };
+
+                                        reader.readAsDataURL(input.files[x]);
+                                    }
+                                }
+                                if (counter == x) {
+                                    $("#area").html('');
+                                }
+
+                            }
+
+                            function remove_foto() {
+                                var images = document.getElementsByTagName('img');
+                                var l = images.length;
+                                for (var i = 0; i < l; i++) {
+                                    images[0].parentNode.removeChild(images[0]);
+                                }
+                            }
+
+                            function clean() {
+                                var ab = document.getElementById('foto').value;
+                                document.getElementById('foto').value = "";
+                                $('#foto').val('dsds');
+                            }
+                        </script>
+
+
                         <div id="pass-info" class="clearfix"></div>
                         <button type="submit" class="btn_1 rounded full-width add_top_30">Registrate</button>
                     </form>
                 </div>
             </div>
-            <!-- END SECTION 404 -->
 
-            <!-- START FOOTER -->
-            {{-- <footer class="first-footer">
-                <div class="top-footer">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-3 col-md-6">
-                                <div class="netabout">
-                                    <a href="index.html" class="logo">
-                                        <img src="images/logo-footer.svg" alt="netcom">
-                                    </a>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum incidunt architecto
-                                        soluta laboriosam, perspiciatis, aspernatur officiis esse.</p>
-                                </div>
-                                <div class="contactus">
-                                    <ul>
-                                        <li>
-                                            <div class="info">
-                                                <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                                <p class="in-p">95 South Park Avenue, USA</p>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="info">
-                                                <i class="fa fa-phone" aria-hidden="true"></i>
-                                                <p class="in-p">+456 875 369 208</p>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="info">
-                                                <i class="fa fa-envelope" aria-hidden="true"></i>
-                                                <p class="in-p ti">support@findhouses.com</p>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6">
-                                <div class="navigation">
-                                    <h3>Navigation</h3>
-                                    <div class="nav-footer">
-                                        <ul>
-                                            <li><a href="index.html">Home One</a></li>
-                                            <li><a href="properties-right-sidebar.html">Properties Right</a></li>
-                                            <li><a href="properties-full-list.html">Properties List</a></li>
-                                            <li><a href="properties-details.html">Property Details</a></li>
-                                            <li class="no-mgb"><a href="agents-listing-grid.html">Agents Listing</a></li>
-                                        </ul>
-                                        <ul class="nav-right">
-                                            <li><a href="agent-details.html">Agents Details</a></li>
-                                            <li><a href="about.html">About Us</a></li>
-                                            <li><a href="blog.html">Blog Default</a></li>
-                                            <li><a href="blog-details.html">Blog Details</a></li>
-                                            <li class="no-mgb"><a href="contact-us.html">Contact Us</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6">
-                                <div class="widget">
-                                    <h3>Twitter Feeds</h3>
-                                    <div class="twitter-widget contuct">
-                                        <div class="twitter-area">
-                                            <div class="single-item">
-                                                <div class="icon-holder">
-                                                    <i class="fa fa-twitter" aria-hidden="true"></i>
-                                                </div>
-                                                <div class="text">
-                                                    <h5><a href="#">@findhouses</a> all share them with me baby said
-                                                        inspet.</h5>
-                                                    <h4>about 5 days ago</h4>
-                                                </div>
-                                            </div>
-                                            <div class="single-item">
-                                                <div class="icon-holder">
-                                                    <i class="fa fa-twitter" aria-hidden="true"></i>
-                                                </div>
-                                                <div class="text">
-                                                    <h5><a href="#">@findhouses</a> all share them with me baby said
-                                                        inspet.</h5>
-                                                    <h4>about 5 days ago</h4>
-                                                </div>
-                                            </div>
-                                            <div class="single-item">
-                                                <div class="icon-holder">
-                                                    <i class="fa fa-twitter" aria-hidden="true"></i>
-                                                </div>
-                                                <div class="text">
-                                                    <h5><a href="#">@findhouses</a> all share them with me baby said
-                                                        inspet.</h5>
-                                                    <h4>about 5 days ago</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6">
-                                <div class="newsletters">
-                                    <h3>Newsletters</h3>
-                                    <p>Sign Up for Our Newsletter to get Latest Updates and Offers. Subscribe to receive
-                                        news in your inbox.</p>
-                                </div>
-                                <form class="bloq-email mailchimp form-inline" method="post">
-                                    <label for="subscribeEmail" class="error"></label>
-                                    <div class="email">
-                                        <input type="email" id="subscribeEmail" name="EMAIL"
-                                            placeholder="Enter Your Email">
-                                        <input type="submit" value="Subscribe">
-                                        <p class="subscription-success"></p>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="second-footer">
-                    <div class="container">
-                        <p>2021 © Copyright - All Rights Reserved.</p>
-                        <ul class="netsocials">
-                            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                            <li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </footer> --}}
 
             <a data-scroll href="#wrapper" class="go-up"><i class="fa fa-angle-double-up" aria-hidden="true"></i></a>
             <!-- END FOOTER -->
