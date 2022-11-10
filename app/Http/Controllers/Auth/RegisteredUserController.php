@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Seller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -34,15 +35,27 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+       $data = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'celular' => 'required',
+            'foto' => 'required',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        $user = User::create([
+        if($request->file('foto') != null){
+            $Imgf = $request->file('foto');
+            $fotomove = $data['name'] . '-documento-' . time() . rand(1, 1000) . '.' . $Imgf->extension();
+            $imgS = $Imgf->move(public_path('fotos_documentos'), $fotomove);
+        }else{
+            $fotomove = null;
+        }
+
+        $user = Seller::create([
             'name' => $request->name,
             'email' => $request->email,
+            'foto' =>  $fotomove,
+            'celular' =>  $request->celular,
             'password' => Hash::make($request->password),
         ]);
 
@@ -65,21 +78,24 @@ class RegisteredUserController extends Controller
         $data = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'foto' => 'required',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
 
         ]);
 
-        // if($request->file('foto') != null){
-        //     $Imgf = $request->file('foto');
-        //     $fotomove = $data['name'] . '-documento-' . time() . rand(1, 1000) . '.' . $Imgf->extension();
-        //     $imgS = $Imgf->move(public_path('fotos_documentos'), $fotomove);
-        // }else{
-        //     $fotomove = null;
-        // }
+        if($request->file('foto') != null){
+            $Imgf = $request->file('foto');
+            $fotomove = $data['name'] . '-documento-' . time() . rand(1, 1000) . '.' . $Imgf->extension();
+            $imgS = $Imgf->move(public_path('fotos_documentos'), $fotomove);
+        }else{
+            $fotomove = null;
+        }
 
-        User::findOrFail($id)->update([
+        Seller::findOrFail($id)->update([
             'name' => $request->name,
             'email' => $request->email,
+            'foto' =>  $fotomove,
+            'celular' =>  $request->celular,
             'password' => Hash::make($request->password),
             'updated_at' => Carbon::now()
         ]);

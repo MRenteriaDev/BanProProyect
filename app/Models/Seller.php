@@ -25,6 +25,8 @@ class Seller extends Authenticatable
         'email',
         'password',
         'stauts',
+        'foto',
+        'celular',
         'seller_active'
     ];
 

@@ -55,11 +55,11 @@
                             </div>
 
                                     <div class="header clearfix">
-                                        <img alt="avatar" class="img-fluid profile-img"
-                                            src="{{ asset('/fotos_documentos/' . $user->avatar) }}" />
+                                        {{-- <img alt="avatar" class="img-fluid profile-img"
+                                            src="{{ asset('/fotos_documentos/' . $seller->foto) }}" /> --}}
                                     </div>
                                     <div class="active-user">
-                                        <h2>{{ $user->name }}</h2>
+                                        {{-- <h2>{{ $seller->name }}</h2> --}}
                                     </div>
                                     <div class="detail clearfix">
                                         <ul class="mb-0">
