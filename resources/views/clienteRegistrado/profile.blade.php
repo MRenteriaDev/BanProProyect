@@ -8,7 +8,7 @@
     <div class="sidebar-widget author-widget2">
         <div class="author-box clearfix">
 
-            <img src="{{ Auth::user()->avatar ?? '[$fd]' }}" alt="author-image" class="author__img">
+            <img src="{{ Auth::user()->avatar ?? '[$fd]' }}" >
             <h4 class="author__title">{{ Auth::user()->name }}</h4>
             <p class="author__meta">Usuario</p>
         </div>
@@ -17,13 +17,15 @@
                     href="#">{{ Auth::user()->email }}</a></li>
         </ul>
         <div class="agent-contact-form-sidebar">
-            <h4>Solicita un Cambio</h4>
-            <form name="contact_form" method="post" action="functions.php">
-                <input type="text" id="fname" name="full_name" placeholder="Nombre Completo" required />
-                <input type="number" id="pnumber" name="phone_number" placeholder="Numero de telefono" required />
-                <input type="email" id="emailid" name="email_address" placeholder="Email" required />
-                <textarea placeholder="Message" name="message" required></textarea>
-                <input type="submit" name="sendmessage" class="multiple-send-message" value="Enviar solicitud" />
+            <h4>Realizar Cambio </h4>
+            <form autocomplete="off" method="POST" action="{{ route('user.update', Auth::user()->id) }}">
+                @csrf
+
+                <input type="text" id="name" name="name" placeholder="Nombre" required />
+                <input type="email" id="email" name="email" placeholder="Correo" required />
+                <input type="text" id="password" name="password" placeholder="Contraseña" required />
+                <button type="submit" class="btn btn-primary">Realizar Cambio </button>
+
             </form>
         </div>
     </div>

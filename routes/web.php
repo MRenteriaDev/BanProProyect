@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\TipoPropiedadController;
 use App\Http\Controllers\Admin\ZonasController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\Cliente\IndexController;
 use App\Http\Controllers\ContactoController;
@@ -24,6 +25,7 @@ use App\Http\Controllers\ReportesController;
 use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SocialMediaShareButtonController;
+use Illuminate\Auth\Events\Registered;
 
 /*
 |--------------------------------------------------------------------------
@@ -304,6 +306,14 @@ Route::prefix('payments')->group(function () {
 Route::get('/dashboard', function () {
     return view('clienteRegistrado.profile');
 })->middleware(['auth',])->name('dashboard');
+
+// Rutas del User
+Route::prefix('dashboard')->group(function () {
+    Route::get('/edit/{id}', [RegisteredUserController::class, 'edit'])->name('user.edit')->middleware('auth');
+    Route::post('/update/{id}',[RegisteredUserController::class, 'update'])->name('user.update')->middleware('auth');
+});
+
+
 
 
 

@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use Carbon\Carbon;
 
 class RegisteredUserController extends Controller
 {
@@ -51,4 +52,44 @@ class RegisteredUserController extends Controller
 
         return redirect(RouteServiceProvider::HOME);
     }
+
+    public function edit($id)
+    {
+        $user = User::findOrFail($id);
+
+        return view('clienteRegistrado.profile', compact('user'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $data = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+
+        ]);
+
+        // if($request->file('foto') != null){
+        //     $Imgf = $request->file('foto');
+        //     $fotomove = $data['name'] . '-documento-' . time() . rand(1, 1000) . '.' . $Imgf->extension();
+        //     $imgS = $Imgf->move(public_path('fotos_documentos'), $fotomove);
+        // }else{
+        //     $fotomove = null;
+        // }
+
+        User::findOrFail($id)->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'updated_at' => Carbon::now()
+        ]);
+
+        $notification  = array(
+            'message' => "El cliente se actualizó Correctamente",
+            'alert-type' => "success",
+        );
+
+        return redirect()->route('dashboard')->with($notification);
+    }
+
 }
