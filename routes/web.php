@@ -282,7 +282,7 @@ Route::prefix('contacts')->group(function () {
 // Route::prefix('search')->group(function () {
 //     Route::post('/busqueda', [SearchController::class, 'busqueda'])->name('busqueda');
 // });
-
+//xd
 
 
 
