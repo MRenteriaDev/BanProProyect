@@ -229,7 +229,7 @@ Route::prefix('banner')->group(function () {
 
 Route::prefix('seller')->group(function () {
 
-    Route::get('/login', [SellerController::class, 'SellerIndex'])->name('seller_login_from');
+    Route::get('/login', [SellerController::class, 'SellerIndex'])->name('seller.index');
 
     Route::get('/dashboard', [SellerController::class, 'SellerDashboard'])->name('seller.dashboard')->middleware('seller');
 

@@ -7,7 +7,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="html 5 template">
     <meta name="author" content="">
-    <title>Find Houses - HTML5 Template</title>
+    <title>Registro Vendedor</title>
     <!-- FAVICON -->
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="{{ asset('cliente/css/jquery-ui.css') }}">
@@ -45,140 +45,21 @@
         <div class="clearfix"></div>
         <!-- Header Container / End -->
 
-        <!-- START SECTION USER PROFILE -->
-        <section class="user-page section-padding pt-5">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-3 col-md-12 col-xs-12 pl-0 pr-0 user-dash">
-                        <div class="user-profile-box mb-0">
-                            <div class="sidebar-header"><img src="{{ asset('cliente/images/logo-blue.svg') }}"
-                                    alt="header-logo2.png">
-                            </div>
-                            <div class="header clearfix">
-                                <img src="{{ asset('cliente/images/testimonials/ts-1.jpg') }}" alt="avatar"
-                                    class="img-fluid profile-img">
-                            </div>
-                            <div class="active-user">
-                                <h2>Mary Smith</h2>
-                            </div>
-                            <div class="detail clearfix">
-                                <ul class="mb-0">
-                                    <li>
-                                        <a href="dashboard.html">
-                                            <i class="fa fa-map-marker"></i> Dashboard
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="active" href="{{route('dashboard')}}">
-                                            <i class="fa fa-user"></i>Profile
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="my-listings.html">
-                                            <i class="fa fa-list" aria-hidden="true"></i>My Properties
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="favorited-listings.html">
-                                            <i class="fa fa-heart" aria-hidden="true"></i>Favorited Properties
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="add-property.html">
-                                            <i class="fa fa-list" aria-hidden="true"></i>Add Property
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('payments') }}">
-                                            <i class="fas fa-credit-card"></i>Payments
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="invoice.html">
-                                            <i class="fas fa-paste"></i>Invoices
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="change-password.html">
-                                            <i class="fa fa-lock"></i>Change Password
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="index.html">
-                                            <i class="fas fa-sign-out-alt"></i>Log Out
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-xs-6 widget-boxed mt-33 mt-0 offset-lg-2 offset-md-3">
-                        <div class="col-lg-12 mobile-dashbord dashbord">
-                            <div class="dashboard_navigationbar dashxl">
-                                <div class="dropdown">
-                                    <button onclick="myFunction()" class="dropbtn"><i class="fa fa-bars pr10 mr-2"></i>
-                                        Dashboard Navigation</button>
-                                    <ul id="myDropdown" class="dropdown-content">
-                                        <li>
-                                            <a href="dashboard.html">
-                                                <i class="fa fa-map-marker mr-3"></i> Dashboard
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="active" href="{{route('dashboard')}}">
-                                                <i class="fa fa-user mr-3"></i>Profile
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="my-listings.html">
-                                                <i class="fa fa-list mr-3" aria-hidden="true"></i>My Properties
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="favorited-listings.html">
-                                                <i class="fa fa-heart mr-3" aria-hidden="true"></i>Favorited
-                                                Properties
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="add-property.html">
-                                                <i class="fa fa-list mr-3" aria-hidden="true"></i>Add Property
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('payments') }}">
-                                                <i class="fas fa-credit-card mr-3"></i>Payments
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="invoice.html">
-                                                <i class="fas fa-paste mr-3"></i>Invoices
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="change-password.html">
-                                                <i class="fa fa-lock mr-3"></i>Change Password
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="index.html">
-                                                <i class="fas fa-sign-out-alt mr-3"></i>Log Out
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        @yield('seller-dashboard')
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- END SECTION USER PROFILE -->
-        <div class="second-footer ad mt-3">
+
+
+        <!-- START SELLER SIDEBAR -->
+        @include('sellers.sidebar')
+        <!-- END SELLER SIDEBAR -->
+        <div class="mx-auto">
+            @yield('sellers-registro')
+
+        </div>
+
+
+        <div class="second-footer">
             <div class="container">
-                <p>2021 © Copyright - All Rights Reserved.</p>
-                <p>Made With <i class="fa fa-heart" aria-hidden="true"></i> By Code-Theme</p>
+                <div class="flex-bottom"></div>
+                <p>2022 Banpro © Copyright - Todos los derechos reservados.</p>
             </div>
         </div>
 
