@@ -49,7 +49,7 @@ class SearchController extends Controller
                     $query->where('locacion_id', '=', $request->vcolonia);
                 })
                 ->when(!is_null($vpreciomax), function ($query) use ($request) {
-                    $query->where('precio', '>=', $request->vpreciomax);
+                    $query->where('precio', '<=', $request->vpreciomax);
                 })
                 ->when(!is_null($vpreciomin), function ($query) use ($request) {
                     $query->where('precio', '>=', $request->vpreciomin);
@@ -70,7 +70,7 @@ class SearchController extends Controller
                     $query->where('locacion_id', '=', $request->rcolonia);
                 })
                 ->when(!is_null($rpreciomax), function ($query) use ($request) {
-                    $query->where('precio', '>=', $request->rpreciomax);
+                    $query->where('precio', '<=', $request->rpreciomax);
                 })
                 ->when(!is_null($rpreciomin), function ($query) use ($request) {
                     $query->where('precio', '>=', $request->rpreciomin);

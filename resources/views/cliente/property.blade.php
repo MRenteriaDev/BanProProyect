@@ -48,7 +48,9 @@
                                             <div class="single detail-wrapper mr-2">
                                                 <div class="detail-wrapper-body">
                                                     <div class="listing-title-bar">
-                                                        <h4>$ {{ number_format($property[0]->precio, 2) }}</h4>
+                                                        <b>   Precio:</b>
+                                                        <br>
+                                                        <h4>{{ "$ " . number_format($property[0]->precio, 2) }}</h4>
                                                         {{-- <div class="mt-0">
                                                             <a href="#listing-location" class="listing-address">
                                                                 <p>$ {{ number_format($property[0]->precio / $property[0]->tamano_propiedad_construido, 2) . ' / m²'}}
@@ -873,7 +875,8 @@
             <!-- END SECTION PROPERTIES LISTING -->
 
             <!-- START FOOTER -->
-            <footer class="first-footer">
+            @include('cliente.body.footer')
+            {{-- <footer class="first-footer">
                 <div class="top-footer">
                     <div class="container">
                         <div class="row">
@@ -1000,10 +1003,10 @@
                 </div>
             </footer>
 
-            <a data-scroll href="#wrapper" class="go-up"><i class="fa fa-angle-double-up" aria-hidden="true"></i></a>
+            <a data-scroll href="#wrapper" class="go-up"><i class="fa fa-angle-double-up" aria-hidden="true"></i></a> --}}
             <!-- END FOOTER -->
 
-            <!--register form -->
+            {{-- <!--register form -->
             <div class="login-and-register-form modal">
                 <div class="main-overlay"></div>
                 <div class="main-register-holder">
@@ -1071,7 +1074,7 @@
                     </div>
                 </div>
             </div>
-            <!--register form end -->
+            <!--register form end --> --}}
 
 
             <!-- Date Dropper Script-->
