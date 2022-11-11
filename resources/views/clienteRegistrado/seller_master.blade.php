@@ -3,6 +3,7 @@
 
 <head>
     <link rel="icon" href="{{ asset('admin/img/BanPro.png') }}" />
+    <title>BAN PRO</title>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

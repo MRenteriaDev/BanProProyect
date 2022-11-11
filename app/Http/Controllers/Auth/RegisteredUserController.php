@@ -113,7 +113,7 @@ class RegisteredUserController extends Controller
     {
         $propiedades = DB::table('propiedades')->get();
 
-        return view('clienteRegistrado.property', compact('propiedades'));
+        return view('clienteRegistrado.propiedades.index', compact('propiedades'));
     }
 
 
