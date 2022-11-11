@@ -44,6 +44,9 @@
         </div>
         <div class="clearfix"></div>
         <!-- Header Container / End -->
+        @php
+            $currentURL = url()->current();
+        @endphp
 
         <!-- START SECTION USER PROFILE -->
         <section class="user-page section-padding pt-5">
@@ -54,41 +57,54 @@
                             <div class="img-fluid"><img src="{{ asset('cliente/images/logo-white-1.png') }}">
                             </div>
 
-                                    <div class="header clearfix">
-                                        {{-- <img alt="avatar" class="img-fluid profile-img"
-                                            src="{{ asset('/fotos_documentos/' . $seller->foto) }}" /> --}}
-                                    </div>
-                                    <div class="active-user">
-                                        {{-- <h2>{{ $seller->name }}</h2> --}}
-                                    </div>
-                                    <div class="detail clearfix">
-                                        <ul class="mb-0">
-                                            <li>
-                                                <a class="active" href="{{ route('dashboard') }}">
-                                                    <i class="fa fa-user"></i>Profile
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="favorited-listings.html">
-                                                    <i class="fa fa-heart" aria-hidden="true"></i>Favorited Properties
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="change-password.html">
-                                                    <i class="fa fa-lock"></i>Change Password
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="index.html">
-                                                    <i class="fas fa-sign-out-alt"></i>Log Out
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
+                            <div class="header clearfix">
+                                {{-- <img alt="avatar" class="img-fluid profile-img"
+                                            src="{{ asset('/fotos_documentos/' . $user->avatar) }}" /> --}}
+                            </div>
+                            <div class="active-user">
+                                {{-- <h2>{{ $user->name }}</h2> --}}
+                            </div>
+                            <div class="detail clearfix">
+                                <ul class="mb-0">
+                                    @if ($currentURL == 'http://127.0.0.1:8000/dashboard')
+                                        <li>
+                                            <a class="active" href="{{ route('dashboard') }}">
+                                                <i class="fa fa-user"></i>Perfil
+                                            </a>
+                                        </li>
+                                    @else
+                                        <li>
+                                            <a href="{{ route('dashboard') }}">
+                                                <i class="fa fa-user"></i>Perfil
+                                            </a>
+                                        </li>
+                                    @endif
+
+                                    @if ($currentURL == 'http://127.0.0.1:8000/payments')
+                                        <li>
+                                            <a class="active" href="{{ route('billing') }}">
+                                                <i class="fa fa-credit-card" aria-hidden="true"></i>Completa tu registro
+                                            </a>
+                                        </li>
+                                    @else
+                                        <li>
+                                            <a href="{{ route('billing') }}">
+                                                <i class="fa fa-credit-card" aria-hidden="true"></i>Completa tu registro
+                                            </a>
+                                        </li>
+                                    @endif
+                                    <li>
+                                        <a href="change-password.html">
+                                            <i class="fa fa-home"></i>Administra tus casas
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </div>
 
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-xs-6 widget-boxed mt-33 mt-0 offset-lg-2 offset-md-3">
+                    <div class="col-lg-6 col-md-6 col-xs-6 widget-boxed mt-33 mt-0 offset-lg-1 offset-md-3">
                         <div class="col-lg-12 mobile-dashbord dashbord">
                             <div class="dashboard_navigationbar dashxl">
                                 <div class="dropdown">
@@ -127,7 +143,7 @@
         </section>
         <!-- END SECTION USER PROFILE -->
         <div class="second-footer ad mt-3">
-            <div class="container">
+            <div class="container offset-lg-1">
                 <p>2022 Banpro © Copyright - Todos los derechos reservados.</p>
 
             </div>
