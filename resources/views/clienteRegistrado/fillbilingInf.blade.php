@@ -181,7 +181,7 @@
             if (!$form.data('cc-on-file')) {
                 e.preventDefault();
                 Stripe.setPublishableKey($form.data(
-                    'pk_test_51L9rBoH3TO4CUc7Ttb4qbZCqMnKXO3Th8ovbUXTK3S4vk0dYvEJZUceam5zQPvaZpd3F0tsrP4cYb3KoZWzpxNUo00GXwPRZ3t'
+                    'pk_test_51M26MaFBEExGBCEP2UjAjo3cJlMgYOLkbhcLNWBzltABsGYAplOO8f4b6M0K5tMf5IArIjEE3H7hgc7MvQnr4L2z00KECfhwUv'
                 ));
                 Stripe.createToken({
                     number: $('.card-number').val(),

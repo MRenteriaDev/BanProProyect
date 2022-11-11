@@ -63,7 +63,7 @@ class StripePaymentController extends Controller
     public function stripePost(Request $request)
     {
 
-        Stripe::setApiKey(env('STRIPE_SECRET'));
+        Stripe::setApiKey('sk_test_51M26MaFBEExGBCEPGAMQmSuR5xPMdVzSsyfzy8FXj5SYLSr27grdmOQQ8leVABA6fEDB3cOadKEX6kC5GGc8Olz900y0yWnYAt');
         $mont_actual = Carbon::now()->format('M');
 
         if ($mont_actual != "Nov") {
@@ -75,7 +75,7 @@ class StripePaymentController extends Controller
             ]);
         } else {
             Charge::create([
-                "amount" => 100,
+                "amount" => 100*10,
                 "currency" => "mxn",
                 "source" => "tok_visa_debit",
                 "description" => "Paymen of membresy of banpro"
