@@ -28,6 +28,12 @@
                         </li> --}}
                         <li><a class="text-dark" href="{{ route('contact') }}">Contacto</a>
                         </li>
+                        @if (Route::has('register'))
+                            @auth
+                                <li><a class="text-dark" href="{{ route('SellerPropiedad.index') }}">Mis propiedades </a>
+                                </li>
+                            @endauth
+                        @endif
                         <li class="d-none d-xl-none d-block d-lg-block"><a href="{{ route('login') }}">Unete</a></li>
                         </li>
                         <li class="d-none d-xl-none d-block d-lg-block mt-5 pb-4 ml-5 border-bottom-0"><a
@@ -57,31 +63,30 @@
             @endif
 
 
-        @if (!isset(Auth::user()->name))
-        @else
-            <ul>
-                <li><a href="{{ route('dashboard') }}"> Editar perfil</a></li>
-                <li><a href="{{ route('billing') }}">Convierte en Vendedor</a></li>
-                <li><a href="{{ route('seller.logout') }}">Cerrar Sesión</a></li>
-            </ul>
-        @endif
-    </div>
-    <!-- Right Side Content / End -->
-
-    <div class="right-side d-none d-none d-lg-none d-xl-flex sign ml-0">
-        <!-- Header Widget -->
-        <div class="header-widget sign-in">
             @if (!isset(Auth::user()->name))
-                <div class="show-reg-form modal-open">
-                    <a class="btn btn-primary" href="{{ route('login') }}" ><b>Unete!</b></a>
-                </div>
-
             @else
+                <ul>
+                    <li><a href="{{ route('dashboard') }}"> Editar perfil</a></li>
+                    <li><a href="{{ route('billing') }}">Convierte en Vendedor</a></li>
+                    <li><a href="{{ route('seller.logout') }}">Cerrar Sesión</a></li>
+                </ul>
             @endif
-
-
         </div>
-        <!-- Header Widget / End -->
-    </div>
+        <!-- Right Side Content / End -->
+
+        <div class="right-side d-none d-none d-lg-none d-xl-flex sign ml-0">
+            <!-- Header Widget -->
+            <div class="header-widget sign-in">
+                @if (!isset(Auth::user()->name))
+                    <div class="show-reg-form modal-open">
+                        <a class="btn btn-primary" href="{{ route('login') }}"><b>Unete!</b></a>
+                    </div>
+                @else
+                @endif
+
+
+            </div>
+            <!-- Header Widget / End -->
+        </div>
 
 </header>

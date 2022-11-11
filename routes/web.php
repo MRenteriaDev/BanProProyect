@@ -307,10 +307,21 @@ Route::get('/dashboard', function () {
     return view('clienteRegistrado.profile');
 })->middleware(['auth',])->name('dashboard');
 
-// Rutas del User
+// Rutas del Seller
 Route::prefix('dashboard')->group(function () {
     Route::get('/edit/{id}', [RegisteredUserController::class, 'edit'])->name('user.edit')->middleware('auth');
     Route::post('/update/{id}',[RegisteredUserController::class, 'update'])->name('user.update')->middleware('auth');
+
+});
+
+// Rutas del Seller Propiedades
+Route::prefix('Sellerpropiedades')->group(function () {
+    Route::get('/index', [RegisteredUserController::class, 'indexPropiedad'])->name('SellerPropiedad.index');
+    Route::get('/create', [RegisteredUserController::class, 'createPropiedad'])->name('SellerPropiedad.create');
+    Route::post('/store', [RegisteredUserController::class, 'storePropiedad'])->name('SellerPropiedad.store');
+    Route::get('/edit/{id}', [RegisteredUserController::class, 'editPropiedad'])->name('SellerPropiedad.edit');
+    Route::post('/update/{id}', [RegisteredUserController::class, 'updatePropiedad'])->name('SellerPropiedad.update');
+    Route::get('/destroy/{id}', [RegisteredUserController::class, 'destroyPropiedad'])->name('SellerPropiedad.destroy');
 });
 
 

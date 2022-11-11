@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class RegisteredUserController extends Controller
 {
@@ -107,5 +108,13 @@ class RegisteredUserController extends Controller
 
         return redirect()->route('dashboard')->with($notification);
     }
+
+    public function indexPropiedad()
+    {
+        $propiedades = DB::table('propiedades')->get();
+
+        return view('clienteRegistrado.property', compact('propiedades'));
+    }
+
 
 }
