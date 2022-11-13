@@ -264,7 +264,6 @@ Route::prefix('busqueda')->group(function () {
 Route::prefix('properties')->group(function () {
     Route::get('/grid', [IndexController::class, 'propertiesGrid'])->name('properties.grid');
     Route::get('/grid/{id}', [IndexController::class, 'propertyGrid'])->name('properties.grid-single');
-
 });
 
 Route::prefix('sellers')->group(function () {
@@ -294,8 +293,12 @@ Route::get('/', function () {
 
 /// Configuración de cliente
 Route::prefix('payments')->group(function () {
-    Route::get('/', [StripePaymentController::class, 'fillbinding'])->name('billing')->middleware('auth');
-    Route::post('/', [StripePaymentController::class, 'fillbindingpost'])->name('billding.post')->middleware('auth');
+
+    Route::get('/', 'App\Http\Controllers\StripePaymentController@checkout')->name('checkout');
+    Route::post('/session', 'App\Http\Controllers\StripePaymentController@session')->name('session');
+    Route::get('/success', 'App\Http\Controllers\StripePaymentController@success')->name('success');
+    // Route::get('/', [StripePaymentController::class, 'fillbinding'])->name('billing')->middleware('auth');
+    // Route::post('/', [StripePaymentController::class, 'fillbindingpost'])->name('billding.post')->middleware('auth');
     Route::get('/payment', [StripePaymentController::class, 'stripeGet'])->name('stripeGet')->middleware('auth');
     Route::post('/payment', [StripePaymentController::class, 'stripePost'])->name('stripePost')->middleware('auth');
 });
@@ -310,8 +313,7 @@ Route::get('/dashboard', function () {
 // Rutas del Seller
 Route::prefix('dashboard')->group(function () {
     Route::get('/edit/{id}', [RegisteredUserController::class, 'edit'])->name('user.edit')->middleware('auth');
-    Route::post('/update/{id}',[RegisteredUserController::class, 'update'])->name('user.update')->middleware('auth');
-
+    Route::post('/update/{id}', [RegisteredUserController::class, 'update'])->name('user.update')->middleware('auth');
 });
 
 // Rutas del Seller Propiedades

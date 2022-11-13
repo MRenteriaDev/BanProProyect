@@ -80,24 +80,26 @@
                                         </li>
                                     @endif
 
+                                    @if(Auth::user()->seller_active != 1)
+
                                     @if ($currentURL == 'http://127.0.0.1:8000/payments')
                                         <li>
-                                            <a class="active" href="{{ route('billing') }}">
+                                            <a class="active" href="{{ route('checkout') }}">
                                                 <i class="fa fa-credit-card" aria-hidden="true"></i>Completa tu registro
                                             </a>
                                         </li>
                                     @else
                                         <li>
-                                            <a href="{{ route('billing') }}">
+                                            <a href="{{ route('checkout') }}">
                                                 <i class="fa fa-credit-card" aria-hidden="true"></i>Completa tu registro
                                             </a>
                                         </li>
                                     @endif
-                                    <li>
-                                        <a href="change-password.html">
-                                            <i class="fa fa-home"></i>Administra tus casas
-                                        </a>
-                                    </li>
+
+                                    @endif
+
+
+
 
                                 </ul>
                             </div>
@@ -196,6 +198,26 @@
                 $(".header-user-menu ul").toggleClass("hu-menu-vis");
                 $(this).toggleClass("hu-menu-visdec");
             });
+        </script>
+
+        <script>
+            @if (Session::has('message'))
+                var type = "{{ Session::get('alert-type', 'info') }}"
+                switch (type) {
+                    case 'info':
+                        toastr.info(" {{ Session::get('message') }} ");
+                        break;
+                    case 'success':
+                        toastr.success(" {{ Session::get('message') }} ");
+                        break;
+                    case 'warning':
+                        toastr.warning(" {{ Session::get('message') }} ");
+                        break;
+                    case 'error':
+                        toastr.error(" {{ Session::get('message') }} ");
+                        break;
+                }
+            @endif
         </script>
 
     </div>

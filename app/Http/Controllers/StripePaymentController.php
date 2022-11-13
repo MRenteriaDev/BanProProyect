@@ -12,76 +12,42 @@ use Stripe\Stripe;
 
 class StripePaymentController extends Controller
 {
-    public function fillbinding()
+    public function checkout()
     {
-
         return view('clienteRegistrado.fillbilingInf');
     }
 
-    public function fillbindingpost(Request $request)
+    public function session()
     {
-        $request->validate([
-            'billing_phone' => 'unique:billing_information,billing_phone,'
+        \Stripe\Stripe::setApiKey(config('stripe.sk'));
+
+        $session = \Stripe\Checkout\Session::create([
+            'line_items'  => [
+                [
+                    'price_data' => [
+                        'currency'     => 'mxn',
+                        'product_data' => [
+                            'name' => 'BANPRO 1 mes',
+                        ],
+                        'unit_amount'  => 100*10,
+                        'recurring' => [
+                            'interval' => 'month',
+
+                        ]
+                    ],
+                    'quantity'   => 1,
+                ],
+            ],
+            'mode'        => 'subscription',
+            'success_url' => route('success'),
+            'cancel_url'  => route('checkout'),
         ]);
 
-        BillingInformation::create([
-            'billing_name' => $request->billing_name,
-            'billing_email' => Auth::user()->email,
-            'billing_phone' => $request->billing_phone,
-            'billing_city' => $request->billing_city,
-            'billing_state' => $request->billing_state,
-            'billing_address' => $request->billing_address,
-            'billing_zip' => $request->billing_zip,
-            'seller_id' => Auth::user()->id,
-            'created_at' => Carbon::now(),
-        ]);
-
-        Seller::create([
-            'id' => Auth::user()->id,
-            'name' => $request->billing_name,
-            'email' => Auth::user()->email,
-            'password' => Auth::user()->password,
-            'created_at' => Carbon::now(),
-            'seller_active' => false,
-        ]);
-
-
-
-        $notification = array(
-            'message' => "Alta de datos necesaroios, correcta",
-            'alert-type' => "success"
-        );
-
-        return view('clienteRegistrado.fillpayment')->with($notification);
+        return redirect()->away($session->url);
     }
 
-    public function stripeGet()
+    public function success()
     {
-        return view('clienteRegistrado.fillpayment');
-    }
-
-    public function stripePost(Request $request)
-    {
-
-        Stripe::setApiKey('sk_test_51M26MaFBEExGBCEPGAMQmSuR5xPMdVzSsyfzy8FXj5SYLSr27grdmOQQ8leVABA6fEDB3cOadKEX6kC5GGc8Olz900y0yWnYAt');
-        $mont_actual = Carbon::now()->format('M');
-
-        if ($mont_actual != "Nov") {
-            Charge::create([
-                "amount" => 40000,
-                "currency" => "mxn",
-                "source" => "tok_visa_debit",
-                "description" => "Paymen of membresy of banpro"
-            ]);
-        } else {
-            Charge::create([
-                "amount" => 100*10,
-                "currency" => "mxn",
-                "source" => "tok_visa_debit",
-                "description" => "Paymen of membresy of banpro"
-            ]);
-        }
-
         Seller::where('email', Auth::user()->email)->update([
             'seller_active' => true
         ]);
@@ -92,6 +58,7 @@ class StripePaymentController extends Controller
             'type-alert' => "success"
         );
 
-        return redirect()->back()->with($notification);
+        return redirect()->route('dashboard')->with($notification);
     }
+
 }

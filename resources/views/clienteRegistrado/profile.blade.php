@@ -3,11 +3,11 @@
 
 @section('cliente-registrado-dashboard')
     @php
-        if(Auth::user()->stauts == 1){
+        if(Auth::user()->seller_active == 1){
             $estado_membresia = "Pagado";
         }
-        elseif(Auth::user()->stauts == 0){
-            $estado_membresia = "Pago pendiente";
+        elseif(Auth::user()->seller_active == 0){
+            $estado_membresia = "Pago pendiente, realiza el pago de la membresia para acceder a las funciones de vendedor";
         }
 
 
@@ -18,7 +18,7 @@
     <div class="sidebar-widget author-widget2">
         <div class="author-box clearfix">
 
-            <img src="{{ Auth::user()->avatar ?? '[$fd]' }}">
+            <img src="{{ asset('/fotos_documentos/'. Auth::user()->foto)}}">
             <h4 class="author__title">{{ Auth::user()->name }}</h4>
             <p class="author__meta">Usuario</p>
             <p class="author__meta">Estado de membresia: {{$estado_membresia}}</p>

@@ -3,50 +3,8 @@
 @section('cliente-registrado-dashboard')
 <section class="payment-method notfound col-xs-12">
     <div class="row">
-        <div class="col-md-12 col-lg-6">
-            <div class="tr-single-box">
-                <div class="tr-single-body">
-                    <div class="tr-single-header">
-                        <h4><i class="far fa-address-card pr-2"></i>Información de Facturación</h4>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <label>Nombre</label>
-                            <input type="text" class="form-control">
-                        </div>
-                        <div class="col-sm-6">
-                            <label>Email</label>
-                            <input type="email" class="form-control">
-                        </div>
-                        <div class="col-sm-6">
-                            <label>Celular</label>
-                            <input type="text" class="form-control">
-                        </div>
-                        <div class="col-sm-6">
-                            <label>Ciudad</label>
-                            <input type="text" class="form-control">
-                        </div>
-                        <div class="col-sm-6">
-                            <label>Estado</label>
-                            <input type="text" class="form-control">
-                        </div>
-                        <div class="col-sm-6">
-                            <label>Pais</label>
-                            <input type="text" class="form-control">
-                        </div>
-                        <div class="col-sm-6">
-                            <label>Dirección</label>
-                            <input type="text" class="form-control address mb-0">
-                        </div>
-                        <div class="col-sm-6">
-                            <label>Codigo Postal</label>
-                            <input type="text" class="form-control mb-0">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-12 col-lg-6">
+
+        <div class="col-md-12 col-lg-12">
             <div class="tr-single-box">
                 <div class="tr-single-body">
                     <div class="tr-single-header">
@@ -92,61 +50,11 @@
                         </div>
                     </div> --}}
                     <!-- Debit card option -->
-                    <div class="payment-card mb-0">
-                        <header class="payment-card-header cursor-pointer" data-toggle="collapse"
-                            data-target="#debit-credit" aria-expanded="true">
-                            <div class="payment-card-title flexbox">
-                                <h4>Tarjeta de credito / debito</h4>
-                            </div>
-                            <div class="pull-right">
-                                <img src="images/credit.png" class="img-responsive" alt="">
-                            </div>
-                        </header>
-                        <div class="collapse" id="debit-credit" role="tablist" aria-expanded="false">
-                            <form role="form" method="POST" action="{{ route('stripePost') }}"
-                                class="payment-card-body" data-cc-on-file="false"
-                                data-srtipe-publishable-key="{{ env('STRIPE_KEY') }}" id="payment_form">
-                                @csrf
-                                <div class="row mrg-bot-20">
-                                    <div class="col-sm-6">
-                                        <label>Titular de tarjeta</label>
-                                        <input type="text" class="form-control" placeholder="Nombre...">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label>Numero de tarjeta</label>
-                                        <input type="number" class="form-control card-number">
-                                    </div>
-                                </div>
-                                <div class="row mrg-bot-20">
-                                    <div class="col-sm-4 col-md-4">
-                                        <label>MM</label>
-                                        <input type="number" class="form-control card-expiry-month" placeholder="09">
-                                    </div>
-                                    <div class="col-sm-4 col-md-4">
-                                        <label>YYYY</label>
-                                        <input type="number" class="form-control card-expiry-year" placeholder="2022">
-                                    </div>
-                                    <div class="col-sm-4 col-md-4">
-                                        <label>CCV</label>
-                                        <input type="number" class="form-control card-cvc" placeholder="258">
-                                    </div>
-                                </div>
-                                <div class="row mrg-bot-20">
-                                    <div class="col-sm-7">
+                    <form action="/payments/session" method="POST">
+                        <input type="hidden" name="_token" value="{{csrf_token()}}">
+                        <button type="submit" class="btn btn-m btn-success" id="checkout-live-button">Checkout</button>
+                    </form>
 
-                                    </div>
-                                    <div class="col-sm-5 padd-top-10 text-right">
-                                        <label>Total</label>
-                                        <h2 class="mrg-0"><span class="theme-cl">$</span>10</h2>
-                                    </div>
-                                    <div class="col-sm-12 bt-1 padd-top-15 pt-3">
-
-                                        <button type="submit" class="btn btn-m btn-success">Checkout</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -185,10 +93,13 @@
                 ));
                 Stripe.createToken({
                     number: $('.card-number').val(),
+
                     cvc: $('.card-cvc').val(),
                     exp_month: $('.card-expiry-month').val(),
                     exp_year: $('.card-expiry-year').val()
+                    console.log(number);
                 }, stripeResponseHandler);
+
             }
         });
 

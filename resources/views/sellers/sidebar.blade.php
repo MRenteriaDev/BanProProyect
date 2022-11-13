@@ -8,7 +8,7 @@
 
                             <div class="header clearfix">
                                 <img alt="avatar" class="img-fluid profile-img"
-                                    src="{{ asset('/fotos_documentos/' . $user->avatar) }}" />
+                                    src="{{ asset('/fotos_documentos/' . $user->avatar ?? '') }}" />
                             </div>
                             <div class="active-user">
                                 <h2>{{ $user->name }}</h2>
