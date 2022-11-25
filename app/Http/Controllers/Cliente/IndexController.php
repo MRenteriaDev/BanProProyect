@@ -88,4 +88,10 @@ class IndexController extends Controller
     }
 
 
+    public function aviso ()
+    {
+        return view('cliente.aviso');
+    }
+
+
 }

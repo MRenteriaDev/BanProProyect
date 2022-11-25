@@ -278,6 +278,10 @@ Route::prefix('contacts')->group(function () {
     Route::get('/destroy/{id}', [ContactoController::class, 'destroy'])->name('contact.destroy');
 });
 
+Route::prefix('aviso')->group(function () {
+    Route::get('/', [IndexController::class, 'aviso'])->name('aviso');
+});
+
 // Route::prefix('search')->group(function () {
 //     Route::post('/busqueda', [SearchController::class, 'busqueda'])->name('busqueda');
 // });
