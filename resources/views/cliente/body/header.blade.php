@@ -28,6 +28,8 @@
                         </li> --}}
                         <li><a class="text-dark" href="{{ route('contact') }}">Contacto</a>
                         </li>
+                        <li><a class="text-dark" href="{{ route('aviso') }}">Aviso</a>
+                        </li>
                         @if (Route::has('register'))
                             @auth
                                 <li><a class="text-dark" href="{{ route('SellerPropiedad.index') }}">Mis propiedades </a>
