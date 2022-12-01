@@ -4,6 +4,12 @@
 @php
 use Illuminate\Support\Facades\Auth;
 $userauth = Auth::user();
+if($userauth->seller_active == 1){
+    $b = "btn btn-primary btn-md";
+}
+else{
+    $b = "btn btn-primary btn-md disabled";
+}
 
 @endphp
 
@@ -15,15 +21,18 @@ $userauth = Auth::user();
                 <div class="col-sm-6">
                     <h1>Propiedades </h1>
                 </div>
+
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-md-right">
-                        <a class="btn btn-primary btn-md" href="{{ route('SellerPropiedad.create') }}"><i
+                        <a class="{{$b}}" href="{{ route('SellerPropiedad.create') }}"><i
                                 class="fas fa-plus-circle"></i>
 
                             &nbsp; Crear Propiedad
                         </a>
                     </ol>
                 </div>
+
+
             </div>
         </div>
     </section>

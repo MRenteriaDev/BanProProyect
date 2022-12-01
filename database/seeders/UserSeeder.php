@@ -15,22 +15,28 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            'name' => 'usuario BanPro',
-            'email' => 'usuario@gmail.com',
-            'password' => Hash::make('password'),
-        ]);
+        // DB::table('users')->insert([
+        //     'name' => 'usuario BanPro',
+        //     'email' => 'usuario@gmail.com',
+        //     'password' => Hash::make('password'),
+        // ]);
+
+        // DB::table('admins')->insert([
+        //     'name' => 'Admin BanPro',
+        //     'email' => 'admin@gmail.com',
+        //     'password' => Hash::make('password'),
+        // ]);
+
+        // DB::table('sellers')->insert([
+        //     'name' => 'Seller BanPro',
+        //     'email' => 'seller@gmail.com',
+        //     'password' => Hash::make('password'),
+        // ]);
 
         DB::table('admins')->insert([
-            'name' => 'Admin BanPro',
-            'email' => 'admin@gmail.com',
-            'password' => Hash::make('password'),
-        ]);
-
-        DB::table('sellers')->insert([
-            'name' => 'Seller BanPro',
-            'email' => 'seller@gmail.com',
-            'password' => Hash::make('password'),
+            'name' => 'Oficinabanpro',
+            'email' => 'Banpro@Banpro.com',
+            'password' => Hash::make('Banpro123'),
         ]);
     }
 }

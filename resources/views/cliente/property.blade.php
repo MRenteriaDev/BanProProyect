@@ -40,7 +40,7 @@
                                                     <div class="mt-0">
                                                         <a href="#listing-location" class="listing-address">
                                                             <i class="fa fa-map-marker pr-2 ti-location-pin mrg-r-5">
-                                                                {{ $property[0]->Locacion->nombre }}</i>
+                                                                {{ $property[0]->Locacion->nombre ?? 'Dir. Pendiente'}}</i>
                                                         </a>
                                                     </div>
                                                 </div>
@@ -140,11 +140,11 @@
                                 <ul class="homes-list clearfix">
                                     <li>
                                         <span class="font-weight-bold mr-1">Tipo de propiedad:</span>
-                                        <span class="det">{{ $property[0]->TipoPropiedad->nombre }}</span>
+                                        <span class="det">{{ $property[0]->TipoPropiedad->nombre ?? ''}}</span>
                                     </li>
                                     <li>
                                         <span class="font-weight-bold mr-1">Estatus de propiedad:</span>
-                                        <span class="det">{{ $property[0]->EstatusPropiedad->nombre }}</span>
+                                        <span class="det">{{ $property[0]->EstatusPropiedad->nombre ?? ''}}</span>
                                     </li>
                                     <li>
                                         <span class="font-weight-bold mr-1">Precio:</span>
@@ -152,15 +152,15 @@
                                     </li>
                                     <li>
                                         <span class="font-weight-bold mr-1">Habitaciones:</span>
-                                        <span class="det">{{ $property[0]->recamaras }}</span>
+                                        <span class="det">{{ $property[0]->recamaras ?? ''}}</span>
                                     </li>
                                     <li>
                                         <span class="font-weight-bold mr-1">Baños:</span>
-                                        <span class="det">{{ $property[0]->bano }}</span>
+                                        <span class="det">{{ $property[0]->bano ?? ''}}</span>
                                     </li>
                                     <li>
                                         <span class="font-weight-bold mr-1">Fecha de construcción:</span>
-                                        <span class="det">{{ $property[0]->fecha_construccion }}</span>
+                                        <span class="det">{{ $property[0]->fecha_construccion ?? ''}}</span>
                                     </li>
                                 </ul>
                                 <!-- title -->
@@ -345,18 +345,23 @@
                                         <div class="widget-boxed-body">
                                             <div class="sidebar-widget author-widget2">
                                                 <div class="author-box clearfix">
-                                                    <img src="{{ asset('/fotos_documentos/' . $property[0]->seller->foto) }}" /></span>
 
-                                                    <h4 class="author__title">{{ $property[0]->seller->name }}</h4>
+                                                    @if(isset($property[0]->seller_id))
+                                                        <img src="{{ asset('/fotos_documentos/' . $property[0]->seller->foto) }}" /></span>
+                                                    @else
+                                                     <img src="{{ asset('/fotos_documentos/default.png' ) }}" /></span>
+                                                    @endif
+
+                                                    <h4 class="author__title">{{ $property[0]->seller->name ?? '' }}</h4>
                                                     <p class="author__meta">Bienes raíces</p>
                                                 </div>
                                                 <ul class="author__contact">
                                                     <li><span class="la la-phone"><i class="fa fa-phone"
                                                                 aria-hidden="true"></i></span><a
-                                                            href="#">{{ $property[0]->seller->celular }}</a></li>
+                                                            href="#">{{ $property[0]->seller->celular ?? '' }}</a></li>
                                                     <li><span class="la la-envelope-o"><i class="fa fa-envelope"
                                                                 aria-hidden="true"></i></span><a
-                                                            href="#">{{$property[0]->seller->email }}</a></li>
+                                                            href="#">{{$property[0]->seller->email ?? '' }}</a></li>
                                                 </ul>
 
                                             </div>

@@ -21,6 +21,8 @@ use Illuminate\Validation\Rules;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\ImageManagerStatic as Image;
+use Illuminate\Contracts\Validation\Validator;
+use Brian2694\Toastr\Facades\Toastr;
 
 class RegisteredUserController extends Controller
 {
@@ -44,19 +46,40 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
-       $data = $request->validate([
+
+        $data = $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'celular' => 'required',
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:sellers'],
+            'celular' => ['required','unique:sellers'],
             'foto' => 'required',
+            'ciudad' => 'required',
+            'estado' => 'required',
+            'pais' => 'required',
+            'direccion' => 'required',
+            'cp' => 'required',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ], [
+            'name.required' => 'Ingrese su nombre',
+            'email.required' => 'Ingresa un email',
+            'email.unique' => 'Este email ya fue seleccionado',
+            'celular.required' => 'Ingrese su número',
+            'celular.unique' => 'Este número ya fue seleccionado',
+            'foto.required' => 'Por favor, agregue una foto',
+            'ciudad.required' => 'Ingrese su ciudad de residencia',
+            'estado.required' => 'Ingrese su estado de residencia',
+            'pais.required' => 'Ingrese su país de residencia',
+            'direccion.required' => 'Ingrese su dirección',
+            'cp.required' => 'Ingrese su codigo postal',
+            'password.required' => 'Ingrese una contraseña',
+
         ]);
 
-        if($request->file('foto') != null){
+
+        if ($request->file('foto') != null) {
             $Imgf = $request->file('foto');
             $fotomove = $data['name'] . '-documento-' . time() . rand(1, 1000) . '.' . $Imgf->extension();
             $imgS = $Imgf->move(public_path('fotos_documentos'), $fotomove);
-        }else{
+        } else {
             $fotomove = null;
         }
 
@@ -65,6 +88,12 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'foto' =>  $fotomove,
             'celular' =>  $request->celular,
+            'ciudad' =>  $request->ciudad,
+            'estado' =>  $request->estado,
+            'pais' =>  $request->pais,
+            'direccion' =>  $request->direccion,
+            'cp' =>  $request->cp,
+            'inmobiliaria' =>  $request->inmobiliaria,
             'password' => Hash::make($request->password),
         ]);
 
@@ -74,6 +103,8 @@ class RegisteredUserController extends Controller
 
         return redirect(RouteServiceProvider::HOME);
     }
+
+
 
     public function edit($id)
     {
@@ -92,11 +123,11 @@ class RegisteredUserController extends Controller
 
         ]);
 
-        if($request->file('foto') != null){
+        if ($request->file('foto') != null) {
             $Imgf = $request->file('foto');
             $fotomove = $data['name'] . '-documento-' . time() . rand(1, 1000) . '.' . $Imgf->extension();
             $imgS = $Imgf->move(public_path('fotos_documentos'), $fotomove);
-        }else{
+        } else {
             $fotomove = null;
         }
 
@@ -158,15 +189,15 @@ class RegisteredUserController extends Controller
             'tipo_propiedad_id.required' => 'Se debe seleccionar algo',
             'planos' => 'Se debe seleccionar algo',
             'nearbys' => 'Se debe escribir algo',
-            'seller_id'=> 'Se debe seleccionar algo '
+            'seller_id' => 'Se debe seleccionar algo '
 
         ]);
 
-        if($request->file('planos') != null){
+        if ($request->file('planos') != null) {
             $originalImage = $request->file('planos');
             $originalImageMove = $data['nombre'] . '-documento-' . time() . rand(1, 1000) . '.' . $originalImage->extension();
             $imageSave = $originalImage->move(public_path('planos_documentos'), $originalImageMove);
-        }else{
+        } else {
             $originalImageMove = null;
         }
 
@@ -209,10 +240,10 @@ class RegisteredUserController extends Controller
         if ($request->has('nombre_archivo')) {
             foreach ($request->file('nombre_archivo') as $documento) {
                 $documento_nname = $data['nombre'] . '-documento-' . time() . rand(1, 1000) . '.' . $documento->extension();
-                $thumbnail = "resized-". $documento_nname;
+                $thumbnail = "resized-" . $documento_nname;
                 $file = public_path('propiedades_documentos') . $documento_nname;
                 $ruta = public_path('propiedades_documentos/thumb/') . $thumbnail;
-                Image::make($documento)->resize(345,280)->save($ruta);
+                Image::make($documento)->resize(345, 280)->save($ruta);
                 $documento->move(public_path('propiedades_documentos'), $documento_nname);
 
 
@@ -302,6 +333,4 @@ class RegisteredUserController extends Controller
 
         return redirect()->route('SellerPropiedad.index')->with($notification);
     }
-
-
 }

@@ -19,13 +19,13 @@
                             <li>
                                 <div class="info">
                                     <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                    <p class="in-p">Direccion Banpro</p>
+                                    <p class="in-p">Direccion: Avenida de las verbenas #9</p>
                                 </div>
                             </li>
                             <li>
                                 <div class="info">
                                     <i class="fa fa-phone" aria-hidden="true"></i>
-                                    <p class="in-p">Numero Banpro</p>
+                                    <p class="in-p">Numero 3022221</p>
                                 </div>
                             </li>
                             <li>

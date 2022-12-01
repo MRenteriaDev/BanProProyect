@@ -66,7 +66,7 @@
             @if (!isset(Auth::user()->name))
             @else
                 <ul>
-                    <li><a href="{{ route('dashboard') }}"> Editar perfil</a></li>
+                    <li><a href="{{ route('dashboard') }}"> Ver perfil</a></li>
                     @if(Auth::user()->seller_active != 1)
                     <li><a href="{{ route('checkout') }}">Convierte en Vendedor</a></li>
                     @endif

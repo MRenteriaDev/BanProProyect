@@ -24,8 +24,18 @@
             <div class="card-header">
                 <h3 class="card-title">Creación de Propiedad</h3>
             </div>
-            <br>
+            <br><br>
             <!-- /.card-header -->
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
 
             <form class="row g-3" method="POST" action="{{ route('propiedades.store') }}" enctype="multipart/form-data">
@@ -34,7 +44,8 @@
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
                         <input type="text" name="nombre" class="form-control" id="nombre"
-                            placeholder="Introduzca Nombre">
+                            placeholder="Introduzca Nombre"
+                            value="{{old('nombre')}}">
                         @error('nombre')
                             <span class="text-danger"> {{ $message }} </span>
                         @enderror
@@ -44,7 +55,8 @@
                     <div class="form-group">
                         <label for="precio">Precio</label>
                         <input type="number" name="precio" class="form-control" id="precio"
-                            placeholder="Introduzca Precio">
+                            placeholder="Introduzca Precio"
+                            value="{{old('precio')}}">
                         @error('precio')
                             <span class="text-danger"> {{ $message }} </span>
                         @enderror
@@ -54,7 +66,8 @@
                     <div class="form-group">
                         <label for="tamano_propiedad">Tamaño de la propiedad</label>
                         <input type="text" name="tamano_propiedad" class="form-control" id="tamano_propiedad"
-                            placeholder="Tamaño de la propiedad">
+                            placeholder="Tamaño de la propiedad"
+                            value="{{old('tamano_propiedad')}}">
                         @error('tamano_propiedad')
                             <span class="text-danger"> {{ $message }} </span>
                         @enderror
@@ -64,7 +77,8 @@
                     <div class="form-group">
                         <label for="tamano_propiedad_construido">Tamaño de la propiedad construida</label>
                         <input type="text" name="tamano_propiedad_construido" class="form-control"
-                            id="tamano_propiedad_construido" placeholder="Tamaño de la propiedad construida">
+                            id="tamano_propiedad_construido" placeholder="Tamaño de la propiedad construida"
+                            value="{{old('tamano_propiedad_construido')}}">
                         @error('tamano_propiedad_construido')
                             <span class="text-danger"> {{ $message }} </span>
                         @enderror
@@ -74,7 +88,8 @@
                     <div class="form-group">
                         <label for="bano">Baño</label>
                         <input type="number" name="bano" class="form-control" id="bano"
-                            placeholder="Cantidad de baños">
+                            placeholder="Cantidad de baños"
+                            value="{{old('bano')}}">
                         @error('bano')
                             <span class="text-danger"> {{ $message }} </span>
                         @enderror
@@ -84,7 +99,8 @@
                     <div class="form-group">
                         <label for="recamaras">Recamaras</label>
                         <input type="number" name="recamaras" class="form-control" id="recamaras"
-                            placeholder="Cantidad de recamaras">
+                            placeholder="Cantidad de recamaras"
+                            value="{{old('recamaras')}}">
                         @error('recamaras')
                             <span class="text-danger"> {{ $message }} </span>
                         @enderror
@@ -169,91 +185,89 @@
                             <span class="text-danger"> {{ $message }} </span>
                         @enderror
                     </div>
+                    <br><br>
                 </div>
-                <div class="col-md-12">
+                <div class="col-md-10">
                     <div class="form-floathing">
                         <label for="nearbys">Especifica si hay lugares de interés cerca</label>
-                        <textarea name="nearbys" id="nearbys" placeholder="Escribe lugares cercanos" class="form-control" cols="10"
-                            rows="2"></textarea>
+                        <textarea name="nearbys" id="nearbys" placeholder="Escribe lugares cercanos" class="form-control" cols="5"
+                            rows="2">
+                            {{old('nearbys')}}
+                        </textarea>
+                        @error('nearbys')
+                            <span class="text-danger"> {{ $message }} </span>
+                        @enderror
                     </div>
+                    <br>
                 </div>
 
-                <div class="col-md-12">
+                <div class="col-md-10">
                     <div class="form-floathing">
                         <label for="descripcion">Descripcion</label>
-                        <textarea name="descripcion" id="descripcion" placeholder="Escriba caracteristicas" class="form-control" cols="10"
-                            rows="2"></textarea>
+                        <textarea name="descripcion" id="descripcion" placeholder="Escriba caracteristicas" class="form-control"
+                            cols="5" rows="2">
+                            {{old('descripcion')}}
+                        </textarea>
+                        @error('descripcion')
+                            <span class="text-danger"> {{ $message }} </span>
+                        @enderror
                     </div>
+                    <br>
+                    <br>
                 </div>
 
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label>Seleccionar Solicitud del vendedor</label>
-                        <select class="form-control select2" name="solicitud_vendedor_id"
-                            style="width: 100%;height: 100%;">
-                            <option selected="selected">Seleccionar</option>
-                            @foreach ($solicitudvendedor as $solicitudvendedo)
-                                <option value={{ $solicitudvendedo->id }}>{{ $solicitudvendedo->nombre }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label>Seleccionar Review</label>
-                        <select class="form-control select2" name="review_id" style="width: 100%;height: 100%;">
-                            <option selected="selected">Seleccionar</option>
-                            @foreach ($reviews as $review)
-                                <option value={{ $review->id }}>{{ $review->nombre }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-6">
+
+
+                <div class="col-md-3">
                     <div class="form-group">
                         <label>Seleccionar Estatus de la Propiedad</label>
                         <select class="form-control select2" name="estatus_propiedad_id"
                             style="width: 100%;height: 100%;">
-                            <option selected="selected">Seleccionar</option>
+                            <option selected="selected" value="">Seleccionar</option>
                             @foreach ($estatuspropiedad as $estatupropiedad)
                                 <option value={{ $estatupropiedad->id }}>{{ $estatupropiedad->nombre }}
                                 </option>
                             @endforeach
+                            @error('estatus_propiedad_id')
+                                <span class="text-danger"> {{ $message }} </span>
+                            @enderror
                         </select>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <div class="form-group">
                         <label>Seleccionar Tipo de propiedad</label>
                         <select class="form-control select2" name="tipo_propiedad_id" style="width: 100%;height: 100%;">
-                            <option selected="selected">Seleccionar</option>
+                            <option selected="selected" value="">Seleccionar</option>
                             @foreach ($tipopropiedades as $tipopropiedad)
                                 <option value={{ $tipopropiedad->id }}>{{ $tipopropiedad->nombre }}</option>
                             @endforeach
                         </select>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <div class="form-group">
                         <label>Seleccionar Locacion</label>
                         <select class="form-control select2" name="locacion_id" style="width: 100%;height: 100%;">
-                            <option selected="selected">Seleccionar</option>
+                            <option selected="selected" value="">Seleccionar</option>
                             @foreach ($locacion as $locacion)
                                 <option value={{ $locacion->id }}>{{ $locacion->nombre }}</option>
                             @endforeach
                         </select>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <div class="form-group">
-                        <label>Seleccionar Seller</label>
+                        <label>Seleccionar asesor</label>
                         <select class="form-control select2" name="seller_id" style="width: 100%;height: 100%;">
-                            <option selected="selected">Seleccionar</option>
+                            <option selected="selected" value="">Seleccionar</option>
                             @foreach ($seller as $seller)
                                 <option value={{ $seller->id }}>{{ $seller->name }}</option>
                             @endforeach
                         </select>
+                        @error('seller_id')
+                        <span class="text-danger"> {{ $message }} </span>
+                    @enderror
                     </div>
                 </div>
                 <div class="col-md-6">

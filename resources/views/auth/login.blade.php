@@ -7,7 +7,7 @@
         <div id="wrapper">
             <!-- START SECTION HEADINGS -->
             <!-- Header Container
-                                                    ================================================== -->
+                                                        ================================================== -->
             @include('cliente.body.header')
             <div class="clearfix"></div>
             <!-- Header Container / End -->
@@ -23,18 +23,26 @@
                 </div>
             </section>
             <!-- END SECTION HEADINGS -->
-
+            @if ($errors->any())
+                <div class="alert alert-danger col-md-12">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <!-- START SECTION LOGIN -->
             <div class="row">
                 <div class="col-12" id="login">
                     <div class="login">
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
-                            <div class="access_social">
-                                {{-- <a href="{{ url('auth/facebook') }}" class="social_bt facebook">Login with Facebook</a> --}}
+                            {{-- <div class="access_social">
+                                <a href="{{ url('auth/facebook') }}" class="social_bt facebook">Login with Facebook</a>
                                 <a href="{{ url('auth/google') }}" class="social_bt google">Login with Google</a>
-                            </div>
-                            <div class="divider"><span>Or</span></div>
+                            </div> --}}
+
                             <div class="form-group">
                                 <label>Email</label>
                                 <input type="email" class="form-control" name="email" id="email">
@@ -49,11 +57,10 @@
                                 <div class="checkboxes float-left">
                                     <div class="filter-tags-wrap">
                                         <input id="check-b" type="checkbox" name="check">
-                                        <label for="check-b">Remember me</label>
+                                        <label for="check-b">Recordarme</label>
                                     </div>
                                 </div>
-                                <a class="float-right mt-1"><a id="forgot" href="{{ route('password.request2') }}">Forgot
-                                        Password?</a></a>
+
                             </div>
                             <button type="submit" href="#0" class="btn_1 rounded full-width">Accesar a BanPro</button>
                             <div class="text-center add_top_10">Nuevo en nuestro sitio? <strong><a

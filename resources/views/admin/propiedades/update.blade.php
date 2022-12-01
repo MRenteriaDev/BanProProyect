@@ -304,39 +304,7 @@
                                 </select>
                             </div>
                         </div>
-                        {{-- <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="video_propiedad">Videos de la propiedad</label>
-                                <input type="text" name="video_propiedad" class="form-control" id="video_propiedad"
-                                    placeholder="Cargar video">
-                                <br>
-                                <script>
-                                    function convertYoutube(video_propiedad) {
-                                        return preg_replace(
-                                            "/\s*[a-zA-Z\/\/:\.]*youtu(be.com\/watch\?v=|.be\/)([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i",
-                                            "<iframe src=\"//www.youtube.com/embed/$2\" allowfullscreen></iframe>",
-                                            video_propiedad
-                                        );
-                                    }
-                                </script>
-                                <br>
-                                <iframe id="myFrame" width="420" height="345">fgh
-                                </iframe>
-                                <script>
-                                    function showVideo() {
-                                        var videoUrl = document.getElementById("video_propiedad").value
-                                        document.getElementById("myFrame").src = videoUrl
-                                    }
-                                </script>
-                                @error('video_propiedad')
-                                    <span class="text-danger"> {{ $message }} </span>
-                                @enderror
-                            </div>
-                        </div> --}}
 
-
-
-                        {{-- <button onclick="showVideo();convertYoutube();">Check</button> --}}
 
                 </div>
                 <div class=tab-pane id=form>

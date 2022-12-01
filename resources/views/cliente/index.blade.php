@@ -21,6 +21,7 @@
     $tipop = TipoPropiedad::get();
     $estatusp = EstatusPropiedad::get();
     $banner = DB::table('banners')->get();
+
 @endphp
 
 
@@ -289,110 +290,7 @@
                                                         <button class="btn" type='submit' value="renta" name="br"
                                                             href="{{ route('busqueda') }}">Buscar en renta</button>
                                                     </div>
-                                                    {{-- <div class="explore__form-checkbox-list full-filter">
-                                                        <div class="row">
-                                                            <div class="col-lg-4 col-md-6 py-0 pr-30 pl-0">
-                                                                <!-- Form Property Status -->
-                                                                <div class="rld-single-select">
-                                                                    <label>Estatus de la propiedad</label>
-                                                                    <select name="estatus_propiedad"
-                                                                        class="select single-select mr-0"
-                                                                        style="width: 100%;height: 100%;">
-                                                                        <option selected="selected">Estatus de la
-                                                                            propiedad</option>
-                                                                        @foreach ($estatusp as $estap)
-                                                                            <option value={{ $estap->id }}>
-                                                                                {{ $estap->nombre }}
-                                                                            </option>
-                                                                        @endforeach
-                                                                    </select>
 
-
-                                                                </div>
-                                                                <!--/ End Form Property Status -->
-                                                            </div> --}}
-
-
-                                                    <!-- Form Bedrooms -->
-                                                    {{--
-                                                                <div class="form-group beds">
-                                                                    <div class="nice-select form-control wide"
-                                                                        tabindex="0"><span class="current"><i
-                                                                                class="fa fa-bed" aria-hidden="true"></i>
-                                                                            Recamaras</span>
-                                                                        <ul class="list">
-                                                                            @foreach ($array as $a)
-                                                                                <li name="rec" class="option">
-                                                                                    {{ $a }}</li>
-                                                                            @endforeach
-
-                                                                        </ul>
-                                                                    </div>
-                                                                </div> --}}
-                                                    <!--/ End Form Bedrooms -->
-
-
-
-                                                    <!-- Form Bathrooms -->
-                                                    {{-- <div class="form-group bath">
-                                                                    <div class="nice-select form-control wide"
-                                                                        tabindex="0"><span class="current"><i
-                                                                                class="fa fa-bath" aria-hidden="true"></i>
-                                                                            Baños</span>
-                                                                        <ul class="list">
-                                                                            @foreach ($array as $a)
-                                                                                <li name="bano" class="option">
-                                                                                    {{ $a }}</li>
-                                                                            @endforeach
-                                                                        </ul>
-                                                                    </div>
-                                                                </div> --}}
-                                                    <!--/ End Form Bathrooms -->
-
-                                                    {{-- <div class="col-lg-5 col-md-12 col-sm-12 py-1 pr-30 mr-5 sld">
-                                                                <!-- Price Fields -->
-
-
-
-                                                            </div> --}}
-                                                    {{-- <div class="col-lg-3 col-md-6 col-sm-12 py-1 pr-30">
-                                                                <!-- Checkboxes -->
-                                                                <div class="checkboxes one-in-row margin-bottom-10 ch-1">
-                                                                    <input id="check-1" type="checkbox" name="aire">
-                                                                    <label for="check-1">Aire acondicionado</label>
-                                                                    <input id="check-2" type="checkbox" name="alberca">
-                                                                    <label for="check-2">Alberca</label>
-                                                                    <input id="check-3" type="checkbox" name="balcon">
-                                                                    <label for="check-3">Balcon</label>
-                                                                    <input id="check-4" type="checkbox" name="internet">
-                                                                    <label for="check-4">Internet</label>
-
-                                                                </div>
-                                                                <!-- Checkboxes / End -->
-                                                            </div>
-                                                            <div class="col-lg-3 col-md-6 col-sm-12 py-1 pr-30">
-                                                                <!-- Checkboxes -->
-                                                                <div class="checkboxes one-in-row margin-bottom-10 ch-2">
-
-                                                                    <input id="check-7" type="checkbox" name="lavaplatos">
-                                                                    <label for="check-7">Lavaplatos</label>
-                                                                    <input id="check-8" type="checkbox"
-                                                                        name="estacionamiento">
-                                                                    <label for="check-8">Estacionamiento</label>
-                                                                    <input id="check-9" type="checkbox"
-                                                                        name="refrigerador">
-                                                                    <label for="check-9">Refrigerador</label>
-
-                                                                </div>
-                                                                <!-- Checkboxes / End -->
-                                                            </div>
-
-                                                            <div class="rld-single-input">
-                                                                <input name="precio" type="text" placeholder="Precio en pesos...">
-                                                            </div> --}}
-
-                                                    {{-- </div>
-                                                    </div>  --}}
 
                                                 </div>
                                                 <div class="row">
@@ -419,32 +317,31 @@
             </div>
         </div>
     </section>
-    <!-- END HEADER SEARCH -->
 
-    <!-- START SECTION POPULAR PLACES -->
+
 
     <section class="feature-categories rec-pro">
         <div class="container-fluid">
-            {{-- <div class="sec-title">
-                <h2><span>Popular </span>Places</h2>
-                <p>Properties In Most Popular Places.</p>
-            </div> --}}
+
             <div class="row">
                 <div id="listingDetailsSlider" class="carousel listing-details-sliders slide mb-30">
                     <div class="carousel-inner">
 
                         @for ($i = 0; $i < count($banner); $i++)
+
                             @if ($i == 0)
-                                <div class="active item carousel-item" data-slide-number="{{ $i }}">
+                                <div class="active item carousel-item" data-slide-number="{{$i}}">
                                     <img src="{{ asset('/cliente/images/banner/' . $banner[$i]->nombre_archivo) }}"
                                         class="img-fluid" alt="slider-listing">
                                 </div>
                             @else
-                                <div class="item carousel-item" data-slide-number="{{ $i }}">
+                                <div class="item carousel-item" data-slide-number="{{$i}}">
                                     <img src="{{ asset('/cliente/images/banner/' . $banner[$i]->nombre_archivo) }} "
                                         class="img-fluid" alt="slider-listing">
                                 </div>
                             @endif
+
+
                         @endfor
 
 
@@ -458,146 +355,14 @@
 
 
 
-                    <!-- main slider carousel nav controls -->
-                    {{-- <ul class="carousel-indicators smail-listing list-inline">
-                        @for ($j = 0; $j < count($fotos); $j++)
-                            @if ($j == 0)
-                                <li class="list-inline-item active">
-                                    <a id="{{ 'carousel-selector-' . $j }}" data-slide-to="{{ $j }}"
-                                        data-target="#listingDetailsSlider">
-                                        <img src="{{ asset('/propiedades_documentos/' . $fotos[$j]->nombre_archivo) }}"
-                                            class="img-fluid" alt="listing-small">
-                                    </a>
-                                </li>
-                            @else
-                                <li class="list-inline-item">
-                                    <a id="{{ 'carousel-selector-' . $j }}" data-slide-to="{{ $j }}"
-                                        data-target="#listingDetailsSlider">
-                                        <img src="{{ asset('/propiedades_documentos/' . $fotos[$j]->nombre_archivo) }}"
-                                            class="img-fluid" alt="listing-small">
-                                    </a>
-                                </li>
-                            @endif
-                        @endfor
 
-                    </ul> --}}
-                    <!-- main slider carousel items -->
+
                 </div>
             </div>
-            <!-- /row -->
+
         </div>
     </section>
-    {{-- <section class="feature-categories bg-white rec-pro">
-        <div class="container-fluid">
-            <div class="sec-title">
-                <h2><span>Lugares </span>Populares</h2>
-                <p>Propiedades en lugares populares</p>
-            </div>
-            <div class="row">
-                <!-- Single category -->
-                @foreach ($principal_places as $principal_place)
-                    <div class="col-xl-3 col-lg-6 col-sm-6" data-aos="fade-up" data-aos-delay="150">
-                        <div class="small-category-2">
-                            <div class="small-category-2-thumb img-1">
-                                <a href="properties-map.html"><img
-                                        src="{{ asset('cliente/images/popular-places/12.jpg') }}" alt=""></a>
-                            </div>
-                            <div class="sc-2-detail">
-                                <h4 class="sc-jb-title"><a href="#">{{ $principal_place->nombre }}</a></h4>
-                                <span>203 Properties</span>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
 
-            </div>
-            <!-- /row -->
-        </div>
-    </section> --}}
-    <!-- END SECTION POPULAR PLACES -->
-
-    <!-- START SECTION FEATURED PROPERTIES -->
-    {{-- <section class="featured portfolio bg-white-2 rec-pro full-l">
-        <div class="container-fluid">
-            <div class="sec-title">
-                <h2><span>Propiedades </span>Destacadas</h2>
-                <p>Estas son nuestras propiedades destacadas</p>
-            </div>
-            <div class="row portfolio-items">
-                @foreach ($featured_properties as $feature_property)
-                    <div class="item col-xl-6 col-lg-12 col-md-12 col-xs-12 landscapes sale">
-                        <div class="project-single" data-aos="fade-right">
-                            <div class="project-inner project-head">
-                                <div class="homes">
-                                    <!-- homes img -->
-                                    <a href="single-property-1.html" class="homes-img">
-                                        <div class="homes-tag button alt featured">Featured</div>
-                                        <div class="homes-tag button alt sale">For Sale</div>
-                                        <img src="{{ asset('cliente/images/blog/b-11.jpg') }}" alt="home-1"
-                                            class="img-responsive">
-                                    </a>
-                                </div>
-                                <div class="button-effect">
-                                    <a href="single-property-1.html" class="btn"><i class="fa fa-link"></i></a>
-                                    <a href="https://www.youtube.com/watch?v=14semTlwyUY"
-                                        class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
-                                    <a href="single-property-2.html" class="img-poppu btn"><i
-                                            class="fa fa-photo"></i></a>
-                                </div>
-                            </div>
-                            <!-- homes content -->
-                            <div class="homes-content">
-                                <!-- homes address -->
-                                <h3><a href="{{ route('properties.grid-single', $principal_place->id) }}">Real Luxury
-                                        Family House Villa</a></h3>
-                                <p class="homes-address mb-3">
-                                    <a href="single-property-1.html">
-                                        <i class="fa fa-map-marker"></i><span>Est St, 77 - Central Park South, NYC</span>
-                                    </a>
-                                </p>
-                                <!-- homes List -->
-                                <ul class="homes-list clearfix pb-3">
-                                    <li class="the-icons">
-                                        <i class="flaticon-bed mr-2" aria-hidden="true"></i>
-                                        <span>6 Bedrooms</span>
-                                    </li>
-                                    <li class="the-icons">
-                                        <i class="flaticon-bathtub mr-2" aria-hidden="true"></i>
-                                        <span>3 Bathrooms</span>
-                                    </li>
-                                    <li class="the-icons">
-                                        <i class="flaticon-square mr-2" aria-hidden="true"></i>
-                                        <span>720 sq ft</span>
-                                    </li>
-                                    <li class="the-icons">
-                                        <i class="flaticon-car mr-2" aria-hidden="true"></i>
-                                        <span>2 Garages</span>
-                                    </li>
-                                </ul>
-                                <div class="price-properties footer pt-3 pb-0">
-                                    <h3 class="title mt-3">
-                                        <a href="single-property-1.html">$ 150,000</a>
-                                    </h3>
-                                    <div class="compare">
-                                        <a href="#" title="Share">
-                                            <i class="flaticon-share"></i>
-                                        </a>
-                                        <a href="#" title="Favorites">
-                                            <i class="flaticon-heart"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-            <div class="bg-all">
-                <a href="{{ route('properties.grid') }}" class="btn btn-outline-light">View More</a>
-            </div>
-        </div>
-    </section> --}}
-    <!-- END SECTION FEATURED PROPERTIES -->
 
     <!-- START SECTION WHY CHOOSE US -->
     <section class="how-it-works bg-white rec-pro">
@@ -677,7 +442,13 @@
                                 ->where('propiedad_id', '=', $recent_propertie->id)
                                 ->first();
 
-                            $thumb = 'resized-' . $fotosrp->nombre_archivo;
+                            if(empty($fotosrp)){
+                                $thumb = 'resized-generic.jpg';
+                            }
+                            else{
+                                $thumb = 'resized-' . $fotosrp->nombre_archivo;
+                            }
+
 
                         @endphp
                         <div class="agents-grid" data-aos="fade-up">

@@ -11,7 +11,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class Seller extends Authenticatable
 {
-   use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable;
 
 
     /**
@@ -27,7 +27,13 @@ class Seller extends Authenticatable
         'stauts',
         'foto',
         'celular',
-        'seller_active'
+        'seller_active',
+        'ciudad',
+        'estado',
+        'pais',
+        'direccion',
+        'cp',
+        'inmobiliaria',
     ];
 
     /**
@@ -56,7 +62,8 @@ class Seller extends Authenticatable
     }
 }
 
-class Sellers extends model {
+class Sellers extends model
+{
 
     protected $guarded = [];
     public function Propiedad()
@@ -64,7 +71,4 @@ class Sellers extends model {
         return $this->belongsTo(Propiedades::class);
         return $this->hasMany(Propiedades::class, "propiedad_id");
     }
-
-
-
 }

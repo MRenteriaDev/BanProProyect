@@ -57,18 +57,20 @@ class PropiedadesController extends Controller
     {
         $data = $request->validate([
             'nombre' => 'required',
-            'precio' => 'required',
-
+            'precio' => 'required|numeric',
+            'estatus_propiedad_id' => 'required',
+            'seller_id' => 'required',
 
         ], [
-            'solicitud_vendedor_id.required' => 'Se debe seleccionar algo',
-            'review_id.required' => 'Se debe seleccionar algo',
-            'estatus_propiedad_id.required' => 'Se debe seleccionar algo',
+            'nombre.required' => 'Ingrese un nombre para la publicación de la propiedad',
+            'precio.required' => 'Porfavor, ingresa el precio de la propiedad',
+            'precio.required' => 'Ingresa números unicamente',
+            'estatus_propiedad_id.required' => 'Seleccione un estatus ',
             'locacion_id.required' => 'Se debe seleccionar algo',
             'tipo_propiedad_id.required' => 'Se debe seleccionar algo',
             'planos' => 'Se debe seleccionar algo',
-            'nearbys' => 'Se debe escribir algo',
-            'seller_id'=> 'Se debe seleccionar algo '
+            'nearbys.required' => 'Se debe escribir algo',
+            'seller_id.required'=> 'Debe seleccionar un vendedor',
 
         ]);
 
@@ -79,9 +81,6 @@ class PropiedadesController extends Controller
         }else{
             $originalImageMove = null;
         }
-
-
-
 
         Propiedades::insert([
             'nombre' => $request->nombre,
@@ -142,7 +141,10 @@ class PropiedadesController extends Controller
             'alert-type' => 'success'
         );
 
+
         return redirect()->route('propiedades.index')->with($notificacion);
+
+
     }
 
     /**
@@ -207,6 +209,25 @@ class PropiedadesController extends Controller
             'precio' => $request->precio,
             'updated_at' => Carbon::now()
         ]);
+
+        if ($request->has('nombre_archivo')) {
+            foreach ($request->file('nombre_archivo') as $documento) {
+                $documento_nname = $request['nombre'] . '-documento-' . time() . rand(1, 1000) . '.' . $documento->extension();
+                $thumbnail = "resized-". $documento_nname;
+                $file = public_path('propiedades_documentos') . $documento_nname;
+                $ruta = public_path('propiedades_documentos/thumb/') . $thumbnail;
+                Image::make($documento)->resize(345,280)->save($ruta);
+                $documento->move(public_path('propiedades_documentos'), $documento_nname);
+
+
+                GaleriaPropiedades::create([
+                    'propiedad_id' => $id,
+                    'nombre_archivo' => $documento_nname,
+                    'created_at' => Carbon::now()
+                ]);
+            }
+        }
+
 
         $notification  = array(
             'message' => "La propiedad se actualizó Correctamente",

@@ -6,7 +6,7 @@
         <div id="wrapper">
             <!-- START SECTION HEADINGS -->
             <!-- Header Container
-            ================================================== -->
+                ================================================== -->
             @include('cliente.body.header')
             <div class="clearfix"></div>
             <!-- Header Container / End -->
@@ -21,6 +21,18 @@
             </section>
             <!-- END SECTION HEADINGS -->
 
+
+
+            @if ($errors->any())
+                <div class="alert alert-danger col-md-12">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             <!-- START SECTION 404 -->
             <div id="login">
                 <div class="login">
@@ -33,7 +45,7 @@
                         </div>
                         <div class="form-group">
                             <label>Celular</label>
-                            <input class="form-control" type="number" name="celular">
+                            <input class="form-control" type="text" name="celular">
                             <i class="ti-user"></i>
                         </div>
                         <div class="form-group">
@@ -51,35 +63,65 @@
                             <input class="form-control" type="password" id="password2" name="password_confirmation">
                             <i class="icon_lock_alt"></i>
                         </div>
-                            <div class="form-group">
-                                <label for="foto">Foto</label>
+                        <div class="form-group">
+                            <label>Ciudad</label>
+                            <input class="form-control" type="text" name="ciudad">
+                            <i class="ti-user"></i>
+                        </div>
+                        <div class="form-group">
+                            <label>Estado</label>
+                            <input class="form-control" type="text" name="estado">
+                            <i class="ti-user"></i>
+                        </div>
+                        <div class="form-group">
+                            <label>Pais</label>
+                            <input class="form-control" type="text" name="pais">
+                            <i class="ti-user"></i>
+                        </div>
+                        <div class="form-group">
+                            <label>Dirección</label>
+                            <input class="form-control" type="text" name="direccion">
+                            <i class="ti-user"></i>
+                        </div>
+                        <div class="form-group">
+                            <label>Codigo Postal</label>
+                            <input class="form-control" type="text" name="cp">
+                            <i class="ti-user"></i>
+                        </div>
+                        <div class="form-group">
+                            <label>Inmobiliaria a la que pertenece:</label>
+                            <input class="form-control" type="text" name="inmobiliaria">
+                            <i class="ti-user"></i>
+                        </div>
+                        <div class="form-group">
+                            <label for="foto">Foto</label>
 
-                                <input type="file" onchange="readfoto(this);" id="foto" name="foto"
-                                    class="form-control">
+                            <input type="file" onchange="readfoto(this);" id="foto" name="foto"
+                                class="form-control">
 
-                            </div>
-                            <br>
-                            <div id="area"></div>
-                            <div id="fotos" class="row"></div>
-                            <div class="col-12 my-5">
-                                <button type="button" onclick="remove_foto();clean();"
-                                    class="btn btn-primary btn-sm">Borrar
-                                    Fotos</button>
-                            </div>
+                        </div>
+                        <br>
+                        <div id="area"></div>
+                        <div id="fotos" class="row"></div>
+                        <div class="col-12 my-5">
+                            <button type="button" onclick="remove_foto();clean();" class="btn btn-primary btn-sm">Borrar
+                                Fotos</button>
+                        </div>
 
 
                         <script>
                             function readfoto(input) {
                                 $("#area").html('Processing...');
                                 counter = input.files.length;
-                                for (x = 0; x < counter; x=1) {
+                                for (x = 0; x < counter; x = 1) {
                                     if (input.files && input.files[x]) {
 
                                         var reader = new FileReader();
 
                                         reader.onload = function(e) {
                                             $("#fotos").append('<div class="col-md-6 col-sm-6 col-xs-3"><img src="' + e.target.result +
-                                                '" class="img-thumbnail" style="width:250px" onclick="remove_foto();clean" id="img"></div>');
+                                                '" class="img-thumbnail" style="width:250px" onclick="remove_foto();clean" id="img"></div>'
+                                                );
                                         };
 
                                         reader.readAsDataURL(input.files[x]);

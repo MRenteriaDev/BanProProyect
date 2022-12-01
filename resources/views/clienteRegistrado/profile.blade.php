@@ -25,7 +25,23 @@
         </div>
         <ul class="author__contact">
             <li><span class="la la-envelope-o"><i class="fa fa-envelope" aria-hidden="true"></i></span><a
-                    href="#">{{ Auth::user()->email }}</a></li>
+                    >{{ "Email: " .Auth::user()->email }}</a></li>
+        </ul>
+        <ul class="author__contact">
+            <li><span class="la la-envelope-o"><i class="fa fa-mobile" aria-hidden="true"></i></span><a
+                    >{{ "Celular: " . Auth::user()->celular }}</a></li>
+        </ul>
+        <ul class="author__contact">
+            <li><span class="la la-envelope-o"><i class="fa fa-location-arrow" aria-hidden="true"></i></span><a
+                    >{{ "Locación: ". Auth::user()->ciudad . ", " . Auth::user()->estado . ", " . Auth::user()->pais }}</a></li>
+        </ul>
+        <ul class="author__contact">
+            <li><span class="la la-envelope-o"><i class="fa fa-map-marker" aria-hidden="true"></i></span><a
+                    >{{ "Dirección: " . Auth::user()->direccion . ", " . Auth::user()->cp}}</a></li>
+        </ul>
+        <ul class="author__contact">
+            <li><span class="la la-envelope-o"><i class="fa fa-home" aria-hidden="true"></i></span><a
+                    >{{ "Inmobiliaria: " . Auth::user()->inmobiliaria }}</a></li>
         </ul>
         {{-- <div class="agent-contact-form-sidebar">
             <h4>Realizar Cambio </h4>
