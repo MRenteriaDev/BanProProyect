@@ -13758,8 +13758,8 @@ section.how-it-works {
 .how-it-works article img {
   padding-right: 1rem;
   padding-bottom: .5rem;
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
   text-align: center;
 }
 
@@ -15155,7 +15155,7 @@ a.button {
 
 @media screen and (max-width: 1024px) {
   .single.detail-wrapper.grid {
-    margin-left: 10rem;
+    margin-left: 2rem;
   }
 
   .inner-pages.half-map-view .single.detail-wrapper.grid {
@@ -16061,7 +16061,7 @@ section.headings-2 {
 }
 
 .single.detail-wrapper {
-  margin-left: 15rem;
+  margin-left: 2rem;
 }
 
 .inner-pages .headings-2 .listing-title-bar h3 {

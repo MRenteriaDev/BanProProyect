@@ -30,7 +30,7 @@
                         </a>
 
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a href="{{ route('zonas.index') }}"
                             class="nav-link {{ $route == 'zonas.index' ? 'active' : '' }}">
                             <i class="fa-solid fa-magnifying-glass-location"></i>
@@ -38,7 +38,7 @@
                                 Zonas
                             </p>
                         </a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item has-treeview">
                         <a href="{{ route('locacion.index') }}"
                             class="nav-link {{ $route == 'locacion.index' ? 'active' : '' }} ">
@@ -67,7 +67,7 @@
                         </a>
                     </li>
 
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a href="{{ route('review.index') }}"
                             class="nav-link {{ $route == 'review.index' ? 'active' : '' }}">
                             <i class="fa-solid fa-pen-nib"></i>
@@ -75,8 +75,8 @@
                                 Reviews
                             </p>
                         </a>
-                    </li>
-                    <li class="nav-item has-treeview">
+                    </li> --}}
+                    {{-- <li class="nav-item has-treeview">
                         <a href="{{ route('reviewsellers.index') }}"
                             class="nav-link {{ $route == 'reviewsellers.index' ? 'active' : '' }}">
                             <i class="fa-solid fa-keyboard"></i>
@@ -84,8 +84,8 @@
                                 Review Seller
                             </p>
                         </a>
-                    </li>
-                    <li class="nav-item">
+                    </li> --}}
+                    {{-- <li class="nav-item">
                         <a href="{{ route('solicitudvendedor.index') }}"
                             class="nav-link {{ $route == 'solicitudvendedor.index' ? 'active' : '' }}">
                             <i class="fa-solid fa-file-pen"></i>
@@ -93,19 +93,19 @@
                                 Solicitud Vendedor
                             </p>
                         </a>
-                    </li>
+                    </li> --}}
 
                     <li class="nav-item">
                         <a href="{{ route('sellers.index') }}"
                             class="nav-link {{ $route == 'sellers.index' ? 'active' : '' }}">
                             <i class="fa-solid fa-person-shelter"></i>
                             <p>
-                                Seller
+                                Asesores
                             </p>
                         </a>
                     </li>
 
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a href="{{ route('metodospagos.index') }}"
                             class="nav-link {{ $route == 'metodospagosindex.index' ? 'active' : '' }}">
                             <i class="fa-solid fa-credit-card"></i>
@@ -113,7 +113,7 @@
                                 Metodos de pago
                             </p>
                         </a>
-                    </li>
+                    </li> --}}
 
                     <li class="nav-item has-treeview">
                         <a href="{{ route('contact.index') }}"

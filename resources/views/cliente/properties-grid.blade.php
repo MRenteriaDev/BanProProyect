@@ -7,7 +7,7 @@
         <div id="wrapper">
             <!-- START SECTION HEADINGS -->
             <!-- Header Container
-                ================================================== -->
+                        ================================================== -->
             @include('cliente.body.header')
             <div class="clearfix"></div>
             <br>
@@ -20,6 +20,15 @@
             <section class="properties-right featured portfolio ho-17 blog pt-5">
                 <div class="container">
                     <section class="headings-2 pt-0 pb-55">
+
+
+                        <div>
+                            <h5>Si deseas obtener un listado de todas nuestras propiedades pulsa el boton <h5>
+                                    <a href="{{ URL::to('/busqueda/descargapdf') }}" class="btn btn-secondary"> <i
+                                            class="bi bi-file-earmark-pdf"></i> &nbsp; Click aquí</a>
+                        </div>
+
+
                         <div class="pro-wrapper">
                             <div class="detail-wrapper-body">
                                 <div class="listing-title-bar">
@@ -68,34 +77,75 @@
                                 <!-- INICIO DE LISTA -->
 
 
-                                <div class="dashborad-box">
-                                    <h4 class="title">Listado de casas</h4>
-                                    <div class="section-body listing-table">
-                                        <div class="table-responsive">
-                                            <table class="table table-striped">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Nombre</th>
-                                                        <th>Colonia</th>
-                                                        <th>Precio</th>
-                                                        <th class="text-center">Ver más...</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @foreach ($propiedades_filtradas as $lp)
-                                                        <tr>
-                                                            <td>{{ $lp->nombre }}</td>
-                                                            <td>{{ $lp->Locacion->nombre }}</td>
-                                                            <td>{{ "$ " . number_format($lp->precio, 2) }}</td>
-                                                            <td class="text-center"><a
-                                                                    href="{{ route('properties.grid-single', $lp->id) }}">
-                                                                    <i class="fa fa-eye"></i></a>
-                                                            </td>
-                                                        </tr>
-                                                    @endforeach
+                                <div class="card-body">
+                                    <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                                        <div class="row">
 
-                                                </tbody>
-                                            </table>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <table id="example1"
+                                                    class="table table-bordered table-striped dataTable dtr-inline"
+                                                    aria-describedby="example1_info">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="sorting sorting_asc text-center" tabindex="0"
+                                                                aria-controls="example1" rowspan="1" colspan="1"
+                                                                aria-sort="ascending"
+                                                                aria-label="Rendering engine: activate to sort column descending">
+                                                                Nombre
+                                                            </th>
+                                                            <th class="sorting text-center" tabindex="0"
+                                                                aria-controls="example1" rowspan="1" colspan="1"
+                                                                aria-label="Browser: activate to sort column ascending">
+                                                                Precio</th>
+                                                            <th class="sorting text-center" tabindex="0"
+                                                                aria-controls="example1" rowspan="1" colspan="1"
+                                                                aria-label="Browser: activate to sort column ascending">
+                                                                Colonia</th>
+                                                                <th class="sorting text-center" tabindex="0"
+                                                                aria-controls="example1" rowspan="1" colspan="1"
+                                                                aria-label="Browser: activate to sort column ascending">
+                                                                Enlace</th>
+                                                            <th class="sorting text-center" tabindex="0"
+                                                                aria-controls="example1" rowspan="1" colspan="1"
+                                                                aria-label="Platform(s): activate to sort column ascending">
+                                                                Ver más...
+                                                            </th>
+
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+
+                                                        @foreach ($propiedades_filtradas as $propiedad)
+                                                            <tr class="odd">
+                                                                <td class="dtr-control sorting_1 text-center"
+                                                                    tabindex="0">{{ $propiedad->nombre }}</td>
+                                                                <td class='text-center'>{{ "$". number_format($propiedad->precio,2) }}</td>
+
+                                                                @if (isset($propiedad->locacion_id))
+                                                                    <td class='text-center'>
+                                                                        {{ $propiedad->Locacion->nombre }}</td>
+                                                                @elseif(is_null($propiedad->locacion_id))
+                                                                    <td class='text-center'>N/A</td>
+                                                                @endif
+
+                                                                <td class='text-center'>{{"https://banpro.com.mx/properties/grid/" . $propiedad->id}}</td>
+                                                                <th class='text-center' class="row ">
+                                                                    <div class="btn-group text-center" role="group"
+                                                                        aria-label="Basic example">
+
+                                                                        <a
+                                                                            href="{{ route('properties.grid-single', $propiedad->id) }}">
+                                                                            <i class="fa fa-eye"></i></a>
+                                                                    </div>
+                                                                </th>
+                                                            </tr>
+                                                        @endforeach
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -120,9 +170,17 @@
                                     <div class="item col-lg-6 col-md-6 col-xs-12 landscapes sale">
                                         <a href="{{ route('properties.grid-single', $prop->id) }}" class="recent-16"
                                             data-aos="fade-up">
-                                            <div class="recent-img16 img-center"
-                                                style="background-image: url('{{ asset('/propiedades_documentos/' . $fotosp->nombre_archivo) }}')">
-                                            </div>
+
+                                            @if (isset($fotosp->nombre_archivo))
+                                                <div class="recent-img16 img-center"
+                                                    style="background-image: url('{{ asset('/propiedades_documentos/' . $fotosp->nombre_archivo) }}')">
+                                                </div>
+                                            @else
+                                                <div class="recent-img16 img-center"
+                                                    style="background-image: url('{{ asset('/propiedades_documentos/default.jpg') }}')">
+                                                </div>
+                                            @endif
+
                                             <div class="recent-content"></div>
                                             <div class="recent-details">
                                                 <div class="recent-title"> {{ $prop->nombre }}</div>
@@ -365,7 +423,8 @@
                                             <label>Username or Email Address * </label>
                                             <input name="email" type="text" onClick="this.select()" value="">
                                             <label>Password * </label>
-                                            <input name="password" type="password" onClick="this.select()" value="">
+                                            <input name="password" type="password" onClick="this.select()"
+                                                value="">
                                             <button type="submit" class="log-submit-btn"><span>Log In</span></button>
                                             <div class="clearfix"></div>
                                             <div class="filter-tags">
@@ -384,9 +443,11 @@
                                             <form method="post" name="registerform" class="main-register-form"
                                                 id="main-register-form2">
                                                 <label>First Name * </label>
-                                                <input name="name" type="text" onClick="this.select()" value="">
+                                                <input name="name" type="text" onClick="this.select()"
+                                                    value="">
                                                 <label>Second Name *</label>
-                                                <input name="name2" type="text" onClick="this.select()" value="">
+                                                <input name="name2" type="text" onClick="this.select()"
+                                                    value="">
                                                 <label>Email Address *</label>
                                                 <input name="email" type="text" onClick="this.select()"
                                                     value="">

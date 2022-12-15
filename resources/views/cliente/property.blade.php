@@ -45,19 +45,20 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="single detail-wrapper mr-2">
-                                                <div class="detail-wrapper-body">
-                                                    <div class="listing-title-bar">
-                                                        <b>   Precio:</b>
-                                                        <br>
-                                                        <h4>{{ "$ " . number_format($property[0]->precio, 2) }}</h4>
-                                                        {{-- <div class="mt-0">
-                                                            <a href="#listing-location" class="listing-address">
-                                                                <p>$ {{ number_format($property[0]->precio / $property[0]->tamano_propiedad_construido, 2) . ' / m²'}}
-                                                                </p>
-                                                            </a>
-                                                        </div> --}}
-                                                    </div>
+
+                                        </div>
+                                        <div class="single detail-wrapper mr-2">
+                                            <div class="detail-wrapper-body">
+                                                <div class="listing-title-bar">
+                                                    <b>   Precio:</b>
+                                                    <br>
+                                                    <h4>{{ "$ " . number_format($property[0]->precio, 2) }}</h4>
+                                                    {{-- <div class="mt-0">
+                                                        <a href="#listing-location" class="listing-address">
+                                                            <p>$ {{ number_format($property[0]->precio / $property[0]->tamano_propiedad_construido, 2) . ' / m²'}}
+                                                            </p>
+                                                        </a>
+                                                    </div> --}}
                                                 </div>
                                             </div>
                                         </div>
@@ -356,9 +357,9 @@
                                                     <p class="author__meta">Bienes raíces</p>
                                                 </div>
                                                 <ul class="author__contact">
-                                                    <li><span class="la la-phone"><i class="fa fa-phone"
+                                                    <li><span class="la la-phone"><i class="fa fa-whatsapp"
                                                                 aria-hidden="true"></i></span><a
-                                                            href="#">{{ $property[0]->seller->celular ?? '' }}</a></li>
+                                                            href="https://wa.me/526621377220/?text=hola%20me%20gustaria%20contactarlos">{{ $property[0]->seller->celular ?? '' }}</a></li>
                                                     <li><span class="la la-envelope-o"><i class="fa fa-envelope"
                                                                 aria-hidden="true"></i></span><a
                                                             href="#">{{$property[0]->seller->email ?? '' }}</a></li>

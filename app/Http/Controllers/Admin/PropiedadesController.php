@@ -26,7 +26,7 @@ class PropiedadesController extends Controller
      */
     public function index()
     {
-        $propiedades = DB::table('propiedades')->get();
+        $propiedades = Propiedades::latest()->get();
 
         return view('admin.propiedades.index', compact('propiedades'));
     }
@@ -207,6 +207,27 @@ class PropiedadesController extends Controller
         Propiedades::findOrFail($id)->update([
             'nombre' => $request->nombre,
             'precio' => $request->precio,
+            'tamano_propiedad' => $request->tamano_propiedad,
+            'tamano_propiedad_construido' => $request->tamano_propiedad_construido,
+            'recamaras' => $request->recamaras,
+            'bano' => $request->bano,
+            'aire_condicionado' => $request->aire_condicionado,
+            'balcon' => $request->balcon,
+            'internet' => $request->internet,
+            'cable' => $request->cable,
+            'alberca' => $request->alberca,
+            'lavaplatos' => $request->lavaplatos,
+            'estacionamiento' => $request->estacionamiento,
+            'refrigerador' => $request->refrigerador,
+            'solicitud_vendedor_id' => $request->solicitud_vendedor_id,
+            'review_id' => $request->review_id,
+            'estatus_propiedad_id' => $request->estatus_propiedad_id,
+            'locacion_id' => $request->locacion_id,
+            'tipo_propiedad_id' => $request->tipo_propiedad_id,
+            'nearbys' => $request->nearbys,
+            'descripcion' => $request->descripcion,
+            'seller_id' => $request->seller_id,
+            'ubicacion' => $request->ubicacion,
             'updated_at' => Carbon::now()
         ]);
 

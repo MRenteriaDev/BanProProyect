@@ -6,7 +6,7 @@
         <div id="wrapper">
             <!-- START SECTION HEADINGS -->
             <!-- Header Container
-                ================================================== -->
+                                    ================================================== -->
             @include('cliente.body.header')
             <div class="clearfix"></div>
             <!-- Header Container / End -->
@@ -121,7 +121,7 @@
                                         reader.onload = function(e) {
                                             $("#fotos").append('<div class="col-md-6 col-sm-6 col-xs-3"><img src="' + e.target.result +
                                                 '" class="img-thumbnail" style="width:250px" onclick="remove_foto();clean" id="img"></div>'
-                                                );
+                                            );
                                         };
 
                                         reader.readAsDataURL(input.files[x]);
@@ -147,6 +147,14 @@
                                 $('#foto').val('dsds');
                             }
                         </script>
+
+
+                            <div class="text-center add_top_10"><input type="checkbox" name="acepto">He leído y acepto los <strong><a
+                                        href="{{ route('aviso') }}">
+                                        términos y condiciones</a></strong>
+
+                            </div>
+                        <br>
 
 
                         <div id="pass-info" class="clearfix"></div>

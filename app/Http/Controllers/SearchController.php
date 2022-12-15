@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Locacion;
 use App\Models\Propiedades;
 use Illuminate\Support\Facades\DB;
+use PDF;
 
 class SearchController extends Controller
 {
@@ -57,6 +58,7 @@ class SearchController extends Controller
                 ->when(!is_null($vtipo_propiedad), function ($query) use ($request) {
                     $query->where('tipo_propiedad_id', '=', $request->vtipo_propiedad);
                 })
+                ->orderBy('precio', 'asc')
 
                 ->get();
         }
@@ -78,6 +80,7 @@ class SearchController extends Controller
                 ->when(!is_null($rtipo_propiedad), function ($query) use ($request) {
                     $query->where('tipo_propiedad_id', '=', $request->rtipo_propiedad);
                 })
+                ->orderBy('precio', 'asc')
 
                 ->get();
         }
@@ -94,5 +97,14 @@ class SearchController extends Controller
 
 
         // return response()->json($tipo_propiedad, 200);
+    }
+
+    public function downloadPdf()
+    {
+        $casas = Propiedades::orderBy('precio','asc')->get();
+
+        $pdf = PDF::loadView("cliente.clientecasaspdf", compact("casas"));
+
+        return $pdf->download("Listadodecasas.pdf");
     }
 }

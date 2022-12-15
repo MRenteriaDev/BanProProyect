@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\ImageManagerStatic as Image;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Validation\Rules;
+use Illuminate\Contracts\Validation\Validator;
+use Brian2694\Toastr\Facades\Toastr;
 
 class SellerController extends Controller
 {
@@ -88,14 +92,13 @@ class SellerController extends Controller
             'name' => 'required',
             'email' => 'required',
             'foto' => 'required',
-            'celular' => 'required'
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
 
         ], [
-            'name.required' => 'El nombre del Seller es requerido',
-            'email.required' => 'El correo del Seller es requerido',
-            'foto.required' => 'La foto del Seller es requerida',
-            'celular.required' => 'El celular del Seller es requerido',
-
+            'name.required' => 'El nombre del usuario es requerido',
+            'email.required' => 'El correo del usuario es requerido',
+            'foto.required' => 'La foto del usuario es requerida',
+            'password.required' => 'Ingrese una contrasña',
 
         ]);
 
@@ -115,6 +118,7 @@ class SellerController extends Controller
             'foto' =>  $fotomove,
             'celular' =>  $request->celular,
             'stauts' => 0,
+            'password' => Hash::make($request->password),
             'created_at' => Carbon::now()
         ]);
 

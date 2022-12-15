@@ -226,82 +226,56 @@
                         </div>
 
 
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Seleccionar Solicitud del vendedor</label>
-                                <select class="form-control select2" name="solicitud_vendedor_id"
-                                    style="width: 100%;height: 100%;">
-                                    <option selected="selected">Seleccionar</option>
-                                    @foreach ($solicitudvendedor as $solicitudvendedo)
-                                        <option value={{ $solicitudvendedo->id }} selected="selected">
-                                            {{ $solicitudvendedo->nombre }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Seleccionar Review</label>
-                                <select class="form-control select2" name="review_id" style="width: 100%;height: 100%;">
-                                    <option selected="selected">Seleccionar</option>
-                                    @foreach ($reviews as $review)
-                                        <option value={{ $review->id }} selected="selected">{{ $review->nombre }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label>Seleccionar Estatus de la Propiedad</label>
                                 <select class="form-control select2" name="estatus_propiedad_id"
                                     style="width: 100%;height: 100%;">
-                                    <option selected="selected">Seleccionar</option>
+                                    <option selected="selected" value="{{ $propiedades->estatus_propiedad_id }}">Seleccionar</option>
                                     @foreach ($estatuspropiedad as $estatupropiedad)
-                                        <option value={{ $estatupropiedad->id }} selected="selected">
-                                            {{ $estatupropiedad->nombre }}
+                                        <option value={{ $estatupropiedad->id }}>{{ $estatupropiedad->nombre }}
                                         </option>
                                     @endforeach
+                                    @error('estatus_propiedad_id')
+                                        <span class="text-danger"> {{ $message }} </span>
+                                    @enderror
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label>Seleccionar Tipo de propiedad</label>
-                                <select class="form-control select2" name="tipo_propiedad_id"
-                                    style="width: 100%;height: 100%;">
-                                    <option selected="selected">Seleccionar</option>
+                                <select class="form-control select2" name="tipo_propiedad_id" style="width: 100%;height: 100%;">
+                                    <option selected="selected" value="{{ $propiedades->tipo_propiedad_id }}">Seleccionar</option>
                                     @foreach ($tipopropiedades as $tipopropiedad)
-                                        <option value={{ $tipopropiedad->id }} selected="selected">
-                                            {{ $tipopropiedad->nombre }}</option>
+                                        <option value={{ $tipopropiedad->id }}>{{ $tipopropiedad->nombre }}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label>Seleccionar Locacion</label>
-                                <select class="form-control select2" name="locacion_id"
-                                    style="width: 100%;height: 100%;">
-                                    <option selected="selected">Seleccionar</option>
+                                <select class="form-control select2" name="locacion_id" style="width: 100%;height: 100%;">
+                                    <option selected="selected" value="{{ $propiedades->locacion_id }}">Seleccionar</option>
                                     @foreach ($locacion as $locacion)
-                                        <option value={{ $locacion->id }} selected="selected">{{ $locacion->nombre }}
-                                        </option>
+                                        <option value={{ $locacion->id }}>{{ $locacion->nombre }}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <div class="form-group">
-                                <label>Seleccionar Seller</label>
+                                <label>Seleccionar asesor</label>
                                 <select class="form-control select2" name="seller_id" style="width: 100%;height: 100%;">
-                                    <option selected="selected">Seleccionar</option>
+                                    <option selected="selected" value="{{ $propiedades->seller_id }}">Seleccionar</option>
                                     @foreach ($seller as $seller)
-                                        <option value={{ $seller->id }} selected="selected">{{ $seller->name }}
-                                        </option>
+                                        <option value={{ $seller->id }}>{{ $seller->name }}</option>
                                     @endforeach
                                 </select>
+                                @error('seller_id')
+                                <span class="text-danger"> {{ $message }} </span>
+                            @enderror
                             </div>
                         </div>
 
@@ -433,7 +407,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="ubicacion">Ubicacion</label>
-                            <input type="text" name="ubicacion"
+                            <input type="text" name="ubicacion" value="{{$propiedades->ubicacion}}"
                                 class="form-control" id="ubicacion" placeholder="Introduzca ubicacion">
                         </div>
                         @error('ubicacion')

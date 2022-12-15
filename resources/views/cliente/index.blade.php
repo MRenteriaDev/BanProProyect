@@ -436,7 +436,7 @@
             <div class="portfolio col-xl-12">
                 <div class="slick-lancers">
 
-                    @foreach ($recent_properties as $recent_propertie)
+                    @foreach ($recent_properties->sortBy('precio') as $recent_propertie)
                         @php
                             $fotosrp = DB::table('galeria_propiedades')
                                 ->where('propiedad_id', '=', $recent_propertie->id)

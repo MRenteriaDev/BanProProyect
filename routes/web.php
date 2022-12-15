@@ -258,6 +258,7 @@ Route::prefix('seller')->group(function () {
 Route::prefix('busqueda')->group(function () {
     Route::get('/resultados', [SearchController::class, 'resultados'])->name('resultados');
     Route::post('/busqueda', [SearchController::class, 'busqueda'])->name('busqueda');
+    Route::get('/descargapdf', [SearchController::class, 'downloadPdf'])->name('descargapdf');
 });
 
 /// Rutas del index

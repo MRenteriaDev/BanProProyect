@@ -30,16 +30,16 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="name">Nombre</label>
-                        <input type="text" name="name"  class="form-control"
-                            id="name" placeholder="Introduzca Nombre">
+                        <input type="text" name="name" class="form-control" id="name"
+                            placeholder="Introduzca Nombre">
                         @error('name')
                             <span class="text-danger"> {{ $message }} </span>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label for="email">Correo</label>
-                        <input type="text" name="email"  class="form-control"
-                            id="email" placeholder="Introduzca Correo">
+                        <input type="text" name="email" class="form-control" id="email"
+                            placeholder="Introduzca Correo">
                         @error('email')
                             <span class="text-danger"> {{ $message }} </span>
                         @enderror
@@ -47,9 +47,27 @@
 
                     <div class="form-group">
                         <label for="celular">Celular</label>
-                        <input type="number" name="celular"  class="form-control"
-                            id="celular" placeholder="Introduzca Celular">
+                        <input type="number" name="celular" class="form-control" id="celular"
+                            placeholder="Introduzca Celular">
                         @error('celular')
+                            <span class="number-danger"> {{ $message }} </span>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label>Contraseña</label>
+                        <input class="form-control" type="password" id="password1" name="password">
+                        <i class="icon_lock_alt"></i>
+                        @error('password1')
+                            <span class="number-danger"> {{ $message }} </span>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label>Confirmar contraseña</label>
+                        <input class="form-control" type="password" id="password2" name="password_confirmation">
+                        <i class="icon_lock_alt"></i>
+                        @error('password2')
                             <span class="number-danger"> {{ $message }} </span>
                         @enderror
                     </div>
@@ -66,8 +84,7 @@
                         <div id="area"></div>
                         <div id="fotos" class="row"></div>
                         <div class="col-12">
-                            <button type="button" onclick="remove_foto();clean();"
-                                class="btn btn-primary btn-sm">Borrar
+                            <button type="button" onclick="remove_foto();clean();" class="btn btn-primary btn-sm">Borrar
                                 Fotos</button>
                         </div>
                     </div>
@@ -112,12 +129,12 @@
 
 
 
-                <!-- /.card-body -->
+                    <!-- /.card-body -->
 
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Crear</button>
-                    <a href="{{ route('sellers.index') }}" class="btn btn-danger">Cancelar</a>
-                </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary">Crear</button>
+                        <a href="{{ route('sellers.index') }}" class="btn btn-danger">Cancelar</a>
+                    </div>
             </form>
         </div>
     </div>

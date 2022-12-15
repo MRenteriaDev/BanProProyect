@@ -7,8 +7,8 @@
                 <!-- Logo -->
                 <div id="logo">
                     <a href="{{ url('/') }}"><img src="{{ asset('cliente/images/logo-white-1.png') }}"
-                            data-sticky-logo="{{ asset('cliente/images/logo-white-1.png') }}" alt=""
-                            width="1000"></a>
+                            data-sticky-logo="{{ asset('cliente/images/logo-black.png') }}" alt=""
+                            width="5000"></a>
                 </div>
                 <!-- Mobile Navigation -->
                 <div class="mmenu-trigger">
