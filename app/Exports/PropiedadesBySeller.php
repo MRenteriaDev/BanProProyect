@@ -19,21 +19,21 @@ class PropiedadesBySeller implements FromQuery, WithHeadings
      */
     use Exportable;
 
-    protected $sellerid;
+    protected $seller;
 
 
-    function __construct($sellerid)
+    function __construct($seller)
     {
-        $this->s_i = $sellerid;
+        $this->s_i = $seller;
 
     }
 
     public function query()
     {
         $data = DB::table('propiedades')
-            ->where('seller_id', $this->s_i)
+            ->where($this->s_i)
             ->select(['id','created_at', 'updated_at', 'nombre', 'estatus_propiedad_id', 'locacion_id', 'tipo_propiedad_id','precio', 'tamano_propiedad', 'tamano_propiedad_construido', 'descripcion', 'recamaras', 'bano', 'aire_condicionado', 'balcon', 'internet', 'cable', 'alberca', 'lavaplatos', 'estacionamiento', 'refrigerador', 'review_id', 'solicitud_vendedor_id', 'nearbys', 'seller_id', 'ubicacion'])
-            ->orderBy("id");
+            ->orderBy("precio");
 
         return $data;
     }

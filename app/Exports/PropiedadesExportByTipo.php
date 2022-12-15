@@ -31,9 +31,9 @@ class PropiedadesExportByTipo implements FromQuery, WithHeadings
     public function query()
     {
         $data = DB::table('propiedades')
-            ->where('tipo_propiedad_id', $this->t_p)
+            ->where($this->t_p)
             ->select(['id','created_at', 'updated_at', 'nombre', 'estatus_propiedad_id', 'locacion_id', 'tipo_propiedad_id','precio', 'tamano_propiedad', 'tamano_propiedad_construido', 'descripcion', 'recamaras', 'bano', 'aire_condicionado', 'balcon', 'internet', 'cable', 'alberca', 'lavaplatos', 'estacionamiento', 'refrigerador', 'review_id', 'solicitud_vendedor_id', 'nearbys', 'seller_id', 'ubicacion'])
-            ->orderBy("id");
+            ->orderBy("precio");
 
         return $data;
     }
