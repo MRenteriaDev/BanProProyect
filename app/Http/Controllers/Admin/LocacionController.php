@@ -49,7 +49,7 @@ class LocacionController extends Controller
 
         Locacion::insert([
             'nombre' => $request->nombre,
-            'zona_id' => $request->zona_id,
+            'zona_id' => NULL,
             'created_at' => Carbon::now()
         ]);
 
