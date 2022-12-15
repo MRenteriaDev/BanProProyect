@@ -55,6 +55,24 @@
                         @enderror
                     </div>
 
+                    <div class="form-group">
+                        <label>Contraseña</label>
+                        <input class="form-control" type="password" id="password1" name="password">
+                        <i class="icon_lock_alt"></i>
+                        @error('password1')
+                            <span class="number-danger"> {{ $message }} </span>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label>Confirmar contraseña</label>
+                        <input class="form-control" type="password" id="password2" name="password_confirmation">
+                        <i class="icon_lock_alt"></i>
+                        @error('password2')
+                            <span class="number-danger"> {{ $message }} </span>
+                        @enderror
+                    </div>
+
                     <div class="col-md-12">
                         <div class="form-floathing">
                             <label for="foto">Foto</label>
