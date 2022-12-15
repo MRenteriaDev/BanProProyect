@@ -32,7 +32,7 @@ class PropiedadesBySeller implements FromQuery, WithHeadings
     {
         $data = DB::table('propiedades')
             ->where('seller_id', $this->s_i)
-            ->select(['id','created_at', 'updated_at', 'nombre', 'estatus_propiedad_id', 'locacion_id', 'tipo_propiedad_id','precio', 'tamano_propiedad', 'tamano_propiedad_construido', 'descripcion', 'fecha_construccion', 'recamaras', 'bano', 'aire_condicionado', 'balcon', 'internet', 'cable', 'alberca', 'lavaplatos', 'estacionamiento', 'refrigerador', 'video_propiedad', 'review_id', 'solicitud_vendedor_id', 'planos', 'nearbys'])
+            ->select(['id','created_at', 'updated_at', 'nombre', 'estatus_propiedad_id', 'locacion_id', 'tipo_propiedad_id','precio', 'tamano_propiedad', 'tamano_propiedad_construido', 'descripcion', 'recamaras', 'bano', 'aire_condicionado', 'balcon', 'internet', 'cable', 'alberca', 'lavaplatos', 'estacionamiento', 'refrigerador', 'review_id', 'solicitud_vendedor_id', 'nearbys', 'seller_id', 'ubicacion'])
             ->orderBy("id");
 
         return $data;
@@ -50,7 +50,6 @@ class PropiedadesBySeller implements FromQuery, WithHeadings
             'Tipo De Propiedad',
             'Precio',
             'Tamaño De La Propiedad',
-            'Tamaño De La Propiedad Construida',
             'Descripcion',
             'Fecha Construcción',
             'Recamaras',
@@ -63,11 +62,11 @@ class PropiedadesBySeller implements FromQuery, WithHeadings
             'Lavaplatos',
             'Estacionamiento',
             'Refrigerador',
-            'Video',
             'Review',
             'Solicitud Del Vendedor',
-            'Planos',
             'Cercanas',
+            'Vendedor',
+            'Ubicacion'
         ];
     }
 }

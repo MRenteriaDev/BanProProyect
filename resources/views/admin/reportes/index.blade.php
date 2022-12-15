@@ -18,7 +18,7 @@
     <div class="row col-sm-12">
         <div class="card card-primary col-sm-3">
             <div class="card-header">
-                <h3 class="card-title">Reportes por Fecha</h3>
+                <h3 class="card-title">Propiedades por Fecha</h3>
             </div>
             <!-- /.card-header -->
             <!-- form start -->
@@ -43,7 +43,7 @@
         </div>
         <div class="card card-primary col-sm-3">
             <div class="card-header">
-                <h3 class="card-title">Reportes por Tipo</h3>
+                <h3 class="card-title">Propiedades por Tipo</h3>
             </div>
             <!-- /.card-header -->
             <!-- form start -->
@@ -70,7 +70,7 @@
         </div>
         <div class="card card-primary col-sm-3">
             <div class="card-header">
-                <h3 class="card-title">Reportes por Vendedor</h3>
+                <h3 class="card-title">Vendedor por Fecha</h3>
             </div>
             <!-- /.card-header -->
             <!-- form start -->

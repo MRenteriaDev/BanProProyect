@@ -68,19 +68,12 @@ class PropiedadesController extends Controller
             'estatus_propiedad_id.required' => 'Seleccione un estatus ',
             'locacion_id.required' => 'Se debe seleccionar algo',
             'tipo_propiedad_id.required' => 'Se debe seleccionar algo',
-            'planos' => 'Se debe seleccionar algo',
             'nearbys.required' => 'Se debe escribir algo',
             'seller_id.required'=> 'Debe seleccionar un vendedor',
 
         ]);
 
-        if($request->file('planos') != null){
-            $originalImage = $request->file('planos');
-            $originalImageMove = $data['nombre'] . '-documento-' . time() . rand(1, 1000) . '.' . $originalImage->extension();
-            $imageSave = $originalImage->move(public_path('planos_documentos'), $originalImageMove);
-        }else{
-            $originalImageMove = null;
-        }
+
 
         Propiedades::insert([
             'nombre' => $request->nombre,
@@ -102,7 +95,6 @@ class PropiedadesController extends Controller
             'estatus_propiedad_id' => $request->estatus_propiedad_id,
             'locacion_id' => $request->locacion_id,
             'tipo_propiedad_id' => $request->tipo_propiedad_id,
-            'planos' => $originalImageMove,
             'nearbys' => $request->nearbys,
             'descripcion' => $request->descripcion,
             'seller_id' => $request->seller_id,

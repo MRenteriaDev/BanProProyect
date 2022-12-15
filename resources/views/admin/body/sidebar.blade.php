@@ -30,7 +30,7 @@
                         </a>
 
                     </li>
-                    {{-- <li class="nav-item">
+                     <li class="nav-item">
                         <a href="{{ route('zonas.index') }}"
                             class="nav-link {{ $route == 'zonas.index' ? 'active' : '' }}">
                             <i class="fa-solid fa-magnifying-glass-location"></i>
@@ -38,7 +38,7 @@
                                 Zonas
                             </p>
                         </a>
-                    </li> --}}
+                    </li>
                     <li class="nav-item has-treeview">
                         <a href="{{ route('locacion.index') }}"
                             class="nav-link {{ $route == 'locacion.index' ? 'active' : '' }} ">

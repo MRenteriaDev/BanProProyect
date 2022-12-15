@@ -41,11 +41,6 @@
                     </li>
 
                     <li>
-                        <a class=nav-item nav-link data-toggle=tab href=#planes><button type="button"
-                                class="btn btn-primary mr-3">Planos</button></a>
-                    </li>
-
-                    <li>
                         <a class=nav-item nav-link data-toggle=tab href=#ubicacion><button type="button"
                                 class="btn btn-primary mr-3">Ubicacion</button></a>
                     </li>
@@ -343,65 +338,7 @@
 
 
                 </div>
-                <div class=tab-pane id=planes>
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="planos">Planos</label>
-                            <input type="file" onchange="readBlueprint(this);" name="planos[]" class="form-control"
-                                id="planos" placeholder="Cargar plano">
-                            @error('planos')
-                                <span class="text-danger"> {{ $message }} </span>
-                            @enderror
-                        </div>
-                        <br>
-                        <div id="area"></div>
-                        <div id="blueprint" class="row"></div>
-                        <div class="col-12">
-                            <button type="button" onclick="remove_blueprint();clear();"
-                                class="btn btn-primary btn-sm">Borrar
-                                Fotos</button>
-                        </div>
-                    </div>
 
-
-                    <script>
-                        function readBlueprint(input) {
-                            $("#area").html('Processing...');
-                            counter = input.files.length;
-                            for (x = 0; x < counter; x++) {
-                                if (input.files && input.files[x]) {
-
-                                    var reader = new FileReader();
-
-                                    reader.onload = function(e) {
-                                        $("#blueprint").append('<div class="col-md-3 col-sm-3 col-xs-3"><img src="' + e.target.result +
-                                            '" class="img-thumbnail" onclick="remove_blueprint()" id="image"></div>');
-                                    };
-
-                                    reader.readAsDataURL(input.files[x]);
-                                }
-                            }
-                            if (counter == x) {
-                                $("#area").html('');
-                            }
-
-                        }
-
-                        function remove_blueprint() {
-                            var images = document.getElementsByTagName('image');
-                            var l = images.length;
-                            for (var i = 0; i < l; i++) {
-                                images[0].parentNode.removeChild(images[0]);
-                            }
-                        }
-
-                        function clear() {
-                            var abs = document.getElementById('planos').value;
-                            document.getElementById('planos').value = "";
-                            $('#planos').val('dsds');
-                        }
-                    </script>
-                </div>
 
                 <div class=tab-pane active id=ubicacion>
                     <div class="col-md-6">
