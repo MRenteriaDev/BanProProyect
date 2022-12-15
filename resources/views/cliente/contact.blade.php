@@ -55,7 +55,7 @@
 
                     <h3>Nuestra locacion</h3>
                     <div class="divider-fade"></div>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13943.081115978002!2d-110.97073396842316!3d29.112462630154635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86ce877bf69c20e1%3A0x31327e7e36dfa21b!2sclinica%20shaddai!5e0!3m2!1sen!2smx!4v1664506806647!5m2!1sen!2smx" width="1200" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13949.632346072969!2d-110.99272433022462!3d29.064083699999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86ce84637a54149d%3A0xdd1262daebb5cd8f!2sDe%20Las%20Verbenas%209%2C%20Jardines%20de%20Monaco%2C%2083288%20Hermosillo%2C%20Son.!5e0!3m2!1sen!2smx!4v1671075158237!5m2!1sen!2smx" width="1200" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
                     <div class="row">
                         <div class="col-lg-8 col-md-12">
@@ -88,13 +88,13 @@
                                 <li>
                                     <div class="info">
                                         <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                        <p class="in-p">Benito Juarez y Tamaulpias #65</p>
+                                        <p class="in-p">Avenida de las verbenas #9</p>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="info">
                                         <i class="fa fa-phone" aria-hidden="true"></i>
-                                        <p class="in-p">6628794654
+                                        <p class="in-p">6621377220
                                         </p>
                                     </div>
                                 </li>
@@ -107,7 +107,7 @@
                                 <li>
                                     <div class="info cll">
                                         <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                        <p class="in-p ti">8:00 a.m - 9:00 p.m</p>
+                                        <p class="in-p ti">8:00 a.m - 6:00 p.m</p>
                                     </div>
                                 </li>
                             </ul>
