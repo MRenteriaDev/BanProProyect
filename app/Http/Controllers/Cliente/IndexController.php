@@ -93,5 +93,10 @@ class IndexController extends Controller
         return view('cliente.aviso');
     }
 
+    public function cookies()
+    {
+        return view('cliente.aviso-cookies');
+    }
+
 
 }

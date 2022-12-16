@@ -57,7 +57,7 @@
 
 
 
- {{-- ADMIN --}}
+    {{-- ADMIN --}}
 
 </head>
 
@@ -135,8 +135,11 @@
                     "responsive": true,
                     "lengthChange": false,
                     "autoWidth": false,
-                    "pageLength" : 5,
-                     "lengthMenu": [[5, 10, 20, -1], [5, 10, 20, 'Todos']],
+                    "pageLength": 5,
+                    "lengthMenu": [
+                        [5, 10, 20, -1],
+                        [5, 10, 20, 'Todos']
+                    ],
                     "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
                 }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
                 $('#example2').DataTable({
@@ -144,8 +147,11 @@
                     "lengthChange": false,
                     "searching": false,
                     "ordering": true,
-                    pageLength : 5,
-                     lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Todos']],
+                    pageLength: 5,
+                    lengthMenu: [
+                        [5, 10, 20, -1],
+                        [5, 10, 20, 'Todos']
+                    ],
                     "info": true,
                     "autoWidth": false,
                     "responsive": true,
@@ -373,6 +379,30 @@
                 }
             @endif
         </script>
+
+        <!-- Google Tag Manager -->
+        <script>
+            (function(w, d, s, l, i) {
+                w[l] = w[l] || [];
+                w[l].push({
+                    'gtm.start': new Date().getTime(),
+                    event: 'gtm.js'
+                });
+                var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s),
+                    dl = l != 'dataLayer' ? '&l=' + l : '';
+                j.async = true;
+                j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+                f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', 'GTM-MB7HJ8K');
+        </script>
+        <!-- End Google Tag Manager -->
+
+
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('cliente/css/estilos.css')}}">
 
     </div>
     <!-- Wrapper / End -->

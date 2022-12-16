@@ -281,7 +281,12 @@ Route::prefix('contacts')->group(function () {
 
 Route::prefix('aviso')->group(function () {
     Route::get('/', [IndexController::class, 'aviso'])->name('aviso');
+    Route::get('/cookies', [IndexController::class, 'cookies'])->name('cookies');
 });
+
+
+
+
 
 // Route::prefix('search')->group(function () {
 //     Route::post('/busqueda', [SearchController::class, 'busqueda'])->name('busqueda');
