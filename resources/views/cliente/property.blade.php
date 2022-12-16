@@ -3,6 +3,7 @@
 @section('clienteherencia')
 
 @php
+ use Illuminate\Support\Facades\Auth;
     use App\Models\Sellers;
     $sellers = DB::table('sellers')
         ->take(2)
@@ -227,14 +228,7 @@
 
                                 </ul>
                             </div>
-                            <div class="floor-plan property wprt-image-video w50 pro">
-                                <h5>Planos de construcción</h5>
-                                @if(!$property[0]->planos == null)
-                                <img alt="image" src="{{ asset('/planos_documentos/' . $property[0]->planos ) }}">
-                                @else
-                                <p class="mb-3">No hay planos disponibles</p>
-                                @endif
-                            </div>
+
 
 
 
@@ -343,15 +337,22 @@
                                             <h3>Informacion Del </h3>
                                             <h2>Contacto</h2>
                                         </div>
+
+
+
+
+                                        @if( Auth::user()->seller_active == 1)
+
                                         <div class="widget-boxed-body">
                                             <div class="sidebar-widget author-widget2">
                                                 <div class="author-box clearfix">
 
-                                                    @if(isset($property[0]->seller_id))
-                                                        <img src="{{ asset('/fotos_documentos/' . $property[0]->seller->foto) }}" /></span>
-                                                    @else
-                                                     <img src="{{ asset('/fotos_documentos/default.png' ) }}" /></span>
-                                                    @endif
+
+                                                     @if(isset($property[0]->seller_id))
+                                                     <img src="{{ asset('/fotos_documentos/' . $property[0]->seller->foto) }}" /></span>
+                                                 @else
+                                                  <img src="{{ asset('/fotos_documentos/default.png' ) }}" /></span>
+                                                 @endif
 
                                                     <h4 class="author__title">{{ $property[0]->seller->name ?? '' }}</h4>
                                                     <p class="author__meta">Bienes raíces</p>
@@ -364,9 +365,39 @@
                                                                 aria-hidden="true"></i></span><a
                                                             href="#">{{$property[0]->seller->email ?? '' }}</a></li>
                                                 </ul>
-
                                             </div>
                                         </div>
+
+
+
+
+                                        @elseif(Auth::user()->seller_active == 0 || Auth::user()->seller_active == null)
+
+
+                                        <div class="widget-boxed-body">
+                                            <div class="sidebar-widget author-widget2">
+                                                <div class="author-box clearfix">
+
+                                                    <img src="{{ asset('/fotos_documentos/banpro.png' ) }}" /></span>
+
+
+                                                    <h4 class="author__title">Banpro</h4>
+                                                    <p class="author__meta">Bienes raíces</p>
+                                                </div>
+                                                <ul class="author__contact">
+                                                    <li><span class="la la-phone"><i class="fa fa-whatsapp"
+                                                                aria-hidden="true"></i></span><a
+                                                            href="https://wa.me/526621377220/?text=hola%20me%20gustaria%20contactarlos">6621377220</a></li>
+                                                    <li><span class="la la-envelope-o"><i class="fa fa-envelope"
+                                                                aria-hidden="true"></i></span><a
+                                                            href="#">Banpro@gmail.com</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+
+                                        @endif
+
 
 
 
