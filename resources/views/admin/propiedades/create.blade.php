@@ -187,19 +187,7 @@
                     </div>
                     <br><br>
                 </div>
-                <div class="col-md-10">
-                    <div class="form-floathing">
-                        <label for="nearbys">Especifica si hay lugares de interés cerca</label>
-                        <textarea name="nearbys" id="nearbys" placeholder="Escribe lugares cercanos" class="form-control" cols="5"
-                            rows="2">
-                            {{old('nearbys')}}
-                        </textarea>
-                        @error('nearbys')
-                            <span class="text-danger"> {{ $message }} </span>
-                        @enderror
-                    </div>
-                    <br>
-                </div>
+
 
                 <div class="col-md-10">
                     <div class="form-floathing">
@@ -323,7 +311,22 @@
                     <div class="col-12">
                         <button type="button" onclick="remove_image();change();" class="btn btn-primary btn-sm">Borrar
                             Fotos</button>
+                            <br><br>
                     </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-floathing">
+                        <label for="nearbys">Especifica si hay lugares de interés cerca</label>
+                        <textarea name="nearbys" id="nearbys" placeholder="Escribe lugares cercanos" class="form-control" cols="5"
+                            rows="2">
+                            {{old('nearbys')}}
+                        </textarea>
+                        @error('nearbys')
+                            <span class="text-danger"> {{ $message }} </span>
+                        @enderror
+                    </div>
+                    <br>
                 </div>
 
 

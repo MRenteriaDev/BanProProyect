@@ -21,6 +21,10 @@
         </div>
     </section>
 
+    @php
+        use App\Models\Propiedades;
+    @endphp
+
 
     <div class="card-body">
         <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
@@ -37,8 +41,13 @@
                                     colspan="1" aria-sort="ascending"
                                     aria-label="Rendering engine: activate to sort column descending">Nombre
                                 </th>
+
+                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                aria-label="Browser: activate to sort column ascending">Número de propiedades</th>
+
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                     aria-label="Browser: activate to sort column ascending">Creado El</th>
+
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                     aria-label="Platform(s): activate to sort column ascending">
                                     Acciones
@@ -51,6 +60,11 @@
                             @foreach ($sellers as $seller)
                                 <tr class="odd">
                                     <td class="dtr-control sorting_1" tabindex="0">{{ $seller->name }}</td>
+                                    @php
+                                    $numero_propiedades = Propiedades::latest()->where("seller_id", $seller->id)->get();
+
+                                    @endphp
+                                    <td>{{ count($numero_propiedades) }}</td>
                                     <td>{{ $seller->created_at }}</td>
                                     <th class="row">
                                         <div class="btn-group" role="group" aria-label="Basic example">

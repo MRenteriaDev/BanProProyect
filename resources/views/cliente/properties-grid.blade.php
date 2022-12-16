@@ -7,7 +7,7 @@
         <div id="wrapper">
             <!-- START SECTION HEADINGS -->
             <!-- Header Container
-                        ================================================== -->
+                            ================================================== -->
             @include('cliente.body.header')
             <div class="clearfix"></div>
             <br>
@@ -89,21 +89,22 @@
                                                     aria-describedby="example1_info">
                                                     <thead>
                                                         <tr>
+                                                            <th class="sorting text-center" tabindex="0"
+                                                                aria-controls="example1" rowspan="1" colspan="1"
+                                                                aria-label="Browser: activate to sort column ascending">
+                                                                Precio</th>
                                                             <th class="sorting sorting_asc text-center" tabindex="0"
                                                                 aria-controls="example1" rowspan="1" colspan="1"
                                                                 aria-sort="ascending"
                                                                 aria-label="Rendering engine: activate to sort column descending">
                                                                 Nombre
                                                             </th>
-                                                            <th class="sorting text-center" tabindex="0"
-                                                                aria-controls="example1" rowspan="1" colspan="1"
-                                                                aria-label="Browser: activate to sort column ascending">
-                                                                Precio</th>
+
                                                             <th class="sorting text-center" tabindex="0"
                                                                 aria-controls="example1" rowspan="1" colspan="1"
                                                                 aria-label="Browser: activate to sort column ascending">
                                                                 Colonia</th>
-                                                                <th class="sorting text-center" tabindex="0"
+                                                            <th class="sorting text-center" tabindex="0"
                                                                 aria-controls="example1" rowspan="1" colspan="1"
                                                                 aria-label="Browser: activate to sort column ascending">
                                                                 Enlace</th>
@@ -119,9 +120,11 @@
 
                                                         @foreach ($propiedades_filtradas as $propiedad)
                                                             <tr class="odd">
-                                                                <td class="dtr-control sorting_1 text-center"
+
+                                                                <td class='text-center'>
+                                                                    {{ "$" . number_format($propiedad->precio, 2) }}</td>
+                                                                    <td class="dtr-control sorting_1 text-center"
                                                                     tabindex="0">{{ $propiedad->nombre }}</td>
-                                                                <td class='text-center'>{{ "$". number_format($propiedad->precio,2) }}</td>
 
                                                                 @if (isset($propiedad->locacion_id))
                                                                     <td class='text-center'>
@@ -130,7 +133,9 @@
                                                                     <td class='text-center'>N/A</td>
                                                                 @endif
 
-                                                                <td class='text-center'>{{"https://banpro.com.mx/properties/grid/" . $propiedad->id}}</td>
+                                                                <td class='text-center'>
+                                                                    {{ 'https://banpro.com.mx/properties/grid/' . $propiedad->id }}
+                                                                </td>
                                                                 <th class='text-center' class="row ">
                                                                     <div class="btn-group text-center" role="group"
                                                                         aria-label="Basic example">

@@ -59,7 +59,7 @@
                 <div class="header-user-menu user-menu add">
                     <div class="header-user-name">
                         <span><img src="{{ asset('/fotos_documentos/' . $userauth->foto) }}" alt=""></span>{{ Auth::user()->name }}
-                        <span><img src="{{ $userauth->avatar ?? '[$fd]' }}" alt=""></span>
+
                         {{ $user->name ?? '' }}
                     </div>
             @endif
