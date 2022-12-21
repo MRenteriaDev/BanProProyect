@@ -8,7 +8,7 @@
     $sellers = DB::table('sellers')
         ->take(2)
         ->get();
-    $fotos = DB::table('galeria_propiedades')->where('propiedad_id', '=', $property[0]->id)->get();
+    $fotos = DB::table('galeria_propiedades')->where('propiedad_id', '=', $property[0]->id)->orderBy('position', 'asc')->get();
     //$plano = DB::table('galeria_planos')->where('propiedad_id', '=', $property[0]->id)->get();
 
 @endphp
@@ -161,8 +161,12 @@
                                         <span class="det">{{ $property[0]->bano ?? ''}}</span>
                                     </li>
                                     <li>
-                                        <span class="font-weight-bold mr-1">Fecha de construcción:</span>
-                                        <span class="det">{{ $property[0]->fecha_construccion ?? ''}}</span>
+                                        <span class="font-weight-bold mr-1">Tamaño del terreno:</span>
+                                        <span class="det">{{ $property[0]->tamano_propiedad ?? ''}}</span>
+                                    </li>
+                                    <li>
+                                        <span class="font-weight-bold mr-1">Tamaño de construcción:</span>
+                                        <span class="det">{{ $property[0]->tamano_propiedad_construido ?? ''}}</span>
                                     </li>
                                 </ul>
                                 <!-- title -->
@@ -339,9 +343,14 @@
                                         </div>
 
 
+                                        @php
+                                            $usuario_activo = Auth::user();
 
+                                        @endphp
 
-                                        @if( Auth::user()->seller_active == 1)
+                                        @if(isset($usuario_activo))
+
+                                        @if($usuario_activo->seller_active == 1)
 
                                         <div class="widget-boxed-body">
                                             <div class="sidebar-widget author-widget2">
@@ -368,12 +377,7 @@
                                             </div>
                                         </div>
 
-
-
-
-                                        @elseif(Auth::user()->seller_active == 0 || Auth::user()->seller_active == null)
-
-
+                                        @elseif(is_null($usuario_activo->seller_active))
                                         <div class="widget-boxed-body">
                                             <div class="sidebar-widget author-widget2">
                                                 <div class="author-box clearfix">
@@ -398,10 +402,35 @@
 
                                         @endif
 
+                                        @endif
 
 
 
 
+                                        @if(is_null($usuario_activo))
+
+                                        <div class="widget-boxed-body">
+                                            <div class="sidebar-widget author-widget2">
+                                                <div class="author-box clearfix">
+
+                                                    <img src="{{ asset('/fotos_documentos/banpro.png' ) }}" /></span>
+
+
+                                                    <h4 class="author__title">Banpro</h4>
+                                                    <p class="author__meta">Bienes raíces</p>
+                                                </div>
+                                                <ul class="author__contact">
+                                                    <li><span class="la la-phone"><i class="fa fa-whatsapp"
+                                                                aria-hidden="true"></i></span><a
+                                                            href="https://wa.me/526621377220/?text=hola%20me%20gustaria%20contactarlos">6621377220</a></li>
+                                                    <li><span class="la la-envelope-o"><i class="fa fa-envelope"
+                                                                aria-hidden="true"></i></span><a
+                                                            href="#">Banpro@gmail.com</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        @endif
 
                                         <div class="container-fluid p-2 py-0 pb-3">
                                             <div class="row p-0 p-md-2 py-0 py-md-0">

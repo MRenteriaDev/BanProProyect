@@ -186,6 +186,7 @@ Route::prefix('propiedades')->group(function () {
     Route::get('/edit/{id}', [PropiedadesController::class, 'edit'])->name('propiedades.edit');
     Route::post('/update/{id}', [PropiedadesController::class, 'update'])->name('propiedades.update');
     Route::get('/destroy/{id}', [PropiedadesController::class, 'destroy'])->name('propiedades.destroy');
+    Route::post('/reorder', [PropiedadesController::class, 'reorder'])->name('propiedades.reorder');
 });
 /* ------------- End Propiedades -------------- */
 

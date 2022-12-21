@@ -55,25 +55,11 @@ class PropiedadesController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'nombre' => 'required',
-            'precio' => 'required|numeric',
-            'estatus_propiedad_id' => 'required',
-            'seller_id' => 'required',
 
-        ], [
-            'nombre.required' => 'Ingrese un nombre para la publicación de la propiedad',
-            'precio.required' => 'Porfavor, ingresa el precio de la propiedad',
-            'precio.required' => 'Ingresa números unicamente',
-            'estatus_propiedad_id.required' => 'Seleccione un estatus ',
-            'locacion_id.required' => 'Se debe seleccionar algo',
-            'tipo_propiedad_id.required' => 'Se debe seleccionar algo',
-            'nearbys.required' => 'Se debe escribir algo',
-            'seller_id.required'=> 'Debe seleccionar un vendedor',
+        $obj = (object) $request->returnArr;
+        $data = $obj;
 
-        ]);
-
-
+        $imgs_array = explode(',', $request->imgs);
 
         Propiedades::insert([
             'nombre' => $request->nombre,
@@ -82,16 +68,6 @@ class PropiedadesController extends Controller
             'tamano_propiedad_construido' => $request->tamano_propiedad_construido,
             'recamaras' => $request->recamaras,
             'bano' => $request->bano,
-            'aire_condicionado' => $request->aire_condicionado,
-            'balcon' => $request->balcon,
-            'internet' => $request->internet,
-            'cable' => $request->cable,
-            'alberca' => $request->alberca,
-            'lavaplatos' => $request->lavaplatos,
-            'estacionamiento' => $request->estacionamiento,
-            'refrigerador' => $request->refrigerador,
-            'solicitud_vendedor_id' => $request->solicitud_vendedor_id,
-            'review_id' => $request->review_id,
             'estatus_propiedad_id' => $request->estatus_propiedad_id,
             'locacion_id' => $request->locacion_id,
             'tipo_propiedad_id' => $request->tipo_propiedad_id,
@@ -106,26 +82,67 @@ class PropiedadesController extends Controller
 
         // $new_propiedad = Propiedades::create($data);
         $last = Propiedades::latest()->take(1)->get();
+        $index = 0;
 
         if ($request->has('nombre_archivo')) {
+
             foreach ($request->file('nombre_archivo') as $documento) {
-                $documento_nname = $data['nombre'] . '-documento-' . time() . rand(1, 1000) . '.' . $documento->extension();
-                $thumbnail = "resized-". $documento_nname;
+
+                $f1 = 0;
+                $documento_nname = $request->nombre . '-documento-' . time() . rand(1, 1000) . '.' . $documento->extension();
+                $thumbnail = "resized-" . $documento_nname;
                 $file = public_path('propiedades_documentos') . $documento_nname;
                 $ruta = public_path('propiedades_documentos/thumb/') . $thumbnail;
-                Image::make($documento)->resize(345,280)->save($ruta);
+                Image::make($documento)->resize(345, 280)->save($ruta);
                 $documento->move(public_path('propiedades_documentos'), $documento_nname);
 
+                $nombre_original = $documento->getClientOriginalName();
+
+
+                for ($index_imgs = 0; $index_imgs < count($imgs_array); $index_imgs++) {
+                    if ($nombre_original == $imgs_array[$index_imgs]){
+                        $current_position = $index_imgs;
+
+
+                    }
+
+                }
 
                 GaleriaPropiedades::create([
                     'propiedad_id' => $last[0]->id,
                     'nombre_archivo' => $documento_nname,
+                    'position' => $current_position,
                     'created_at' => Carbon::now()
                 ]);
+
+
             }
         }
+        return response()->json([
+                     'redirect' => url('/propiedades/index')
+                 ]);
 
 
+
+        // if ($f1 == 1) {
+        //     $request = request();
+        //     $index = 1;
+        //     $datos = $request['datos'];
+
+        //     if (count($datos)) {
+        //         for ($i = 0; $i < count($datos); $i++) {
+        //             $sport = GaleriaPropiedades::find($datos[$i]);
+        //             if ($index <= count($datos)) {
+        //                 $sport->position = $index;
+        //                 $sport->save();
+        //             }
+        //             $index++;
+        //         }
+        //     }
+        //     return response()->json([
+        //         'redirect' => url('/propiedades/index')
+        //     ]);
+        // }
 
 
         $notificacion = array(
@@ -135,8 +152,6 @@ class PropiedadesController extends Controller
 
 
         return redirect()->route('propiedades.index')->with($notificacion);
-
-
     }
 
     /**
@@ -166,8 +181,8 @@ class PropiedadesController extends Controller
             $reviews = Reviews::latest()->get();
             $solicitudvendedor = SolicitudVendedor::latest()->get();
             $seller = Seller::latest()->get();
-            $galeria_priopiedad = GaleriaPropiedades::where('propiedad_id', $propiedades->id)->get();
-            return view('admin.propiedades.update', compact("propiedades", "estatuspropiedad", "locacion", "tipopropiedades",  "reviews", "solicitudvendedor", "galeria_priopiedad", "seller"));
+            $galeria_propiedad  = GaleriaPropiedades::where('propiedad_id', $propiedades->id)->get();
+            return view('admin.propiedades.update', compact("propiedades", "estatuspropiedad", "locacion", "tipopropiedades",  "reviews", "solicitudvendedor", "galeria_propiedad", "seller"));
         }
 
         $notification = array(
@@ -226,10 +241,10 @@ class PropiedadesController extends Controller
         if ($request->has('nombre_archivo')) {
             foreach ($request->file('nombre_archivo') as $documento) {
                 $documento_nname = $request['nombre'] . '-documento-' . time() . rand(1, 1000) . '.' . $documento->extension();
-                $thumbnail = "resized-". $documento_nname;
+                $thumbnail = "resized-" . $documento_nname;
                 $file = public_path('propiedades_documentos') . $documento_nname;
                 $ruta = public_path('propiedades_documentos/thumb/') . $thumbnail;
-                Image::make($documento)->resize(345,280)->save($ruta);
+                Image::make($documento)->resize(345, 280)->save($ruta);
                 $documento->move(public_path('propiedades_documentos'), $documento_nname);
 
 
@@ -275,5 +290,26 @@ class PropiedadesController extends Controller
         );
 
         return redirect()->route('propiedades.index')->with($notification);
+    }
+
+    public function reorder(Request $request)
+    {
+        $request = request();
+
+        $index = 0;
+        $data = $request['data'];
+        if (count($data)) {
+            for ($i = 0; $i < count($data); $i++) {
+                $sport = GaleriaPropiedades::find($data[$i]);
+                if ($index <= count($data)) {
+                    $sport->position = $index;
+                    $sport->save();
+                }
+                $index++;
+            }
+        }
+        return response()->json([
+            'redirect' => url('/propiedades/index')
+        ]);
     }
 }

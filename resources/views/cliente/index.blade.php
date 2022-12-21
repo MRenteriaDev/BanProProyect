@@ -442,6 +442,7 @@
                         @php
                             $fotosrp = DB::table('galeria_propiedades')
                                 ->where('propiedad_id', '=', $recent_propertie->id)
+                                ->where('position', 0)
                                 ->first();
 
                             if (empty($fotosrp)) {

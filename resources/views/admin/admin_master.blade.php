@@ -51,6 +51,10 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 
 
+    {{-- Reorder --}}
+    <link rel="stylesheet" href="{{ asset('admin/plugins/reorder/re.css') }}">
+
+
     {{-- <script nonce="6b5d2dec-2f97-478a-b1d7-7977e81d8931">
         (function(w, d) {
             ! function(a, e, t, r) {
@@ -278,6 +282,111 @@
             })
         })
     </script>
+
+
+    <!-- Reorder script -->
+    <script>
+        $(document).ready(function() {
+            var dropIndex;
+            $("#image-list-sports").sortable({
+                update: function(event, ui) {
+                    dropIndex = ui.item.index();
+                }
+            });
+
+            $('#pform').submit(function(e) {
+                var imageIdsArray = [];
+                var formData = new FormData(this);
+
+
+
+                $('#image-list-sports li').each(function(index) {
+                    var id = $(this).attr('id');
+                    //var split_id = id.split("_");
+                    console.log(id);
+                    imageIdsArray.push(id);
+                });
+
+                var strin = imageIdsArray.toString();
+                console.log(strin);
+                formData.append('imgs', strin);
+
+                $.ajax({
+                    method: 'post', // Type of response and matches what we said in the route
+                    url: '/propiedades/store', // This is the url we gave in the route
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    // a JSON object to send back
+                    success: function(response) { // What to do if we succeed
+                        console.log({
+                            response
+                        });
+                        if (response.redirect) {
+                            // here you actually redirect to the new page
+                            window.location = response.redirect;
+                        }
+                    },
+                    error: function(jqXHR, textStatus,
+                        errorThrown) { // What to do if we fail
+                        console.log(JSON.stringify(jqXHR));
+                        console.log("AJAX error: " + textStatus + ' : ' +
+                            errorThrown);
+                    }
+                });
+                e.preventDefault();
+            });
+
+        });
+    </script>
+
+
+    <script>
+        $(document).ready(function() {
+            var dropIndex;
+            $("#image-list-sports").sortable({
+                update: function(event, ui) {
+                    dropIndex = ui.item.index();
+                }
+            });
+            $('#submit-sports').click(function(e) {
+                var imageIdsArray = [];
+                $('#image-list-sports li').each(function(index) {
+                    var id = $(this).attr('id');
+                    var split_id = id.split("_");
+                    console.log(id);
+                    imageIdsArray.push(split_id[1]);
+                });
+                $.ajax({
+                    method: 'post', // Type of response and matches what we said in the route
+                    url: '/propiedades/reorder', // This is the url we gave in the route
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                        'data': imageIdsArray,
+                        'id': window.location.pathname.substring(21, window.location.pathname
+                            .length)
+                    }, // a JSON object to send back
+                    success: function(response) { // What to do if we succeed
+                        console.log({
+                            response
+                        });
+                        if (response.redirect) {
+                            // here you actually redirect to the new page
+                            window.location = response.redirect;
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) { // What to do if we fail
+                        console.log(JSON.stringify(jqXHR));
+                        console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+                    }
+                });
+                e.preventDefault();
+            });
+        });
+    </script>
+
+
+
 </body>
 
 </html>

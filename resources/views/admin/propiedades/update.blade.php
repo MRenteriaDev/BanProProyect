@@ -1,7 +1,6 @@
 @extends('admin.admin_master')
 
 @section('admin')
-
     <section class="content-header" style="margin-top: 10px">
         <title>Propiedades | BanPro</title>
         <div class="container-fluid">
@@ -119,7 +118,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6">
+                        {{-- <div class="col-md-6">
                             <div class="form-group">
                                 <label for="aire_condicionado">Aire acondicionado</label>
                                 <input type="checkbox" value="1" name="aire_condicionado"
@@ -204,19 +203,13 @@
                                     <span class="text-danger"> {{ $message }} </span>
                                 @enderror
                             </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-floathing">
-                                <label for="nearbys">Especifica si hay lugares de interés cerca</label>
-                                <textarea name="nearbys" id="nearbys" value="{{ $propiedades->nearbys }}" placeholder="Escribe lugares cercanos"
-                                    class="form-control" cols="10" rows="2"></textarea>
-                            </div>
-                        </div>
+                        </div> --}}
+
                         <div class="col-md-12">
                             <div class="form-floathing">
                                 <label for="descripcion">Descripcion</label>
-                                <textarea name="descripcion" id="descripcion" value="{{ $propiedades->descripcion }}" placeholder="Escriba caracteristicas" class="form-control" cols="10"
-                                    rows="2"></textarea>
+                                <textarea name="descripcion" id="descripcion" value="{{ $propiedades->descripcion }}"
+                                    placeholder="Escriba caracteristicas" class="form-control" cols="10" rows="2"></textarea>
                             </div>
                         </div>
 
@@ -226,7 +219,8 @@
                                 <label>Seleccionar Estatus de la Propiedad</label>
                                 <select class="form-control select2" name="estatus_propiedad_id"
                                     style="width: 100%;height: 100%;">
-                                    <option selected="selected" value="{{ $propiedades->estatus_propiedad_id }}">Seleccionar</option>
+                                    <option selected="selected" value="{{ $propiedades->estatus_propiedad_id }}">
+                                        Seleccionar</option>
                                     @foreach ($estatuspropiedad as $estatupropiedad)
                                         <option value={{ $estatupropiedad->id }}>{{ $estatupropiedad->nombre }}
                                         </option>
@@ -240,8 +234,10 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>Seleccionar Tipo de propiedad</label>
-                                <select class="form-control select2" name="tipo_propiedad_id" style="width: 100%;height: 100%;">
-                                    <option selected="selected" value="{{ $propiedades->tipo_propiedad_id }}">Seleccionar</option>
+                                <select class="form-control select2" name="tipo_propiedad_id"
+                                    style="width: 100%;height: 100%;">
+                                    <option selected="selected" value="{{ $propiedades->tipo_propiedad_id }}">Seleccionar
+                                    </option>
                                     @foreach ($tipopropiedades as $tipopropiedad)
                                         <option value={{ $tipopropiedad->id }}>{{ $tipopropiedad->nombre }}</option>
                                     @endforeach
@@ -251,8 +247,10 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>Seleccionar Locacion</label>
-                                <select class="form-control select2" name="locacion_id" style="width: 100%;height: 100%;">
-                                    <option selected="selected" value="{{ $propiedades->locacion_id }}">Seleccionar</option>
+                                <select class="form-control select2" name="locacion_id"
+                                    style="width: 100%;height: 100%;">
+                                    <option selected="selected" value="{{ $propiedades->locacion_id }}">Seleccionar
+                                    </option>
                                     @foreach ($locacion as $locacion)
                                         <option value={{ $locacion->id }}>{{ $locacion->nombre }}</option>
                                     @endforeach
@@ -263,14 +261,23 @@
                             <div class="form-group">
                                 <label>Seleccionar asesor</label>
                                 <select class="form-control select2" name="seller_id" style="width: 100%;height: 100%;">
-                                    <option selected="selected" value="{{ $propiedades->seller_id }}">Seleccionar</option>
+                                    <option selected="selected" value="{{ $propiedades->seller_id }}">Seleccionar
+                                    </option>
                                     @foreach ($seller as $seller)
                                         <option value={{ $seller->id }}>{{ $seller->name }}</option>
                                     @endforeach
                                 </select>
                                 @error('seller_id')
-                                <span class="text-danger"> {{ $message }} </span>
-                            @enderror
+                                    <span class="text-danger"> {{ $message }} </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-floathing">
+                                <label for="nearbys">Especifica si hay lugares de interés cerca</label>
+                                <textarea name="nearbys" id="nearbys" value="{{ $propiedades->nearbys }}" placeholder="Escribe lugares cercanos"
+                                    class="form-control" cols="10" rows="2"></textarea>
                             </div>
                         </div>
 
@@ -344,7 +351,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="ubicacion">Ubicacion</label>
-                            <input type="text" name="ubicacion" value="{{$propiedades->ubicacion}}"
+                            <input type="text" name="ubicacion" value="{{ $propiedades->ubicacion }}"
                                 class="form-control" id="ubicacion" placeholder="Introduzca ubicacion">
                         </div>
                         @error('ubicacion')
@@ -354,7 +361,7 @@
 
                     <div class="property-location mb-5">
                         <div class="divider-fade">
-                            {!!$propiedades->ubicacion!!}
+                            {!! $propiedades->ubicacion !!}
                         </div>
                     </div>
                 </div>
@@ -376,5 +383,20 @@
         </div>
         </form>
     </div>
+
+    <ul class="gallery" id="image-list-sports">
+
+        @foreach ($galeria_propiedad as $sport)
+            <li class="acomodo"id="image_{{ $sport->id }}">
+                <img src="{{ asset('/propiedades_documentos/' . $sport->nombre_archivo) }}" alt=""
+                    style="width:80px; height:80px;"> <br />{{ $sport->id }}
+            </li>
+        @endforeach
+    </ul>
+<br>
+    <button id="submit-sports"> Reacomodar</button>
+
+
+
     </div>
 @endsection

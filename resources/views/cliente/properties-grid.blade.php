@@ -169,6 +169,7 @@
                                     @php
                                         $fotosp = DB::table('galeria_propiedades')
                                             ->where('propiedad_id', '=', $prop->id)
+                                            ->where('position', 0)
                                             ->first();
                                     @endphp
 
